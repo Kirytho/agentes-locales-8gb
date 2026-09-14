@@ -93,7 +93,7 @@ definitiva** — para más confianza haría falta una batería más grande (tipo
 Pregunta directa del usuario tras ver los 4 resultados: si esto sirve para
 uso normal de programación, no solo para funciones sueltas de juguete.
 
-**Para tareas pequeñas y bien especificadas*** (una función utilitaria, un
+**Para tareas pequeñas y bien especificadas** (una función utilitaria, un
 algoritmo conocido, boilerplate) — sí, razonablemente. El mejor de los tres
 modelos probados (Qwen3.5-4B solo, sin repartir nada) dio 23/25 en
 `eval_expertos.py` a ~98 t/s.
@@ -124,7 +124,7 @@ Qwen3.5-4B por separado cometieron ese error, apareció solo al combinar).
 
 La razón de fondo: **repartir trabajo entre subagentes no le añade
 capacidad de razonamiento a un modelo pequeño, solo le añade paralelismo y
-organización.*** Subagentes funcionan bien cuando el modelo de base ya es
+organización.** Subagentes funcionan bien cuando el modelo de base ya es
 capaz (ahí sirven para manejar contexto y explorar en paralelo cosas
 independientes) — no compensan que el modelo de base sea débil, y el paso
 extra de coordinar/unificar es un lugar nuevo donde pueden aparecer errores

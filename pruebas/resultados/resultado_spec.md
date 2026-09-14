@@ -1,4 +1,4 @@
-# Decodificación especulativa sin modelo borrador (`--spec-type`) — backend GPU
+# Decodificación especulativa sin modelo borrador (`--spec-type`) — backend GPU (17/08/2026)
 
 **Fecha**: 17/08/2026
 **Modelo**: Qwen3.8-9B-Q5_K_M, RTX 3060 Ti 8 GB, `-ngl 99`, ctx 16384

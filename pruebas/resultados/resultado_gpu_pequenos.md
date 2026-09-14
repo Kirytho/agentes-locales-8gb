@@ -38,7 +38,7 @@ Dos observaciones:
 - **Juntos ocupan 344 MiB menos que la suma de sus partes** (7005 contra 7349 de deltas).
   Medido, no explicado: puede ser caché del driver que se cuenta en la carga individual.
   No se apoya ninguna conclusión en ese número.
-- **Bonsai-27B queda fuera.*** Con ctx 8192 ocupa 5646 MiB (`resultado_convivencia.md` §1);
+- **Bonsai-27B queda fuera.** Con ctx 8192 ocupa 5646 MiB (`resultado_convivencia.md` §1);
   con los pequeños suman ~12,5 GB sobre 8. La elección no es de diseño, la impone la GPU:
   **un cerebro grande o tres pequeños**.
 
@@ -155,7 +155,7 @@ banco. Y el 4B va **2,9× más rápido** y deja **3,8 GB de VRAM libres** para o
   Idéntico. El cambio de ubicación modificó la velocidad 6,1× y nada más — el montaje está bien.
 - **Qwen3.5-2B: 14/25 → 16/25** (`transpuesta` y `bytes` pasaron a aprobar).
 
-Ese segundo caso da una medida del **ruido entre ejecuciones: ±2 tareas*** a temperatura
+Ese segundo caso da una medida del **ruido entre ejecuciones: ±2 tareas** a temperatura
 0,1. Vale la pena tenerlo presente: la brecha de 4 tareas entre especialista y control que
 `resultado_expertos.md` dejó en p=0,29 es apenas el doble del ruido.
 
@@ -192,7 +192,7 @@ Montaje: coordinador ctx 8192 con KV en q8_0, trabajadores ctx 2048. VRAM 7877 M
 
 Desglose del equipo: repartir 1,2 s · trabajo en paralelo 17,3 s · unificar 11,8 s.
 
-**Pasar el equipo a VRAM lo aceleró 5,3×.*** Pero el camino directo se aceleró lo mismo, así
+**Pasar el equipo a VRAM lo aceleró 5,3×.** Pero el camino directo se aceleró lo mismo, así
 que **la proporción no se movió: el equipo sigue costando 2,7× el camino directo** — el
 mismo 2,7× que dio en RAM (84,8 s contra 31,5 s).
 
@@ -226,9 +226,9 @@ Esto **no es un accidente, es la restricción del paralelismo**: las tres subtar
 a la vez, así que "escribe casos de prueba para la función" no puede ver la función que
 todavía se está escribiendo. En ejecución secuencial el problema no existiría.
 
-**La unificación lo detectó:*** la respuesta final descartó los casos de `sumar(a, b)` y
+**La unificación lo detectó:** la respuesta final descartó los casos de `sumar(a, b)` y
 escribió cuatro sobre el CSV. Pero eso significa que **un tercio del trabajo paralelo se descartó
-y el coordinador lo rehízo solo*** — pagando el reparto para después no usarlo.
+y el coordinador lo rehízo solo** — pagando el reparto para después no usarlo.
 
 ### Y sin embargo el equipo entregó mejor código
 
@@ -241,7 +241,7 @@ y el coordinador lo rehízo solo*** — pagando el reparto para después no usar
 
 **Verificado ejecutando** el código del camino directo con enero de 2023 (100) y enero de
 2024 (200): devuelve `{'01': 300.0}`. **Es el mismo bug de colapso de años que la primera
-ejecución del equipo propagó en julio*** — ahora aparece en el camino directo, y el equipo es el
+ejecución del equipo propagó en julio** — ahora aparece en el camino directo, y el equipo es el
 que lo evita.
 
 Así que el balance no es limpio en ninguna dirección: **el equipo tarda 2,7× más y entrega
@@ -254,7 +254,7 @@ enunciado con más fidelidad** (le pidieron un diccionario y usó un diccionario
 
 **Lo que cambia — y es mucho:**
 
-Un modelo pequeño en VRAM va **5 a 8 veces más rápido*** que el mismo modelo en RAM, con
+Un modelo pequeño en VRAM va **5 a 8 veces más rápido** que el mismo modelo en RAM, con
 **calidad idéntica** (el Coder falló exactamente las mismas 7 tareas en los dos lugares). Y
 un **Qwen3-4B en VRAM empata con Bonsai-27B** en el banco de 25 tareas (21/25 contra 22/25,
 McNemar p=1,000) yendo **2,9× más rápido**. Eso vuelve discutible la decisión de fondo del
@@ -275,7 +275,7 @@ gastado en las dos llamadas del coordinador, que son secuenciales por definició
 
 > **La recomendación práctica se invierte respecto de lo que venía haciendo el proyecto.**
 > No "un cerebro grande en GPU y expertos pequeños en RAM", sino **los expertos pequeños en VRAM
-> y turnándose*** — que es exactamente lo que hace el enrutador. La residencia simultánea
+> y turnándose** — que es exactamente lo que hace el enrutador. La residencia simultánea
 > cuesta 1 % de velocidad; el paralelismo cuesta 21 %. Cargarlos todos y usarlos de uno en uno es
 > la configuración que gana.
 
@@ -283,20 +283,20 @@ gastado en las dos llamadas del coordinador, que son secuenciales por definició
 
 ## 8. Lo que este experimento NO resuelve
 
-- **No decide "grande contra pequeños" en general.*** Decide en 8 GB, con estos cinco modelos y
+- **No decide "grande contra pequeños" en general.** Decide en 8 GB, con estos cinco modelos y
   este banco de 25 tareas. La comparación Bonsai-vs-4B dio p=1,000: eso significa
   *indistinguibles en esta muestra*, no *equivalentes*. Con 50-60 tareas —lo que ya estaba
   pendiente para cerrar el caso especialista-vs-control— podría separarse.
-- **El ruido entre ejecuciones es ±2 tareas*** (medido: Qwen3.5-2B dio 14/25 y 16/25 con el
+- **El ruido entre ejecuciones es ±2 tareas** (medido: Qwen3.5-2B dio 14/25 y 16/25 con el
   mismo modelo y el mismo banco). Cualquier brecha menor a eso no significa nada.
 - **La sustitución del coordinador ensucia la fase 4.** El equipo de julio lo coordinaba
   Bonsai-27B; este lo coordina Qwen3-4B. Un resultado peor no probaría que el reparto en VRAM
   falla, y uno mejor tampoco probaría lo contrario.
-- **Una sola ejecución del modo equipo por montaje.*** Los 30,2 s y los 28,6 s dan una idea de la
+- **Una sola ejecución del modo equipo por montaje.** Los 30,2 s y los 28,6 s dan una idea de la
   dispersión, pero la comparación de calidad (bug de años sí/no) se apoya en **un caso**. Es
   exactamente el tamaño de muestra que ya engañó una vez en este proyecto, cuando 3/3 parecía
   100 % de detección del supervisor y con 18 errores resultó 56 %.
 - **No se probó la supervisión en este montaje.** Sin Bonsai residente el supervisor tendría
   que ser un modelo pequeño, y eso es otro experimento.
-- **No se midió el inicio en frío.*** Si cargar un experto en VRAM tarda pocos segundos,
+- **No se midió el inicio en frío.** Si cargar un experto en VRAM tarda pocos segundos,
   quizá no haga falta tenerlos los tres residentes — y ahí cabrían modelos más grandes.

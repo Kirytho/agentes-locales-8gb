@@ -1,10 +1,10 @@
-# Mover la memoria al final del prompt
+# Mover la memoria al final del prompt (18/08/2026)
 
 **Fecha**: 18/08/2026 · **Scripts**: `medir_reuse_intermediario.py`, `eval_memoria_posicion.py`
 
 ## Qué se cambió
 
-La memoria recuperada iba en el mensaje `system`, es decir, al **principio*** del
+La memoria recuperada iba en el mensaje `system`, es decir, al **principio** del
 prompt. Como su contenido cambia en cada turno, cambiaba el **prefijo**, y el
 caché de prefijo de llama-server —que exige que el comienzo sea idéntico— quedaba
 inservible.
@@ -56,3 +56,12 @@ un número que también cambia.
 Para aprovechar el caché de verdad habría que conservar una **cabeza fija** —los
 primeros K mensajes siempre iguales— y recortar solo la parte intermedia. Eso es rediseñar
 el manejo de contexto, no un ajuste.
+
+## Actualización (19/08/2026): cabeza fija
+
+Se hizo al día siguiente: 3 mensajes iniciales que no se tocan nunca, una nota de
+texto constante y un recorte que avanza por bloques en vez de mensaje a mensaje.
+En una conversación real de 6 turnos, el tiempo total bajó de 93,4 s a 59,6 s y
+los turnos que reutilizan el prefijo pasaron de 2 de 6 a 5 de 6. Con un agente
+real, el recálculo innecesario quedó en 0,03% (ver
+[caché de prompt con Hermes](resultado_cache_prompt_hermes.md)).

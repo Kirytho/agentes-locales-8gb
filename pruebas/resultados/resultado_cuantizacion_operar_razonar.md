@@ -44,15 +44,16 @@ Los escenarios se agrupan en dos tipos:
   12/24 de 5 bits (p = 0,0007). Tendencia global de 4,3 aciertos por bit
   (p = 0,0244).
 
-**El total esconde los dos efectos.** El agregado por modelo dio p = 0,27, como si
-no hubiera diferencias, mientras había efectos reales adentro. Hay que desagregar
-por tipo de escenario siempre.
+**El total esconde los efectos.** Juntando todos los escenarios, ampliar el
+contexto pasó de 146/240 a 158/240 (p = 0,30), como si no tuviera efecto, mientras
+adentro había uno real (ver abajo). Hay que desagregar por tipo de escenario
+siempre.
 
 ## El ternario se descarta
 
 TB-8B es el **más rápido** (99,9 tok/s) y el **más pequeño** (2,18 GB), y obtiene
-14/60 en total: pierde incluso la capacidad de operar (36% en disco,
-p = 0,00073). La versión ternaria de 27B no carga en 8 GB.
+14/60 en total: pierde incluso la capacidad de operar (13/36 en disco contra
+28/36 de Q4_K_M, p = 0,00073). La versión ternaria de 27B no carga en 8 GB.
 
 **Velocidad y calidad van en direcciones opuestas.** Elegir solo por VRAM y
 velocidad habría coronado justo al peor.
@@ -61,14 +62,15 @@ velocidad habría coronado justo al peor.
 
 Juntando 4 modelos del diseño B, el escenario `contexto` (leer ocho archivos
 largos) pasa de 12/48 a 29/48 con el contexto ampliado (p = 0,00086). Los otros
-cuatro escenarios no se mueven (p = 0,66).
+cuatro escenarios no se mueven (134/192 → 129/192, p = 0,66).
 
 ## Decisión que salió de esto
 
 **IQ4_XS reemplazó a Q4_K_M** como modelo principal (07/09/2026):
 
-- en calidad **empatan** (82/120 contra 89/120 juntando ambos diseños,
-  p = 0,392; ningún escenario es significativo por separado);
+- en calidad **empatan**: juntando ambos diseños, IQ4_XS obtiene 89/120 (43 + 46)
+  y Q4_K_M 82/120 (38 + 44), p = 0,392; ningún escenario es significativo por
+  separado;
 - decidieron los números que no son estadísticos: 0,33 GB menos, +17% de
   velocidad y más reserva de KV con menos VRAM (7.161 contra 7.230 MiB). Con eso
   el contexto subió de 81.920 a 98.304.

@@ -120,7 +120,7 @@ Qwen3-4B Q4_K_M (2.5 GB) reemplaza a Qwythos como modelo rápido; GLM en híbrid
 
 | Backend | Prefill @2000 tok | Gen | VRAM total |
 |---|---:|---:|---|
-| Qwen3-4B (ctx 16384) | 3007 t/s | **58–62 t/s** | 6.5 GB usados, |
+| Qwen3-4B (ctx 16384) | 3007 t/s | **58–62 t/s** | 6.5 GB usados |
 | GLM híbrido (ctx 8192) | 568 t/s | 7.5–7.7 t/s | **1.5 GB libres** |
 
 Ambos modelos acelerados a la vez, con margen de VRAM real.

@@ -76,17 +76,18 @@ de modelos puede reutilizar el cálculo ya hecho sobre el inicio de una solicitu
 si ese inicio no cambió desde la solicitud anterior. Un agente reenvía casi toda
 la conversación en cada paso, así que eso ahorra la mayor parte del trabajo. En la
 primera versión, el contexto del proyecto se añadía al inicio, cambiaba en cada
-paso y obligaba a recalcular el 97 % de la solicitud cada vez. Moverlo al final lo
-resolvió: medido con un agente real, de 674.208 tokens de entrada solo 187 se
+paso y obligaba a recalcular el 97 % de la solicitud cada vez. Moverlo al final y
+mantener fijo el inicio de la conversación lo resolvió: medido con un agente real, de 674.208 tokens de entrada solo 187 se
 recalcularon sin necesidad.
 
 **Repartir el trabajo entre modelos sirve para ganar tiempo, no calidad.** Se
 probaron varias formas de poner a varios modelos a trabajar juntos: uno que
 planifica y otro que ejecuta, varios que resuelven lo mismo y uno que elige,
 varios que escriben partes distintas. Las que piden al modelo que planifique o que
-juzgue dieron peores resultados que consultar a un solo modelo. La que funcionó es
-la más simple: dividir la tarea en piezas y asignar una a cada trabajador al mismo
-tiempo. Hace el mismo trabajo en menos de la mitad del tiempo, con la misma
+juzgue no superaron a consultar a un solo modelo, y algunas lo empeoraron. La que
+funcionó es la más simple: dividir la tarea en piezas y asignar una a cada
+trabajador al mismo tiempo. Según el tamaño de la tarea, tardó entre un 30 % menos
+y 3,4 veces menos que hacerlo todo en una sola llamada o en fila, sin perder
 calidad.
 
 ## Delegar ediciones de código
@@ -97,7 +98,7 @@ las ediciones de archivos. El agente describe el cambio y las pruebas que debe
 superar; el modelo local lo realiza y lo verifica.
 
 Lo que se aprendió al medirla: el ahorro no está en escribir código (describir un
-cambio cuesta casi lo mismo que hacerlo), sino en **no tener que leer el
+cambio cuesta tanto o más que hacerlo), sino en **no tener que leer el
 archivo**. Por eso solo conviene para modificar archivos que ya existen, no para
 escribir código nuevo.
 

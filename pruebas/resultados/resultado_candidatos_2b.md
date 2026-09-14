@@ -19,7 +19,7 @@ la diferencia es real.
 
 Y cabe igual: **1.710 MiB**, prácticamente lo mismo que los Qwen de 1,34 GB,
 aunque su archivo pese 2,89 GB. La arquitectura E2B mantiene parte de los pesos
-(*per-layer embeddings*) fuera de la VRAM por diseño. **Caben 4 en la GPU.***
+(*per-layer embeddings*) fuera de la VRAM por diseño. **Caben 4 en la GPU.**
 
 **Lo que se paga: velocidad.** 135,7 contra 180,7 tok/s, un **25% menos**. Con
 cuatro agentes esa diferencia se multiplica.

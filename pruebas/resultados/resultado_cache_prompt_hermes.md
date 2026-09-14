@@ -31,7 +31,7 @@ DESPERDICIO: 187 tokens = 0,03%
 Todo lo recalculado es contenido genuinamente nuevo: los archivos que el agente
 lee (vueltas de 11.000-20.000 tokens). El prefijo --prompt de sistema,
 herramientas, memoria esencial e historial-- se reusa entero en cada vuelta.
-**El intermediario no rompe la caché.*** El arreglo del 18/08 (memoria al final, cuando al
+**El intermediario no rompe la caché.** El arreglo del 18/08 (memoria al final, cuando al
 principio hacía recalcular el 97%) sigue funcionando.
 
 Estimación del ahorro, a la tasa de prellenado observada (1.360 tok/s): sin

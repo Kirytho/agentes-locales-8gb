@@ -89,7 +89,7 @@ estaría midiendo el presupuesto de tokens, no los modelos.
 Atajo de ~2 h: solo `Q5_K_M`, `Q3_K_M`, `Q2_K` e `IQ2_XS`. `Q8_0` y `Q6_K` pesan
 más que `Q4_K_M` sin margen visible de mejora, y `Q1_0` casi seguro no inicia.
 
-**Predicción registrada antes de medir:*** las i-quants (`IQ2_XS`, `IQ1_M`) y `Q1_0`
+**Predicción registrada antes de medir:** las i-quants (`IQ2_XS`, `IQ1_M`) y `Q1_0`
 se rompen; `Q2_K` de 1,7 GB resiste. Está medido en este proyecto que bajo 4
 bits los i-quants colapsan y los K-quants no — **el esquema decide, no los
 bits**. Si sale al revés, el hallazgo es ése.
@@ -143,7 +143,7 @@ no se pueden calcular: hoy el comparador dice «referencia TODAVÍA NO MEDIDA».
   columna `bloques_rompio` da 8, 10, 11, 11, 12 en los que editan bien, contra
   **2** de K2. `Q4_K_S@miifanboy` edita 58/65 —al nivel de K2— y aun así rompe
   la regresión 11 veces.
-- **Cuidado con `IQ3_XXS`:*** tiene el mejor `bloques_rompio` (2) pero su
+- **Cuidado con `IQ3_XXS`:** tiene el mejor `bloques_rompio` (2) pero su
   `bloques_pasa` es 12/65. No es virtud: casi nunca emite un bloque válido, así
   que no llega a romper nada.
 

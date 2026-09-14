@@ -32,7 +32,7 @@ extrema, el cuello deja de ser el ancho de banda de memoria y pasa a ser el **c�
 descuantización**. Hay que descomprimir 27B de parámetros aunque ocupen 3,54 GB en disco.
 
 > **Regla corregida:** en GPU con quants normales domina el ancho de banda; con quants
-> extremos (ternario, Q1/Q2) domina el **número de parámetros***, no los bytes.
+> extremos (ternario, Q1/Q2) domina el **número de parámetros**, no los bytes.
 
 Es exactamente el tipo de suposición que solo se detecta midiendo.
 
@@ -99,7 +99,7 @@ real, no completado de patrones — es una señal fuerte de que el modelo sigue 
 | Generación plana con contexto | Razona por defecto (mitigable con el flag) |
 
 El GB extra de VRAM libre es relevante: es el margen que permitiría **un segundo modelo
-pequeño residente en GPU***, o mucho más contexto.
+pequeño residente en GPU**, o mucho más contexto.
 
 **Pendiente para decidir:** una comparación de calidad cabeza a cabeza contra
 Qwythos-9B en la misma batería. Estos tres casos sugieren que Bonsai es más capaz, pero

@@ -1,4 +1,4 @@
-# MoE híbrido (`-ncmoe N`) sobre Qwen3-30B-A3B
+# MoE híbrido (`-ncmoe N`) sobre Qwen3-30B-A3B (17/08/2026)
 
 **Fecha**: 17/08/2026
 **Modelo**: Qwen3-30B-A3B-Instruct-2507-UD-Q4_K_XL (48 bloques, 128 expertos, 8 activos)
@@ -32,7 +32,7 @@ llama-server **no** se queda en CPU: el ajustador automático envía a la GPU
 lo que quepa. Medido aquí: 6765 MiB de VRAM y 28,2 tok/s.
 
 Los 16,7 tok/s que figuraban en el registro de estado del proyecto no son "la velocidad del modelo en
-RAM": son la velocidad **cuando el 9B ya ocupaba la GPU*** y el ajustador no
+RAM": son la velocidad **cuando el 9B ya ocupaba la GPU** y el ajustador no
 encontró hueco. El número honesto de CPU pura, con `CUDA_VISIBLE_DEVICES=""`
 para que ni siquiera reserve buffers, es **14,4 tok/s**.
 
@@ -63,7 +63,7 @@ fijo, dos solicitudes idénticas al mismo servidor dieron texto distinto (ver lo
 hashes en `resultado_ncmoe.json`: `autofit` dio `b63873` y `bf04f2` para el
 mismo prompt). Pasa en GPU y también, en menor medida, en CPU.
 
-Consecuencia: **el control por hash no sirve aquí***, y no se puede afirmar que
+Consecuencia: **el control por hash no sirve aquí**, y no se puede afirmar que
 mover expertos a la GPU deje la respuesta igual. Por eso se verificó con la
 batería, que mide resultado y no texto exacto.
 

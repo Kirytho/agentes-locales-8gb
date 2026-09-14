@@ -1,7 +1,7 @@
+# `--cache-reuse` con el intermediario: el 97% se reprocesa en cada turno (18/08/2026)
 
----
-
-## Medición contra el intermediario (el caso que faltaba)
+Esta medición se hizo contra el intermediario, con la memoria del proyecto
+inyectada en cada solicitud.
 
 Conversación de 8 turnos contra `:8086`, con memoria inyectada, servidor caliente:
 
@@ -11,7 +11,7 @@ Conversación de 8 turnos contra `:8086`, con memoria inyectada, servidor calien
 | **de esos, hay que procesar** | **1.958 (97,1%)** | **1.960 (97,1%)** |
 | tiempo total de prompt | 11.441 ms | 12.757 ms |
 
-**`--cache-reuse` tampoco sirve aquí. Descartado.***
+**`--cache-reuse` tampoco sirve aquí. Descartado.**
 
 > Aviso: una primera ejecución dio 37.195 ms para el caso "sin", lo que parecía un
 > −66% a favor de la bandera. Era **arranque en frío**: servidor recién
@@ -24,7 +24,7 @@ Conversación de 8 turnos contra `:8086`, con memoria inyectada, servidor calien
 Desde el turno 3 en adelante, **`cache_n` es 0**: no se recupera ni un token.
 
 La causa no es una bandera que falte, es **dónde se inyecta la memoria**.
-El paso que añade la memoria la ponía en el mensaje `system`, es decir, al **principio***
+El paso que añade la memoria la ponía en el mensaje `system`, es decir, al **principio**
 del prompt. Como ese contenido cambia en cada turno (la memoria recuperada es
 distinta), el prefijo cambia, y el caché de prefijo del servidor —que necesita
 que el comienzo sea idéntico— queda inservible.
@@ -39,3 +39,8 @@ eso el prefijo (system fijo + historial) queda estable y el caché del servidor
 vuelve a servir. Falta medir cuánto rinde y verificar que el modelo preste la
 misma atención a la memoria puesta al final — no es gratis: la posición cambia cómo
 la pondera.
+
+> **Resultado posterior:** mover la memoria al final bajó el reprocesamiento solo
+> a 90,4%; el resto se resolvió al día siguiente fijando el inicio de la
+> conversación. Ver [memoria al final](resultado_memoria_posicion.md) y
+> [caché de prompt con Hermes](resultado_cache_prompt_hermes.md).

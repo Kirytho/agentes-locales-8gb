@@ -1,4 +1,4 @@
-# Atomic AI (proxy de descomposición de tareas) — probado y DESCARTADO
+# Atomic AI (proxy de descomposición de tareas) — probado y descartado (11-19/08/2026)
 
 > **ESTADO: retirado del proyecto el 16/08/2026.** Nunca llegó a estar
 > activo (siempre fue opcional y nunca se incluyó entre los backends por
@@ -126,6 +126,12 @@ sublist]`, que falla con `TypeError` si un elemento no es lista.
 **Tercera medición independiente en la misma dirección**: atomic en modelo fuerte
 (79,3% contra 90,5%), el pipeline de dos etapas del 19/08 (9/12 contra 12/12) y
 esta. La descomposición previa no compensa en este proyecto.
+
+> **Matiz posterior (22/08):** el pipeline del 19/08 fallaba sobre todo por su
+> prompt de ejecución, no por dividir en dos etapas; con un prompt sano, planificar
+> dio lo mismo que no planificar (51 contra 50 de 53). La conclusión sobre atomic
+> se mantiene, pero ese apoyo es más débil de lo que parecía. Ver
+> [misma tarea](resultado_misma_tarea.md).
 
 **Salvedad**: 12 tareas, una ejecución. Por sí solo, un 6→3 no bastaría; junto con
 las otras dos mediciones y la explicación mecánica, basta para no seguir

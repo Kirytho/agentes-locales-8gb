@@ -57,9 +57,10 @@ tiempo y tokens por el plan.
 instrucción de ejecución pedía "código listo para producción, manejo de errores
 en cada operación", y el modelo entregaba una aplicación en vez de una función:
 emojis dentro del código, `input()` donde no correspondía, y 8-9 respuestas
-truncadas por ejecución. Las mediciones anteriores del pipeline (12/12 → 9/12
-arriba, y las de [atomic](resultado_atomic_ai.md)) usaban ese mismo prompt:
-**midieron el prompt, no la arquitectura.**
+truncadas por ejecución. La medición anterior del pipeline (12/12 → 9/12, arriba)
+usaba ese mismo prompt: **midió el prompt, no la arquitectura.** Las mediciones de
+[atomic](resultado_atomic_ai.md) no están afectadas: ese proxy usa sus propios
+prompts de descomposición.
 
 **Una corrección del mismo día.** La instrucción de programador parecía 4,4× más
 barata que "directo". Pero "directo" no lleva ninguna instrucción de sistema, y

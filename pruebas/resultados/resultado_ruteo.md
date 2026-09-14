@@ -4,7 +4,7 @@ Experimento para decidir si tiene sentido una arquitectura de varios cerebros
 pequeños: **si el enrutador no escala, tener N expertos no sirve**.
 
 Banco: **100 frases, 10 clases** (`banco_ruteo.json`), escrito **antes** que los
-enrutadores. Arnés: `eval_router.py`. No se descargó ningún modelo ni se tocó
+enrutadores. Arnés: `eval_router.py` (no incluido: importa módulos internos del programa). No se descargó ningún modelo ni se tocó
 producción.
 
 ---

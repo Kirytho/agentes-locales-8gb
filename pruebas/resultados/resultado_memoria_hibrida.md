@@ -1,4 +1,4 @@
-# Memoria híbrida (BM25 + vector + RRF) vs similitud plana
+# Memoria híbrida (BM25 + vector + RRF) vs similitud plana (11/08/2026)
 
 **Fecha**: 11/08/2026
 **Dónde**: primero en una copia experimental (validado) y después integrado en el módulo de memoria del intermediario (11/08/2026)
@@ -49,7 +49,7 @@ Este cambio casi se lleva a producción roto. El paso que añade la memoria
 filtra resultados con `score < 0.35` (`min_relevance`) antes de inyectarlos
 al contexto — calibrado para similitud de coseno (rango 0-1). El score
 crudo de RRF vive en otra escala completamente distinta: medido, el máximo
-posible con `K=60` es **0.033*** — ni el mejor resultado llega ni
+posible con `K=60` es **0.033** — ni el mejor resultado llega ni
 cerca de 0.35.
 
 Sin arreglar esto, conectado a producción tal cual, **el filtro descartaría

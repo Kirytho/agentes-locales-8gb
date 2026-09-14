@@ -4,7 +4,7 @@
 POR QUE EXISTE (28/08/2026)
 
 Los bancos que teniamos le hablan al intermediario DIRECTO. Miden al modelo, no al
-sistema: no pasan por el bucle de agente de Hermes, ni por sus 22 herramientas,
+sistema: no pasan por el bucle de agente de Hermes, ni por sus 21 herramientas,
 ni por sus skills, ni por el multi-turno. Y justamente el fallo que quedo sin
 explicar --"gemma opera mal un harness"-- solo aparece con el stack completo.
 

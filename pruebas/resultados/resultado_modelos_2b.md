@@ -31,7 +31,7 @@ VRAM real y apaga. **Modelo**: `empero-ai/Qwen3.8-2B-Distill-GGUF`.
 **El 2B no reemplaza al 9B para escribir código**: falla la mitad de las tareas.
 Lo que ofrece es otra cosa — 3,2x la velocidad en la cuarta parte de la VRAM.
 
-**Cuidado con "puntaje por GB"*** (la métrica que calcula el banco): es engañosa.
+**Cuidado con "puntaje por GB"** (la métrica que calcula el banco): es engañosa.
 Cuatro agentes a 29/53 no dan 116 aciertos; dan cuatro agentes que se equivocan
 el 45% de las veces, y en un pipeline los errores se **encadenan**. Un modelo
 así sirve donde el error es barato y detectable —clasificar, extraer, filtrar,
@@ -50,7 +50,7 @@ ampliarla** como se amplió la de código (25 → 53 tareas el 18/08).
 
 Además la varianza es mayor que con modelos grandes: desviación **2,4** puntos y
 un rango de 23-32 entre ejecuciones idénticas de Q5. Con el 9B era ±1-2. **Tres
-ejecuciones son el mínimo aquí, no una recomendación.***
+ejecuciones son el mínimo aquí, no una recomendación.**
 
 ---
 
@@ -86,6 +86,9 @@ una:
 | Q4_K_M | 6 | 25,8/53 | 23-29 | 1,9 | 7,3/25 |
 | Q5_K_M | 8 | 28,0/53 | 26-32 | 1,7 | 6,3/25 |
 | Q8_0 | 6 | 28,7/53 | 26-32 | 1,9 | 6,3/25 |
+
+La columna de razonamiento promedia solo las 3 ejecuciones con la batería de 25
+preguntas de cada cuantización; las anteriores usaban 4 preguntas.
 
 **Los tres rangos se solapan.** Las diferencias son de 0,7 a 2,8 puntos con una
 desviación de 1,9: no hay nada que afirmar. Hay una tendencia monótona (a más

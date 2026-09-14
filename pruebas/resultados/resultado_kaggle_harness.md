@@ -248,8 +248,8 @@ posibles y ninguna está descartada:
 3. **El bug es intermitente**, dependiente de longitudes de secuencia concretas.
 
 **No está corregido: no se manifestó.** No se modificó nada, así que no hay motivo
-para creer que no vuelva. Para descartar la causa 2 basta guardar el `sha256` del
-GGUF en la celda de descarga y compararlo el día que vuelva a fallar.
+para creer que no vuelva. Para descartar la causa 2, la celda de descarga del
+notebook ahora compara el `sha256` del GGUF con el que publica Hugging Face.
 
 ### Dos trampas del instrumento, encontradas de paso
 
@@ -275,4 +275,4 @@ CONTEXTO  herramientas ofrecidas=0  prompt de sistema=0 chars
 ```
 
 **Un 0/5 con `peticiones=0` nunca es un resultado, siempre es el instrumento.**
-Conviene que el banco se detenga por sí solo cuando no registró ni una petición.
+Desde entonces el banco se detiene por sí solo cuando no registró ni una petición.

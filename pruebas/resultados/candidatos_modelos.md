@@ -19,7 +19,7 @@ La idea original era *invertir los roles*: razonamiento a GPU, código a CPU. Pe
   colocar el de razonamiento perjudicaría a tres perfiles para beneficiar a uno.
 
 **Conclusión:** la inversión ya no es el camino. La pregunta correcta pasó a ser
-*¿puede **un solo modelo** cubrir ambos roles y caber entero en la VRAM?**
+*¿puede **un solo modelo** cubrir ambos roles y caber entero en la VRAM?*
 
 ---
 
@@ -72,7 +72,7 @@ blogs). Todos en formato GGUF, compatibles con `llama-server`.
 con `"enable_thinking": False` dentro de `chat_template_kwargs` — exactamente lo que
 el intermediario ya envía. También emite etiquetas `<think>`, que el intermediario ya
 limpia, y ya existe un reintento para el caso en que el modelo solo razone. **La
-maquinaria está construida.***
+maquinaria está construida.**
 
 **b) Es más pequeño que el modelo actual.** 5,29 GB contra los ~5,7 GB de Qwythos-9B:
 cabe con **más** margen de KV cache, no menos.
@@ -99,7 +99,7 @@ razonamiento, siendo 4-5× más rápido. **Esto hay que medirlo, no asumirlo.**
 ### Riesgos
 
 1. **Calidad de razonamiento** frente al GLM-23B — es la incógnita central.
-2. **Se pierde Qwythos**, el fork propio con KV ternaria (trabajo invertido).
+2. **Se pierde Qwythos-9B** y su configuración con KV ternaria ya ajustada (trabajo invertido).
 3. **Un solo backend elimina el fallback**: la maquinaria de derivación del
    intermediario asume dos. Habría que decidir si se conserva el GLM como backend
    de razonamiento profundo bajo demanda.

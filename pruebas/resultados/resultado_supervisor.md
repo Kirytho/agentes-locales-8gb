@@ -25,9 +25,9 @@ El supervisor no lo sabe. No hay margen para que el que analiza incline el resul
 Detectó los tres: `duracion` del especialista, `agrupar` del especialista y `duracion`
 del control. No escaló ni uno solo de los nueve que estaban bien.
 
-> **Esa salvedad se confirmó: el 100 % era suerte de una muestra pequeña.*** Repetida la prueba
+> **Esa salvedad se confirmó: el 100 % era suerte de una muestra pequeña.** Repetida la prueba
 > el 23/07 sobre **50 códigos con 18 errores reales** (batería de 25 tareas × 2 modelos),
-> la detección cae a **56 %**. Ver la sección 6.
+> la detección cae a **56 %**. Ver la sección 5.
 
 ---
 
@@ -71,14 +71,14 @@ La supervisión sigue siendo valiosa donde la generación en GPU no está dispon
 
 1. **Cuando la GPU está ocupada** con otra petición. Supervisar cuesta 733 ms; generar
    cuesta 3,2 s. Como **revisor** la GPU atiende ~4× más peticiones que como generador.
-2. **Cuando no cabe el modelo grande*** — otro equipo, otra GPU, o el T1 tomado por un
+2. **Cuando no cabe el modelo grande** — otro equipo, otra GPU, o el T1 tomado por un
    modelo de visión.
 3. **Bajo concurrencia**, donde los pequeños de RAM pierden el 49 % cada uno y la GPU
    apenas el 8 %: ahí el reparto pequeño-genera / GPU-revisa aprovecha los dos canales.
 
 > **Recomendación: no adoptar la cascada como ruta por defecto.** Implementarla como
 > **modo de respaldo** para cuando el T1 esté saturado. La regla de la arquitectura de
-> dos niveles no cambia: **si el modelo capaz cabe en la GPU, consultarlo directamente.***
+> dos niveles no cambia: **si el modelo capaz cabe en la GPU, consultarlo directamente.**
 
 ---
 
@@ -98,7 +98,7 @@ verificador externo barato. Queda esperando por lo que ya se midió en convivenc
 
 ---
 
-## 6. Segunda ejecución sobre 50 códigos — 23/07/2026
+## 5. Segunda ejecución sobre 50 códigos — 23/07/2026
 
 Ampliada la batería a 25 tareas, el banco de juicios pasó de 12 a **50 códigos con 18
 errores reales**. Mismo supervisor, mismo prompt, misma verdad por ejecución.
@@ -142,12 +142,11 @@ concreto.** No hay una regla que permita anticipar qué se le va a escapar.
 
 ---
 
-## 5. Lo que falta medir
+## 6. Lo que falta medir
 
 1. **Errores sutiles.** Repetir con código que pasa la lectura y falla en un caso borde.
    Es la prueba que de verdad decide, y la que este banco no tiene.
-2. **Muestra mayor.** Tres errores no sostienen una tasa de detección. Va junto con
-   ampliar la batería a 20-30 tareas, que ya era el paso pendiente.
+2. ~~**Muestra mayor.**~~ Hecho: ver la sección 5 (50 códigos, 18 errores).
 3. **Supervisión de razonamiento**, no solo de código. Ahí no hay verdad por ejecución,
    así que hay que juzgar a ciegas — y es donde el falso descubrimiento del 51 % que
    reporta la literatura tiene más probabilidades de aparecer.

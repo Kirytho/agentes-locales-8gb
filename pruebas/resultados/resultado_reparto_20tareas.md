@@ -89,5 +89,6 @@ KV—.
 - Ejecutar sin la lista de ids, para un número comparable con el leaderboard.
 - El juez **no cierra lo que abre**: deja un Django y un Chrome por proyecto.
   Con 120 proyectos se acumularon bastantes; hubo que cerrar `manage.py runserver`
-  a mano. Conviene que el banco lo haga solo al terminar.
+  a mano. *Resuelto después:* `herramientas/juzgar_reparto.py` ejecuta el juez y
+  cierra solo los procesos que abrió.
 - Tercera repetición, si alguna vez importa una diferencia pequeña.

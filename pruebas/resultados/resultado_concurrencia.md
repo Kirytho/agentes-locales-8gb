@@ -1,4 +1,4 @@
-# Concurrencia: cuánto rinde el intermediario con varios agentes a la vez
+# Concurrencia: cuánto rinde el intermediario con varios agentes a la vez (17-18/08/2026)
 
 **Fecha**: 17/08/2026 · **Script**: `pruebas/rendimiento/medir_concurrencia.py`
 **Config**: la de producción, sin tocar nada — 9B en GPU (:8080) y 30B (:8083)
@@ -50,8 +50,9 @@ solicitud suelta.
 Se había supuesto que `backends/qwen3/iniciar-linux.sh`, al no declarar
 `--parallel` ni `--cont-batching`, dejaba al 30B con un solo slot y serializaba
 a los agentes. **Es falso**: `/props` reporta `total_slots: 4`. En este build el
-valor por defecto es 4 y `--ctx-size` es **por slot**, no repartido — los cuatro
-slots tienen 8192 cada uno.
+valor por defecto es 4 y, **cuando no se declara `--parallel`**, `--ctx-size` es
+**por slot**, no repartido — los cuatro slots tienen 8192 cada uno. Con `--parallel`
+declarado, como en el 9B de abajo, `--ctx-size` es el total y se reparte.
 
 ## Subir los slots del 9B: de 2 a 4
 

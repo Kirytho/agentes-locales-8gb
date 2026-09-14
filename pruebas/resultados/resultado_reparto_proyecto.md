@@ -95,7 +95,10 @@ extraída de los NOMBRES y descripciones de los parámetros del `testcode` —qu
 especificación, no respuesta: el código de las pruebas NO se pasa— y se da igual
 a los tres brazos.
 
-## Qué falta
+## Qué faltaba
+
+> **Hecho el mismo día:** las 20 tareas, incluidas las de 11 a 19 piezas, con 2
+> repeticiones por brazo. Ver [las 20 tareas](resultado_reparto_20tareas.md).
 
 - **Ejecutar las 20 tareas** para que el número entre en la tabla del paper.
 - **Tareas con más piezas.** Con 3-4 la integración no se rompe nunca. Las

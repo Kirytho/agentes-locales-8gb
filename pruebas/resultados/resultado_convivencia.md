@@ -52,7 +52,7 @@ caben cómodamente 8-10 expertos pequeños.
 **Sumar un segundo modelo en RAM no aumenta el trabajo total: lo reparte** — y además
 cuesta un 11 % en contención.
 
-> **N modelos en RAM comparten un solo canal.*** Pueden coexistir, pero no pueden trabajar
+> **N modelos en RAM comparten un solo canal.** Pueden coexistir, pero no pueden trabajar
 > en paralelo de forma productiva. El techo lo pone el ancho de banda (48 GB/s), no la
 > cantidad de modelos.
 
@@ -78,7 +78,7 @@ apenas un **5 %**, y la penalización baja de −49 %/−48 % a −41 %/−44 %.
 degradación es **inherente a compartir el ancho de banda de memoria**, tal como predice
 el modelo físico — no es un problema de planificación de CPU.
 
-**Y hay un contra:** con 3 hilos cada modelo es **más lento cuando se ejecuta solo***
+**Y hay un contra:** con 3 hilos cada modelo es **más lento cuando se ejecuta solo**
 (el Coder cae de 27,0 a 24,9 t/s, −8 %).
 
 > **Recomendación: dejar `--threads 6`.** Con enrutado los modelos **se turnan**, así que
@@ -111,7 +111,6 @@ falla **bajo carga concurrente**, justamente el modo en que el intermediario se 
 
 - **Más de dos en RAM a la vez.** Si dos reparten el caudal a la mitad, cuatro deberían
   repartirlo en cuartos — pero conviene confirmarlo, y ver si la contención crece.
-- **El efecto de la sobresuscripción de hilos** (3 vs 6 hilos por servidor).
 - **El tiempo de inicio** como alternativa a la residencia: si cargar un experto tarda
   ~2 s (medido hoy), quizá no haga falta tenerlos todos residentes.
 

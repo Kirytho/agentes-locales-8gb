@@ -15,8 +15,9 @@ depender de un servicio de pago, en hardware común?** Y la sub-pregunta prácti
 ¿cuál es el modelo más pequeño que programa bien?
 
 ```
-hardware   RTX 3060 Ti 8 GB · 32 GB RAM · CachyOS Linux
-motor      llama.cpp
+período    20/07/2026 – 13/09/2026
+hardware   RTX 3060 Ti 8 GB · Ryzen 5 3600XT · 32 GB DDR4-3000 · CachyOS Linux
+motor      llama.cpp: la versión oficial y dos forks (buun-llama-cpp y el de K2-Horizon)
 agente     Hermes, con 21 herramientas y ~22.700 tokens de presupuesto fijo
 ```
 
@@ -156,13 +157,13 @@ excluyeron además los bancos que importan módulos internos del programa.
 | [Candidatos de modelo para la GPU de 8 GB — Fase 2 (22/07/2026)](pruebas/resultados/candidatos_modelos.md) |
 | [Abanico de subagentes: repartir y consolidar son capacidades distintas (28/08 – 07/09/2026)](pruebas/resultados/resultado_abanico.md) |
 | [Operar como agente: el harness y la conducta pesan más que el modelo (24/08 – 03/09/2026)](pruebas/resultados/resultado_agente_harness.md) |
-| [Atomic AI (proxy de descomposición de tareas) — probado y DESCARTADO](pruebas/resultados/resultado_atomic_ai.md) |
+| [Atomic AI (proxy de descomposición de tareas) — probado y descartado (11-19/08/2026)](pruebas/resultados/resultado_atomic_ai.md) |
 | [Bonsai-27B-Q1_0 como candidato de GPU (T1) — medido 22/07/2026](pruebas/resultados/resultado_bonsai_t1.md) |
 | [Caché de prompt con Hermes: el intermediario no la rompe (13/09/2026)](pruebas/resultados/resultado_cache_prompt_hermes.md) |
-| [Medición contra el intermediario (el caso que faltaba)](pruebas/resultados/resultado_cache_reuse.md) |
+| [`--cache-reuse` con el intermediario: el 97% se reprocesa en cada turno (18/08/2026)](pruebas/resultados/resultado_cache_reuse.md) |
 | [El mejor 2B para agentes residentes (19-20/08/2026)](pruebas/resultados/resultado_candidatos_2b.md) |
-| [Concurrencia: cuánto rinde el intermediario con varios agentes a la vez](pruebas/resultados/resultado_concurrencia.md) |
-| [Cuánto contexto usa una solicitud real (y un bug que apareció al medirlo)](pruebas/resultados/resultado_contexto.md) |
+| [Concurrencia: cuánto rinde el intermediario con varios agentes a la vez (17-18/08/2026)](pruebas/resultados/resultado_concurrencia.md) |
+| [Cuánto contexto usa una solicitud real (y un bug que apareció al medirlo) (17-18/08/2026)](pruebas/resultados/resultado_contexto.md) |
 | [¿Pueden convivir varios cerebros? — medido 22/07/2026](pruebas/resultados/resultado_convivencia.md) |
 | [Criba de banderas de llama-server en dos etapas (19/08/2026)](pruebas/resultados/resultado_criba_banderas.md) |
 | [Bajar bits no afecta operar herramientas, solo razonar (06-07/09/2026)](pruebas/resultados/resultado_cuantizacion_operar_razonar.md) |
@@ -176,12 +177,12 @@ excluyeron además los bancos que importan módulos internos del programa.
 | [Tres modelos pequeños residentes en VRAM — medido 23/07/2026](pruebas/resultados/resultado_gpu_pequenos.md) |
 | [¿Le sirve a K2 razonar para programar? — medido 11/09/2026](pruebas/resultados/resultado_k2_razonar.md) |
 | [Hermes contra modelos en Kaggle — medido 11/09/2026](pruebas/resultados/resultado_kaggle_harness.md) |
-| [Memoria híbrida (BM25 + vector + RRF) vs similitud plana](pruebas/resultados/resultado_memoria_hibrida.md) |
-| [Mover la memoria al final del prompt](pruebas/resultados/resultado_memoria_posicion.md) |
+| [Memoria híbrida (BM25 + vector + RRF) vs similitud plana (11/08/2026)](pruebas/resultados/resultado_memoria_hibrida.md) |
+| [Mover la memoria al final del prompt (18/08/2026)](pruebas/resultados/resultado_memoria_posicion.md) |
 | [Varios agentes sobre la misma tarea no mejoran el resultado (19-22/08/2026)](pruebas/resultados/resultado_misma_tarea.md) |
 | [¿Ornith o K2 para el MCP? — medido 09/09/2026](pruebas/resultados/resultado_modelo_codigo_09-09.md) |
 | [Modelos 2B: ¿sirven varios pequeños residentes? (19/08/2026)](pruebas/resultados/resultado_modelos_2b.md) |
-| [MoE híbrido (`-ncmoe N`) sobre Qwen3-30B-A3B](pruebas/resultados/resultado_ncmoe.md) |
+| [MoE híbrido (`-ncmoe N`) sobre Qwen3-30B-A3B (17/08/2026)](pruebas/resultados/resultado_ncmoe.md) |
 | [Prueba end-to-end en Linux/CachyOS — 2026-07-27](pruebas/resultados/resultado_prueba_linux_20260727.md) |
 | [Reparto entre slots, las 20 tareas: la calidad no cambia, el tiempo se reduce a la mitad (12/09/2026)](pruebas/resultados/resultado_reparto_20tareas.md) |
 | [Repartir piezas distintas de una tarea sí funciona (22/08/2026)](pruebas/resultados/resultado_reparto_piezas.md) |
@@ -190,7 +191,7 @@ excluyeron además los bancos que importan módulos internos del programa.
 | [¿Escala el discernimiento a N expertos? — Resultado (22/07/2026)](pruebas/resultados/resultado_ruteo.md) |
 | [Scripts operativos: el modelo calcula bien y falla al relatar (24-25/08/2026)](pruebas/resultados/resultado_scripts_operativos.md) |
 | [Spark-X2.5-4B para el MCP — medido 09/09/2026](pruebas/resultados/resultado_spark_4b.md) |
-| [Decodificación especulativa sin modelo borrador (`--spec-type`) — backend GPU](pruebas/resultados/resultado_spec.md) |
+| [Decodificación especulativa sin modelo borrador (`--spec-type`) — backend GPU (17/08/2026)](pruebas/resultados/resultado_spec.md) |
 | [Especulación con la carga del MCP (bloques SEARCH/REPLACE) — 09/09/2026](pruebas/resultados/resultado_spec_bloques.md) |
 | [¿Sirve que la GPU supervise a los modelos pequeños? — 22/07/2026](pruebas/resultados/resultado_supervisor.md) |
 

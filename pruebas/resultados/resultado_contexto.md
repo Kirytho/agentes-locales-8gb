@@ -1,4 +1,4 @@
-# Cuánto contexto usa una solicitud real (y un bug que apareció al medirlo)
+# Cuánto contexto usa una solicitud real (y un bug que apareció al medirlo) (17-18/08/2026)
 
 **Fecha**: 17/08/2026 · **Script**: `pruebas/rendimiento/medir_contexto.py`
 **Crudos**: `pruebas/resultados/resultado_contexto.json`
@@ -18,7 +18,13 @@ con la memoria inyectada dentro.
 | 6 | 11 | 718 | 120 |
 | 7 | 13 | 702 | 120 |
 
-**Máximo medido: 744 tokens de prompt, 864 contando la respuesta.** Contra un
+**Máximo medido: 744 tokens de prompt, 864 contando la respuesta.**
+
+> **Sobre los crudos:** `resultado_contexto.json` es la ejecución **repetida después
+> del arreglo** de la caché (ver abajo): los 12 turnos llegan al modelo y el máximo
+> es 729 tokens de prompt (849 con la respuesta). La tabla de arriba es la primera
+> ejecución, antes del arreglo, y no quedó guardada. La conclusión no cambia.
+ Contra un
 slot de 4096 eso es el **18%**; contra uno de 8192, el 9%.
 
 Y no crece indefinidamente: del turno 5 al 7 se mantiene estable (744, 718, 702)

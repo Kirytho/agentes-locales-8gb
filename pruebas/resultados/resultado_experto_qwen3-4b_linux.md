@@ -1,7 +1,7 @@
 # Qwen3-4B-Q4_K_M — ejecución en Linux/CachyOS junto a nanbeige (27/07/2026)
 
 Arnés: `eval_expertos.py`. Backend: `llama-server` compilado nativo para Linux
-(`backends/linux/`), ejecutándose **al mismo tiempo*** que `nanbeige4.2-3b` en la
+(`backends/linux/`), ejecutándose **al mismo tiempo** que `nanbeige4.2-3b` en la
 misma GPU (RTX 3060 Ti), puerto 8081.
 
 ## Hallazgo importante: el cache-type `turbo3` corrompe la salida de este modelo

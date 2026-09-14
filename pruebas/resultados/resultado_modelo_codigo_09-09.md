@@ -1,6 +1,6 @@
 # ¿Ornith o K2 para el MCP? — medido 09/09/2026
 
-Cada número sale de **65 ejecuciones*** (13 tareas × 5 repeticiones), mismo banco,
+Cada número sale de **65 ejecuciones** (13 tareas × 5 repeticiones), mismo banco,
 mismo oráculo por ejecución, sin especulación en ninguno.
 
 ```
@@ -16,7 +16,7 @@ K2-Horizon-7B-Q4_K_S       5.00   6142    61/65     0      62/65    48/53      3
 | edición | 62/65 | 61/65 | 1,000 | empatan |
 | **formato con bloques** | **50/65** | **62/65** | **0,0041** | **K2 mejor** |
 | aplica | 50/65 | 60/65 | 0,0268 | K2 mejor |
-| rompió regresión | 1 | 3 | 0,619 | empatan |
+| rompió regresión (con bloques) | 1 | 3 | 0,619 | empatan |
 
 **Editando son indistinguibles. Emitiendo bloques SEARCH/REPLACE no: 95% contra
 76%.**
@@ -42,5 +42,5 @@ llamadas, y ahí el techo baja de ~1.470 líneas a ~630.
 | formato | Ornith 12/13 = 92% → "parecido a K2" | 50/65 = 76% vs 95% → **K2 mejor, p=0,004** |
 
 La primera vez el ruido favoreció a Ornith; la segunda lo perjudicó al revés de
-lo que yo había reportado. **Una ejecución no es una medición*** — y el error no es
+lo que yo había reportado. **Una ejecución no es una medición** — y el error no es
 sistemático, así que no se puede corregir "a ojo" en ninguna dirección.

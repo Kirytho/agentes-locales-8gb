@@ -73,7 +73,7 @@ Es la tercera medición independiente que apunta al mismo lugar:
 
 Sirve, pero **no para ganar tiempo**. Dónde tiene sentido:
 
-1. **Cuando el modelo grande no cabe o está ocupado.*** Es el mismo caso de la
+1. **Cuando el modelo grande no cabe o está ocupado.** Es el mismo caso de la
    supervisión: como coordinador la GPU hace 2 llamadas cortas en vez de 1 larga.
 2. **Cuando las subtareas necesitan capacidades distintas** — un modelo de visión, uno de
    código, uno de idioma. Ahí el reparto no es por velocidad sino por **habilidad**, y no
@@ -108,7 +108,7 @@ Y no lo ocultó: lo **diagnosticó**. *"`dt.to_period('M')` agrupa por mes en lu
 número del mes, lo que evita ambigüedades entre años."* Además le añadió una validación de
 columnas que el Coder no tenía.
 
-> **Corrección a la conclusión previa.*** La sección 4 decía que el equipo "no entrega más".
+> **Corrección a la conclusión previa.** La sección 4 decía que el equipo "no entrega más".
 > Con presupuesto suficiente **sí entrega más que los modelos pequeños**: corrige sus bugs.
 > Lo que sigue en pie es el costo: 160,4 s contra ~31,5 s de Bonsai solo. La comparación
 > justa —Bonsai solo con el presupuesto nuevo— **todavía no se hizo**.
@@ -127,7 +127,7 @@ dejó pasar**.
 
 > **Corregido el 23/07.** Este documento afirmaba que la supervisión cubre *errores de
 > lógica visible* pero no *errores de conocimiento de la biblioteca*. Esa regla salía de
-> **un solo caso**. Medida sobre 18 errores (`resultado_supervisor.md` §6), **no existe
+> **un solo caso**. Medida sobre 18 errores (`resultado_supervisor.md` §5), **no existe
 > tal patrón**: escapa alrededor de la mitad en ambas clases, y el mismo enunciado recibe
 > veredictos distintos según el código concreto. Lo correcto es: **el supervisor detecta
 > algo más de la mitad de los errores y nunca da una falsa alarma**, sin que se pueda
@@ -140,8 +140,10 @@ dejó pasar**.
 - **La comparación justa que falta: Bonsai solo con el presupuesto nuevo** (1400 tokens),
   misma solicitud. Los 31,5 s de la sección 2 se midieron con 900 tokens, así que comparar
   contra los 160,4 s del equipo **favorece indebidamente al camino directo**. Sin ese
-  número no se puede cerrar el costo-beneficio.
+  número no se puede cerrar el costo-beneficio. *Medido después con los modelos en VRAM
+  y el mismo presupuesto: el equipo costó 2,7× el camino directo (ver
+  [modelos pequeños en VRAM](resultado_gpu_pequenos.md) §6).*
 - **Juicio a ciegas de la calidad.** El equipo corrige bugs de los pequeños, pero no se sabe
   si su respuesta supera a la de Bonsai solo — que nunca tuvo el bug.
-- **Solicitudes más grandes.*** Con subtareas de 600 tokens el costo fijo del coordinador
+- **Solicitudes más grandes.** Con subtareas de 600 tokens el costo fijo del coordinador
   (repartir + unificar) pesa mucho. Con subtareas de 3000 tokens pesaría menos.

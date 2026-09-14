@@ -1,7 +1,7 @@
 # ¿Un experto pequeño supera a un generalista del mismo tamaño? — 22-23/07/2026
 
 > **ACTUALIZACIÓN 23/07/2026 — la batería pasó de 6 a 25 tareas y el resultado se
-> invirtió.*** Con 6 tareas ganaba el control (4/6 contra 5/6); con 25 gana el especialista
+> invirtió.** Con 6 tareas ganaba el control (4/6 contra 5/6); con 25 gana el especialista
 > (**18/25 contra 14/25**). Ver la sección «Segunda ejecución» al final. Lo que sigue a
 > continuación es la primera ejecución, que se conserva porque **su conclusión era la
 > equivocada y muestra por qué seis tareas no bastaban**.
@@ -30,7 +30,7 @@ comparación sea de capacidad y no de compresión).
 Eso va en contra de la premisa de los expertos, pero **la conclusión se apoya en una sola
 tarea de diferencia sobre seis**. Tres salvedades, en orden de peso:
 
-1. **La muestra es demasiado pequeña para decidir.*** Una tarea de diferencia sobre 6 no
+1. **La muestra es demasiado pequeña para decidir.** Una tarea de diferencia sobre 6 no
    distingue una capacidad real de la casualidad.
 2. **El control es más grande** (2B vs 1,5B). Puede que la historia real sea
    *"el más grande gana"*, no *"el generalista gana"*.
@@ -92,7 +92,7 @@ arquitectura, no solo de los bytes.
 | Qwen3.5-2B | 1,47 | 19,4 t/s | 32,7 | **59 %** |
 | GLM-23B-A3B | 2,00 | 12,3 t/s | 24,0 | **51 %** |
 
-El especialista es **8 % más pequeño pero 41 % más rápido*** que el control. Eso no lo
+El especialista es **8 % más pequeño pero 41 % más rápido** que el control. Eso no lo
 explica el tamaño: lo explica la arquitectura. Qwen2.5 es un denso clásico; Qwen3.5 usa
 *Gated Delta Networks* con MoE dispersa, que en CPU rinde peor por byte.
 
@@ -147,7 +147,7 @@ así que un fallo es del modelo y no del banco.
 | **Con 25 tareas** | **18/25 (72 %)** | 14/25 (56 %) |
 | Velocidad | **22,6 t/s** | 16,6 t/s |
 
-**El resultado se invirtió.*** El especialista gana por 4 tareas y además es **36 % más
+**El resultado se invirtió.** El especialista gana por 4 tareas y además es **36 % más
 rápido**. La conclusión de la primera ejecución —«el experimento no respalda la
 especialización»— **se apoyaba en ruido**.
 
@@ -187,5 +187,5 @@ modelos pequeños resuelven la forma general y omiten la condición de borde.
    `resultado_supervisor.md`: la detección cae de 100 % a **56 %**.
 3. **La arquitectura de dos niveles sigue en pie** y ya está validada por el lado del
    enrutado (97,6 % de precisión al 84 % de cobertura).
-4. **Revisar Nanbeige cuando llama.cpp incorpore la arquitectura*** — la idea de cambiar memoria
+4. **Revisar Nanbeige cuando llama.cpp incorpore la arquitectura** — la idea de cambiar memoria
    por cómputo sigue siendo interesante, sobre todo para GPU.

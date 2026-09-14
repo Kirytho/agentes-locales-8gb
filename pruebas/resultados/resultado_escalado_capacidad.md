@@ -66,24 +66,23 @@ El mismo barrido sobre Qwen3-30B-A3B en RAM (servidor con 12 slots, sin swap):
 | 1 | 12,5 tok/s | 1,00× | 72 |
 | 4 | 20,3 | 1,62× | 170 |
 | 8 | 24,1 | 1,93× | 208 |
-| 12 | **27,3** | **2,18×** | **455 (6,3×)** |
+| 12 | **27,3** | **2,18×** | **384,8 (5,3×)** |
 
-Las columnas de gemma de esta tabla y de la siguiente vienen de ejecuciones
-distintas a la del punto 1 (por eso 455 y 469 contra 384,8 con 12 agentes). Los
-valores absolutos varían entre ejecuciones; la forma de la curva se mantiene.
-
-Con 12 agentes, 455 contra 27,3 tok/s: 17 veces. Una primera medición daba 1,54×
+La columna de gemma es la del punto 1 (`resultado_escalado.json`); el 30B está en
+`resultado_concurrencia_30b-np12.json`. Con 12 agentes, 384,8 contra 27,3 tok/s:
+14 veces. Una primera medición daba 1,54×
 con 4 agentes, pero el servidor tenía solo 4 slots y pedirle más medía cola, no
 concurrencia; con 12 slots la conclusión se sostiene.
 
 La explicación propuesta al principio fue que un MoE no aprovecha el lote porque
 cada token usa expertos distintos. **Se corrigió el 23/08** midiendo un modelo
-denso en RAM (Qwen3-4B, `resultado_concurrencia_qwen4b-denso-ram.json`):
+denso en RAM (Qwen3-4B, `resultado_concurrencia_qwen4b-denso-ram.json`; gemma en
+`resultado_concurrencia_e4b-barrido-corregido.json`):
 
 | | 1 agente | 12 agentes | escala |
 |---|---:|---:|---:|
-| gemma-4-E4B denso, GPU | 84 | 469 | 6,3× |
-| Qwen3-4B denso, RAM | 11,8 | 32,1 | **2,71×** |
+| gemma-4-E4B denso, GPU | 58,2 | 391,1 | 6,7× |
+| Qwen3-4B denso, RAM | 11,8 | 32,1 | **2,72×** |
 | Qwen3-30B-A3B MoE, RAM | 12,5 | 27,3 | 2,18× |
 
 El denso en RAM también se aplana: entre 8 y 12 agentes el agregado no se mueve
