@@ -20,7 +20,7 @@ Este banco existe para explicarlo en vez de suponerlo. Tres diferencias:
   - **prompt unico por agente**, para que el cache de prefijo no regale prefill.
 
 Uso:
-    python3 pruebas/medir_escalado.py <puerto> [repeticiones]
+    python3 pruebas/rendimiento/medir_escalado.py <puerto> [repeticiones]
 """
 import json
 import statistics as st

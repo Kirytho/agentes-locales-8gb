@@ -22,7 +22,7 @@ ejecute un script que produzca UNA respuesta, y compara con la respuesta calcula
 por nosotros. Oraculo puro: no opina ningun modelo.
 
 Uso:
-    python3 pruebas/eval_scripts.py <puerto> [etiqueta] [repeticiones]
+    python3 pruebas/calidad/eval_scripts.py <puerto> [etiqueta] [repeticiones]
 """
 import json
 import os

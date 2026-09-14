@@ -20,9 +20,9 @@ REQUISITO: el backend GPU (puerto 8080) tiene que estar BAJADO. Con el modelo
 de 9B dentro quedan ~950 MiB libres y no alcanza para nada de esto.
 
 Uso:
-    python3 pruebas/medir_ncmoe.py [repeticiones]
+    python3 pruebas/rendimiento/medir_ncmoe.py [repeticiones]
 
-Deja pruebas/resultado_ncmoe.json con las mediciones crudas.
+Deja pruebas/resultados/resultado_ncmoe.json con las mediciones crudas.
 """
 import hashlib
 import json

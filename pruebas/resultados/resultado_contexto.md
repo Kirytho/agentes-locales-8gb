@@ -1,7 +1,7 @@
 # Cuánto contexto usa una solicitud real (y un bug que apareció al medirlo)
 
-**Fecha**: 17/08/2026 · **Script**: `pruebas/medir_contexto.py`
-**Crudos**: `pruebas/resultado_contexto.json`
+**Fecha**: 17/08/2026 · **Script**: `pruebas/rendimiento/medir_contexto.py`
+**Crudos**: `pruebas/resultados/resultado_contexto.json`
 **Cómo**: conversación de 12 turnos contra el intermediario (:8086), enviando en
 cada turno el historial completo, como haría un cliente. El `prompt_tokens` que
 devuelve la respuesta cuenta el prompt **ya construido por el intermediario**,

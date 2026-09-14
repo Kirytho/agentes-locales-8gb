@@ -177,8 +177,8 @@
       "id": "multihop_6",
       "tipo": "multihop",
       "turnos": [
-        {"role": "user", "content": "decidimos que el hook Stop se elimina cuando armemos el daemon Jarvis"},
-        {"role": "assistant", "content": "anotado, el hook Stop queda obsoleto con el daemon"},
+        {"role": "user", "content": "decidimos que el hook Stop se elimina cuando armemos el servicio Atlas"},
+        {"role": "assistant", "content": "anotado, el hook Stop queda obsoleto con el servicio"},
         {"role": "user", "content": "que hora es"},
         {"role": "assistant", "content": "sin reloj"},
         {"role": "user", "content": "vamos a hablar de otra cosa, el clima esta raro"},
@@ -187,7 +187,7 @@
         {"role": "assistant", "content": "no tengo chistes"},
         {"role": "user", "content": "dale, prosigamos con el codigo"},
         {"role": "assistant", "content": "dale"},
-        {"role": "user", "content": "terminamos el daemon Jarvis, ya funciona"},
+        {"role": "user", "content": "terminamos el servicio Atlas, ya funciona"},
         {"role": "assistant", "content": "genial, quedo andando"}
       ],
       "pregunta": "el hook viejo lo tengo que sacar a mano o ya no hace falta?",
@@ -213,8 +213,8 @@
       "id": "multihop_8",
       "tipo": "multihop",
       "turnos": [
-        {"role": "user", "content": "instale chatterbox-tts, es mas natural que piper pero mas lento"},
-        {"role": "assistant", "content": "anotado, chatterbox mas natural, piper mas rapido"},
+        {"role": "user", "content": "instale vozclara-tts, es mas natural que vozrapida pero mas lento"},
+        {"role": "assistant", "content": "anotado, vozclara mas natural, vozrapida mas rapido"},
         {"role": "user", "content": "un tema aparte, la comida de hoy estuvo buena"},
         {"role": "assistant", "content": "que rico"},
         {"role": "user", "content": "decidi borrar el otro programa de voz, el que instalamos primero"},
@@ -261,12 +261,12 @@
       "id": "multihop_11",
       "tipo": "multihop",
       "turnos": [
-        {"role": "user", "content": "la licencia del repo Claude-OSINT es MIT"},
+        {"role": "user", "content": "la licencia del repo proyecto-alfa es MIT"},
         {"role": "assistant", "content": "anotado, licencia MIT"},
         {"role": "user", "content": "otra cosa, vi una pelicula de terror"},
         {"role": "assistant", "content": "que tal estuvo"},
-        {"role": "user", "content": "el repo turbo-fieldfare tambien lo revisamos, tiene benchmarks reales publicados"},
-        {"role": "assistant", "content": "anotado, turbo-fieldfare con benchmarks reales"},
+        {"role": "user", "content": "el repo proyecto-beta tambien lo revisamos, tiene benchmarks reales publicados"},
+        {"role": "assistant", "content": "anotado, proyecto-beta con benchmarks reales"},
         {"role": "user", "content": "che, otra cosa, hoy cociné pasta"},
         {"role": "assistant", "content": "rico"}
       ],

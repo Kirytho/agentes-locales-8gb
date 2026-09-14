@@ -26,7 +26,7 @@ LIMITES QUE PONE EL INTERMEDIARIO (para leer el resultado en contexto):
   - k=5 fragmentos relevantes, relevancia minima 0.35
 
 Uso:
-    python3 pruebas/medir_contexto.py [puerto]
+    python3 pruebas/rendimiento/medir_contexto.py [puerto]
 """
 import json
 import sys

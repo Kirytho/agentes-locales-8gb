@@ -80,6 +80,7 @@ pruebas/
   rendimiento/    velocidad, concurrencia, contexto, caché
   subsistemas/    posición de la memoria en el prompt, reparto entre modelos
   instrumentos/   grabador del tráfico (proxy), baterías, utilidades
+  roles/          prompts de rol que usan algunos bancos
   resultados/     32 informes .md y 345 mediciones .json
 herramientas/     barridos, tablas, juez envuelto, lector de caché
 docs/             cómo funciona, en general; notas del fork de llama.cpp
@@ -96,18 +97,30 @@ solo se anonimizaron los nombres internos del programa.
 
 ### Sobre ejecutar los bancos
 
+El índice [`pruebas/README.md`](pruebas/README.md) explica qué mide cada script,
+qué necesita para ejecutarse y dónde están sus resultados.
+
+> **Advertencia de seguridad.** Muchos bancos **ejecutan el código que escriben
+> los modelos** para verificarlo, y otros dejan que un agente ejecute comandos en
+> la terminal. Ese código no está revisado por nadie antes de ejecutarse. Si los
+> vas a usar, hazlo en una máquina virtual o un contenedor sin datos personales
+> ni credenciales. En el índice están marcados con ⚠️.
+
 **Ninguno está listo para usar**, y conviene saberlo antes de intentarlo. De los 60
 scripts (se pueden solapar):
 
 ```
-35  se comunican por HTTP con un endpoint compatible con OpenAI
-18  inician llama-server con los binarios y lanzadores del proyecto
-15  se comunican con el intermediario del proyecto
- 2  necesitan Hermes
+22  se comunican por HTTP con un servidor compatible con OpenAI
+16  inician llama-server con los binarios y lanzadores del proyecto
+15  se comunican con el intermediario del proyecto (no incluido)
+ 6  necesitan Hermes
+ 2  necesitan ProjectEval
+11  solo leen archivos o son datos
+30  ejecutan código escrito por un modelo
 ```
 
-Los que solo usan HTTP se pueden dirigir a cualquier `llama-server` cambiando
-las variables de entorno de cada script, documentadas en su encabezado. Los que
+Los que solo usan HTTP se pueden dirigir a cualquier `llama-server` indicando
+el puerto o las variables de entorno de cada script, documentadas en su encabezado. Los que
 dependen del intermediario o de los lanzadores no funcionan sin el programa, que
 no está en este repositorio: sirven para ver **cómo** se midió cada número. Se
 excluyeron además los bancos que importan módulos internos del programa.

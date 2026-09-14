@@ -1,6 +1,6 @@
 # Modelos 2B: ¿sirven varios pequeños residentes? (19/08/2026)
 
-**Banco**: `pruebas/probar_modelo.py` (nuevo) — descarga el GGUF de HuggingFace,
+**Banco**: `pruebas/instrumentos/probar_modelo.py` (nuevo) — descarga el GGUF de HuggingFace,
 inicia `llama-server` en un puerto libre, ejecuta `eval_expertos.py`, mide la
 VRAM real y apaga. **Modelo**: `empero-ai/Qwen3.8-2B-Distill-GGUF`.
 **3 ejecuciones por cuantización**, porque una sola no distingue nada aquí.

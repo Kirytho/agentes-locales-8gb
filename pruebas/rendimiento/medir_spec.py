@@ -20,9 +20,9 @@ GGUF tiene que traer los tensores nextn. Qwen3.8-9B los trae
 (qwen35.nextn_predict_layers); el 30B-A3B no.
 
 Uso:
-    python3 pruebas/medir_spec.py [repeticiones]
+    python3 pruebas/rendimiento/medir_spec.py [repeticiones]
 
-Deja pruebas/resultado_spec.json con todas las mediciones crudas.
+Deja pruebas/resultados/resultado_spec.json con todas las mediciones crudas.
 """
 import hashlib
 import json

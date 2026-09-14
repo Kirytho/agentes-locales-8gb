@@ -33,7 +33,7 @@ gemma, ¿cuantas veces el bloque entrega codigo correcto, contra simplemente
 quedarse con la primera candidata?
 
 Uso:
-    python3 pruebas/medir_tests_generados.py [n_tareas]
+    python3 pruebas/rendimiento/medir_tests_generados.py [n_tareas]
 """
 import ast
 import json
@@ -63,7 +63,7 @@ TEMP_CODIGO = 0.8      # alta a proposito: hacen falta fallos que detectar
 TEMP_TESTS = 0.2       # baja: el test tiene que ser conservador
 TOPE = 2048
 
-ROL_PROGRAMADOR = (AQUI / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
+ROL_PROGRAMADOR = (AQUI.parent / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
 ROL_QA = (
     "Eres un ingeniero de QA. Escribes SOLO asserts de Python que verifiquen la "
     "funcion pedida, dentro de un bloque ```python. No implementas la funcion, no "

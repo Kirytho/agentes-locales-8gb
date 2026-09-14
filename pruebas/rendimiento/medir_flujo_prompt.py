@@ -21,11 +21,11 @@ conversacion, cuantos tokens se reutilizan y cuanto ocupa el prompt. Lo que NO
 mide es si las respuestas siguen siendo buenas -- eso queda para la bateria.
 
 Uso:
-    python3 pruebas/medir_flujo_prompt.py [etiqueta]
+    python3 pruebas/rendimiento/medir_flujo_prompt.py [etiqueta]
 
 La configuracion se pasa por entorno (INTERMEDIARIO_MAX_MSGS, INTERMEDIARIO_CABEZA_FIJA, ...);
-el script solo mide lo que se este ejecutando. `pruebas/barrer_flujo.sh` lo llama
-una vez por configuracion, reiniciando el intermediario entre una y otra.
+el script solo mide lo que se este ejecutando. Un script aparte (no incluido) lo
+llamaba una vez por configuracion, reiniciando el intermediario entre una y otra.
 """
 import json
 import os

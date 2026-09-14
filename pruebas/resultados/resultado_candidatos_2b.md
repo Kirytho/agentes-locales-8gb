@@ -1,6 +1,6 @@
 # El mejor 2B para agentes residentes (19-20/08/2026)
 
-**Banco**: `pruebas/probar_modelo.py` · batería de 53 tareas de código (ejecutadas)
+**Banco**: `pruebas/instrumentos/probar_modelo.py` · batería de 53 tareas de código (ejecutadas)
 + 25 de razonamiento (5 trampas) · **5 ejecuciones por candidato**.
 
 | modelo | n | código | rango | razonamiento | rango | tok/s | VRAM |
@@ -120,7 +120,7 @@ Los dos caben juntos: 3.221 + 1.710 = 4,9 GB de los 7,4 disponibles.
 
 ## Convivencia E4B + E2B en la misma GPU (20/08)
 
-`pruebas/medir_convivencia_2b.py`. Los dos cargados a la vez, 2 agentes en cada
+`pruebas/rendimiento/medir_convivencia_2b.py`. Los dos cargados a la vez, 2 agentes en cada
 uno, prompts distintos por solicitud.
 
 **Caben con holgura**: E4B 3.159 MiB + E2B 1.705 = **5.833 de 7.832 MiB**, con

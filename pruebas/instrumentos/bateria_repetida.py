@@ -48,7 +48,7 @@ def correr(rep: int) -> tuple[int, int, float] | None:
     etq = f"{ETIQUETA}-r{rep}"
     print(f"\n  ── corrida {rep}/{REPES} ─────────────────────────────")
     r = subprocess.run(
-        [sys.executable, str(AQUI / "eval_expertos.py"), PUERTO, etq],
+        [sys.executable, str(AQUI.parent / "calidad" / "eval_expertos.py"), PUERTO, etq],
         capture_output=True, text=True, encoding="utf-8", errors="replace",
     )
     if r.returncode != 0:

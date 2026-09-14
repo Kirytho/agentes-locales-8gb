@@ -2,7 +2,7 @@
 
 **Fecha**: 17/08/2026
 **Modelo**: Qwen3.8-9B-Q5_K_M, RTX 3060 Ti 8 GB, `-ngl 99`, ctx 16384
-**Script**: `pruebas/medir_spec.py` · **Crudos**: `pruebas/resultado_spec.json`
+**Script**: `pruebas/rendimiento/medir_spec.py` · **Crudos**: `pruebas/resultados/resultado_spec.json`
 **Método**: 3 repeticiones × 5 prompts, `temperature 0`, `seed` fijo, thinking apagado
 (igual que producción). Se mide `timings.predicted_per_second` que devuelve
 llama-server, no tiempo de pared.

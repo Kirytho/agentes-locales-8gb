@@ -25,7 +25,7 @@ No hace falta que ningun modelo opine: los tests del banco dicen si el codigo
 quedo bien o mal.
 
 Uso:
-    python3 pruebas/medir_plan_roto.py [repeticiones]
+    python3 pruebas/rendimiento/medir_plan_roto.py [repeticiones]
 """
 import json
 import re
@@ -53,7 +53,7 @@ ETIQUETA = sys.argv[2] if len(sys.argv) > 2 else "r1"
 TOPE = 2048
 TEMP = 0.1
 
-ROL = (AQUI / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
+ROL = (AQUI.parent / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
 
 # Un defecto por pieza, escrito a mano contra la spec real del banco. Cada uno
 # contradice el enunciado en un punto concreto y verificable por los tests.

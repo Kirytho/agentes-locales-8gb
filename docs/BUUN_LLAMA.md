@@ -4,7 +4,7 @@
 >
 > **`-ct vbr` PROBADO Y NO ADOPTADO.** Ornith-1.5-9B-MTP, ctx 81.920, mismo
 > modelo y mismo contexto en los dos brazos, 12 ejecuciones de
-> `pruebas/eval_stack_completo.py` cada uno:
+> `pruebas/calidad/eval_stack_completo.py` cada uno:
 >
 > | | q8_0/q4_0 | vbr |
 > |---|---|---|
@@ -53,7 +53,7 @@
 > **superadas por mediciones**: MTP no inicia con `-ngl 99` (falta VRAM, y bajar
 > el contexto solo libera 199 MiB), y las variantes sin modelo borrador dan
 > **2,9× copiando texto de la solicitud pero pierden 15-33% en todo lo demás**.
-> Ver `pruebas/resultado_spec.md`. Los modelos que menciona (Bonsai-27B,
+> Ver `pruebas/resultados/resultado_spec.md`. Los modelos que menciona (Bonsai-27B,
 > Ternary-Bonsai) ya no están en disco.
 
 

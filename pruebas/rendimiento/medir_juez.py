@@ -22,7 +22,7 @@ METODO
   5. comparar su acierto contra el azar y contra "elegir siempre la primera"
 
 Uso:
-    python3 pruebas/medir_juez.py <puerto> [temp_generacion]
+    python3 pruebas/rendimiento/medir_juez.py <puerto> [temp_generacion]
 """
 import json
 import random

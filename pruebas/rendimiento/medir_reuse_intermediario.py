@@ -7,7 +7,7 @@ recuperada en el mensaje `system`, es decir al PRINCIPIO del prompt, y eso cambi
 el prefijo en cada turno. Ese es el caso donde --cache-reuse deberia servir, y
 solo se ve consultando al intermediario (:8086), no al backend.
 
-Uso: python3 pruebas/medir_reuse_intermediario.py [repes]
+Uso: python3 pruebas/rendimiento/medir_reuse_intermediario.py [repes]
 """
 import json
 import statistics

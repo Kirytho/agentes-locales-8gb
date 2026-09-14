@@ -2,7 +2,7 @@
 
 **Fecha**: 11/08/2026
 **Dónde**: primero en una copia experimental (validado) y después integrado en el módulo de memoria del intermediario (11/08/2026)
-**Banco**: `pruebas/banco_memoria_multihop.json`, 19 casos (7 directa, 12 multihop) — el mismo banco usado para el hallazgo original.
+**Banco**: `pruebas/resultados/banco_memoria_multihop.json`, 19 casos (7 directa, 12 multihop) — el mismo banco usado para el hallazgo original.
 
 ## Qué se comparó
 

@@ -28,7 +28,7 @@ cada escenario define una funcion que devuelve True o False mirando la traza.
 Es el mismo principio que hace fuerte la mitad de codigo de la bateria.
 
 Uso:
-    python3 pruebas/eval_agente.py <puerto> [etiqueta]
+    python3 pruebas/calidad/eval_agente.py <puerto> [etiqueta]
 """
 import re
 import json
@@ -374,7 +374,7 @@ ESCENARIOS = [
 # hay que probar el banco: por cada escenario, una traza que TIENE que pasar y
 # una o dos que TIENEN que fallar, escritas a mano.
 #
-# Ejecutar con:  python3 pruebas/eval_agente.py --autotest
+# Ejecutar con:  python3 pruebas/calidad/eval_agente.py --autotest
 # No toca la red ni necesita modelo.
 
 CASOS_ORACULO = {

@@ -27,7 +27,7 @@ PIPELINE y AGENTES se diferencian solo en el contrato de rol, asi que la
 comparacion entre esos dos aisla exactamente lo que aporta la "personalidad".
 
 Uso:
-    python3 pruebas/medir_agentes_separados.py [n_tareas]
+    python3 pruebas/rendimiento/medir_agentes_separados.py [n_tareas]
 """
 import json
 import re
@@ -53,8 +53,8 @@ N = int(sys.argv[1]) if len(sys.argv) > 1 else 53
 TOPE = 2048        # el mismo para los tres modos
 TOPE_PLAN = 1024
 
-ROL_PROGRAMADOR = (AQUI / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
-ROL_ARQUITECTO = (AQUI / "roles" / "planificador.txt").read_text(encoding="utf-8").strip()
+ROL_PROGRAMADOR = (AQUI.parent / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
+ROL_ARQUITECTO = (AQUI.parent / "roles" / "planificador.txt").read_text(encoding="utf-8").strip()
 
 # Lo que el intermediario YA inyecta hoy en produccion (instruccion de brevedad).
 # Sin esta condicion la comparacion es contra "nada", que no es el estado real

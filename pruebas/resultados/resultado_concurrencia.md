@@ -1,6 +1,6 @@
 # Concurrencia: cuánto rinde el intermediario con varios agentes a la vez
 
-**Fecha**: 17/08/2026 · **Script**: `pruebas/medir_concurrencia.py`
+**Fecha**: 17/08/2026 · **Script**: `pruebas/rendimiento/medir_concurrencia.py`
 **Config**: la de producción, sin tocar nada — 9B en GPU (:8080) y 30B (:8083)
 cargados a la vez. 128 tokens por solicitud, `temperature 0`, prompts distintos
 por agente (con el mismo prompt, el caché de prefijo falsearía el resultado).

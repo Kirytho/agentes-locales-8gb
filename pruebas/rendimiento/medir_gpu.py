@@ -348,7 +348,7 @@ def fase_bateria():
         for m in MODELOS:
             etiqueta = f"{m['id'].replace('.', '_')}_gpu"
             print(f"  --- {etiqueta} ---", flush=True)
-            subprocess.run([sys.executable, str(AQUI / "eval_expertos.py"),
+            subprocess.run([sys.executable, str(AQUI.parent / "calidad" / "eval_expertos.py"),
                             str(m["puerto"]), etiqueta], cwd=str(AQUI))
     finally:
         bajar(procs)
@@ -363,7 +363,7 @@ def fase_bonsai():
     try:
         usada, total = vram_total()
         print(f"  Arriba. VRAM {usada}/{total} MiB.\n", flush=True)
-        subprocess.run([sys.executable, str(AQUI / "eval_expertos.py"),
+        subprocess.run([sys.executable, str(AQUI.parent / "calidad" / "eval_expertos.py"),
                         str(bonsai["puerto"]), "bonsai27b_gpu"], cwd=str(AQUI))
     finally:
         bajar([proc])
@@ -394,7 +394,7 @@ def fase_equipo():
         usada, total = vram_total()
         print(f"  Los tres arriba. VRAM {usada}/{total} MiB (libre {total - usada}).\n",
               flush=True)
-        chat = str(AQUI / "chat_3modelos.py")
+        chat = str(AQUI.parent / "instrumentos" / "chat_3modelos.py")
         print("  --- EQUIPO ---", flush=True)
         subprocess.run([sys.executable, chat, "--gpu", "--pedido", PEDIDO_EQUIPO],
                        cwd=str(AQUI))

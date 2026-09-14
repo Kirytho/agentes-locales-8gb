@@ -20,7 +20,7 @@ Este banco mide dos cosas que atacan ese 85%:
             mirar la pantalla quieta 17 s.
 
 Uso:
-    python3 pruebas/medir_respuesta.py
+    python3 pruebas/rendimiento/medir_respuesta.py
 """
 import json
 import sys

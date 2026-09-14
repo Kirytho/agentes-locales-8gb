@@ -20,7 +20,7 @@ salvo dos, a proposito:
                  dominada por el KV.
 
 Uso:
-    python3 pruebas/probar_modelo.py \\
+    python3 pruebas/instrumentos/probar_modelo.py \\
         empero-ai/Qwen3.8-2B-Distill-GGUF Qwen3.8-2B-Q5_K_M.gguf 2b-q5
 """
 import json
@@ -127,7 +127,7 @@ def medir(repo, archivo, etiqueta, extra=None):
     proc, vram = levantar(gguf, puerto, extra=extra)
     print(f"  levantado en :{puerto} · VRAM {vram} MiB")
     try:
-        subprocess.run([sys.executable, str(AQUI / "eval_expertos.py"), str(puerto), etiqueta],
+        subprocess.run([sys.executable, str(AQUI.parent / "calidad" / "eval_expertos.py"), str(puerto), etiqueta],
                        cwd=str(RAIZ), check=True,
                        stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         d = json.loads((AQUI / f"resultado_experto_{etiqueta}.json").read_text(encoding="utf-8"))
@@ -159,7 +159,7 @@ if __name__ == "__main__":
         raise SystemExit(1)
     # Todo lo que venga despues de la etiqueta son banderas extra para el
     # servidor: asi se ejecuta la bateria sobre la configuracion que gano el
-    # cribado (pruebas/cribar_flags.py) sin tocar el codigo.
+    # cribado (pruebas/rendimiento/cribar_flags.py) sin tocar el codigo.
     fila = medir(sys.argv[1], sys.argv[2], sys.argv[3], extra=sys.argv[4:] or None)
     print(f"\n  {fila['etiqueta']}: codigo {fila['codigo']}/{fila['codigo_total']} · "
           f"razonamiento {fila['razonamiento']}/{fila['razonamiento_total']} · "

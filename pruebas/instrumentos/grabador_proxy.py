@@ -29,7 +29,7 @@ Este archivo solo GRABA. No juzga: quien puntua es `eval_stack_completo.py`.
 
 Uso:
     BANCO_GRABACION=/tmp/x.jsonl python3 \
-        pruebas/grabador_proxy.py [puerto_escucha] [puerto_destino]
+        pruebas/instrumentos/grabador_proxy.py [puerto_escucha] [puerto_destino]
 """
 import json
 import os

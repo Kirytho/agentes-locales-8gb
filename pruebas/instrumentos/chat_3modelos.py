@@ -5,13 +5,13 @@ chat_3modelos.py - Los 3 modelos, en dos modos.
 DESACTUALIZADO (verificado 24/08/2026). Apunta a Bonsai-27B, Coder-1.5B y
 Qwen3.5-2B: los tres se borraron tras medirlos. Tal como esta, no inicia.
 
-Se conserva porque es el registro de una medicion: `pruebas/resultado_equipo.md`
+Se conserva porque es el registro de una medicion: `pruebas/resultados/resultado_equipo.md`
 dice "Implementado en chat_3modelos.py (/modo equipo)". Para leer esos
 resultados hace falta poder ver como se produjeron.
 
 Ademas habla DIRECTO a los servidores de modelo (8080, 8083) y omite el
 intermediario, asi que no sirve para probarlo: el clasificador, el enrutado, la
-memoria y las validaciones quedan fuera. Para eso esta `pruebas/chat.py`, que habla
+memoria y las validaciones quedan fuera. Para eso esta `pruebas/instrumentos/chat.py`, que habla
 con el intermediario en 8086 -- y que existe porque con este no se encontraba
 ninguno de los cinco bugs que apareceron el 23/08.
 

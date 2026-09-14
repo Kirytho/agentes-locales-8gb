@@ -23,14 +23,14 @@ Comandos:
 DOS MODOS
 
   INTERACTIVO   en una terminal de verdad:
-      python3 pruebas/chat.py
+      python3 pruebas/instrumentos/chat.py
 
   DE UN TIRO    cuando no hay terminal interactiva (por ejemplo con el prefijo
                 `!` de Claude Code, donde input() recibe EOF y el chat se
                 cerraria solo). El historial se guarda en disco, asi que los
                 pedidos de seguimiento funcionan igual:
-      python3 pruebas/chat.py "escribe un modulo de X"
-      python3 pruebas/chat.py /sombra
+      python3 pruebas/instrumentos/chat.py "escribe un modulo de X"
+      python3 pruebas/instrumentos/chat.py /sombra
 """
 import json
 import sys
@@ -184,7 +184,7 @@ try:
         print(f"{GRIS}  health: {r.status}{FIN}")
 except Exception as e:
     print(f"{ROJO}  el intermediario no responde: {e}{FIN}")
-    print(f"{GRIS}  levantalo con: cd intermediario && python3 run.py{FIN}")
+    print(f"{GRIS}  inicialo con: cd intermediario && python3 run.py{FIN}")
 print(f"{GRIS}  /nuevo  /sesion  /sombra  /salir{FIN}")
 registrar(f"\n\n## sesion {sesion} · {time.strftime('%Y-%m-%d %H:%M')}")
 

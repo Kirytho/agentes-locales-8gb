@@ -18,7 +18,7 @@ contestaria de cache y el numero saldria absurdo. Cada pedido lleva un
 identificador distinto dentro.
 
 Uso:
-    python3 pruebas/medir_capacidad.py [segundos]
+    python3 pruebas/rendimiento/medir_capacidad.py [segundos]
 """
 import json
 import sys

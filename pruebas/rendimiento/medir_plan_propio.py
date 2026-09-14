@@ -25,7 +25,7 @@ que no devuelva JSON parseable, que invente nombres de funcion distintos a los
 del enunciado, o que cambie la cantidad de piezas.
 
 Uso:
-    python3 pruebas/medir_plan_propio.py [repeticiones]
+    python3 pruebas/rendimiento/medir_plan_propio.py [repeticiones]
 """
 import json
 import re
@@ -53,7 +53,7 @@ ETIQUETA = sys.argv[2] if len(sys.argv) > 2 else "r1"
 TOPE = 2048
 TEMP = 0.1
 
-ROL = (AQUI / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
+ROL = (AQUI.parent / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
 
 ROL_PLANIFICADOR = (
     "Eres un arquitecto de software. Vas a repartir el trabajo entre programadores "

@@ -11,7 +11,7 @@ Esto lo mide: conversaciones donde la respuesta correcta depende de un dato
 dicho varios turnos antes. Se ejecuta con la memoria al final (por defecto) y con
 INTERMEDIARIO_MEMORIA_AL_INICIO=1, y se compara cuantas veces el modelo recupera el dato.
 
-Uso: python3 pruebas/eval_memoria_posicion.py [repes]
+Uso: python3 pruebas/subsistemas/eval_memoria_posicion.py [repes]
 """
 import json
 import sys

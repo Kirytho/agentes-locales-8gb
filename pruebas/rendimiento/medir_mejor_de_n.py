@@ -35,7 +35,7 @@ En uso real no se tiene. Es el TECHO de lo que mejor-de-N puede dar, no lo que
 vas a obtener eligiendo a ojo.
 
 Uso:
-    python3 pruebas/medir_mejor_de_n.py <puerto> [N] [temp]
+    python3 pruebas/rendimiento/medir_mejor_de_n.py <puerto> [N] [temp]
 """
 import json
 import re

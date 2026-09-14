@@ -25,7 +25,7 @@ Se reportan las dos cosas que importan para decidir: cuanto CUESTA cada modo
 contra el mismo backend de GPU, asi que la comparacion es limpia.
 
 Uso:
-    python3 pruebas/medir_pipeline.py [n_tareas]
+    python3 pruebas/rendimiento/medir_pipeline.py [n_tareas]
 """
 import json
 import re

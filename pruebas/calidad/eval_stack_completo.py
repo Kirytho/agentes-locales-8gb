@@ -41,7 +41,7 @@ REQUISITOS
   proveedor `bancolocal` en ~/.hermes/config.yaml apuntando a :8099
 
 Uso:
-    python3 pruebas/eval_stack_completo.py [escenario...]
+    python3 pruebas/calidad/eval_stack_completo.py [escenario...]
 """
 import hashlib
 import json

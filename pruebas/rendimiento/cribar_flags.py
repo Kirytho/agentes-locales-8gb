@@ -21,7 +21,7 @@ se ve ninguna. Por eso se reportan separadas:
   generacion escribir codigo nuevo (el caso comun)
 
 Uso:
-    python3 pruebas/cribar_flags.py <ruta.gguf> [etiqueta]
+    python3 pruebas/rendimiento/cribar_flags.py <ruta.gguf> [etiqueta]
 """
 import json
 import os

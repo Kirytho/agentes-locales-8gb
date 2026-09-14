@@ -3,7 +3,7 @@
 **Fecha**: 17/08/2026
 **Modelo**: Qwen3-30B-A3B-Instruct-2507-UD-Q4_K_XL (48 bloques, 128 expertos, 8 activos)
 **Hardware**: RTX 3060 Ti 8 GB · Ryzen 5 3600XT · 32 GB DDR4-3000
-**Script**: `pruebas/medir_ncmoe.py` · **Crudos**: `resultado_ncmoe.json` (+ `_run1`)
+**Script**: `pruebas/rendimiento/medir_ncmoe.py` · **Crudos**: `resultado_ncmoe.json` (+ `_run1`)
 **Método**: 2 repeticiones × 3 prompts, `temperature 0`, ctx 8192, 6 hilos.
 
 ## Resultado

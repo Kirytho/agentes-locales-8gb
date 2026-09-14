@@ -29,7 +29,7 @@ que tan bueno sea el plan que escriba el modelo. Por eso se mide el techo
 primero.
 
 Uso:
-    python3 pruebas/medir_reparto_piezas.py [repeticiones]
+    python3 pruebas/rendimiento/medir_reparto_piezas.py [repeticiones]
 """
 import json
 import os
@@ -66,7 +66,7 @@ ETIQUETA = sys.argv[2] if len(sys.argv) > 2 else "r1"
 TOPE = int(os.getenv("BANCO_TOPE", "4096"))
 TEMP = 0.1
 
-ROL = (AQUI / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
+ROL = (AQUI.parent / "roles" / "corto.txt").read_text(encoding="utf-8").strip()
 
 
 def llamar(mensajes, max_tokens=TOPE):

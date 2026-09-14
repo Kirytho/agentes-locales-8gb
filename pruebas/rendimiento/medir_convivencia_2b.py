@@ -18,7 +18,7 @@ Metodo: cada modelo solo, despues los dos a la vez con la misma carga, y se
 compara. Prompts distintos por pedido para que el cache de prefijo no falsee.
 
 Uso:
-    python3 pruebas/medir_convivencia_2b.py
+    python3 pruebas/rendimiento/medir_convivencia_2b.py
 """
 import json
 import os

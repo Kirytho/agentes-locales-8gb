@@ -23,7 +23,7 @@ Ademas `--ctx-size` es el total y se REPARTE entre los slots: 8192 con 4 slots
 deja 2048 por agente. Mas agentes con el mismo ctx = menos contexto cada uno.
 
 Uso:
-    python3 pruebas/medir_concurrencia.py <puerto> <etiqueta> [niveles]
+    python3 pruebas/rendimiento/medir_concurrencia.py <puerto> <etiqueta> [niveles]
 
 Ejemplo:
     ... medir_concurrencia.py 8083 qwen3-1slot 1,2,3,4

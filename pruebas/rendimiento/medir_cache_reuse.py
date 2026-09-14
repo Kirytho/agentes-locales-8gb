@@ -11,7 +11,7 @@
    cuanto tarda SU pedido. Con 4 slots cada agente baja a ~32 tok/s, y esa
    caida puede pesar mas que el total del equipo.
 
-Uso:  python3 pruebas/medir_cache_reuse.py [repeticiones]
+Uso:  python3 pruebas/rendimiento/medir_cache_reuse.py [repeticiones]
 """
 import json
 import os
