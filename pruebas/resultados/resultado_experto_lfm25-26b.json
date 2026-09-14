@@ -1,0 +1,584 @@
+{
+  "etiqueta": "lfm25-26b",
+  "codigo": {
+    "aciertos": 25,
+    "total": 53,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append('FizzBuzz')\n        elif i % 3 == 0:\n            result.append('Fizz')\n        elif i % 5 == 0:\n            result.append('Buzz')\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python"
+      },
+      {
+        "id": "palindromo",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_palindromo(s):\n    # Filtrar solo caracteres alfanuméricos y convertir a minúsculas\n    cleaned = ''.join(ch.lower() for ch in s if ch.isalnum())\n    # Comparar la cadena con su reverso\n    return cleaned == cleaned[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista):\n    resultado = []\n    for elemento in lista:\n        if isinstance(elemento, list):\n            resultado.extend(aplanar(elemento))\n        else:\n            resultado.append(elemento)\n    return resultado"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    left, right = 0, len(lista) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": true,
+        "error": "",
+        "codigo": "def agrupar_por(items, clave):\n    resultado = {}\n    for item in items:\n        valor = item[clave]\n        if valor not in resultado:\n            resultado[valor] = []\n        resultado[valor].append(item)\n    return resultado"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": false,
+        "error": "NameError: name 'contar_palabras' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "rotar",
+        "ok": false,
+        "error": "NameError: name 'rotar' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "romano",
+        "ok": false,
+        "error": "NameError: name 'a_romano' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "desde_romano",
+        "ok": true,
+        "error": "",
+        "codigo": "def desde_romano(s):\n    s = s.upper()\n    val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    total = 0\n    for i, ch in enumerate(s):\n        if i + 1 < len(s) and val[ch] < val[s[i + 1]]:\n            total -= val[ch]\n        else:\n            total += val[ch]\n    return total"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    if not lista:\n        return None\n\n    # Inicialización con el primer elemento\n    max_len = 1\n    max_elem = lista[0]\n    cur_len = 1\n    cur_elem = lista[0]\n\n    for i in range(1, len(lista)):\n        if lista[i] == cur_elem:\n            cur_len += 1\n        else:\n            # Fin de la racha actual; actualizar si es la más larga\n            if cur_len > max_len:\n                max_len = cur_len\n                max_elem = cur_elem\n            # Iniciar nueva racha\n            cur_elem = lista[i]\n            cur_len = 1\n\n    # Revisar la última racha (si la lista no está vacía)\n    if cur_len > max_len:\n        max_len = cur_len\n        max_elem = cur_elem\n\n    return (max_elem, max_len)"
+      },
+      {
+        "id": "camel",
+        "ok": true,
+        "error": "",
+        "codigo": "import re\n\ndef a_camel(s):\n    # Split the input on underscores\n    parts = s.split('_')\n    if not parts:\n        return s\n    # First word in lowercase\n    camel = parts[0].lower()\n    # Subsequent words with initial capital\n    for i in range(1, len(parts)):\n        camel += parts[i].capitalize()\n    return camel"
+      },
+      {
+        "id": "snake",
+        "ok": false,
+        "error": "NameError: name 'a_snake' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "primos",
+        "ok": true,
+        "error": "",
+        "codigo": "def primos(n):\n    if n < 2:\n        return []\n    # Sieve of Eratosthenes\n    sieve = [True] * (n + 1)\n    sieve[0] = sieve[1] = False\n    for i in range(2, int(n**0.5) + 1):\n        if sieve[i]:\n            for j in range(i * i, n + 1, i):\n                sieve[j] = False\n    return [i for i, is_prime in enumerate(sieve) if is_prime]"
+      },
+      {
+        "id": "mcd",
+        "ok": false,
+        "error": "NameError: name 'mcd' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef fusionar(intervalos):\n    if not intervalos:\n        return []\n    # Ordenar por el inicio de cada intervalo\n    intervalos_ordenados = sorted(intervalos, key=lambda x: x[0])\n    fusionados = [intervalos_ordenados[0]]\n\n    for inicio, fin in intervalos_ordenados[1:]:\n        ultimo_inicio, ultimo_fin = fusionados[-1]\n        if inicio <= ultimo_fin:\n            # Hay solapamiento o tocan en un extremo → fusionar\n            fusionados[-1] = (ultimo_inicio, max(ultimo_fin, fin))\n        else:\n            # No hay solapamiento, añadir intervalo nuevo\n            fusionados.append((inicio, fin))\n\n    return fusionados"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a, b):\n    # Normalizar: minúsculas y sin espacios\n    a_norm = ''.join(a.lower().split())\n    b_norm = ''.join(b.lower().split())\n    # Comparar contadores de caracteres\n    from collections import Counter\n    return Counter(a_norm) == Counter(b_norm)"
+      },
+      {
+        "id": "comprimir",
+        "ok": false,
+        "error": "NameError: name 'comprimir' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def balanceado(s):\n    stack = []\n    pairs = {')': '(', ']': '[', '}': '}'}\n    for ch in s:\n        if ch in pairs.values():\n            stack.append(ch)\n        elif ch in pairs:\n            if not stack or stack.pop() != pairs[ch]:\n                return False\n    return not stack"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n    if not m:\n        return []\n    return [list(col) for col in zip(*m)]"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": true,
+        "error": "",
+        "codigo": "def raiz_digital(n):\n    n = abs(n)\n    while n >= 10:\n        n = sum(int(d) for d in str(n))\n    return n"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": true,
+        "error": "",
+        "codigo": "def sin_duplicados(lista):\n    visto = set()\n    resultado = []\n    for elemento in lista:\n        if elemento not in visto:\n            visto.add(elemento)\n            resultado.append(elemento)\n    return resultado"
+      },
+      {
+        "id": "n_mayor",
+        "ok": true,
+        "error": "",
+        "codigo": "def n_esimo_mayor(lista, n):\n    # Obtener los valores distintos\n    distinct = set(lista)\n    # Si n es inválido o no hay suficientes valores distintos, devolver None\n    if n <= 0 or n > len(distinct):\n        return None\n    # Ordenar de forma descendente y devolver el n-ésimo elemento\n    sorted_desc = sorted(distinct, reverse=True)\n    return sorted_desc[n - 1]"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "NameError: name 'formatear_bytes' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "lotes",
+        "ok": false,
+        "error": "NameError: name 'en_lotes' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "transpuesta",
+        "ok": false,
+        "error": "NameError: name 'transpuesta' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "intervalos",
+        "ok": true,
+        "error": "",
+        "codigo": "def fusionar(intervalos):\n    if not intervalos:\n        return []\n    intervalos.sort(key=lambda x: x[0])\n    fusion = [intervalos[0]]\n    for inicio, fin in intervalos[1:]:\n        ultimo_inicio, ultimo_fin = fusion[-1]\n        if inicio <= ultimo_fin:\n            fusion[-1] = (ultimo_inicio, max(ultimo_fin, fin))\n        else:\n            fusion.append((inicio, fin))\n    return fusion"
+      },
+      {
+        "id": "parentesis",
+        "ok": true,
+        "error": "",
+        "codigo": "def balanceado(s):\n    stack = []\n    opening = \"([{\"\n    closing = \")]}\"\n    mapping = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n    for ch in s:\n        if ch in opening:\n            stack.append(ch)\n        elif ch in closing:\n            if not stack or stack[-1] != mapping[ch]:\n                return False\n            stack.pop()\n    return len(stack) == 0"
+      },
+      {
+        "id": "mediana",
+        "ok": false,
+        "error": "NameError: name 'mediana' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "top_frecuentes",
+        "ok": true,
+        "error": "",
+        "codigo": "from collections import Counter\n\ndef top_frecuentes(texto, k):\n    # Separar por espacios y pasar a minúsculas\n    palabras = [palabra.lower() for palabra in texto.split()]\n    # Contar frecuencias\n    frecuencias = Counter(palabras)\n    # Ordenar por cantidad descendente y, a igual cantidad, alfabéticamente\n    ordenadas = sorted(frecuencias.items(), key=lambda x: (-x[1], x[0]))\n    # Devolver las k más frecuentes\n    return ordenadas[:k]"
+      },
+      {
+        "id": "trozos",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def trozos(lista, n):\n    if n <= 0:\n        return []\n    return [lista[i*n:(i+1)*n] for i in range(0, len(lista), n)]"
+      },
+      {
+        "id": "dedup",
+        "ok": true,
+        "error": "",
+        "codigo": "def dedup(lista):\n    seen = set()\n    resultado = []\n    for elemento in lista:\n        if elemento not in seen:\n            seen.add(elemento)\n            resultado.append(elemento)\n    return resultado"
+      },
+      {
+        "id": "binaria",
+        "ok": true,
+        "error": "",
+        "codigo": "def binaria(lista, x):\n    left, right = 0, len(lista) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1"
+      },
+      {
+        "id": "anidar",
+        "ok": false,
+        "error": "NameError: name 'anidar' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "rle",
+        "ok": false,
+        "error": "NameError: name 'comprimir' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a, b):\n    # Normalizar: quitar espacios y pasar a minúsculas\n    a_norm = a.replace(' ', '').lower()\n    b_norm = b.replace(' ', '').lower()\n    # Comparar las listas ordenadas de caracteres\n    return sorted(a_norm) == sorted(b_norm)"
+      },
+      {
+        "id": "movil",
+        "ok": false,
+        "error": "NameError: name 'promedio_movil' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "bytes_humano",
+        "ok": false,
+        "error": "NameError: name 'formatear_bytes' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "query",
+        "ok": false,
+        "error": "NameError: name 'parsear_query' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "islas",
+        "ok": true,
+        "error": "",
+        "codigo": "def contar_islas(grid):\n    if not grid or not grid[0]:\n        return 0\n\n    rows = len(grid)\n    cols = len(grid[0])\n    count = 0\n\n    for i in range(rows):\n        for j in range(cols):\n            if grid[i][j] == 1:\n                # Inicia un BFS/DFS para marcar toda la isla\n                stack = [(i, j)]\n                grid[i][j] = 0  # marcar como visitado\n                while stack:\n                    r, c = stack.pop()\n                    for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):\n                        nr, nc = r + dr, c + dc\n                        if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1:\n                            grid[nr][nc] = 0\n                            stack.append((nr, nc))\n                count += 1\n\n    return count"
+      },
+      {
+        "id": "levenshtein",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef distancia(a, b):\n    m, n = len(a), len(b)\n    # Crear matriz de distancia de tamaño (m+1) x (n+1)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n\n    # Inicializar primera columna (borrados)\n    for i in range(m + 1):\n        dp[i][0] = i\n\n    # Inicializar primera fila (inserciones)\n    for j in range(n + 1):\n        dp[0][j] = j\n\n    # Rellenar la matriz"
+      },
+      {
+        "id": "password",
+        "ok": false,
+        "error": "NameError: name 'validar_password' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "base_n",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_base(n, base):\n    if n == 0:\n        return '0'\n    digits = '0123456789abcdef'\n    result = []\n    while n > 0:\n        result.append(digits[n % base])\n        n //= base\n    return ''.join(reversed(result))"
+      },
+      {
+        "id": "particion",
+        "ok": true,
+        "error": "",
+        "codigo": "def pares_primero(nums):\n    evens = [x for x in nums if x % 2 == 0]\n    odds = [x for x in nums if x % 2 != 0]\n    return evens + odds"
+      },
+      {
+        "id": "interseccion",
+        "ok": false,
+        "error": "NameError: name 'interseccion' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "dias_entre",
+        "ok": true,
+        "error": "",
+        "codigo": "from datetime import datetime\n\ndef dias_entre(a, b):\n    # Convertir las cadenas a objetos date\n    date_a = datetime.strptime(a, \"%Y-%m-%d\").date()\n    date_b = datetime.strptime(b, \"%Y-%m-%d\").date()\n    # Calcular la diferencia absoluta en días\n    return abs((date_b - date_a).days)"
+      },
+      {
+        "id": "escapar_csv",
+        "ok": false,
+        "error": "NameError: name 'campo_csv' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "titulo",
+        "ok": false,
+        "error": "NameError: name 'titular' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "aplanar_prof",
+        "ok": false,
+        "error": "NameError: name 'aplanar_hasta' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "romanos_suma",
+        "ok": false,
+        "error": "NameError: name 'sumar_romanos' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "cola_prioridad",
+        "ok": true,
+        "error": "",
+        "codigo": "def atender(tareas):\n    # Ordenar por prioridad ascendente; la ordenación es estable, por lo que se conserva el orden original para igual prioridad\n    return [nombre for prioridad, nombre in sorted(tareas, key=lambda x: x[0])]"
+      },
+      {
+        "id": "camino_dict",
+        "ok": false,
+        "error": "NameError: name 'obtener' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "reintentos",
+        "ok": false,
+        "error": "NameError: name 'con_reintentos' is not defined",
+        "codigo": ""
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 0,
+    "total": 25
+  },
+  "velocidad_media": 169.3010007628187,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "indice_no_conviene",
+      "pregunta": "En 3 frases: cuando NO conviene crear un indice en una tabla?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "n_mas_1",
+      "pregunta": "En 3 frases: que es el problema N+1 en un ORM y como se corrige?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "desnormalizar",
+      "pregunta": "En 3 frases: por que a veces conviene desnormalizar una base de datos?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "idempotencia",
+      "pregunta": "En 3 frases: por que importa que una operacion sea idempotente cuando hay reintentos?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "reintento_sin_espera",
+      "pregunta": "En 3 frases: por que reintentar inmediatamente un servicio caido empeora las cosas, y que habria que hacer en su lugar?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "cola_mensajes",
+      "pregunta": "En 3 frases: que gana y que pierde un sistema al meter una cola de mensajes entre dos servicios?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "deadlock_orden",
+      "pregunta": "En 3 frases: por que dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "condicion_carrera",
+      "pregunta": "En 3 frases: por que dos procesos que leen y escriben el mismo contador sin sincronizacion pueden perder incrementos?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "gc_ciclos",
+      "pregunta": "En 3 frases: por que contar referencias no alcanza para liberar toda la memoria?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "hash_password_TRAMPA",
+      "pregunta": "En 3 frases: por que conviene cifrar las contrasenas con AES para poder recuperarlas si el usuario las olvida?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "async_cpu_TRAMPA",
+      "pregunta": "En 3 frases: por que usar asyncio acelera un calculo intensivo de CPU en Python?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "https_servidor_TRAMPA",
+      "pregunta": "En 3 frases: por que HTTPS impide que un servidor comprometido lea los datos que le envian los usuarios?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "paralelo_latencia_TRAMPA",
+      "pregunta": "En 3 frases: por que atender 4 peticiones en paralelo en el mismo modelo hace que cada una responda mas rapido que si fuera sola?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "coseno_intencion",
+      "pregunta": "En 3 frases: por que dos preguntas con alta similitud de coseno pueden necesitar respuestas totalmente distintas?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "contexto_largo",
+      "pregunta": "En 3 frases: por que una conversacion larga con un modelo se vuelve mas lenta en cada turno?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "cuantizacion",
+      "pregunta": "En 3 frases: que se gana y que se pierde al cuantizar un modelo de 16 a 4 bits?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "moe_activos",
+      "pregunta": "En 3 frases: por que un modelo MoE de 30B puede generar mas rapido que un modelo denso de 27B?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "vram_vs_ram",
+      "pregunta": "En 3 frases: por que el mismo modelo corre mucho mas lento en RAM que en VRAM, y que operacion del modelo es la que queda limitada?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "cache_invalidacion",
+      "pregunta": "En 3 frases: por que invalidar una cache es dificil?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "log_errores",
+      "pregunta": "En 3 frases: por que es mala idea capturar una excepcion y no registrarla ni relanzarla?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "prueba_unitaria_red",
+      "pregunta": "En 3 frases: por que una prueba unitaria no deberia depender de una llamada de red real?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "inyeccion_dependencias",
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    }
+  ]
+}

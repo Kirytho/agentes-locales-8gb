@@ -1,0 +1,37 @@
+{
+  "etiqueta": "K2-Horizon-7B-Q4_K_S-r45",
+  "repes": 2,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 26,
+      "aplica": 26,
+      "pasa": 25,
+      "rompio": 0,
+      "chars": 68950,
+      "seg": 595.7710118293762,
+      "n": 26
+    },
+    "bloques": {
+      "formato": 25,
+      "aplica": 24,
+      "pasa": 21,
+      "rompio": 2,
+      "chars": 10215,
+      "seg": 290.5595955848694,
+      "n": 26
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: no hizo el cambio"
+    ],
+    "bloques": [
+      "dos_lugares: SEARCH no esta en m.py",
+      "agregar_caso: no hizo el cambio",
+      "extender_registro: sin bloques parseables",
+      "multi_campo: regresion: AttributeError: 'Usuario' object has no attribute 'active'. Did you mean: 'activo'?",
+      "multi_renombrar: regresion: AttributeError: module 'nucleo' has no attribute 'calcular_total'"
+    ]
+  }
+}

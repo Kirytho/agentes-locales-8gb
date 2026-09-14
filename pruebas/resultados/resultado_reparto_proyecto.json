@@ -1,0 +1,220 @@
+{
+ "filas": [
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "1",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 12.757049322128296,
+   "tokens": 945,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "2",
+   "piezas": 5,
+   "fallos": [],
+   "segundos": 42.169917821884155,
+   "tokens": 3878,
+   "llamadas": 5
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "3",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 13.577587127685547,
+   "tokens": 1334,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "4",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 35.700467348098755,
+   "tokens": 3148,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "5",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 10.24739408493042,
+   "tokens": 1047,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "6",
+   "piezas": 8,
+   "fallos": [
+    "example_app/templates/todo_list.html: sigue siendo la cascara del esqueleto"
+   ],
+   "segundos": 27.994375705718994,
+   "tokens": 2443,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "7",
+   "piezas": 9,
+   "fallos": [],
+   "segundos": 292.5930941104889,
+   "tokens": 19323,
+   "llamadas": 9
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "8",
+   "piezas": 10,
+   "fallos": [],
+   "segundos": 191.8114194869995,
+   "tokens": 11454,
+   "llamadas": 10
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "9",
+   "piezas": 8,
+   "fallos": [
+    "example_app/templates/features.html: sigue siendo la cascara del esqueleto"
+   ],
+   "segundos": 55.12915778160095,
+   "tokens": 4363,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "10",
+   "piezas": 19,
+   "fallos": [
+    "example_app/utils.py: SyntaxError linea 1",
+    "example_app/views.py: importa get_weekly_calorie_chart de .utils, que no lo define"
+   ],
+   "segundos": 399.8871417045593,
+   "tokens": 31008,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "11",
+   "piezas": 7,
+   "fallos": [],
+   "segundos": 28.885316371917725,
+   "tokens": 2029,
+   "llamadas": 7
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "12",
+   "piezas": 13,
+   "fallos": [
+    "example_app/utils.py: faltan 1 firmas -> ['def check_budget_limit(category, amount)']",
+    "example_app/utils.py: importa check_budget_limit de .utils, que no lo define"
+   ],
+   "segundos": 55.06562399864197,
+   "tokens": 4874,
+   "llamadas": 13
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "13",
+   "piezas": 19,
+   "fallos": [
+    "example_app/forms.py: faltan 4 firmas -> ['class CustomerForm()', 'class PreferredProductForm()', 'class ProductForm()']",
+    "example_app/views.py: importa CustomerForm de .forms, que no lo define",
+    "example_app/views.py: importa ProductForm de .forms, que no lo define",
+    "example_app/views.py: importa PurchaseRecordForm de .forms, que no lo define",
+    "example_app/views.py: importa PreferredProductForm de .forms, que no lo define"
+   ],
+   "segundos": 81.67689776420593,
+   "tokens": 7192,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "14",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 5.150485992431641,
+   "tokens": 406,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "15",
+   "piezas": 3,
+   "fallos": [],
+   "segundos": 3.3944132328033447,
+   "tokens": 338,
+   "llamadas": 3
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "16",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.544661283493042,
+   "tokens": 528,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "17",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.236713886260986,
+   "tokens": 510,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "18",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 18.068462371826172,
+   "tokens": 1084,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "19",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.080941677093506,
+   "tokens": 501,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "20",
+   "piezas": 11,
+   "fallos": [],
+   "segundos": 35.781944036483765,
+   "tokens": 2923,
+   "llamadas": 11
+  }
+ ]
+}

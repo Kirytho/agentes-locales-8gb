@@ -1,0 +1,226 @@
+{
+ "filas": [
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "1",
+   "piezas": 2,
+   "fallos": [
+    "example_app/forms.py: SyntaxError linea 16"
+   ],
+   "segundos": 16.9846088886261,
+   "tokens": 798,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "2",
+   "piezas": 5,
+   "fallos": [],
+   "segundos": 40.80351495742798,
+   "tokens": 2264,
+   "llamadas": 5
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "3",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 21.618847370147705,
+   "tokens": 1174,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "4",
+   "piezas": 4,
+   "fallos": [
+    "qr_app/views.py: SyntaxError linea 1"
+   ],
+   "segundos": 236.77246713638306,
+   "tokens": 11095,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "5",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 16.889439821243286,
+   "tokens": 897,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "6",
+   "piezas": 8,
+   "fallos": [],
+   "segundos": 94.58258628845215,
+   "tokens": 4742,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "7",
+   "piezas": 9,
+   "fallos": [],
+   "segundos": 883.880836725235,
+   "tokens": 30474,
+   "llamadas": 9
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "8",
+   "piezas": 10,
+   "fallos": [
+    "example_app/forms.py: SyntaxError linea 1"
+   ],
+   "segundos": 307.2095682621002,
+   "tokens": 12540,
+   "llamadas": 10
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "9",
+   "piezas": 8,
+   "fallos": [],
+   "segundos": 37.91231393814087,
+   "tokens": 1973,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "10",
+   "piezas": 19,
+   "fallos": [
+    "example_app/forms.py: SyntaxError linea 2",
+    "example_app/views.py: importa LoginForm de .forms, que no lo define",
+    "example_app/views.py: importa SignUpForm de .forms, que no lo define",
+    "example_app/views.py: importa MealForm de .forms, que no lo define",
+    "example_app/views.py: importa ActivityForm de .forms, que no lo define",
+    "example_app/views.py: importa ProfileForm de .forms, que no lo define",
+    "example_app/views.py: importa PreferencesForm de .forms, que no lo define"
+   ],
+   "segundos": 1076.5158550739288,
+   "tokens": 38793,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "11",
+   "piezas": 7,
+   "fallos": [],
+   "segundos": 36.089630126953125,
+   "tokens": 1911,
+   "llamadas": 7
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "12",
+   "piezas": 13,
+   "fallos": [
+    "example_app/utils.py: SyntaxError linea 140"
+   ],
+   "segundos": 124.9791510105133,
+   "tokens": 5770,
+   "llamadas": 13
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "13",
+   "piezas": 19,
+   "fallos": [],
+   "segundos": 711.5162653923035,
+   "tokens": 24412,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "14",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 3.916105270385742,
+   "tokens": 199,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "15",
+   "piezas": 3,
+   "fallos": [],
+   "segundos": 6.398082971572876,
+   "tokens": 349,
+   "llamadas": 3
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "16",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.351500511169434,
+   "tokens": 494,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "17",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 9.248142957687378,
+   "tokens": 551,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "18",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 17.178537130355835,
+   "tokens": 982,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "19",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.184944152832031,
+   "tokens": 487,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "20",
+   "piezas": 11,
+   "fallos": [
+    "example_app/forms.py: faltan 3 firmas -> ['    class Meta()', 'class BlogPostForm()', 'class CommentForm()']",
+    "example_app/utils.py: faltan 1 firmas -> ['def filter_by_date(posts, year, month)']",
+    "example_app/views.py: importa CommentForm de .forms, que no lo define",
+    "example_app/views.py: importa BlogPostForm de .forms, que no lo define",
+    "example_app/views.py: importa filter_by_date de .utils, que no lo define"
+   ],
+   "segundos": 86.98856997489929,
+   "tokens": 3975,
+   "llamadas": 11
+  }
+ ]
+}

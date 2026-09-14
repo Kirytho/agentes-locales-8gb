@@ -1,0 +1,289 @@
+{
+  "_meta": {
+    "proposito": "Medir si la recuperacion de memoria del intermediario (similitud vectorial plana, busqueda por rol en la memoria de sesion) falla en preguntas que requieren conectar dos turnos via una relacion (multi-hop), comparado con preguntas donde el turno relevante es lexicamente/semanticamente parecido a la pregunta (directa).",
+    "regla": "Escrito ANTES de correr la medicion, para no ajustar los casos al resultado.",
+    "como_se_juzga": "Un caso PASA si el turno marcado como 'clave' aparece en el top-k (k=5, el valor real que usa el intermediario) de la busqueda por rol en la memoria de sesion."
+  },
+  "casos": [
+    {
+      "id": "directa_1",
+      "tipo": "directa",
+      "turnos": [
+        {"role": "user", "content": "estoy usando el backend principal con el modelo nanbeige para programar"},
+        {"role": "assistant", "content": "dale, nanbeige anda bien para tareas de codigo cortas"},
+        {"role": "user", "content": "che, tengo hambre, en que andas vos"},
+        {"role": "assistant", "content": "sin opinion sobre eso, sigo con el codigo"}
+      ],
+      "pregunta": "que modelo estoy usando para programar?",
+      "clave": 0
+    },
+    {
+      "id": "directa_2",
+      "tipo": "directa",
+      "turnos": [
+        {"role": "user", "content": "el backend qwen35 corre en el puerto 8081"},
+        {"role": "assistant", "content": "anotado, 8081 para qwen35"},
+        {"role": "user", "content": "hoy hace frio"},
+        {"role": "assistant", "content": "che no tengo clima"}
+      ],
+      "pregunta": "en que puerto corre qwen35?",
+      "clave": 0
+    },
+    {
+      "id": "directa_3",
+      "tipo": "directa",
+      "turnos": [
+        {"role": "user", "content": "nanbeige tiene contexto maximo de 4096 tokens en la config actual"},
+        {"role": "assistant", "content": "correcto, 4096 tokens de contexto para nanbeige"},
+        {"role": "user", "content": "vi una peli ayer"},
+        {"role": "assistant", "content": "que tal la peli"}
+      ],
+      "pregunta": "cual es el contexto maximo de nanbeige?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_1",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "el backend qwen35 corre en el puerto 8081"},
+        {"role": "assistant", "content": "anotado, 8081 para qwen35"},
+        {"role": "user", "content": "che, tengo hambre, en que andas vos"},
+        {"role": "assistant", "content": "sin opinion sobre eso, sigo con el codigo"},
+        {"role": "user", "content": "tuve un timeout raro conectando al puerto 8081"},
+        {"role": "assistant", "content": "puede ser que el backend no respondio a tiempo"},
+        {"role": "user", "content": "vi una peli ayer"},
+        {"role": "assistant", "content": "que tal la peli"}
+      ],
+      "pregunta": "el problema de timeout que tuve, era de qwen35 o de nanbeige?",
+      "clave": 4
+    },
+    {
+      "id": "multihop_2",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "nanbeige tiene contexto maximo de 4096 tokens en la config actual"},
+        {"role": "assistant", "content": "correcto, 4096 tokens de contexto para nanbeige"},
+        {"role": "user", "content": "hoy hace frio"},
+        {"role": "assistant", "content": "che no tengo clima"},
+        {"role": "user", "content": "estoy mandando conversaciones bien largas, como de 20 mensajes"},
+        {"role": "assistant", "content": "con historial largo el prompt crece bastante"},
+        {"role": "user", "content": "vi una peli ayer"},
+        {"role": "assistant", "content": "que tal la peli"}
+      ],
+      "pregunta": "por que se me esta cortando la respuesta a la mitad?",
+      "clave": 4
+    },
+    {
+      "id": "multihop_3",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "el modelo Qwen3-4B se corrompe con el cache-type turbo3, da tokens repetidos"},
+        {"role": "assistant", "content": "anotado, turbo3 rompe con Qwen3-4B especificamente"},
+        {"role": "user", "content": "que tal el clima"},
+        {"role": "assistant", "content": "sin clima aca"},
+        {"role": "user", "content": "voy a levantar el backend con cache-type-k turbo3 para el modelo nuevo que baje"},
+        {"role": "assistant", "content": "dale"},
+        {"role": "user", "content": "el nuevo modelo que baje es Qwen3-4B tambien, otra cuantizacion"},
+        {"role": "assistant", "content": "ok"},
+        {"role": "user", "content": "aca va otro tema, hable con un amigo de futbol"},
+        {"role": "assistant", "content": "dale"}
+      ],
+      "pregunta": "che, va a andar bien si lo levanto asi como dije?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_4",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "la GPU tiene 8GB de VRAM en total"},
+        {"role": "assistant", "content": "anotado, 8GB"},
+        {"role": "user", "content": "un dia normal cualquiera"},
+        {"role": "assistant", "content": "ok"},
+        {"role": "user", "content": "los dos modelos juntos usan 6.3GB cuando estan cargados"},
+        {"role": "assistant", "content": "anotado, 6.3GB en uso con los dos"},
+        {"role": "user", "content": "tema aparte, me gusta el cafe"},
+        {"role": "assistant", "content": "buen dato"},
+        {"role": "user", "content": "quiero subir el contexto de los dos modelos a 16384 cada uno, eso suma varios GB mas de KV cache"},
+        {"role": "assistant", "content": "puede que no entre"}
+      ],
+      "pregunta": "va a entrar en la placa si hago ese cambio?",
+      "clave": 0
+    },
+    {
+      "id": "directa_4",
+      "tipo": "directa",
+      "turnos": [
+        {"role": "user", "content": "el modelo Qwythos-9B pesa 5.3GB en formato Q4_K_M"},
+        {"role": "assistant", "content": "anotado, 5.3GB para Qwythos-9B"},
+        {"role": "user", "content": "quiero ver una serie despues"},
+        {"role": "assistant", "content": "buena idea"}
+      ],
+      "pregunta": "cuanto pesa Qwythos-9B?",
+      "clave": 0
+    },
+    {
+      "id": "directa_5",
+      "tipo": "directa",
+      "turnos": [
+        {"role": "user", "content": "el modo pipeline usa nanbeige como planner y Qwen3.5 como executor"},
+        {"role": "assistant", "content": "correcto, esa es la configuracion del pipeline"},
+        {"role": "user", "content": "tengo sueño"},
+        {"role": "assistant", "content": "andate a dormir"}
+      ],
+      "pregunta": "quien es el planner en el modo pipeline?",
+      "clave": 0
+    },
+    {
+      "id": "directa_6",
+      "tipo": "directa",
+      "turnos": [
+        {"role": "user", "content": "el filtro de seguridad filtra contenido peligroso con patrones regex"},
+        {"role": "assistant", "content": "si, es un filtro basado en regex"},
+        {"role": "user", "content": "vamos a comer algo"},
+        {"role": "assistant", "content": "buena"}
+      ],
+      "pregunta": "como filtra contenido peligroso el filtro de seguridad?",
+      "clave": 0
+    },
+    {
+      "id": "directa_7",
+      "tipo": "directa",
+      "turnos": [
+        {"role": "user", "content": "proyecto-limpio no trae los modelos gguf, hay que bajarlos aparte"},
+        {"role": "assistant", "content": "correcto, la copia limpia no incluye los pesos"},
+        {"role": "user", "content": "otro tema, me duele la espalda"},
+        {"role": "assistant", "content": "levantate y estira"}
+      ],
+      "pregunta": "proyecto-limpio trae los modelos incluidos?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_5",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "el backend principal usa 3.2GB de VRAM el solo"},
+        {"role": "assistant", "content": "anotado, 3.2GB para principal"},
+        {"role": "user", "content": "que tal tu dia"},
+        {"role": "assistant", "content": "sin dia, aca ando"},
+        {"role": "user", "content": "el backend qwen35 usa 2.8GB de VRAM el solo"},
+        {"role": "assistant", "content": "anotado, 2.8GB para qwen35"},
+        {"role": "user", "content": "otra cosa, me compre unas zapatillas"},
+        {"role": "assistant", "content": "lindo"}
+      ],
+      "pregunta": "cuanto gastaba el primero de los dos backends que mencione?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_6",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "decidimos que el hook Stop se elimina cuando armemos el daemon Jarvis"},
+        {"role": "assistant", "content": "anotado, el hook Stop queda obsoleto con el daemon"},
+        {"role": "user", "content": "que hora es"},
+        {"role": "assistant", "content": "sin reloj"},
+        {"role": "user", "content": "vamos a hablar de otra cosa, el clima esta raro"},
+        {"role": "assistant", "content": "puede ser"},
+        {"role": "user", "content": "che contame un chiste"},
+        {"role": "assistant", "content": "no tengo chistes"},
+        {"role": "user", "content": "dale, prosigamos con el codigo"},
+        {"role": "assistant", "content": "dale"},
+        {"role": "user", "content": "terminamos el daemon Jarvis, ya funciona"},
+        {"role": "assistant", "content": "genial, quedo andando"}
+      ],
+      "pregunta": "el hook viejo lo tengo que sacar a mano o ya no hace falta?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_7",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "el error 400 de nanbeige era por dos mensajes system seguidos"},
+        {"role": "assistant", "content": "correcto, ese era el root cause"},
+        {"role": "user", "content": "tema aparte, vi un documental"},
+        {"role": "assistant", "content": "que tal"},
+        {"role": "user", "content": "no era problema de VRAM, eso lo descartamos antes"},
+        {"role": "assistant", "content": "cierto, VRAM estaba bien"},
+        {"role": "user", "content": "otra cosa mas, se me rompio el mouse"},
+        {"role": "assistant", "content": "que garrón"}
+      ],
+      "pregunta": "al final por que fallaba nanbeige con el 400?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_8",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "instale chatterbox-tts, es mas natural que piper pero mas lento"},
+        {"role": "assistant", "content": "anotado, chatterbox mas natural, piper mas rapido"},
+        {"role": "user", "content": "un tema aparte, la comida de hoy estuvo buena"},
+        {"role": "assistant", "content": "que rico"},
+        {"role": "user", "content": "decidi borrar el otro programa de voz, el que instalamos primero"},
+        {"role": "assistant", "content": "listo, lo borro"},
+        {"role": "user", "content": "che aparte estuve viendo videos de autos"},
+        {"role": "assistant", "content": "lindo hobbie"}
+      ],
+      "pregunta": "que programa de voz quedo instalado al final?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_9",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "el modelo GLM-23B corre en el backend CPU, sin GPU"},
+        {"role": "assistant", "content": "anotado, GLM-23B es CPU puro"},
+        {"role": "user", "content": "tema aparte, hoy llovio"},
+        {"role": "assistant", "content": "que lastima"},
+        {"role": "user", "content": "el backend CPU tarda mas en generar que el de GPU, tipo 3 veces mas lento"},
+        {"role": "assistant", "content": "anotado, CPU 3x mas lento"},
+        {"role": "user", "content": "otro tema, me llego un paquete"},
+        {"role": "assistant", "content": "que bien"}
+      ],
+      "pregunta": "por que GLM-23B tarda tanto en responder?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_10",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "configuramos el margen minimo de VRAM del ejecutor en 1.0 para el pipeline"},
+        {"role": "assistant", "content": "anotado, 1.0GB de margen minimo"},
+        {"role": "user", "content": "otra cosa, me gusta el rock"},
+        {"role": "assistant", "content": "buen gusto"},
+        {"role": "user", "content": "che, otro tema, fui al gimnasio"},
+        {"role": "assistant", "content": "bien ahi"},
+        {"role": "user", "content": "quiero subir el contexto de los dos modelos, no me acuerdo si eso afecta ese margen"},
+        {"role": "assistant", "content": "si afecta, hay que revisar"}
+      ],
+      "pregunta": "cual era el numero que habiamos puesto para eso?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_11",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "la licencia del repo Claude-OSINT es MIT"},
+        {"role": "assistant", "content": "anotado, licencia MIT"},
+        {"role": "user", "content": "otra cosa, vi una pelicula de terror"},
+        {"role": "assistant", "content": "que tal estuvo"},
+        {"role": "user", "content": "el repo turbo-fieldfare tambien lo revisamos, tiene benchmarks reales publicados"},
+        {"role": "assistant", "content": "anotado, turbo-fieldfare con benchmarks reales"},
+        {"role": "user", "content": "che, otra cosa, hoy cociné pasta"},
+        {"role": "assistant", "content": "rico"}
+      ],
+      "pregunta": "el proyecto de la licencia MIT que revisamos, tenia buenos numeros de rendimiento?",
+      "clave": 0
+    },
+    {
+      "id": "multihop_12",
+      "tipo": "multihop",
+      "turnos": [
+        {"role": "user", "content": "el puerto 8080 es para el planner, el 8081 para el executor"},
+        {"role": "assistant", "content": "anotado, 8080 planner, 8081 executor"},
+        {"role": "user", "content": "dale, arranquemos el pipeline"},
+        {"role": "assistant", "content": "dale"}
+      ],
+      "pregunta": "el executor en que puerto queda?",
+      "clave": 0
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "n": 4,
+  "temp": 0.7,
+  "pass1": 18.25,
+  "passN": 23,
+  "total": 53,
+  "todos": 11,
+  "ninguno": 30,
+  "tokens": 147167,
+  "filas": [
+    {
+      "id": "fizzbuzz",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 14.22225570678711
+    },
+    {
+      "id": "duracion",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.545988082885742
+    },
+    {
+      "id": "palindromo",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 16.95602059364319
+    },
+    {
+      "id": "aplanar",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 17.183886528015137
+    },
+    {
+      "id": "busqueda",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 17.47874116897583
+    },
+    {
+      "id": "agrupar",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.593059062957764
+    },
+    {
+      "id": "contar_palabras",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 16.939842462539673
+    },
+    {
+      "id": "rotar",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.28573751449585
+    },
+    {
+      "id": "romano",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.29707360267639
+    },
+    {
+      "id": "desde_romano",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.43549346923828
+    },
+    {
+      "id": "racha",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.351478338241577
+    },
+    {
+      "id": "camel",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 17.502063035964966
+    },
+    {
+      "id": "snake",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 17.23849630355835
+    },
+    {
+      "id": "primos",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 17.19042205810547
+    },
+    {
+      "id": "mcd",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 17.331035614013672
+    },
+    {
+      "id": "intervalos",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.809479475021362
+    },
+    {
+      "id": "anagrama",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 17.329747915267944
+    },
+    {
+      "id": "comprimir",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 16.57947301864624
+    },
+    {
+      "id": "parentesis",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.427122354507446
+    },
+    {
+      "id": "transpuesta",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.600170373916626
+    },
+    {
+      "id": "raiz_digital",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.762047290802002
+    },
+    {
+      "id": "sin_duplicados",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 17.357357501983643
+    },
+    {
+      "id": "n_mayor",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.423222303390503
+    },
+    {
+      "id": "bytes",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 17.350341320037842
+    },
+    {
+      "id": "lotes",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 17.43621301651001
+    },
+    {
+      "id": "transpuesta",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.533464431762695
+    },
+    {
+      "id": "intervalos",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.559884548187256
+    },
+    {
+      "id": "parentesis",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.451149225234985
+    },
+    {
+      "id": "mediana",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 16.73656702041626
+    },
+    {
+      "id": "top_frecuentes",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.07146167755127
+    },
+    {
+      "id": "trozos",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 16.664291381835938
+    },
+    {
+      "id": "dedup",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 17.174772262573242
+    },
+    {
+      "id": "binaria",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.299142122268677
+    },
+    {
+      "id": "anidar",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.349374532699585
+    },
+    {
+      "id": "rle",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 16.516836166381836
+    },
+    {
+      "id": "anagrama",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 17.178404331207275
+    },
+    {
+      "id": "movil",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.260055780410767
+    },
+    {
+      "id": "bytes_humano",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.3399019241333
+    },
+    {
+      "id": "query",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.353514432907104
+    },
+    {
+      "id": "islas",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.34222435951233
+    },
+    {
+      "id": "levenshtein",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.32402276992798
+    },
+    {
+      "id": "password",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.350223541259766
+    },
+    {
+      "id": "base_n",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.372084617614746
+    },
+    {
+      "id": "particion",
+      "pasan": 4,
+      "de": 4,
+      "segundos": 17.209014654159546
+    },
+    {
+      "id": "interseccion",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.33063268661499
+    },
+    {
+      "id": "dias_entre",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 17.281824827194214
+    },
+    {
+      "id": "escapar_csv",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 17.232579231262207
+    },
+    {
+      "id": "titulo",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.534318208694458
+    },
+    {
+      "id": "aplanar_prof",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.45131492614746
+    },
+    {
+      "id": "romanos_suma",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.42518925666809
+    },
+    {
+      "id": "cola_prioridad",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.45351219177246
+    },
+    {
+      "id": "camino_dict",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.420700550079346
+    },
+    {
+      "id": "reintentos",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 17.48845648765564
+    }
+  ]
+}

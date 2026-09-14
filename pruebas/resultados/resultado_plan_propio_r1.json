@@ -1,0 +1,1107 @@
+{
+  "reps": 5,
+  "resumen": {
+    "plan_mio": {
+      "piezas": 80,
+      "piezas_de": 80,
+      "integracion": 20,
+      "de": 20,
+      "segundos": 102.86191725730896,
+      "tokens": 12319,
+      "planes_ilegibles": 0,
+      "nombres_cambiados": 0
+    },
+    "plan_gemma": {
+      "piezas": 75,
+      "piezas_de": 80,
+      "integracion": 20,
+      "de": 20,
+      "segundos": 276.50623989105225,
+      "tokens": 25159,
+      "planes_ilegibles": 0,
+      "nombres_cambiados": 0
+    }
+  },
+  "detalle": [
+    {
+      "rep": 1,
+      "tarea": "inventario",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 5.326745986938477,
+      "tokens": 491,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 1,
+      "tarea": "inventario",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 13.756088972091675,
+      "tokens": 1214,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar_item",
+        "quitar_item",
+        "valor_total",
+        "bajo_stock"
+      ],
+      "plan": [
+        [
+          "agregar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int), precio (float). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv', actualiza 'inv[nombre]['cantidad']' sumando 'cantidad' y establece 'inv[nombre]['precio']' a 'precio'. Si 'nombre' no existe, crea una nueva entrada: 'inv[nombre] = {'cantidad': cantidad, 'precio': precio}'.\n\nCasos Borde: \n1. Cantidad <= 0: No se modifica el inventario (aunque el enunciado implica sumar, si la cantidad es no positiva, no debe afectar el stock). \n2. Precio <= 0: Se acepta, pero se debe manejar la lógica de actualización/creación normalmente."
+        ],
+        [
+          "quitar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv' y 'cantidad' > 0: \n1. Calcula la nueva cantidad: nueva_cantidad = inv[nombre]['cantidad'] - cantidad.\n2. Si nueva_cantidad <= 0, elimina la clave 'nombre' de 'inv'.\n3. Si nueva_cantidad > 0, actualiza 'inv[nombre]['cantidad']' a nueva_cantidad.\nSi 'nombre' no existe o 'cantidad' <= 0, no se realiza ninguna modificación en 'inv'.\n\nCasos Borde: \n1. Cantidad > cantidad actual: El producto se elimina (ya que la nueva cantidad será <= 0)."
+        ],
+        [
+          "valor_total",
+          "Recibe: inv (dict[str, dict[str, any]]). Devuelve: float. \n\nImplementación: Itera sobre todos los valores (los dicts internos) en 'inv'. Para cada producto, calcula 'cantidad' * 'precio' y suma estos valores. El resultado es la suma total.\n\nCasos Borde: \n1. Inventario vacío: Devuelve 0.0."
+        ],
+        [
+          "bajo_stock",
+          "Recibe: inv (dict[str, dict[str, any]]), umbral (int). Devuelve: list[str]. \n\nImplementación: Itera sobre las claves ('nombre') de 'inv'. Si 'inv[nombre]['cantidad']' es estrictamente menor que 'umbral', añade 'nombre' a una lista temporal. Finalmente, devuelve esta lista ordenada alfabéticamente.\n\nCasos Borde: \n1. Inventario vacío: Devuelve una lista vacía ([]).\n2. Umbral muy alto: Devuelve una lista vacía ([])."
+        ]
+      ]
+    },
+    {
+      "rep": 1,
+      "tarea": "logs",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 5.2874226570129395,
+      "tokens": 657,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 1,
+      "tarea": "logs",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.974165678024292,
+      "tokens": 1126,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "parsear_linea",
+        "filtrar_nivel",
+        "contar_por_nivel",
+        "mas_grave"
+      ],
+      "plan": [
+        [
+          "parsear_linea",
+          "Recibe: str (linea). Devuelve: dict{'nivel': str, 'fecha': str, 'mensaje': str} o None. Estructura de datos compartida: dict. Casos borde: Si la línea no contiene exactamente 2 separadores '|' (es decir, no tiene 3 partes), debe devolver None."
+        ],
+        [
+          "filtrar_nivel",
+          "Recibe: list[dict] (registros), str (nivel). Devuelve: list[dict] (registros filtrados). Estructura de datos compartida: dict (dentro de la lista). Casos borde: Si la lista de registros está vacía, debe devolver una lista vacía. Si el nivel no existe en ningún registro, debe devolver una lista vacía."
+        ],
+        [
+          "contar_por_nivel",
+          "Recibe: list[dict] (registros). Devuelve: dict[str: int]. Estructura de datos compartida: dict. Casos borde: Si la lista de registros está vacía, debe devolver un diccionario vacío: {}. Si hay múltiples registros con el mismo nivel, la cuenta debe ser precisa."
+        ],
+        [
+          "mas_grave",
+          "Recibe: list[dict] (registros). Devuelve: dict o None. Estructura de datos compartida: dict. Casos borde: Si la lista de registros está vacía, debe devolver None. La gravedad se evalúa en el orden: ERROR > WARN > INFO > DEBUG. Si hay empate en la gravedad, debe devolver el primer registro encontrado en la lista de entrada."
+        ]
+      ]
+    },
+    {
+      "rep": 1,
+      "tarea": "carrito",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.696918487548828,
+      "tokens": 663,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 1,
+      "tarea": "carrito",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 16.770256519317627,
+      "tokens": 1446,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar",
+        "subtotal",
+        "aplicar_descuento",
+        "resumen"
+      ],
+      "plan": [
+        [
+          "agregar",
+          "Recibe: carrito (list[dict]), producto (str), cantidad (int), precio (float). Devuelve: carrito (list[dict]).\n\nLógica: Itera sobre 'carrito'. Si encuentra un dict donde 'producto' es igual a 'producto' recibido, incrementa su 'cantidad' por la cantidad recibida. Si no lo encuentra después de iterar todo el carrito, añade un nuevo dict al final de 'carrito' con las claves 'producto' (producto), 'cantidad' (cantidad), y 'precio' (precio).\n\nCasos Borde:\n- Cantidad <= 0: No se modifica el carrito (se asume que la cantidad siempre será positiva en la llamada, pero si es 0 o negativo, no se añade/suma).\n- Producto no existe: Se añade al final.\n- Producto existe: Se suma la cantidad."
+        ],
+        [
+          "subtotal",
+          "Recibe: carrito (list[dict]). Devuelve: float.\n\nLógica: Itera sobre cada dict en 'carrito'. Para cada dict, calcula 'cantidad' * 'precio' y suma este valor al total acumulado. El resultado final es la suma total.\n\nCasos Borde:\n- Carrito vacío: Devuelve 0.0."
+        ],
+        [
+          "aplicar_descuento",
+          "Recibe: monto (float), porcentaje (float). Devuelve: float.\n\nLógica: Verifica si 'porcentaje' está en el rango [0, 100]. Si es así, calcula el monto descontado: monto * (1 - (porcentaje / 100)). Si no está en ese rango, devuelve 'monto' sin modificar.\n\nCasos Borde:\n- Porcentaje = 0: Devuelve 'monto'.\n- Porcentaje = 100: Devuelve 0.0.\n- Porcentaje < 0 o Porcentaje > 100: Devuelve 'monto'."
+        ],
+        [
+          "resumen",
+          "Recibe: carrito (list[dict]), porcentaje (float). Devuelve: dict con claves 'lineas' (int), 'subtotal' (float), 'total' (float).\n\nLógica: 1. Calcula el 'subtotal' llamando a 'subtotal(carrito)'. 2. Calcula el 'total' llamando a 'aplicar_descuento(subtotal, porcentaje)'. 3. Cuenta el número de productos distintos en 'carrito' (es decir, la longitud de un conjunto formado por los valores de 'producto' en 'carrito'). 4. Devuelve el diccionario con estos tres valores.\n\nCasos Borde:\n- Carrito vacío: 'lineas' = 0, 'subtotal' = 0.0, 'total' = 0.0.\n- Porcentaje fuera de rango: 'total' debe ser igual a 'subtotal'."
+        ]
+      ]
+    },
+    {
+      "rep": 1,
+      "tarea": "texto",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 5.9738945960998535,
+      "tokens": 635,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 1,
+      "tarea": "texto",
+      "modo": "plan_gemma",
+      "piezas_ok": 3,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 11.465675354003906,
+      "tokens": 1040,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "normalizar",
+        "palabras",
+        "frecuencias",
+        "top_n"
+      ],
+      "plan": [
+        [
+          "normalizar",
+          "Recibe: str texto. Devuelve: str. El texto debe estar en minúsculas y todos los caracteres de puntuación (.,;:!?) deben ser eliminados. Los espacios deben mantenerse. Casos borde: Si el texto es vacío, devuelve cadena vacía. Si el texto solo contiene puntuación, devuelve cadena vacía."
+        ],
+        [
+          "palabras",
+          "Recibe: str texto (el texto ya normalizado). Devuelve: list[str]. Una lista de palabras obtenidas al dividir el texto por espacios, descartando cualquier cadena vacía resultante de múltiples espacios consecutivos. Casos borde: Si el texto es vacío o solo contiene espacios, devuelve lista vacía."
+        ],
+        [
+          "frecuencias",
+          "Recibe: list[str] lista_palabras. Devuelve: dict[str, int]. Un diccionario donde las claves son las palabras únicas de la lista y los valores son su conteo total. Casos borde: Si la lista de palabras está vacía, devuelve diccionario vacío {}."
+        ],
+        [
+          "top_n",
+          "Recibe: dict[str, int] frecs, int n. Devuelve: list[tuple[str, int]]. Una lista de las 'n' palabras más frecuentes. La ordenación debe ser: 1) Por cantidad (descendente). 2) En caso de empate en cantidad, alfabéticamente (ascendente). Casos borde: Si el diccionario de frecuencias está vacío, devuelve lista vacía []. Si n es menor o igual a 0, devuelve lista vacía []. Si n es mayor que el número de palabras únicas, devuelve todas las palabras ordenadas."
+        ]
+      ]
+    },
+    {
+      "rep": 2,
+      "tarea": "inventario",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.3357439041137695,
+      "tokens": 591,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 2,
+      "tarea": "inventario",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 14.106212615966797,
+      "tokens": 1307,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar_item",
+        "quitar_item",
+        "valor_total",
+        "bajo_stock"
+      ],
+      "plan": [
+        [
+          "agregar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int), precio (float). Devuelve: inv (dict[str, dict[str, any]]). El inventario 'inv' tiene la estructura: {nombre_producto: {'cantidad': int, 'precio': float}}. Si 'nombre' existe en 'inv', se suma 'cantidad' a 'inv[nombre]['cantidad']' y se actualiza 'inv[nombre]['precio']' a 'precio'. Si 'nombre' no existe, se añade como nueva entrada: 'inv[nombre] = {'cantidad': cantidad, 'precio': precio}. Casos borde: cantidad <= 0 o precio < 0 (se asume que se procesan como se reciben, pero si la cantidad es 0, no debería cambiar nada si ya existe, o se añade con 0 si no existe). Si la cantidad es negativa, se suma negativamente."
+        ],
+        [
+          "quitar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int). Devuelve: inv (dict[str, dict[str, any]]). El inventario 'inv' tiene la estructura: {nombre_producto: {'cantidad': int, 'precio': float}}. Si 'nombre' no existe en 'inv', no se realiza ninguna acción y se devuelve 'inv' sin cambios. Si 'nombre' existe, se resta 'cantidad' de 'inv[nombre]['cantidad']'. Si la nueva cantidad es menor o igual a 0, se elimina la entrada 'nombre' de 'inv'. Si la nueva cantidad es positiva, se mantiene la entrada. Casos borde: cantidad <= 0 (no se modifica el inventario si la cantidad a quitar es no positiva). Si la cantidad a quitar es mayor que la cantidad actual, el producto se elimina."
+        ],
+        [
+          "valor_total",
+          "Recibe: inv (dict[str, dict[str, any]]). Devuelve: float. El inventario 'inv' tiene la estructura: {nombre_producto: {'cantidad': int, 'precio': float}}. Debe calcular la suma de (inv[nombre]['cantidad'] * inv[nombre]['precio']) para todos los productos en 'inv'. Casos borde: Si 'inv' está vacío, debe devolver 0.0."
+        ],
+        [
+          "bajo_stock",
+          "Recibe: inv (dict[str, dict[str, any]]), umbral (int). Devuelve: list[str]. El inventario 'inv' tiene la estructura: {nombre_producto: {'cantidad': int, 'precio': float}}. Debe devolver una lista de nombres de productos ('str') cuya cantidad ('inv[nombre]['cantidad']') sea estrictamente menor que 'umbral'. Esta lista debe estar ordenada alfabéticamente. Casos borde: Si 'inv' está vacío, debe devolver una lista vacía []. Si todos los productos tienen cantidad >= umbral, debe devolver una lista vacía []."
+        ]
+      ]
+    },
+    {
+      "rep": 2,
+      "tarea": "logs",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.197968006134033,
+      "tokens": 592,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 2,
+      "tarea": "logs",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 11.454044103622437,
+      "tokens": 1157,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "parsear_linea",
+        "filtrar_nivel",
+        "contar_por_nivel",
+        "mas_grave"
+      ],
+      "plan": [
+        [
+          "parsear_linea",
+          "Recibe: str (linea). Devuelve: dict o None. El dict debe tener las claves 'nivel' (str en mayusculas), 'fecha' (str) y 'mensaje' (str). Si la línea no tiene exactamente 3 partes separadas por '|', devuelve None. Casos borde: Línea vacía (''), línea con menos de 3 partes ('A|B'), línea con más de 3 partes ('A|B|C|D')."
+        ],
+        [
+          "filtrar_nivel",
+          "Recibe: list[dict] (registros), str (nivel). Devuelve: list[dict]. La lista resultante debe contener solo los diccionarios de 'registros' cuyo valor de la clave 'nivel' coincida exactamente con el 'nivel' proporcionado. Casos borde: Lista de registros vacía ([]), nivel no encontrado en ningún registro, nivel proporcionado es None."
+        ],
+        [
+          "contar_por_nivel",
+          "Recibe: list[dict] (registros). Devuelve: dict[str, int]. El diccionario debe mapear cada nivel único presente en los registros a su cantidad. Casos borde: Lista de registros vacía ([]), todos los registros tienen el mismo nivel."
+        ],
+        [
+          "mas_grave",
+          "Recibe: list[dict] (registros). Devuelve: dict o None. Debe devolver el diccionario del registro con la mayor gravedad según el orden: ERROR > WARN > INFO > DEBUG. Si hay empate en la gravedad, debe devolver el primer registro que aparezca en la lista de entrada. Si la lista de registros está vacía ([]), devuelve None. Casos borde: Lista vacía ([]), todos los registros tienen el mismo nivel."
+        ]
+      ]
+    },
+    {
+      "rep": 2,
+      "tarea": "carrito",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.5987629890441895,
+      "tokens": 802,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 2,
+      "tarea": "carrito",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 19.387866973876953,
+      "tokens": 1700,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar",
+        "subtotal",
+        "aplicar_descuento",
+        "resumen"
+      ],
+      "plan": [
+        [
+          "agregar",
+          "Recibe: carrito (list[dict]), producto (str), cantidad (int), precio (float). Devuelve: carrito (list[dict]).\n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nLógica: \n1. Iterar sobre el carrito. Si se encuentra un diccionario con 'producto' igual al parámetro 'producto', se suma la 'cantidad' del nuevo parámetro a la 'cantidad' existente en ese diccionario. \n2. Si no se encuentra el producto, se añade un nuevo diccionario al final del carrito con las claves 'producto' (producto), 'cantidad' (cantidad) y 'precio' (precio).\n\nCasos Borde:\n- Cantidad <= 0: No se modifica el carrito (o se ignora la adición/suma).\n- Carrito vacío: Se agrega el nuevo producto.\n- Producto ya existente: Se suma la cantidad correctamente."
+        ],
+        [
+          "subtotal",
+          "Recibe: carrito (list[dict]). Devuelve: float.\n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nLógica: Sumar el producto de 'cantidad' * 'precio' para cada diccionario en la lista del carrito.\n\nCasos Borde:\n- Carrito vacío: Devuelve 0.0."
+        ],
+        [
+          "aplicar_descuento",
+          "Recibe: monto (float), porcentaje (float). Devuelve: float.\n\nLógica: \n1. Verificar si 'porcentaje' está en el rango [0, 100].\n2. Si está en el rango, el monto devuelto es: monto * (1 - (porcentaje / 100)).\n3. Si no está en el rango, se devuelve el 'monto' sin modificar.\n\nCasos Borde:\n- Porcentaje = 0: Devuelve el monto original.\n- Porcentaje = 100: Devuelve 0.0.\n- Porcentaje < 0 o Porcentaje > 100: Devuelve el monto original."
+        ],
+        [
+          "resumen",
+          "Recibe: carrito (list[dict]), porcentaje (float). Devuelve: dict.\n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nEl diccionario devuelto debe tener las claves: 'lineas' (int), 'subtotal' (float), 'total' (float).\n\nLógica:\n1. Calcular 'subtotal' llamando a la función subtotal(carrito).\n2. Calcular 'total' llamando a la función aplicar_descuento(subtotal, porcentaje).\n3. Calcular 'lineas': Contar el número de productos distintos en el carrito. Dado que 'agregar' suma cantidades si el producto existe, 'lineas' es simplemente la longitud de la lista del carrito si asumimos que cada entrada representa un producto distinto o una línea de pedido única.\n\nCasos Borde:\n- Carrito vacío: 'lineas' = 0, 'subtotal' = 0.0, 'total' = 0.0.\n- Porcentaje fuera de rango: 'total' debe ser igual a 'subtotal'."
+        ]
+      ]
+    },
+    {
+      "rep": 2,
+      "tarea": "texto",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.501637697219849,
+      "tokens": 520,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 2,
+      "tarea": "texto",
+      "modo": "plan_gemma",
+      "piezas_ok": 3,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.035074234008789,
+      "tokens": 870,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "normalizar",
+        "palabras",
+        "frecuencias",
+        "top_n"
+      ],
+      "plan": [
+        [
+          "normalizar",
+          "Recibe: str texto. Devuelve: str texto normalizado. El texto normalizado debe estar en minúsculas y no debe contener los caracteres '.', ':', ';', '!', '?'. Los espacios deben mantenerse. Casos borde: Si el texto es None o una cadena vacía, debe devolver None o una cadena vacía respectivamente."
+        ],
+        [
+          "palabras",
+          "Recibe: str texto_normalizado. Devuelve: list[str] lista de palabras. Las palabras deben obtenerse dividiendo el texto por espacios. Se deben descartar todas las cadenas vacías resultantes de la división. Casos borde: Si el texto_normalizado es None o una cadena vacía, debe devolver una lista vacía []."
+        ],
+        [
+          "frecuencias",
+          "Recibe: list[str] lista_palabras. Devuelve: dict[str, int] diccionario de frecuencias. Las claves son las palabras y los valores son sus conteos. Casos borde: Si la lista_palabras es None o una lista vacía, debe devolver un diccionario vacío {}."
+        ],
+        [
+          "top_n",
+          "Recibe: dict[str, int] frecs, int n. Devuelve: list[tuple[str, int]] lista de las n palabras más frecuentes. La lista debe estar ordenada primariamente por cantidad de forma descendente, y secundariamente por palabra alfabéticamente (ascendente) en caso de empate en la cantidad. Casos borde: Si frecs es None o un diccionario vacío, debe devolver una lista vacía []. Si n es menor o igual a 0, debe devolver una lista vacía []. Si n es mayor que el número de elementos en frecs, debe devolver todas las palabras ordenadas según las reglas."
+        ]
+      ]
+    },
+    {
+      "rep": 3,
+      "tarea": "inventario",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.2359325885772705,
+      "tokens": 575,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 3,
+      "tarea": "inventario",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 14.839377164840698,
+      "tokens": 1316,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar_item",
+        "quitar_item",
+        "valor_total",
+        "bajo_stock"
+      ],
+      "plan": [
+        [
+          "agregar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int), precio (float). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv', actualiza 'inv[nombre]['cantidad']' sumando 'cantidad' y establece 'inv[nombre]['precio']' a 'precio'. Si 'nombre' no existe, crea una nueva entrada: 'inv[nombre] = {'cantidad': cantidad, 'precio': precio}'.\n\nCasos Borde: \n1. Cantidad <= 0: No debe modificar el inventario (aunque el enunciado implica sumar, si la cantidad es 0 o negativa, se asume que no se agrega nada). \n2. Precio < 0: Se asume que el precio siempre será no negativo, pero si es negativo, se debe registrarlo como tal según la operación, aunque en un sistema real esto sería un error."
+        ],
+        [
+          "quitar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv' y 'cantidad' > 0: \n1. Resta 'cantidad' a 'inv[nombre]['cantidad']'. \n2. Si 'inv[nombre]['cantidad']' es menor o igual a 0, elimina la clave 'nombre' de 'inv'.\n\nCasos Borde: \n1. 'nombre' no existe en 'inv': No debe modificar 'inv'.\n2. 'cantidad' <= 0: No debe modificar 'inv'.\n3. Cantidad a quitar es mayor que la cantidad existente: El producto debe ser eliminado (ya que la cantidad resultante será <= 0)."
+        ],
+        [
+          "valor_total",
+          "Recibe: inv (dict[str, dict[str, any]]). Devuelve: float. \n\nImplementación: Itera sobre todos los valores (los dicts internos) en 'inv'. Para cada producto, calcula 'cantidad' * 'precio' y suma estos valores. El resultado final es la suma total.\n\nCasos Borde: \n1. 'inv' está vacío: Debe devolver 0.0.\n2. Algún producto tiene 'cantidad' o 'precio' nulo/inválido: Se asume que los tipos son correctos (int/float) según la definición del inventario."
+        ],
+        [
+          "bajo_stock",
+          "Recibe: inv (dict[str, dict[str, any]]), umbral (int). Devuelve: list[str]. \n\nImplementación: Itera sobre las claves ('nombre') de 'inv'. Si 'inv[nombre]['cantidad']' es estrictamente menor que 'umbral', añade 'nombre' a una lista temporal. Finalmente, devuelve esta lista ordenada alfabéticamente.\n\nCasos Borde: \n1. 'inv' está vacío: Debe devolver una lista vacía ([]).\n2. Umbral <= 0: Todos los productos con cantidad >= 0 serán considerados 'no bajo stock' si el umbral es 0 o negativo, a menos que la cantidad sea negativa (lo cual no debería ocurrir). Si el umbral es 1, solo los productos con cantidad 0 serán incluidos."
+        ]
+      ]
+    },
+    {
+      "rep": 3,
+      "tarea": "logs",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.314452648162842,
+      "tokens": 590,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 3,
+      "tarea": "logs",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 11.255199670791626,
+      "tokens": 1152,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "parsear_linea",
+        "filtrar_nivel",
+        "contar_por_nivel",
+        "mas_grave"
+      ],
+      "plan": [
+        [
+          "parsear_linea",
+          "Recibe: str (linea). Devuelve: dict{'nivel': str, 'fecha': str, 'mensaje': str} o None. El dict debe tener exactamente las claves 'nivel', 'fecha', 'mensaje'. Si la línea no puede dividirse exactamente en 3 partes usando '|', devuelve None. Casos borde: Línea vacía, línea con menos de 3 partes, línea con más de 3 partes."
+        ],
+        [
+          "filtrar_nivel",
+          "Recibe: list[dict] (registros), str (nivel). Devuelve: list[dict]. La lista resultante debe contener únicamente los diccionarios de 'registros' cuyo valor de la clave 'nivel' coincida exactamente con el 'nivel' proporcionado. Casos borde: Lista de registros vacía, nivel no encontrado en ningún registro."
+        ],
+        [
+          "contar_por_nivel",
+          "Recibe: list[dict] (registros). Devuelve: dict[str: int]. El diccionario debe mapear cada nivel único presente en los registros a su frecuencia (cantidad). Casos borde: Lista de registros vacía (debe devolver un dict vacío {})."
+        ],
+        [
+          "mas_grave",
+          "Recibe: list[dict] (registros). Devuelve: dict o None. Debe devolver el diccionario del registro con la mayor gravedad. La gravedad se determina por el orden estricto: 'ERROR' > 'WARN' > 'INFO' > 'DEBUG'. Si hay empates en la gravedad, debe devolver el primer registro que aparezca en la lista de entrada. Si la lista de registros está vacía, debe devolver None. Casos borde: Lista vacía, todos los registros tienen el mismo nivel."
+        ]
+      ]
+    },
+    {
+      "rep": 3,
+      "tarea": "carrito",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.550962924957275,
+      "tokens": 807,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 3,
+      "tarea": "carrito",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 18.605750799179077,
+      "tokens": 1577,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar",
+        "subtotal",
+        "aplicar_descuento",
+        "resumen"
+      ],
+      "plan": [
+        [
+          "agregar",
+          "Recibe: carrito (list[dict]), producto (str), cantidad (int), precio (float). Devuelve: carrito (list[dict]). \n\nImplementación: \n1. Iterar sobre 'carrito'. Si se encuentra un dict donde 'producto' es igual a 'producto', incrementar su 'cantidad' en 'cantidad'. \n2. Si no se encuentra, agregar un nuevo dict al final de 'carrito' con las claves 'producto' (producto), 'cantidad' (cantidad), y 'precio' (precio). \n\nCasos Borde: \n- 'cantidad' es 0 o negativo: No modificar el carrito (o manejar según convención, aquí asumimos que no se agrega nada si la cantidad es <= 0).\n- 'carrito' está vacío: Se agrega el nuevo producto."
+        ],
+        [
+          "subtotal",
+          "Recibe: carrito (list[dict]). Devuelve: float. \n\nImplementación: \n1. Inicializar 'suma' a 0.0. \n2. Iterar sobre cada 'linea' en 'carrito'. Para cada 'linea', calcular 'linea['cantidad'] * linea['precio']' y sumarlo a 'suma'. \n3. Devolver 'suma'. \n\nCasos Borde: \n- 'carrito' está vacío: Devolver 0.0."
+        ],
+        [
+          "aplicar_descuento",
+          "Recibe: monto (float), porcentaje (float). Devuelve: float. \n\nImplementación: \n1. Verificar si 'porcentaje' está en el rango [0, 100]. \n2. Si es válido, calcular el monto descontado: 'monto * (1 - porcentaje / 100)'. \n3. Si no es válido, devolver 'monto' sin modificar. \n\nCasos Borde: \n- 'porcentaje' es 0: Devolver 'monto'.\n- 'porcentaje' es 100: Devolver 0.0.\n- 'monto' es negativo: Devolver 'monto' (o manejar como error, aquí se devuelve sin tocar si el porcentaje es inválido, pero si el monto es negativo, se aplica el descuento si el porcentaje es válido)."
+        ],
+        [
+          "resumen",
+          "Recibe: carrito (list[dict]), porcentaje (float). Devuelve: dict con claves 'lineas' (int), 'subtotal' (float), 'total' (float). \n\nImplementación: \n1. Calcular 'subtotal' llamando a la función 'subtotal(carrito)'. \n2. Calcular 'total' llamando a la función 'aplicar_descuento(subtotal, porcentaje)'. \n3. Calcular 'lineas': contar el número de elementos únicos en 'carrito' (es decir, la longitud de la lista, ya que cada dict representa un producto distinto en el carrito). \n4. Devolver el diccionario {'lineas': count_lineas, 'subtotal': subtotal, 'total': total}.\n\nCasos Borde: \n- 'carrito' está vacío: Devolver {'lineas': 0, 'subtotal': 0.0, 'total': 0.0}.\n- 'porcentaje' fuera de rango: El 'total' debe ser igual al 'subtotal'."
+        ]
+      ]
+    },
+    {
+      "rep": 3,
+      "tarea": "texto",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.560174226760864,
+      "tokens": 549,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 3,
+      "tarea": "texto",
+      "modo": "plan_gemma",
+      "piezas_ok": 3,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 12.149896621704102,
+      "tokens": 1039,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "normalizar",
+        "palabras",
+        "frecuencias",
+        "top_n"
+      ],
+      "plan": [
+        [
+          "normalizar",
+          "Recibe: str texto. Devuelve: str. El texto debe estar en minúsculas y todos los caracteres .,;:!? deben ser eliminados. Los espacios deben mantenerse. Casos borde: Si el texto es None o una cadena vacía, debe devolver None o una cadena vacía respectivamente."
+        ],
+        [
+          "palabras",
+          "Recibe: str texto_normalizado. Devuelve: list[str]. La lista debe contener las palabras del texto_normalizado, separadas por espacios, y todas las cadenas vacías deben ser descartadas. Casos borde: Si el texto_normalizado es None o una cadena vacía, debe devolver una lista vacía []."
+        ],
+        [
+          "frecuencias",
+          "Recibe: list[str] lista_palabras. Devuelve: dict[str, int]. Un diccionario donde las claves son las palabras y los valores son su cantidad de ocurrencias. Casos borde: Si la lista_palabras es None o una lista vacía, debe devolver un diccionario vacío {}."
+        ],
+        [
+          "top_n",
+          "Recibe: dict[str, int] frecs, int n. Devuelve: list[tuple[str, int]]. Una lista de las 'n' palabras más frecuentes. Las tuplas deben ser (palabra, cantidad). La lista debe estar ordenada primero por cantidad de forma descendente, y en caso de empate en la cantidad, alfabéticamente (ascendente). Casos borde: Si frecs es None o un diccionario vacío, debe devolver una lista vacía []. Si n es menor o igual a 0, debe devolver una lista vacía []."
+        ]
+      ]
+    },
+    {
+      "rep": 4,
+      "tarea": "inventario",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.110366582870483,
+      "tokens": 536,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 4,
+      "tarea": "inventario",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 14.443662643432617,
+      "tokens": 1305,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar_item",
+        "quitar_item",
+        "valor_total",
+        "bajo_stock"
+      ],
+      "plan": [
+        [
+          "agregar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int), precio (float). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv', suma 'cantidad' a 'inv[nombre]['cantidad']' y establece 'inv[nombre]['precio']' a 'precio'. Si 'nombre' no existe, crea una nueva entrada: 'inv[nombre] = {'cantidad': cantidad, 'precio': precio}'.\n\nCasos Borde: Cantidad <= 0 o Precio < 0: Se asume que la lógica de negocio maneja esto, pero si la cantidad es negativa, se suma (comportamiento de suma). Si el nombre es una cadena vacía, se ignora la operación."
+        ],
+        [
+          "quitar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv' y 'cantidad' > 0: Resta 'cantidad' a 'inv[nombre]['cantidad']'. Si la nueva cantidad es <= 0, elimina la clave 'nombre' de 'inv'. Si 'nombre' no existe o 'cantidad' <= 0, no se realiza ninguna modificación en 'inv'.\n\nCasos Borde: Cantidad negativa: No se realiza ninguna modificación. Si la cantidad a quitar es mayor que la cantidad actual, el producto se elimina (ya que la cantidad resultante será <= 0)."
+        ],
+        [
+          "valor_total",
+          "Recibe: inv (dict[str, dict[str, any]]). Devuelve: float. \n\nImplementación: Itera sobre todos los valores (los dicts de producto) en 'inv'. Para cada producto, calcula 'cantidad' * 'precio' y suma estos valores. El resultado es la suma total.\n\nCasos Borde: Si 'inv' está vacío, devuelve 0.0. Si algún producto tiene 'cantidad' o 'precio' ausente o no numérico, se asume que la estructura es correcta según la definición, pero si ocurre un error de tipo, se debe manejar para evitar fallos (ej. tratar como 0 para el cálculo)."
+        ],
+        [
+          "bajo_stock",
+          "Recibe: inv (dict[str, dict[str, any]]), umbral (int). Devuelve: list[str]. \n\nImplementación: Itera sobre las claves ('nombre') de 'inv'. Si 'inv[nombre]['cantidad']' es menor que 'umbral', añade 'nombre' a una lista temporal. Finalmente, devuelve esta lista ordenada alfabéticamente.\n\nCasos Borde: Si 'inv' está vacío, devuelve una lista vacía []. Si 'umbral' es negativo, se consideran todos los productos (ya que ninguna cantidad positiva será menor que un umbral negativo). Si la cantidad es exactamente igual al umbral, no se incluye."
+        ]
+      ]
+    },
+    {
+      "rep": 4,
+      "tarea": "logs",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.342979431152344,
+      "tokens": 592,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 4,
+      "tarea": "logs",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.33158564567566,
+      "tokens": 1045,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "parsear_linea",
+        "filtrar_nivel",
+        "contar_por_nivel",
+        "mas_grave"
+      ],
+      "plan": [
+        [
+          "parsear_linea",
+          "Recibe: str (linea). Devuelve: dict o None. El dict debe tener la estructura {'nivel': str, 'fecha': str, 'mensaje': str}. Si la línea no puede ser dividida exactamente en 3 partes usando '|', devuelve None. Los valores deben ser los componentes exactos de la línea."
+        ],
+        [
+          "filtrar_nivel",
+          "Recibe: list[dict] (registros), str (nivel). Devuelve: list[dict]. La lista resultante debe contener únicamente los diccionarios de 'registros' cuyo valor de la clave 'nivel' coincida exactamente con el 'nivel' proporcionado. Si la lista de entrada está vacía, devuelve una lista vacía."
+        ],
+        [
+          "contar_por_nivel",
+          "Recibe: list[dict] (registros). Devuelve: dict[str, int]. El diccionario debe mapear cada nivel único presente en los registros a su conteo total. Si la lista de entrada está vacía, devuelve un diccionario vacío {}."
+        ],
+        [
+          "mas_grave",
+          "Recibe: list[dict] (registros). Devuelve: dict o None. Debe devolver el diccionario del registro con la mayor gravedad. La gravedad se evalúa en el orden estricto: 'ERROR' > 'WARN' > 'INFO' > 'DEBUG'. Si hay empates en la gravedad, debe devolver el primer registro que cumpla con esa gravedad en la lista de entrada. Si la lista de entrada está vacía, devuelve None."
+        ]
+      ]
+    },
+    {
+      "rep": 4,
+      "tarea": "carrito",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 5.985166549682617,
+      "tokens": 615,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 4,
+      "tarea": "carrito",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 18.995035886764526,
+      "tokens": 1673,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar",
+        "subtotal",
+        "aplicar_descuento",
+        "resumen"
+      ],
+      "plan": [
+        [
+          "agregar",
+          "Recibe: carrito (list[dict]), producto (str), cantidad (int), precio (float). Devuelve: carrito (list[dict]). \n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nLógica: \n1. Iterar sobre el carrito. Si se encuentra un diccionario con la clave 'producto' igual a 'producto', se suma la 'cantidad' al valor actual de 'cantidad' de ese diccionario. \n2. Si no se encuentra el producto, se añade un nuevo diccionario al final del carrito con las claves 'producto' (producto), 'cantidad' (cantidad) y 'precio' (precio).\n\nCasos Borde: \n- Cantidad <= 0: No se modifica el carrito (aunque el enunciado implica que la cantidad será positiva, se asume que si es <= 0, no se agrega/actualiza).\n- Carrito vacío: Se agrega el nuevo producto."
+        ],
+        [
+          "subtotal",
+          "Recibe: carrito (list[dict]). Devuelve: float. \n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nLógica: \n1. Inicializar un total a 0.0.\n2. Iterar sobre cada diccionario en el carrito. Para cada diccionario, calcular (cantidad * precio) y sumarlo al total.\n3. Devolver el total acumulado.\n\nCasos Borde: \n- Carrito vacío: Devuelve 0.0."
+        ],
+        [
+          "aplicar_descuento",
+          "Recibe: monto (float), porcentaje (float). Devuelve: float. \n\nLógica: \n1. Verificar si 'porcentaje' está en el rango [0, 100].\n2. Si está en el rango, calcular el monto descontado: monto * (1 - porcentaje / 100).\n3. Si no está en el rango, devolver 'monto' sin modificar.\n\nCasos Borde: \n- Porcentaje = 0: Devuelve 'monto'.\n- Porcentaje = 100: Devuelve 0.0.\n- Porcentaje < 0 o Porcentaje > 100: Devuelve 'monto'."
+        ],
+        [
+          "resumen",
+          "Recibe: carrito (list[dict]), porcentaje (float). Devuelve: dict. \n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nEl diccionario de retorno debe tener las claves: 'lineas' (int), 'subtotal' (float), 'total' (float).\n\nLógica: \n1. Calcular 'subtotal' llamando a la función subtotal(carrito).\n2. Calcular 'total' llamando a la función aplicar_descuento(subtotal, porcentaje).\n3. Calcular 'lineas': contar el número de productos distintos en el carrito. Dado que 'agregar' suma cantidades si el producto existe, la cantidad de líneas es simplemente la longitud del carrito (len(carrito)).\n4. Devolver el diccionario {'lineas': len(carrito), 'subtotal': subtotal, 'total': total}.\n\nCasos Borde: \n- Carrito vacío: 'lineas' = 0, 'subtotal' = 0.0, 'total' = 0.0."
+        ]
+      ]
+    },
+    {
+      "rep": 4,
+      "tarea": "texto",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.228776931762695,
+      "tokens": 513,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 4,
+      "tarea": "texto",
+      "modo": "plan_gemma",
+      "piezas_ok": 3,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 11.753749370574951,
+      "tokens": 1013,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "normalizar",
+        "palabras",
+        "frecuencias",
+        "top_n"
+      ],
+      "plan": [
+        [
+          "normalizar",
+          "Recibe: str texto. Devuelve: str. El texto debe estar en minúsculas y todos los caracteres .,;:!? deben ser eliminados (reemplazados por cadena vacía). Los espacios deben mantenerse intactos. Casos borde: Si el texto es None o una cadena vacía, debe devolver None o una cadena vacía respectivamente."
+        ],
+        [
+          "palabras",
+          "Recibe: str texto_normalizado. Devuelve: list[str]. La lista debe contener las palabras del texto_normalizado, separadas por espacios. Se deben descartar cualquier cadena vacía resultante de la división. Casos borde: Si el texto_normalizado es None o una cadena vacía, debe devolver una lista vacía []."
+        ],
+        [
+          "frecuencias",
+          "Recibe: list[str] lista_palabras. Devuelve: dict[str, int]. Un diccionario donde las claves son las palabras únicas de la lista y los valores son su cantidad de ocurrencias. Casos borde: Si la lista_palabras es None o una lista vacía, debe devolver un diccionario vacío {}."
+        ],
+        [
+          "top_n",
+          "Recibe: dict[str, int] frecs, int n. Devuelve: list[tuple[str, int]]. Una lista de las 'n' palabras más frecuentes. Cada elemento debe ser una tupla (palabra, cantidad). La lista debe estar ordenada primariamente por cantidad en orden descendente, y secundariamente por palabra en orden alfabético ascendente en caso de empate en la cantidad. Casos borde: Si frecs es None o vacío, o si n <= 0, debe devolver una lista vacía []. Si n es mayor que el número de palabras únicas, debe devolver todas las palabras ordenadas."
+        ]
+      ]
+    },
+    {
+      "rep": 5,
+      "tarea": "inventario",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 5.747813940048218,
+      "tokens": 802,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 5,
+      "tarea": "inventario",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 15.529750108718872,
+      "tokens": 1340,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar_item",
+        "quitar_item",
+        "valor_total",
+        "bajo_stock"
+      ],
+      "plan": [
+        [
+          "agregar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int), precio (float). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv', actualiza 'inv[nombre]['cantidad']' sumando 'cantidad' y establece 'inv[nombre]['precio']' a 'precio'. Si 'nombre' no existe, crea una nueva entrada: 'inv[nombre] = {'cantidad': cantidad, 'precio': precio}'.\n\nCasos Borde: \n1. Cantidad <= 0: No se modifica el inventario (aunque el enunciado implica sumar, si la cantidad es no positiva, no se debe agregar).\n2. Precio < 0: Se debe registrar el precio negativo, ya que la lógica no especifica validación de precio, solo actualización."
+        ],
+        [
+          "quitar_item",
+          "Recibe: inv (dict[str, dict[str, any]]), nombre (str), cantidad (int). Devuelve: inv (dict[str, dict[str, any]]). \n\nImplementación: Si 'nombre' existe en 'inv' y 'cantidad' > 0: \n1. Calcula la nueva cantidad: nueva_cantidad = inv[nombre]['cantidad'] - cantidad.\n2. Si nueva_cantidad <= 0, elimina 'nombre' de 'inv' (del diccionario).\n3. Si nueva_cantidad > 0, actualiza 'inv[nombre]['cantidad']' a nueva_cantidad.\nSi 'nombre' no existe o 'cantidad' <= 0, no se realiza ninguna modificación en 'inv'.\n\nCasos Borde: \n1. Cantidad a quitar es mayor que la cantidad existente: El producto debe ser eliminado (ya que la nueva cantidad será <= 0)."
+        ],
+        [
+          "valor_total",
+          "Recibe: inv (dict[str, dict[str, any]]). Devuelve: float. \n\nImplementación: Itera sobre todos los valores (los diccionarios de producto) en 'inv'. Para cada producto, calcula 'cantidad' * 'precio' y suma este valor al total. El resultado final es la suma total.\n\nCasos Borde: \n1. 'inv' está vacío: Debe devolver 0.0.\n2. Un producto tiene cantidad 0: Su contribución al total debe ser 0."
+        ],
+        [
+          "bajo_stock",
+          "Recibe: inv (dict[str, dict[str, any]]), umbral (int). Devuelve: list[str]. \n\nImplementación: Itera sobre las claves ('nombre') de 'inv'. Si 'inv[nombre]['cantidad']' es estrictamente menor que 'umbral', añade 'nombre' a una lista temporal. Finalmente, esta lista temporal debe ser ordenada alfabéticamente antes de ser devuelta.\n\nCasos Borde: \n1. 'inv' está vacío: Debe devolver una lista vacía ([]).\n2. Ningún producto está por debajo del umbral: Debe devolver una lista vacía ([]).\n3. Umbral <= 0: Todos los productos con cantidad >= 0 serán considerados 'no bajo stock' si el umbral es 0 o negativo, a menos que la cantidad sea negativa (lo cual no se espera por la lógica de inventario)."
+        ]
+      ]
+    },
+    {
+      "rep": 5,
+      "tarea": "logs",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 4.439682960510254,
+      "tokens": 539,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 5,
+      "tarea": "logs",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.692792415618896,
+      "tokens": 1116,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "parsear_linea",
+        "filtrar_nivel",
+        "contar_por_nivel",
+        "mas_grave"
+      ],
+      "plan": [
+        [
+          "parsear_linea",
+          "Recibe: str (linea). Devuelve: dict{'nivel': str, 'fecha': str, 'mensaje': str} o None. Estructura de datos compartida: dict. Casos borde: Si la línea no contiene exactamente 2 separadores '|' (es decir, no tiene exactamente 3 partes), debe devolver None."
+        ],
+        [
+          "filtrar_nivel",
+          "Recibe: list[dict] (registros), str (nivel). Devuelve: list[dict]. Estructura de datos compartida: dict (dentro de la lista). Casos borde: Si la lista de registros está vacía, devuelve una lista vacía. Si el nivel buscado no existe en ningún registro, devuelve una lista vacía."
+        ],
+        [
+          "contar_por_nivel",
+          "Recibe: list[dict] (registros). Devuelve: dict{str: int}. Estructura de datos compartida: dict. Casos borde: Si la lista de registros está vacía, devuelve un diccionario vacío {}. Si hay múltiples registros con el mismo nivel, la cuenta debe ser correcta."
+        ],
+        [
+          "mas_grave",
+          "Recibe: list[dict] (registros). Devuelve: dict o None. Estructura de datos compartida: dict. Casos borde: Si la lista de registros está vacía, debe devolver None. La gravedad se evalúa en el orden: ERROR > WARN > INFO > DEBUG. Si hay empate en la gravedad, debe devolver el primer registro encontrado en la lista de entrada."
+        ]
+      ]
+    },
+    {
+      "rep": 5,
+      "tarea": "carrito",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.129968166351318,
+      "tokens": 683,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 5,
+      "tarea": "carrito",
+      "modo": "plan_gemma",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 17.730339527130127,
+      "tokens": 1496,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "agregar",
+        "subtotal",
+        "aplicar_descuento",
+        "resumen"
+      ],
+      "plan": [
+        [
+          "agregar",
+          "Recibe: carrito (list[dict]), producto (str), cantidad (int), precio (float). Devuelve: carrito (list[dict]).\n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nLógica: Itera sobre el carrito. Si encuentra un diccionario con 'producto' igual al 'producto' de entrada, actualiza su 'cantidad' sumándole la 'cantidad' de entrada. Si no lo encuentra después de revisar todo el carrito, añade un nuevo diccionario al final del carrito con las claves 'producto' (producto), 'cantidad' (cantidad) y 'precio' (precio).\n\nCasos Borde:\n- Si la cantidad es 0 o negativa, no se modifica el carrito.\n- Si el carrito está vacío, se agrega el nuevo producto."
+        ],
+        [
+          "subtotal",
+          "Recibe: carrito (list[dict]). Devuelve: float.\n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nLógica: Itera sobre cada diccionario en el carrito. Para cada diccionario, calcula 'cantidad' * 'precio' y suma este valor al total. Devuelve la suma total.\n\nCasos Borde:\n- Si el carrito está vacío, devuelve 0.0."
+        ],
+        [
+          "aplicar_descuento",
+          "Recibe: monto (float), porcentaje (float). Devuelve: float.\n\nLógica: Verifica si 'porcentaje' está en el rango [0, 100]. Si lo está, calcula el monto descontado: monto * (1 - porcentaje / 100). Si 'porcentaje' está fuera de este rango, devuelve el 'monto' sin modificar.\n\nCasos Borde:\n- Si porcentaje es 0, devuelve el monto original.\n- Si porcentaje es 100, devuelve 0.0."
+        ],
+        [
+          "resumen",
+          "Recibe: carrito (list[dict]), porcentaje (float). Devuelve: dict con claves 'lineas' (int), 'subtotal' (float), 'total' (float).\n\nEl carrito es una lista de diccionarios, donde cada diccionario tiene las claves 'producto' (str), 'cantidad' (int) y 'precio' (float).\n\nLógica: \n1. Calcular 'subtotal' llamando a la función subtotal(carrito).\n2. Calcular 'total' llamando a la función aplicar_descuento(subtotal, porcentaje).\n3. Calcular 'lineas': Cuenta el número de productos distintos en el carrito. Dado que la función 'agregar' consolida cantidades por producto, el número de líneas es simplemente la longitud del carrito.\n4. Devuelve un diccionario con las claves 'lineas' (longitud del carrito), 'subtotal' (resultado de subtotal), y 'total' (resultado de aplicar_descuento).\n\nCasos Borde:\n- Si el carrito está vacío, 'lineas' es 0, 'subtotal' es 0.0, y 'total' es 0.0."
+        ]
+      ]
+    },
+    {
+      "rep": 5,
+      "tarea": "texto",
+      "modo": "plan_mio",
+      "piezas_ok": 4,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 5.29654598236084,
+      "tokens": 567,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true
+    },
+    {
+      "rep": 5,
+      "tarea": "texto",
+      "modo": "plan_gemma",
+      "piezas_ok": 3,
+      "piezas_de": 4,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 12.229715585708618,
+      "tokens": 1227,
+      "plan_ok": true,
+      "plan_falla": "",
+      "n_piezas": 4,
+      "nombres_ok": true,
+      "nombres": [
+        "normalizar",
+        "palabras",
+        "frecuencias",
+        "top_n"
+      ],
+      "plan": [
+        [
+          "normalizar",
+          "Recibe: str texto. Devuelve: str. El texto debe estar en minúsculas y todos los caracteres de puntuación (.,;:!?) deben ser eliminados. Los espacios deben mantenerse. Casos borde: Si el texto es None o una cadena vacía, debe devolver None o una cadena vacía respectivamente."
+        ],
+        [
+          "palabras",
+          "Recibe: str texto. Devuelve: list[str]. La lista debe contener las palabras del texto normalizado, separadas por espacios, y deben descartarse cualquier cadena vacía resultante de la división. Casos borde: Si el texto es None o una cadena vacía, debe devolver una lista vacía []."
+        ],
+        [
+          "frecuencias",
+          "Recibe: list[str] lista_palabras. Devuelve: dict[str, int]. Un diccionario donde las claves son las palabras y los valores son su cantidad de ocurrencias. Casos borde: Si la lista de palabras es None o vacía, debe devolver un diccionario vacío {}."
+        ],
+        [
+          "top_n",
+          "Recibe: dict[str, int] frecs, int n. Devuelve: list[tuple[str, int]]. Una lista de las 'n' palabras más frecuentes. Las tuplas deben ser (palabra, cantidad). La lista debe estar ordenada primero por cantidad de forma descendente, y en caso de empate en la cantidad, por el orden alfabético ascendente de la palabra. Casos borde: Si 'n' es 0 o negativo, debe devolver una lista vacía []. Si el diccionario 'frecs' es None o vacío, debe devolver una lista vacía []."
+        ]
+      ]
+    }
+  ]
+}

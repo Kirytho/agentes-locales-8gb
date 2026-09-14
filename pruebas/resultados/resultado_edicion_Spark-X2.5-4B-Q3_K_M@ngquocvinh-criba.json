@@ -1,0 +1,6 @@
+{
+  "etiqueta": "Spark-X2.5-4B-Q3_K_M@ngquocvinh-criba",
+  "aciertos": 7,
+  "total": 13,
+  "rompieron_regresion": 3
+}

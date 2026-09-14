@@ -1,0 +1,235 @@
+{
+ "filas": [
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "1",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 13.40828561782837,
+   "tokens": 840,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "2",
+   "piezas": 5,
+   "fallos": [
+    "example_app/views.py: faltan 1 firmas -> ['def InfoView(request)']"
+   ],
+   "segundos": 16.963351726531982,
+   "tokens": 1054,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "3",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 18.25326180458069,
+   "tokens": 1141,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "4",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 53.40482234954834,
+   "tokens": 3147,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "5",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 15.350886583328247,
+   "tokens": 959,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "6",
+   "piezas": 8,
+   "fallos": [
+    "example_app/templates/edit_todo.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/edit_todo_item.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/home.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/tasks.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/todo_list.html: sigue siendo la cascara del esqueleto"
+   ],
+   "segundos": 16.814194202423096,
+   "tokens": 1005,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "7",
+   "piezas": 9,
+   "fallos": [
+    "example_app/views.py: SyntaxError linea 79"
+   ],
+   "segundos": 38.56344676017761,
+   "tokens": 2223,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "8",
+   "piezas": 10,
+   "fallos": [],
+   "segundos": 39.22650337219238,
+   "tokens": 2349,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "9",
+   "piezas": 8,
+   "fallos": [],
+   "segundos": 27.1201069355011,
+   "tokens": 1661,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "10",
+   "piezas": 19,
+   "fallos": [
+    "example_app/forms.py: faltan 1 firmas -> ['class LoginForm(UserCreationForm)']"
+   ],
+   "segundos": 54.16054439544678,
+   "tokens": 2953,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "11",
+   "piezas": 7,
+   "fallos": [],
+   "segundos": 22.165000915527344,
+   "tokens": 1312,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "12",
+   "piezas": 13,
+   "fallos": [
+    "example_app/admin.py: faltan 3 firmas -> ['def approve_claims(self, request, queryset)', 'def operations(self, obj)', 'def reject_claims(self, request, queryset)']"
+   ],
+   "segundos": 54.55611038208008,
+   "tokens": 3139,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "13",
+   "piezas": 19,
+   "fallos": [
+    "example_app/templates/add_preferred_product.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/add_purchase_record.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/base.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/edit_preferred_product.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/edit_purchase_record.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/preferred_products_list.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/purchase_record_list.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/report.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/customers/add_customer.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/customers/customer_detail.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/customers/customer_list.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/customers/edit_customer.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/products/add_product.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/products/edit_product.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/products/product_detail.html: sigue siendo la cascara del esqueleto",
+    "example_app/templates/products/product_list.html: sigue siendo la cascara del esqueleto"
+   ],
+   "segundos": 27.12966012954712,
+   "tokens": 1522,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "14",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 3.9355530738830566,
+   "tokens": 238,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "15",
+   "piezas": 3,
+   "fallos": [],
+   "segundos": 5.773968458175659,
+   "tokens": 359,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "16",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 9.26506495475769,
+   "tokens": 576,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "17",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.503160953521729,
+   "tokens": 531,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "18",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 17.32110619544983,
+   "tokens": 1063,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "19",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.008203983306885,
+   "tokens": 499,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "monolito",
+   "tarea": "20",
+   "piezas": 11,
+   "fallos": [],
+   "segundos": 22.744383811950684,
+   "tokens": 1328,
+   "llamadas": 1
+  }
+ ]
+}

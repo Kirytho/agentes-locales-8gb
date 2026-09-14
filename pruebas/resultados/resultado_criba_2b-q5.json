@@ -1,0 +1,131 @@
+{
+  "modelo": {
+    "archivo": "Qwen3.8-2B-Q5_K_M.gguf",
+    "gb": 1.35,
+    "arquitectura": "qwen3",
+    "mtp": true,
+    "eagle": false,
+    "moe": false,
+    "n_tensores": 333
+  },
+  "filas": [
+    {
+      "config": "base",
+      "banderas": [],
+      "copia": 185.4,
+      "generacion": 185.0
+    },
+    {
+      "config": "ngram-simple",
+      "banderas": [
+        "--spec-type",
+        "ngram-simple"
+      ],
+      "copia": 185.7,
+      "generacion": 187.1
+    },
+    {
+      "config": "ngram-map-k",
+      "banderas": [
+        "--spec-type",
+        "ngram-map-k"
+      ],
+      "copia": 177.5,
+      "generacion": 185.4
+    },
+    {
+      "config": "ngram-map-k4v",
+      "banderas": [
+        "--spec-type",
+        "ngram-map-k4v"
+      ],
+      "copia": 186.6,
+      "generacion": 187.1
+    },
+    {
+      "config": "ngram-mod",
+      "banderas": [
+        "--spec-type",
+        "ngram-mod"
+      ],
+      "copia": 185.0,
+      "generacion": 185.2
+    },
+    {
+      "config": "ngram-cache",
+      "banderas": [
+        "--spec-type",
+        "ngram-cache"
+      ],
+      "copia": 168.8,
+      "generacion": 171.5
+    },
+    {
+      "config": "suffix",
+      "banderas": [
+        "--spec-type",
+        "suffix"
+      ],
+      "copia": 126.4,
+      "generacion": 124.8
+    },
+    {
+      "config": "copyspec",
+      "banderas": [
+        "--spec-type",
+        "copyspec"
+      ],
+      "copia": 170.3,
+      "generacion": 176.4
+    },
+    {
+      "config": "recycle",
+      "banderas": [
+        "--spec-type",
+        "recycle"
+      ],
+      "copia": 85.0,
+      "generacion": 129.1
+    },
+    {
+      "config": "draft-mtp",
+      "banderas": [
+        "--spec-type",
+        "draft-mtp"
+      ],
+      "copia": 187.1,
+      "generacion": 212.7
+    },
+    {
+      "config": "draft-dflash",
+      "banderas": [
+        "--spec-type",
+        "draft-dflash"
+      ],
+      "copia": 173.1,
+      "generacion": 169.3
+    },
+    {
+      "config": "kv f16",
+      "banderas": [
+        "--cache-type-k",
+        "f16",
+        "--cache-type-v",
+        "f16"
+      ],
+      "copia": 185.0,
+      "generacion": 184.9
+    },
+    {
+      "config": "kv q4_0",
+      "banderas": [
+        "--cache-type-k",
+        "q4_0",
+        "--cache-type-v",
+        "q4_0"
+      ],
+      "copia": 173.5,
+      "generacion": 179.6
+    }
+  ]
+}

@@ -1,0 +1,584 @@
+{
+  "etiqueta": "lfm25-26b-qad-bis",
+  "codigo": {
+    "aciertos": 37,
+    "total": 53,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append('FizzBuzz')\n        elif i % 3 == 0:\n            result.append('Fizz')\n        elif i % 5 == 0:\n            result.append('Buzz')\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "ValueError: invalid literal for int() with base 10: 'h'",
+        "codigo": "import re\n\ndef parsear_duracion(s):\n    total = 0\n    # Find all numbers and their units\n    for match in re.finditer(r'(\\d+)([hm])', s):\n        hours = int(match.group(1))\n        minutes = int(match.group(2))\n        if match.group(2) == 'h':\n            total += hours * 60\n        else:  # 'm'\n            total += minutes\n    return total"
+      },
+      {
+        "id": "palindromo",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_palindromo(s):\n    cleaned = ''.join(ch.lower() for ch in s if ch.isalnum())\n    return cleaned == cleaned[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista):\n    resultado = []\n    for elemento in lista:\n        if isinstance(elemento, list):\n            resultado.extend(aplanar(elemento))\n        else:\n            resultado.append(elemento)\n    return resultado"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    left = 0\n    right = len(lista) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": false,
+        "error": "IndentationError: unexpected indent",
+        "codigo": "from collections import defaultdict\n\n    def agrupar_por(items, clave):\n        resultado = defaultdict(list)\n        for item in items:\n            resultado[item[clave]].append(item)\n        return dict(resultado)"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\nimport re\n\ndef contar_palabras(texto):\n    texto = texto.lower()\n    palabras = re.findall(r'[a-z]+', texto)\n    conteo = {}\n    for palabra in palabras:\n        conteo[palabra] = conteo.get(palabra,"
+      },
+      {
+        "id": "rotar",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 26)",
+        "codigo": "The user wants a Python function `rotar(lista, n)` that rotates a list to the right by n positions and returns a new list. If n > len(list), rotate by n % len(list). If n is negative, rotate to the left (which is equivalent to rotating right by len(list) + n). If the list is empty, return an empty list.\n\nThe response must be ONLY the code block with the function, no explanations, no examples.\n\nI need to write a function that:\n- Takes a list and an integer n.\n- Returns a new list (so we should not modify the original list).\n- Handle edge cases: empty list -> return [].\n- If n is positive, rotate right by n.\n- If n is negative, rotate left by |n| (or equivalently rotate right by n % len(list) but careful with negative modulo).\n- If n > len(list), use n % len(list) to get effective rotation.\n\nImplementation steps:\n1. If not lista: return []\n2. n = n % len(lista)  # This handles both positive and negative n correctly in Python because -1 % 5 = 4, which is equivalent to rotating left by 1 (or right by 4).\n   However, note: if n is negative, we want to rotate left. But using modulo with negative n in Python gives a positive remainder, which is effectively rotating right by that positive amount. That matches the requirement: \"si n es negativo, rota hacia la izquierda\". So we can just do n = n % len(lista) and then rotate right by n.\n3. Then, to rotate right by n, we can take the last n elements and put them in front, and the rest at the back.\n   Example: lista = [1,2,3,4,5], n=2 -> [4,5,1,2,3]\n   So new_list = lista[-n:] + lista[:-n] if n > 0 else lista[n:] + lista[:n]\n   But since we already normalized n to be in [0, len(lista)-1] (or 0 if empty), we can do:\n   if n == 0: return lista[:]\n   else: return lista[-n:] + lista[:-n]\n\nBut careful: if n is 0, we return a copy. Also, if the list is empty, we already returned.\n\nLet's test with negative n: lista = [1,2,3], n = -1. n % 3 = 2. So we rotate right by 2 -> [2,3,1]. But rotating left by 1 should give [2,3,1] as well? Actually, rotating left by 1: [2,3,1] yes. So it matches.\n\nSo the function can be:\n\ndef rotar(lista, n):\n    if not lista:\n        return []\n    n = n % len(lista)\n    if n == 0:\n        return lista[:]\n    return lista[-n:] + lista[:-n]\n\nBut note: if n is 0, we return a copy. Alternatively, we can always return lista[-n:] + lista[:-n] because when n=0, lista[-0:] is the whole list? Actually, in Python, -0 is 0, so lista[-0:]"
+      },
+      {
+        "id": "romano",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_romano(n):\n    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\n    syms = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"]\n    result = []\n    for i in range(len(val)):\n        while n >= val[i]:\n            result.append(syms[i])\n            n -= val[i]\n    return \"\".join(result)"
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "NameError: name 'desde_romano' is not defined",
+        "codigo": "def from_roman(s):\n    roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    total = 0\n    i = 0\n    while i < len(s):\n        if i + 1 < len(s) and roman[s[i]] < roman[s[i+1]]:\n            total += roman[s[i+1]] - roman[s[i]]\n            i += 2\n        else:\n            total += roman[s[i]]\n            i += 1\n    return total"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    if not lista:\n        return None\n    \n    mejor_valor = lista[0]\n    mejor_longitud = 1\n    actual_valor = lista[0]\n    actual_longitud = 1\n    \n    for i in range(1, len(lista)):\n        if lista[i] == actual_valor:\n            actual_longitud += 1\n        else:\n            if actual_longitud > mejor_longitud:\n                mejor_longitud = actual_longitud\n                mejor_valor = actual_valor\n            actual_valor = lista[i]\n            actual_longitud = 1\n    \n    # Comprobar la última racha\n    if actual_longitud > mejor_longitud:\n        mejor_longitud = actual_longitud\n        mejor_valor = actual_valor\n    \n    return (mejor_valor, mejor_longitud)"
+      },
+      {
+        "id": "camel",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_camel(s):\n    if not s:\n        return ''\n    words = [w for w in s.split('_') if w]\n    if not words:\n        return ''\n    camel = words[0].lower()\n    for w in words[1:]:\n        camel += w.capitalize()\n    return camel"
+      },
+      {
+        "id": "snake",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_snake(s):\n    if not s:\n        return s\n    result = [s[0].lower()]\n    for ch in s[1:]:\n        if ch.isupper():\n            result.append('_')\n            result.append(ch.lower())\n        else:\n            result.append(ch)\n    return ''.join(result)"
+      },
+      {
+        "id": "primos",
+        "ok": true,
+        "error": "",
+        "codigo": "def primos(n):\n    if n < 2:\n        return []\n    is_prime = [True] * (n + 1)\n    is_prime[0] = is_prime[1] = False\n    for i in range(2, int(n**0.5) + 1):\n        if is_prime[i]:\n            for j in range(i * i, n + 1, i):\n                is_prime[j] = False\n    return [i for i in range(2, n + 1) if is_prime[i]]"
+      },
+      {
+        "id": "mcd",
+        "ok": true,
+        "error": "",
+        "codigo": "def mcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a"
+      },
+      {
+        "id": "intervalos",
+        "ok": true,
+        "error": "",
+        "codigo": "def fusionar(intervalos):\n       if not intervalos:\n           return []\n\n       # Sort by start time\n       intervalos_ordenados = sorted(intervalos, key=lambda x: x[0])\n\n       fusionados = [intervalos_ordenados[0]]\n\n       for inicio, fin in intervalos_ordenados[1:]:\n           ultimo_inicio, ultimo_fin = fusionados[-1]\n\n           if inicio <= ultimo_fin:\n               # Se tocan o se solapan, se fusionan\n               # Actualizamos el fin del último intervalo si es necesario\n               fusionados[-1] = (ultimo_inicio, max(ultimo_fin, fin))\n           else:\n               # No hay solapamiento, agregamos el nuevo intervalo\n               fusionados.append((inicio, fin))\n\n       return fusionados"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a, b):\n    # Normalizar: pasar a minúsculas y eliminar espacios\n    a_normalizado = a.replace(\" \", \"\").lower()\n    b_normalizado = b.replace(\" \", \"\").lower()\n    # Comparar contadores de caracteres\n    from collections import Counter\n    return Counter(a_normalizado) == Counter(b_normalizado)"
+      },
+      {
+        "id": "comprimir",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef comprimir(s):\n    if not s:\n        return s\n    compressed = []\n    count = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            count += 1\n        else:\n            compressed.append(s[i - 1] + str(count))\n            count = 1\n    compressed.append(s[-1] + str(count"
+      },
+      {
+        "id": "parentesis",
+        "ok": true,
+        "error": "",
+        "codigo": "def balanceado(text):\n    stack = []\n    opening = {'(', '[', '{'}\n    matching = {')': '(', ']': '[', '}': '{'}\n    \n    for char in text:\n        if char in opening:\n            stack.append(char)\n        elif char in matching:\n            if not stack or stack[-1] != matching[char]:\n                return False\n            stack.pop()\n    return len(stack) == 0"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n    if not m:\n        return []\n    return [list(row) for row in zip(*m)]"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": true,
+        "error": "",
+        "codigo": "def raiz_digital(n):\n    while n >= 10:\n        s = 0\n        while n > 0:\n            s += n % 10\n            n //= 10\n        n = s\n    return n"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": true,
+        "error": "",
+        "codigo": "def sin_duplicados(lista):\n    seen = set()\n    resultado = []\n    for elemento in lista:\n        if elemento not in seen:\n            seen.add(elemento)\n            resultado.append(elemento)\n    return resultado"
+      },
+      {
+        "id": "n_mayor",
+        "ok": true,
+        "error": "",
+        "codigo": "def n_esimo_mayor(lista, n):\n    distinct = set(lista)\n    if len(distinct) < n:\n        return None\n    sorted_distinct = sorted(distinct, reverse=True)\n    return sorted_distinct[n-1]"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 3)",
+        "codigo": "The user wants a Python function `formatear_bytes(n)` that converts a number of bytes to a human-readable string using base 1024 and units B, KB, MB, GB. The bytes should be shown without decimals (i.e., integer part only) and the larger units with one decimal place (UN decimal). Examples: 0 -> '0 B', 1023 -> '1023 B', 1024 -> '1.0 KB', 1536 -> '1.5 KB'.\n\nWe need to output only the code block with the function, no extra text. The function should handle n as integer or float? Probably integer. Use base 1024. Determine the appropriate unit: if n < 1024, use B. Else if n < 1024*1024, use KB, etc. For each unit, compute value = n / (1024**i). Then format: if i == 0 (B), no decimal, just integer. For i > 0, format with one decimal place (rounded). Use f\"{value:.1f}\" for i>0. But note that for 1024, value = 1.0, so \"1.0 KB\". For 1536, value = 1.5, \"1.5 KB\". For 1023, it's B. For 0, B.\n\nEdge cases: n may be 0, returns \"0 B\". n may be negative? Probably not needed. We'll assume non-negative.\n\nImplementation:\n\ndef formatear_bytes(n):\n    if n < 1024:\n        return f\"{n} B\"\n    units = [\"B\", \"KB\", \"MB\", \"GB\"]\n    i = 0\n    while n >= 1024 and i < len(units)-1:\n        n /= 1024\n        i += 1\n    # Now n is in units[i]\n    if i == 0:\n        return f\"{n} B\"\n    else:\n        return f\"{n:.1f} {units[i]}\"\n\nBut careful: after dividing, n becomes float. For 1024, n becomes 1.0, i=1, units[1]=\"KB\". So returns \"1.0 KB\". Good.\n\nFor 1536: n=1536, i=0, n>=1024, n=1.5, i=1, units[1]=\"KB\". Return \"1.5 KB\". Good.\n\nFor 1023: n<1024, returns \"1023 B\". Good.\n\nFor 0: returns \"0 B\". Good.\n\nPotential issue: if n is exactly 1024*1024*1024 (1 GB), after loop i=3, n=1.0, units[3]=\"GB\". Returns \"1.0 GB\". Good.\n\nIf n is 1024**2 = 1048576, after first division n=1024, i=1, then second division n=1.0, i=2, units[2]=\"MB\". Returns \"1.0 MB\". Good.\n\nIf n is 1024**3 = 1073741824, after two divisions n=1024, i=2, then third division n=1.0, i=3, units[3]=\"GB\"."
+      },
+      {
+        "id": "lotes",
+        "ok": true,
+        "error": "",
+        "codigo": "def en_lotes(lista, tamano):\n    if not lista:\n        return []\n    return [lista[i:i + tamano] for i in range(0, len(lista), tamano)]"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n        if not m:\n            return []\n        return [list(col) for col in zip(*m)]"
+      },
+      {
+        "id": "intervalos",
+        "ok": true,
+        "error": "",
+        "codigo": "def fusionar(intervalos):\n       if not intervalos:\n           return []\n\n       # Sort by start time\n       intervalos_ordenados = sorted(intervalos, key=lambda x: x[0])\n\n       fusionados = []\n       actual_inicio, actual_fin = intervalos_ordenados[0]\n\n       for inicio, fin in intervalos_ordenados[1:]:\n           # If the next interval starts before or at the current end, merge them\n           if inicio <= actual_fin:\n               actual_fin = max(actual_fin, fin)\n           else:\n               # No overlap, add current to result\n               fusionados.append((actual_inicio, actual_fin))\n               # Start new current interval\n               actual_inicio, actual_fin = inicio, fin\n\n       # Append the last interval\n       fusionados.append((actual_inicio, actual_fin))\n\n       return fusionados"
+      },
+      {
+        "id": "parentesis",
+        "ok": true,
+        "error": "",
+        "codigo": "def balanceado(cadena):\n    pila = []\n    pares = {\n        ')': '(',\n        ']': '[',\n        '}': '{'\n    }\n    for char in cadena:\n        if char in '([{':\n            pila.append(char)\n        elif char in ')]}':\n            if not pila or pila[-1] != pares[char]:\n                return False\n            pila.pop()\n    return len(pila) == 0"
+      },
+      {
+        "id": "mediana",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 2)",
+        "codigo": "The user wants a Python function `mediana(nums)` that returns the median of a list of numbers. Constraints:\n- Do NOT use the `statistics` module (specifically modulo? The prompt says \"SIN usar el modulo statistics\". This likely means \"without using the statistics module\" or \"without using modulo operator\"? Actually \"modulo statistics\" is ambiguous. It could mean \"without using the statistics module\" or \"without using the modulo operator\". Given the context of median calculation, it's almost certainly \"without using the statistics module\" (like `statistics.median`). However, the phrase \"SIN usar el modulo statistics\" could be interpreted as \"without using the modulo operator\" (since modulo is a math operator). But in the context of median, it's more likely they mean \"without using the statistics module\". Let's re-read: \"Escribe una funcion mediana(nums) que devuelva la mediana de una lista de numeros, SIN usar el modulo statistics.\" This is a common phrasing in Spanish to mean \"without using the statistics module\". If they meant the modulo operator, they would say \"sin usar el operador módulo\". \"Modulo statistics\" sounds like \"statistics module\". I will assume they mean \"without using the statistics module\".\n\n- For even number of elements, return the average of the two central elements.\n- Empty list: return None.\n\nRequirements:\n1. Function name: `mediana` (or `mediana`? The prompt says \"mediana\", so I'll use `def mediana(nums):`).\n2. Input: `nums` (list of numbers).\n3. Output: median (float or int, depending on input, but usually float for even length).\n4. No `statistics` module.\n5. Handle empty list -> return `None`.\n6. Sort the list first to find the median.\n7. If length is odd, return the middle element.\n8. If length is even, return the average of the two middle elements.\n\nAlgorithm:\n- Check if `nums` is empty. If so, return `None`.\n- Sort `nums` (in-place or create a sorted copy). `sorted_nums = sorted(nums)`.\n- Get `n = len(sorted_nums)`.\n- If `n % 2 == 1` (odd), return `sorted_nums[n // 2]`.\n- Else (even), return `(sorted_nums[n // 2 - 1] + sorted_nums[n // 2]) / 2`.\n\nWait, the prompt says \"SIN usar el modulo statistics\". Could it mean \"without using the modulo operator\"? If I use `n % 2`, that's the modulo operator. If the constraint is strictly \"no modulo operator\", I need to avoid `%`. But usually, these constraints refer to external libraries. \"Modulo statistics\" is a weird phrase. It might be a typo for \"modulo\" (the operator) or \"statistics\" (the module). Given the phrasing \"SIN usar el modulo statistics\", it's likely a combination: \"without using the modulo operator\" and \"without using the statistics module\". But that's two constraints. Let's look at the structure: \"SIN usar el modulo statistics\". If it meant the operator, it would be \"sin usar el operador módulo\". If it meant the module, it would be \"sin usar el módulo statistics\". The phrase"
+      },
+      {
+        "id": "top_frecuentes",
+        "ok": false,
+        "error": "IndentationError: unexpected indent",
+        "codigo": "from collections import Counter\n\n    def top_frecuentes(texto, k):\n        # Split by spaces\n        words = texto.split()\n        # Normalize to lowercase\n        words_lower = [word.lower() for word in words]\n        # Count frequencies\n        counts = Counter(words_lower)\n        # Sort: first by count descending, then by word ascending\n        # Using a lambda for the sort key\n        sorted_items = counts.most_common() # This is tricky because most_common() doesn't allow custom secondary sort easily without a custom key function.\n        # Actually, Counter.most_common() sorts by count descending. To add the alphabetical tie-breaker, I should use a custom key or sort the items manually.\n        # Let's use the items() method and sort them.\n        items = list(counts.items())\n        # Sort key: (-count, word)\n        sorted_items = sorted(items, key=lambda x: (-x[1], x[0]))\n        # Return top k\n        return sorted_items[:k]"
+      },
+      {
+        "id": "trozos",
+        "ok": true,
+        "error": "",
+        "codigo": "def trozos(lista, n):\n    if n <= 0:\n        return []\n    return [lista[i:i+n] for i in range(0, len(lista), n)]"
+      },
+      {
+        "id": "dedup",
+        "ok": true,
+        "error": "",
+        "codigo": "def dedup(lista):\n    seen = set()\n    result = []\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "binaria",
+        "ok": true,
+        "error": "",
+        "codigo": "def binaria(lista, x):\n    left, right = 0, len(lista) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1"
+      },
+      {
+        "id": "anidar",
+        "ok": false,
+        "error": "IndentationError: expected an indented block after function definition on line 1",
+        "codigo": "def anidar(plano):\n    # implementation"
+      },
+      {
+        "id": "rle",
+        "ok": true,
+        "error": "",
+        "codigo": "def comprimir(s):\n    if not s:\n        return \"\"\n    result = []\n    current_char = s[0]\n    count = 1\n    for char in s[1:]:\n        if char == current_char:\n            count += 1\n        else:\n            result.append(current_char + str(count))\n            current_char = char\n            count = 1\n    result.append(current_char + str(count))\n    return \"\".join(result)"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "from collections import Counter\n\ndef es_anagrama(a, b):\n    # Eliminar espacios y pasar a minúsculas\n    a_clean = a.replace(\" \", \"\").lower()\n    b_clean = b.replace(\" \", \"\").lower()\n    # Comparar contadores de caracteres\n    return Counter(a_clean) == Counter(b_clean)"
+      },
+      {
+        "id": "movil",
+        "ok": true,
+        "error": "",
+        "codigo": "def promedio_movil(nums, ventana):\n    if len(nums) < ventana:\n        return []\n    result = []\n    for i in range(len(nums) - ventana + 1):\n        window_sum = sum(nums[i:i+ventana])\n        result.append(window_sum / ventana)\n    return result"
+      },
+      {
+        "id": "bytes_humano",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 7)",
+        "codigo": "The user wants a Python function `formatear_bytes(n)` that converts a number of bytes to a human-readable text using multiples of 1024 and units B, KB, MB, GB. With one decimal, except for B which should have no decimals. Example: 1536 -> '1.5 KB'.\n\nConstraints:\n- Output only the code inside a ```python block.\n- No explanations, no examples.\n\nWe need to implement the function. Let's think about details.\n\nThe function should take an integer or float n (bytes). It should compute the appropriate unit and format accordingly.\n\nRules:\n- If n < 1024, return f\"{n} B\" (no decimal).\n- If n >= 1024, divide by 1024 repeatedly until the value is less than 1024, then use the appropriate unit.\n- For each unit, we need to show one decimal place, except for B (no decimal). The example: 1536 -> 1.5 KB (since 1536/1024 = 1.5). So we need to format with one decimal place for KB, MB, GB, etc. For B, no decimal.\n\nPotential edge cases: n exactly 1024 -> 1 KB (no decimal). n = 1023 -> \"1023 B\". n = 1024*1024 = 1048576 -> \"1 MB\". n = 1024*1024*1024 = 1073741824 -> \"1 GB\". n = 1536 -> \"1.5 KB\". n = 1500 -> \"1.46 KB\"? Actually 1500/1024 = 1.46484375, rounding to one decimal gives \"1.5 KB\"? The spec says \"con un decimal\", which likely means one decimal place, rounding. So we should format with one decimal place.\n\nBut careful: For values like 1023.5? Actually n is bytes, integer. So we can just compute.\n\nImplementation steps:\n1. If n < 1024: return f\"{n} B\"\n2. Else, find the largest unit such that value <= n < next unit.\n   - We can loop dividing by 1024 and track unit.\n   - Or use a while loop: while n >= 1024: n /= 1024; unit = \"KB\" etc.\n   - But careful: we need to keep track of the original unit string and the divisor.\n   - Simpler: define a list of units = [\"B\", \"KB\", \"MB\", \"GB\", \"TB\", ...] but we only need up to GB maybe. But we can handle any size by extending list.\n   - However, the spec only mentions B, KB, MB, GB. So we can limit to those. If n is huge, we might need more units, but we can just handle up to GB. If n > 1024*1024*1024, we could go beyond, but not required. We'll just handle up to GB.\n\n   Approach:\n   - If n < 1024: return f\"{n} B\"\n   - Else:\n     - Initialize unit = \"KB\"\n     - While n >= 1024:\n         n /= 1024\n         unit = unit + \" \" (or just change unit string)\n     - Then format n with one decimal place"
+      },
+      {
+        "id": "query",
+        "ok": true,
+        "error": "",
+        "codigo": "def parsear_query(s):\n    if not s:\n        return {}\n    result = {}\n    for part in s.split('&'):\n        if not part:\n            continue\n        if '=' in part:\n            key, value = part.split('=', 1)\n            result[key] = value\n        else:\n            result[part] = ''\n    return result"
+      },
+      {
+        "id": "islas",
+        "ok": true,
+        "error": "",
+        "codigo": "def contar_islas(grid):\n    if not grid or not grid[0]:\n        return 0\n    rows = len(grid)\n    cols = len(grid[0])\n    count = 0\n    for i in range(rows):\n        for j in range(cols):\n            if grid[i][j] == 1:\n                stack = [(i, j)]\n                grid[i][j] = 0  # marcar como visitado\n                while stack:\n                    x, y = stack.pop()\n                    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):\n                        nx, ny = x + dx, y + dy\n                        if 0 <= nx < rows and 0 <= ny < cols and grid[nx][ny] == 1:\n                            grid[nx][ny] = 0\n                            stack.append((nx, ny))\n                count += 1\n    return count"
+      },
+      {
+        "id": "levenshtein",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef distancia(a, b):\n    m, n = len(a), len(b)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in"
+      },
+      {
+        "id": "password",
+        "ok": true,
+        "error": "",
+        "codigo": "def validar_password(p):\n        # Check length\n        if len(p) < 8:\n            return False\n        # Check uppercase\n        if not any(c.isupper() for c in p):\n            return False\n        # Check lowercase\n        if not any(c.islower() for c in p):\n            return False\n        # Check digit\n        if not any(c.isdigit() for c in p):\n            return False\n        # Check non-alphanumeric\n        if not any(not c.isalnum() for c in p):\n            return False\n        return True"
+      },
+      {
+        "id": "base_n",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_base(n, base):\n    if n == 0:\n        return '0'\n    digits = \"0123456789abcdef\"\n    result = []\n    while n > 0:\n        n, rem = divmod(n, base)\n        result.append(digits[rem])\n    return ''.join(reversed(result))"
+      },
+      {
+        "id": "particion",
+        "ok": true,
+        "error": "",
+        "codigo": "def pares_primero(nums):\n    evens = []\n    odds = []\n    for n in nums:\n        if n % 2 == 0:\n            evens.append(n)\n        else:\n            odds.append(n)\n    return evens + odds"
+      },
+      {
+        "id": "interseccion",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 14)",
+        "codigo": "1.  **Analyze the Request:**\n    *   **Function name:** `intersecta` (or similar, but the prompt says \"Escribe una funcion interseccion(a, b)\"). I should stick to the name `intersecta` or `intersection`. The prompt explicitly says \"Escribe una funcion interseccion(a, b)\", so the function name should be `intersecta`.\n    *   **Inputs:** Two sorted lists of integers (`a` and `b`).\n    *   **Output:** A sorted list of values present in both (intersection), without duplicates.\n    *   **Constraints:** Return only the Python code inside a ```python block. No explanations, no examples.\n\n2.  **Algorithm Design:**\n    *   Since the lists are sorted, I can use a two-pointer approach for efficiency (O(n+m) time complexity).\n    *   Initialize two pointers, `i` for list `a` and `j` for list `b`, starting at 0.\n    *   Initialize an empty list `result` to store the intersection.\n    *   Loop while `i < len(a)` and `j < len(b)`:\n        *   If `a[i] == b[j]`:\n            *   This is a common element.\n            *   Check if it's already in `result` (though the prompt says \"without duplicates\", and since inputs are sorted, duplicates in input lists might exist, or the result might need to be unique. The standard two-pointer approach on sorted lists naturally handles duplicates if we skip them).\n            *   Actually, a simpler way to handle duplicates in the result is to check if the current element is the same as the last added element in `result`.\n            *   Append `a[i]` to `result`.\n            *   Increment both `i` and `j`.\n        *   Else if `a[i] < b[j]`:\n            *   `i` needs to increase to find a larger value.\n        *   Else (`a[i] > b[j]`):\n            *   `j` needs to increase to find a larger value.\n    *   *Refinement on duplicates:* If `a` has `[1, 1, 2]` and `b` has `[1, 2]`, the intersection should be `[1, 2]`.\n        *   `i=0, j=0`: `a[0]=1, b[0]=1`. Match. Add 1. `i=1, j=1`.\n        *   `i=1, j=1`: `a[1]=1, b[1]=2`. `1 < 2`. `i` becomes 2.\n        *   `i=2, j=1`: `a[2]=2, b[1]=2`. Match. Add 2. `i=3, j=2`.\n        *   Loop ends.\n        *   Result: `[1, 2]`. This works perfectly without extra checks for duplicates in the result list because the sorted property ensures we don't add the same value twice unless it appears in both lists at the same relative position, which implies it's a duplicate in the intersection. Wait, what if `a` has `[1, 1]` and `b` has `[1]`?\n            *   `i=0, j=0"
+      },
+      {
+        "id": "dias_entre",
+        "ok": true,
+        "error": "",
+        "codigo": "from datetime import datetime\n\ndef dias_entre(a: str, b: str) -> int:\n    fmt = \"%Y-%m-%d\"\n    d1 = datetime.strptime(a, fmt)\n    d2 = datetime.strptime(b, fmt)\n    delta = d2 - d1\n    return abs(delta.days)"
+      },
+      {
+        "id": "escapar_csv",
+        "ok": true,
+        "error": "",
+        "codigo": "def campo_csv(s):\n    # Check for presence of comma, double quote, or newline\n    if any(c in s for c in \",\\\"\\n\"):\n        # Escape double quotes by doubling them\n        escaped = s.replace('\"', '\"\"')\n        return f'\"{escaped}\"'\n    else:\n        return s"
+      },
+      {
+        "id": "titulo",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 8)",
+        "codigo": "The user wants a function called `titular(s)` that capitalizes the first letter of each word, except for certain small words (articles and conjunctions) when they are not the first word. The rest of the letters should be lowercase. The function should be in Python, inside a code block. No extra text, no explanations, no examples.\n\nWe need to write a function that takes a string `s` and returns a string where each word is capitalized according to the rules.\n\nRules:\n\n- Capitalize the first letter of each word.\n- Except for the words 'de', 'del', 'la', 'las', 'el', 'los', 'y' when they are not the first word. So these words should remain lowercase (except if they are the first word, then they should be capitalized? The rule says \"EXCEPTO 'de', 'del', 'la', 'las', 'el', 'los' e 'y' cuando no son la primera palabra.\" That means if they are not the first word, they should stay lowercase. If they are the first word, they should be capitalized (like normal). So we need to check each word's position.\n\n- All other letters should be lowercase.\n\nThus, we need to split the input string into words (preserving spaces? Probably we can split on whitespace). Then for each word, we need to decide whether to capitalize it or not.\n\nCapitalization logic:\n\n- If it's the first word (index 0), we capitalize the first letter and make the rest lowercase.\n- For other words:\n  - If the word is in the set of small words (de, del, la, las, el, los, y), then we keep it all lowercase (i.e., no capitalization).\n  - Otherwise, we capitalize the first letter and make the rest lowercase.\n\nEdge cases: punctuation? The problem doesn't specify. Probably we can treat words as sequences separated by spaces, and punctuation attached to words might be considered part of the word. But we can just split on whitespace and then process each token. For simplicity, we can use `s.split()` which splits on any whitespace and removes empty strings. That will handle multiple spaces.\n\nImplementation steps:\n\n1. Define the function `titular(s)`.\n2. Split the string into words: `words = s.split()`.\n3. Define a set of small words: `small = {'de', 'del', 'la', 'las', 'el', 'los', 'y'}`.\n4. Initialize a list `result` to hold processed words.\n5. For index, word in enumerate(words):\n   - If index == 0:\n     - Capitalize the first letter: if word is empty, keep empty. Otherwise, `word[0].upper() + word[1:].lower()`.\n   - Else:\n     - If word.lower() in small: keep word as is? Actually we need to ensure it's lowercase. So we can do `word.lower()`.\n     - Else: `word[0].upper() + word[1:].lower()`.\n6. Join the result list with spaces: `return ' '.join(result)`.\n\nBut careful: The rule says \"poner en mayuscula la primera letra de cada palabra, EXCEPTO ... cuando no son la primera palabra.\" So for non-first words, we should not"
+      },
+      {
+        "id": "aplanar_prof",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar_hasta(lista, profundidad):\n    def _aplanar(l, d):\n        if d >= profundidad:\n            return l\n        resultado = []\n        for elemento in l:\n            if isinstance(elemento, list):\n                resultado.extend(_aplanar(elemento, d+1))\n            else:\n                resultado.append(elemento)\n        return resultado\n    return _aplanar(lista, 0)"
+      },
+      {
+        "id": "romanos_suma",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 7)",
+        "codigo": "The user wants a Python function `sumar_romanos(a, b)` that takes two Roman numeral strings (up to 3999) and returns their sum also as a Roman numeral. The response must be only the code block with the function, no extra text, no explanations, no examples. Must be inside a ```python block.\n\nWe need to implement conversion from Roman to integer, addition, then conversion back to Roman. Must handle up to 3999 (so standard Roman numerals with subtractive notation). The function should be robust.\n\nWe need to ensure correct handling of subtractive pairs: IV=4, IX=9, XL=40, XC=90, CD=400, CM=900. Also standard mapping for thousands: M for 1000, up to 3999.\n\nWe'll write helper functions: roman_to_int and int_to_roman.\n\nPotential pitfalls: Input strings may be uppercase? Probably yes. We'll assume uppercase.\n\nImplementation steps:\n\n- Define mapping of values to symbols: I=1, V=5, X=10, L=50, C=100, D=500, M=1000.\n- For conversion to int: iterate through characters, if current value < next value, subtract current; else add. Or use standard algorithm.\n\n- For conversion to roman: use a list of (value, symbol) pairs in descending order, including subtractive pairs: (1000,'M'), (900,'CM'), (500,'D'), (400,'CD'), (100,'C'), (90,'XC'), (50,'L'), (40,'XL'), (10,'X'), (9,'IX'), (5,'V'), (4,'IV'), (1,'I').\n\n- Then sum the two ints, convert back.\n\nEdge cases: Input may be empty? Not needed.\n\nMake sure to handle up to 3999, but our conversion works for any integer up to maybe large, but we can limit.\n\nWrite function sumar_romanos(a, b): returns roman string.\n\nWe'll include docstring maybe but not required. The user said \"Responde SOLO con el codigo Python pedido, dentro de un bloque ```python. Sin explicaciones, sin ejemplos de uso.\" So we must output only the code block, no extra text before or after. The code block should contain the function definition.\n\nThus final answer:\n\n```python\ndef sumar_romanos(a: str, b: str) -> str:\n    # mapping\n    val = {\n        'M': 1000,\n        'D': 500,\n        'C': 100,\n        'L': 50,\n        'X': 10,\n        'V': 5,\n        'I': 1\n    }\n    # roman to int\n    def rom_to_int(s: str) -> int:\n        total = 0\n        n = len(s)\n        for i, ch in enumerate(s):\n            if i + 1 < n and val[ch] < val[s[i+1]]:\n                total -= val[ch]\n            else:\n                total += val[ch]\n        return total\n\n    # int to roman\n    def int_to_roman(num: int) -> str:\n        pairs = [\n            (1000, 'M'),\n            (900, 'CM'),\n            (500, 'D'),"
+      },
+      {
+        "id": "cola_prioridad",
+        "ok": true,
+        "error": "",
+        "codigo": "def atender(tareas):\n        # Create a sorted list based on priority (first element of tuple)\n        # sorted() is stable, preserving original order for equal priorities\n        sorted_tareas = sorted(tareas, key=lambda x: x[0])\n        # Extract names\n        return [nombre for prioridad, nombre in sorted_tareas]"
+      },
+      {
+        "id": "camino_dict",
+        "ok": false,
+        "error": "TypeError: argument of type 'int' is not a container or iterable",
+        "codigo": "def obtener(d, camino, defecto=None):\n       partes = camino.split('.')\n       actual = d\n       for parte in partes:\n           if parte in actual:\n               actual = actual[parte]\n           else:\n               return defecto\n       return actual"
+      },
+      {
+        "id": "reintentos",
+        "ok": true,
+        "error": "",
+        "codigo": "def con_reintentos(fn, veces):\n    for intento in range(1, veces + 1):\n        try:\n            return fn()\n        except Exception:\n            if intento == veces:\n                raise\n    # This line is unreachable if fn is called at least once, but just in case\n    raise"
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 12,
+    "total": 25
+  },
+  "velocidad_media": 182.93112767486494,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "The user is asking for a specific explanation about database indexing: why an index speeds up reads but slows down writes. The constraint is strict: exactly 3 sentences.\n\n1.  **Analyze the core concept:**\n    *   **Reads (SELECT):** An index acts like a table of contents. It allows the database to jump directly to the relevant data without scanning the entire table, making retrieval fast.\n    *   **Writes (INSERT, UPDATE, DELETE):** To maintain the index in sync with the table, the database must update the index structure every time a row is added, modified, or deleted. This requires extra I/O and CPU cycles.\n\n2.  **Drafting the sentences (Internal Monologue/Trial):**\n\n    *   *Draft 1:* Un índice acelera las lecturas porque permite buscar directamente en una parte de la tabla en lugar de escanear toda la información. Sin embargo, cada vez que se inserta, actualiza o elimina un registro, el sistema debe actualizar también el índice para mantener la coherencia. Por eso, las operaciones de escritura se vuelven más lentas porque requieren esta sincronización constante.\n\n    *   *Check against constraints:*\n        *   Sentence 1: Explains speed up on reads.\n        *   Sentence 2: Explains slow down on writes.\n        *   Sentence 3: Concluding summary.\n        *   Total: 3 sentences.\n        *   Language:",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "actualiz"
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "The user is asking for a comparison between monoliths and microservices, specifically when each is convenient, but with a strict constraint: exactly 3 sentences.\n\n**Goal:** Explain when to use a monolith vs. microservices in exactly 3 sentences.\n\n**Drafting - Sentence 1 (Monoliths):**\n*   *Idea:* Monoliths are best for small teams or simple applications where speed of development is key.\n*   *Draft:* Los monolitos suelen ser la mejor opción para equipos pequeños o aplicaciones simples donde se prioriza la velocidad de desarrollo y la simplicidad operativa.\n*   *Critique:* Good, covers the \"when\" aspect.\n\n**Drafting - Sentence 2 (Microservices):**\n*   *Idea:* Microservices are better for large scale, complex systems, or independent scaling needs.\n*   *Draft:* Por otro lado, los microservicios convienen cuando la aplicación es muy grande, los equipos son numerosos o se requiere escalar funcionalidades de forma independiente.\n*   *Critique:* Covers the \"when\" aspect.\n\n**Drafting - Sentence 3 (Synthesis/Conclusion):**\n*   *Idea:* It's about trade-offs (complexity vs. flexibility).\n*   *Draft:* La decisión final depende de si prefieres la agilidad y simplicidad de un monolito o la escalabilidad y flexibilidad de un enfoque distribuido.",
+      "ok": true,
+      "detalle": {
+        "g1": "equipos pequenos",
+        "g2": "escalar"
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "The user is asking a specific question about Python's execution model: \"Why does Python compile to native machine code before running?\" and wants the answer in exactly 3 sentences.\n\n1.  **Analyze the Request:**\n    *   **Topic:** Python compilation to native machine code.\n    *   **Constraint:** Exactly 3 sentences.\n    *   **Language:** Spanish.\n\n2.  **Drafting the Content (Internal Monologue/Trial):**\n    *   *Concept 1:* Python is an interpreted language, but it uses a compiler (CPython) to translate bytecode into machine code.\n    *   *Concept 2:* This compilation happens at startup or when the interpreter needs to execute specific parts (like loops or complex operations).\n    *   *Concept 3:* This process (JIT or AOT) allows for faster execution than pure interpretation, bridging the gap between high-level syntax and hardware execution.\n\n    *Draft 1 (Mental):*\n    Python utiliza un compilador interno llamado CPython que traduce el bytecode a código de máquina. Esto ocurre generalmente al iniciar el programa o durante la ejecución para optimizar las operaciones. El resultado es que el código se ejecuta directamente en la CPU en lugar de ser interpretado línea por línea.\n\n    *Checking sentence count:*\n    1. Python utiliza un compilador interno llamado CPython que traduce el bytecode a código de máquina. (Sentence",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "bytecode"
+      }
+    },
+    {
+      "id": "indice_no_conviene",
+      "pregunta": "En 3 frases: cuando NO conviene crear un indice en una tabla?",
+      "respuesta": "The user is asking for a response in exactly three sentences.\nThe topic is: \"when it is NOT convenient to create an index in a table?\" (in Spanish: \"cuando NO conviene crear un indice en una tabla?\").\nThe language requested is Spanish.\n\nKey points to cover:\n1.  When is an index *not* useful?\n2.  Why? (Performance, storage, maintenance, read-heavy vs write-heavy).\n3.  Structure: Exactly 3 sentences.\n\nDrafting ideas:\n*   Sentence 1: It's not convenient when the table is very small or has few rows because the overhead of the index structure outweighs the benefits.\n*   Sentence 2: It's also not useful when the table is frequently modified with many inserts or updates, as indexes need to be updated constantly.\n*   Sentence 3: Finally, it's unnecessary when the data is read-only or the query patterns are simple enough that a full table scan is faster.\n\nRefining into Spanish:\n1.  No conviene crear un índice cuando la tabla es muy pequeña, ya que el costo de mantenimiento supera los beneficios de la búsqueda rápida.\n2.  También no es útil cuando la tabla sufre muchas inserciones o actualizaciones, ya que el índice debe actualizarse constantemente.\n3.  Finalmente, no se debe indexar si la consulta es simple y la tabla es grande, ya que un escaneo completo puede",
+      "ok": true,
+      "detalle": {
+        "g1": "pequena",
+        "g2": "insercion"
+      }
+    },
+    {
+      "id": "n_mas_1",
+      "pregunta": "En 3 frases: que es el problema N+1 en un ORM y como se corrige?",
+      "respuesta": "The user is asking for an explanation of the \"N+1 problem\" in the context of ORMs (Object-Relational Mapping) and how to fix it, specifically constrained to exactly 3 sentences.\n\n1.  **Analyze the Request:**\n    *   **Topic:** N+1 problem in ORMs.\n    *   **Requirements:** Explain what it is and how to fix it.\n    *   **Constraint:** Exactly 3 sentences.\n\n2.  **Drafting the Content:**\n    *   *Sentence 1 (Definition):* The N+1 problem occurs when an ORM generates a separate database query for every object in a collection, leading to a performance bottleneck.\n    *   *Sentence 2 (Mechanism):* For example, if you fetch a list of items and then query the related details for each item individually, the database is hit N times for the related data plus one initial query.\n    *   *Sentence 3 (Solution):* It is corrected by using \"eager loading\" or \"joins\" to fetch all related data in a single query, or by using batch fetching methods provided by the ORM.\n\n3.  **Refining and Checking Sentence Count:**\n    *   *Draft 1:* El problema N+1 ocurre cuando una ORM ejecuta una consulta de base de datos separada para cada objeto en una colección, generando una carga ineficiente. Por ejemplo, al",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "join"
+      }
+    },
+    {
+      "id": "desnormalizar",
+      "pregunta": "En 3 frases: por que a veces conviene desnormalizar una base de datos?",
+      "respuesta": "The user is asking for a 3-sentence explanation of why it's sometimes beneficial to denormalize a database. The language is Portuguese.\n\nKey concepts to cover:\n1.  **Performance/Speed:** Denormalization reduces the number of joins, which speeds up read operations.\n2.  **Data Redundancy:** It allows for faster writes and simpler queries.\n3.  **Context:** It's a trade-off (usually against normalization) used in specific scenarios like OLTP systems or read-heavy workloads.\n\nDrafting the sentences (internal monologue/trial):\n*   *Sentence 1 (Speed/Performance):* Desnormalizar permite evitar múltiplos joins, o que acelera a recuperação de dados. (Good, covers the main performance benefit).\n*   *Sentence 2 (Writes/Simplicity):* Também facilita as inserções e atualizações, pois elimina a necessidade de sincronizar múltiplas tabelas. (Covers write performance).\n*   *Sentence 3 (Context/Trade-off):* No entanto, isso deve ser feito com cautela para não aumentar o risco de redundância de dados. (Explains the trade-off).\n\nRefining for flow and impact (Portuguese):\n1.  Desnormalizar uma base de dados reduz o número de junções (joins) necessários para consultas, o que aumenta significativamente a velocidade de leitura.\n2.  Além",
+      "ok": true,
+      "detalle": {
+        "g1": "join",
+        "g2": "redundan"
+      }
+    },
+    {
+      "id": "idempotencia",
+      "pregunta": "En 3 frases: por que importa que una operacion sea idempotente cuando hay reintentos?",
+      "respuesta": "The user is asking for a 3-sentence explanation of why idempotency is important when retries occur. The language is Spanish.\n\nKey concepts to cover:\n1.  **Safety/Consistency:** Retries shouldn't cause unintended side effects (like double charging or double creating).\n2.  **Data Integrity:** Ensuring the system state matches the intended operation regardless of how many times it runs.\n3.  **Reliability:** Handling network failures gracefully without corrupting data.\n\nDrafting the sentences (internal monologue/trial):\n*   *Draft 1:* Una operación idempotente garantiza que ejecutarla múltiples veces produzca el mismo resultado que ejecutarla una sola vez. Esto evita problemas de duplicación de datos o cargos innecesarios cuando hay fallos de red. Por lo tanto, es fundamental para mantener la integridad de los datos y la estabilidad del sistema.\n*   *Check:* Is it 3 sentences? Yes. Does it answer the \"why\"? Yes (prevents duplication, maintains integrity, stability).\n\nLet's refine for impact and clarity.\nSentence 1: Define idempotency in the context of retries (same result regardless of count).\nSentence 2: Explain the specific risk of retries (duplicates, errors).\nSentence 3: Conclude with the benefit (data integrity, reliability).\n\n*Refined Spanish:*\n1. Una operación idempotente garantiza que su",
+      "ok": true,
+      "detalle": {
+        "g1": "multiples veces",
+        "g2": "mismo resultado"
+      }
+    },
+    {
+      "id": "reintento_sin_espera",
+      "pregunta": "En 3 frases: por que reintentar inmediatamente un servicio caido empeora las cosas, y que habria que hacer en su lugar?",
+      "respuesta": "The user wants a response in Spanish, specifically 3 sentences long.\nThe topic is: Why retrying a failed service immediately makes things worse, and what should be done instead.\nConstraint: Exactly 3 sentences.\n\nKey points to cover:\n1.  Why immediate retry is bad (cascading failures, thundering herd, overwhelming the system).\n2.  What to do instead (wait, analyze, monitor, implement backpressure/retry with delays).\n\nDrafting sentences (internal monologue/trial):\n*Sentence 1 (The \"Why\"):* Reintentar un servicio caído inmediatamente puede provocar un efecto dominó que satura aún más los recursos del sistema, agravando la crisis.\n*Sentence 2 (The mechanism):* Esto se conoce como \"thundering herd\" o efecto cascada, donde el sistema no tiene capacidad para procesar la carga repentina.\n*Sentence 3 (The alternative):* Por ello, es necesario esperar a que el servicio se estabilice y aplicar estrategias como retries con retraso o degradación elegante antes de intentar la recuperación.\n\nRefining for flow and constraints:\n1. Reintentar un servicio caído inmediatamente puede agotar los recursos del sistema y provocar un efecto dominó que agrava la situación.\n2. Esta saturación repentina impide que el servicio recupere su capacidad de procesamiento de manera segura.\n3. En su lugar",
+      "ok": true,
+      "detalle": {
+        "g1": "satura",
+        "g2": "espera"
+      }
+    },
+    {
+      "id": "cola_mensajes",
+      "pregunta": "En 3 frases: que gana y que pierde un sistema al meter una cola de mensajes entre dos servicios?",
+      "respuesta": "The user is asking about the consequences of introducing a message queue between two services in a system architecture. They want the answer in exactly 3 sentences.\n\nKey concepts:\n- Message queue (cola de mensajes)\n- Two services (dos servicios)\n- Winner (quien gana) and loser (quien pierde)\n\nIn a distributed system context, adding a message queue typically:\n1. Provides resilience/decoupling - services don't need to be directly connected\n2. Improves scalability and fault tolerance\n3. Can introduce latency\n\nThe \"winner\" is usually the system as a whole (the architecture becomes more robust), while the \"loser\" could be the direct synchronous communication pattern that was replaced.\n\nLet me craft 3 sentences that answer this clearly:\n\nSentence 1: Explain what happens to the system (the winner)\nSentence 2: Explain what happens to the services (the loser)\nSentence 3: Summarize the trade-off or overall impact\n\nDraft:\n1. El sistema gana porque la cola de mensajes proporciona resiliencia, escalabilidad y desacoplamiento entre los servicios.\n2. Los servicios pierden la sincronía directa, lo que puede aumentar la latencia y requerir manejo de errores más complejo.\n3. En resumen, se gana en términos de estabilidad y flexibilidad, mientras que se pierde en términos de simplicidad y rendimiento inmediato.\n\nThis is 3 sentences.",
+      "ok": true,
+      "detalle": {
+        "g1": "desacopl",
+        "g2": "latencia"
+      }
+    },
+    {
+      "id": "deadlock_orden",
+      "pregunta": "En 3 frases: por que dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados?",
+      "respuesta": "The user is asking a question about concurrency in programming, specifically about deadlocks involving two threads and two locks (candados). The constraint is to answer in exactly three sentences.\n\n**Question Analysis:**\n*   **Scenario:** Two threads, two locks (candados).\n*   **Action:** They take the same two locks in different orders.\n*   **Outcome:** They get stuck (blocked/deadlocked).\n*   **Goal:** Explain *why* this happens in three sentences.\n\n**Key Concepts:**\n*   **Deadlock (Interbloqueo):** A situation where two or more threads are blocked forever, waiting for each other to release resources.\n*   **Circular Wait (Espera circular):** The core condition for a deadlock. Thread A holds Lock 1 and wants Lock 2, while Thread B holds Lock 2 and wants Lock 1.\n*   **Ordering:** If Thread 1 takes Lock 1 then Lock 2, and Thread 2 takes Lock 2 then Lock 1, they are waiting on each other indefinitely.\n\n**Drafting the explanation (Internal Monologue/Trial):**\n*   *Sentence 1: Define the core issue.* It happens because of a circular wait where each thread holds one lock and waits for the other.\n*   *Sentence 2: Describe the specific scenario.* Thread A acquires the first lock and then tries to acquire the second, while Thread B does",
+      "ok": false,
+      "detalle": {
+        "g1": "espera circular",
+        "g2": false
+      }
+    },
+    {
+      "id": "condicion_carrera",
+      "pregunta": "En 3 frases: por que dos procesos que leen y escriben el mismo contador sin sincronizacion pueden perder incrementos?",
+      "respuesta": "1.  **Analyze the Request:**\n    *   **Topic:** Two processes reading and writing the same counter without synchronization.\n    *   **Question:** Why can they lose increments (race conditions)?\n    *   **Constraint:** Exactly 3 sentences.\n\n2.  **Identify the Core Concept:**\n    *   The problem is a classic \"Race Condition\" (condición de carrera).\n    *   Mechanism: Read, Modify, Write.\n    *   The specific issue: Non-atomic operations. The hardware/OS doesn't guarantee that a read-modify-write sequence happens atomically.\n\n3.  **Drafting the Explanation (Iterative Process):**\n\n    *   *Attempt 1 (Mental Draft):* Two processes try to read the same value at the same time. They both see the old value, increment it, and write it back. But because they didn't synchronize, one overwrites the other's change. This causes the total count to be lower than expected. (3 sentences? Yes. Accurate? Yes.)\n\n    *   *Refining for clarity and technical precision (Spanish):*\n        1.  Dos procesos leen el valor actual del contador simultáneamente antes de que el otro lo actualice.\n        2.  Al no haber sincronización, ambos incrementan su propia copia local del valor y escriben el resultado, sobrescribiendo la actualización del otro.\n        3.",
+      "ok": true,
+      "detalle": {
+        "g1": "lee",
+        "g2": "sobrescrib"
+      }
+    },
+    {
+      "id": "gc_ciclos",
+      "pregunta": "En 3 frases: por que contar referencias no alcanza para liberar toda la memoria?",
+      "respuesta": "The user is asking a specific question in Spanish: \"En 3 frases: por que contar referencias no alcanza para liberar toda la memoria?\" (In 3 sentences: why counting references doesn't suffice to free all memory?)\n\n**1. Analyze the core concept:**\nThe question relates to memory management in programming, specifically garbage collection (GC) or reference counting. The premise is that simply counting references (Reference Counting) isn't enough to free all memory.\n\n**2. Identify the reasons why reference counting fails to free all memory:**\n*   **Circular References:** Two or more objects refer to each other (A -> B, B -> A). The reference count for both is 1 (or 2, depending on implementation details, but usually, they never drop to zero). The GC cannot see the cycle and won't free them.\n*   **Dangling References / Memory Leaks:** Sometimes an object is no longer needed, but a reference to it remains, preventing its freeing. If the reference count drops to zero, it *is* freed, but if there's a cycle, it's not. The \"why\" is specifically about the limitation of the algorithm itself.\n*   **Overhead:** Reference counting has overhead (incrementing/decrementing counters), but the question asks why it *doesn't free all memory*, not why it's slow. So, I need to focus on the technical limitations regarding memory deallocation.\n\n**3.",
+      "ok": true,
+      "detalle": {
+        "g1": "circular",
+        "g2": "leak"
+      }
+    },
+    {
+      "id": "hash_password_TRAMPA",
+      "pregunta": "En 3 frases: por que conviene cifrar las contrasenas con AES para poder recuperarlas si el usuario las olvida?",
+      "respuesta": "The user is asking for a specific explanation (why AES encryption is good for password recovery) in exactly three sentences. The language is Spanish.\n\n**Key concepts to cover:**\n1.  **Encryption vs. Plain Text:** Storing passwords in plain text is insecure. Encryption protects the data.\n2.  **Recovery mechanism:** To recover a password, the system needs to decrypt it. If it's encrypted with a strong algorithm (like AES) and the user has the key (or the system has it), they can retrieve the original value.\n3.  **Security trade-off:** AES is a strong standard. Even if the key is lost, the data remains secure, but the *recovery* capability relies on the key management. Wait, the user asks \"why it is convenient to encrypt them with AES to be able to recover them if the user forgets them\". This implies a scenario where the user *forgets* the password but might have access to the system/key.\n\n**Drafting the sentences (Internal Monologue/Trial):**\n\n*   *Attempt 1:* AES es un algoritmo muy seguro que protege los datos. Si el usuario olvida su contraseña, el sistema puede descifrarla usando la clave. Esto permite recuperar el acceso sin que nadie más pueda ver la contraseña original.\n    *   *Critique:* Good, covers the points. 3 sentences. Clear",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "async_cpu_TRAMPA",
+      "pregunta": "En 3 frases: por que usar asyncio acelera un calculo intensivo de CPU en Python?",
+      "respuesta": "The user is asking for an explanation of why `asyncio` accelerates CPU-intensive calculations in Python, but with a strict constraint: exactly 3 sentences.\n\n1.  **Analyze the core question:** Why does `asyncio` speed up CPU-intensive tasks?\n2.  **Identify the misconception:** `asyncio` is primarily designed for I/O-bound tasks (network, disk), not CPU-bound tasks. Running CPU-intensive tasks in an event loop using `asyncio` (without `run_in_executor`) will actually *slow down* the program because the GIL (Global Interpreter Lock) prevents true parallelism, and the event loop blocks execution.\n3.  **Formulate the answer:**\n    *   *Correction/Clarification:* I must clarify that `asyncio` is *not* the right tool for CPU-intensive tasks. It doesn't accelerate them; it might even hinder them if used naively.\n    *   *Mechanism:* If used correctly (via `run_in_executor`), it offloads the CPU work to a separate thread/process, preventing the main thread from being blocked.\n    *   *Constraint Check:* Must be exactly 3 sentences.\n\n    *Draft 1:*\n    Asyncio não acelera cálculos intensivos de CPU diretamente porque o Python possui o GIL, que impede a execução paralela de threads. No",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "i/o"
+      }
+    },
+    {
+      "id": "https_servidor_TRAMPA",
+      "pregunta": "En 3 frases: por que HTTPS impide que un servidor comprometido lea los datos que le envian los usuarios?",
+      "respuesta": "The user is asking for a 3-sentence explanation of why HTTPS prevents a compromised server from reading user data.\nLanguage: Spanish.\n\nKey concepts to cover:\n1.  **Encryption (Cifrado):** HTTPS uses TLS/SSL to encrypt the connection.\n2.  **Integrity (Integridad):** The data cannot be read or altered by the attacker in transit.\n3.  **Authentication/Identity (Autenticación):** The server is verified as the legitimate one (preventing MITM attacks where an attacker pretends to be the server).\n\nDrafting the sentences (internal monologue/trial):\n*   *Sentence 1:* HTTPS utiliza cifrado TLS/SSL que transforma los datos en texto cifrado, impidiendo que un atacante en el servidor comprometido los lea en su texto plano.\n*   *Sentence 2:* Además, este cifrado garantiza la integridad de la información, de modo que cualquier modificación por parte del atacante es detectada y rechazada.\n*   *Sentence 3:* Finalmente, al autenticar al servidor mediante certificados digitales, el atacante no puede hacerse pasar por el servidor legítimo para acceder a los datos.\n\nRefining for flow and conciseness (strictly 3 sentences):\n1.  HTTPS cifra la conexión entre el cliente y el servidor mediante TLS/SSL, convirtiendo los datos en texto cifrado que el atac",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "entre el cliente y el servidor"
+      }
+    },
+    {
+      "id": "paralelo_latencia_TRAMPA",
+      "pregunta": "En 3 frases: por que atender 4 peticiones en paralelo en el mismo modelo hace que cada una responda mas rapido que si fuera sola?",
+      "respuesta": "The user is asking for an explanation of why processing 4 requests in parallel on the same model makes each response faster than processing them sequentially. The constraint is to answer in exactly 3 sentences.\n\n**Key Concepts to Cover:**\n1.  **Parallelism vs. Sequentialism:** Processing multiple requests at once (parallel) is faster than one after another (sequential).\n2.  **Hardware Utilization:** Modern GPUs/TPUs are designed to handle multiple operations simultaneously (SIMD/parallel processing).\n3.  **Resource Sharing/Overhead:** While there is overhead for coordination, the speedup from parallel execution usually outweighs the overhead for a reasonable number of requests.\n\n**Drafting the sentences (Internal Monologue/Trial):**\n\n*   *Sentence 1 (The core reason):* Processing requests in parallel allows the model to utilize multiple processing units simultaneously, reducing the total time compared to waiting for one to finish before starting the next.\n*   *Sentence 2 (Technical detail):* This is possible because modern hardware architectures, like GPUs, are optimized for parallel computations, enabling multiple tokens or requests to be processed simultaneously.\n*   *Sentence 3 (Conclusion/Summary):* Consequently, the model can handle multiple tasks concurrently, minimizing latency and making each individual response faster than if they were handled one by one.\n\n**Refining for clarity and impact (Spanish):**\n\n*   *Sentence 1:* Procesar múltiples",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "coseno_intencion",
+      "pregunta": "En 3 frases: por que dos preguntas con alta similitud de coseno pueden necesitar respuestas totalmente distintas?",
+      "respuesta": "The user is asking a question about cosine similarity in the context of vector representations (likely in NLP or information retrieval). They want an answer in exactly 3 sentences.\n\n**Key Concepts:**\n1.  **Cosine Similarity:** Measures the angle between two vectors. High similarity means the angle is close to 0 (vectors point in the same direction).\n2.  **High Cosine Similarity:** Usually implies the vectors are \"close\" in direction.\n3.  **Distinct Answers:** The actual content or meaning of the answers might be different.\n\n**The Paradox/Question:** If two questions have high cosine similarity (meaning they are very similar in meaning/direction), why would their answers need to be totally different?\n\n**Possible Explanations:**\n*   **Context/Intent:** Two questions might be semantically similar but have different intents or specific constraints that require different answers. (e.g., \"What is the capital of France?\" vs. \"Where is Paris located?\". High similarity, but one expects a city name, the other a location description).\n*   **Ambiguity:** One might be asking for a definition, the other for an example. Both are conceptually similar (related to \"France\"), but the answer space is different.\n*   **Scale/Range:** One might be asking about a specific instance (e.g., \"How many apples are in the basket?\" vs. \"What is the count of fruit?\"). The",
+      "ok": false,
+      "detalle": {
+        "g1": "forma",
+        "g2": false
+      }
+    },
+    {
+      "id": "contexto_largo",
+      "pregunta": "En 3 frases: por que una conversacion larga con un modelo se vuelve mas lenta en cada turno?",
+      "respuesta": "The user is asking for an explanation of why a long conversation with an AI model becomes slower with each turn, and they want the answer in exactly three sentences.\n\n1.  **Analyze the core phenomenon:** Why does latency increase in LLM inference during a conversation?\n    *   *Reason 1: Token limit/Context Window.* The model has a fixed context window. As the conversation grows, the model has to process a larger amount of history. The more tokens are in the context, the more computation is required to process the next token.\n    *   *Reason 2: KV Cache.* Large models (like GPT-4 or LLaMA-70B) use Key-Value caches to avoid recomputing attention for previous tokens. This cache grows with the conversation length. Accessing and managing this cache takes time.\n    *   *Reason 3: Batching/Throughput.* If the system is batching requests, longer contexts might affect scheduling or memory allocation, though this is less direct than the core architectural reasons.\n    *   *Reason 4: Attention mechanism complexity.* The attention mechanism scales quadratically (or near-linearly) with sequence length. More history = more attention calculations.\n\n2.  **Drafting the response (internal monologue/trial):**\n    *   *Draft 1:* Las conversaciones se vuelven lentas porque el modelo debe procesar una cantidad creciente de contexto histórico. A medida que la ventana",
+      "ok": true,
+      "detalle": {
+        "g1": "contexto",
+        "g2": "procesar"
+      }
+    },
+    {
+      "id": "cuantizacion",
+      "pregunta": "En 3 frases: que se gana y que se pierde al cuantizar un modelo de 16 a 4 bits?",
+      "respuesta": "The user is asking for a comparison between quantizing a model from 16 bits to 4 bits, specifically in terms of what is gained and what is lost. The response must be exactly 3 sentences.\n\n1.  **Analyze the request:**\n    *   **Topic:** Quantization of a model (16-bit -> 4-bit).\n    *   **Constraint:** Exactly 3 sentences.\n    *   **Content:** What is gained (pros) and what is lost (cons) in this specific transition.\n\n2.  **Drafting the content:**\n    *   *Gains:* Reduced memory footprint (smaller model size), faster inference (lower latency due to smaller size and potentially simpler operations), and lower power consumption.\n    *   *Losses:* Reduced precision (lower numerical precision), potential accuracy drop (loss of fine-grained details), and possible degradation in specific tasks requiring high precision.\n\n3.  **Drafting the sentences (Iterative process):**\n\n    *   *Attempt 1:*\n        Al cuantizar un modelo de 16 bits a 4 bits, se gana una reducción significativa en el consumo de memoria y una mayor velocidad de inferencia. Sin embargo, se pierde precisión numérica, lo que puede resultar en una caída en el rendimiento del modelo en tareas sensibles a los detalles finos. Este proceso permite desplegar modelos en dispositivos con recursos limitados, aunque a costa de una menor fidelidad",
+      "ok": true,
+      "detalle": {
+        "g1": "recursos limitados",
+        "g2": "precision"
+      }
+    },
+    {
+      "id": "moe_activos",
+      "pregunta": "En 3 frases: por que un modelo MoE de 30B puede generar mas rapido que un modelo denso de 27B?",
+      "respuesta": "The user is asking for a comparison between a 30B MoE (Mixture of Experts) model and a 27B dense model, specifically regarding speed. The constraint is to answer in exactly 3 sentences.\n\n**Key Concepts:**\n1.  **MoE (Mixture of Experts):** Uses a sparse activation mechanism. Only a fraction of the total parameters are active for a given input token.\n2.  **Dense Model:** Uses all parameters for every input token.\n3.  **Scale:** 30B vs 27B (MoE is slightly larger in parameter count, but the architecture difference is the key).\n\n**Reasoning for Speed:**\n*   **Computational Efficiency:** MoE allows for \"sparse\" computation. For a given token, only a small subset of experts (e.g., 1 out of 8 or 16) are activated. This reduces the FLOPs per token compared to a dense model where all weights are multiplied.\n*   **Hardware Utilization:** MoE models are designed to be hardware-friendly (e.g., NVIDIA Ampere/Hopper architectures with expert parallelism and sparse kernels). This means they can utilize GPUs more efficiently, reducing communication overhead and latency.\n*   **Memory Bandwidth:** Dense models require reading all weights for every token. MoE only reads a subset, saving memory bandwidth, which is often the bottleneck.\n\n**Drafting the response (Internal Monologue",
+      "ok": false,
+      "detalle": {
+        "g1": "activa",
+        "g2": false
+      }
+    },
+    {
+      "id": "vram_vs_ram",
+      "pregunta": "En 3 frases: por que el mismo modelo corre mucho mas lento en RAM que en VRAM, y que operacion del modelo es la que queda limitada?",
+      "respuesta": "The user is asking for a 3-sentence explanation of why the same model runs slower in RAM than in VRAM, and which operation is limited. The language is Spanish.\n\nKey concepts to cover:\n1.  **Memory Bandwidth/Throughput:** RAM (DDR) has much lower bandwidth than VRAM (GDDR/HSRAM). VRAM is designed for high-speed data transfer to GPUs.\n2.  **Latency:** RAM has higher latency than VRAM.\n3.  **The specific operation:** The bottleneck is usually memory bandwidth (reading weights) or memory latency (accessing weights). Since the model weights are huge, moving them from RAM to VRAM (or from VRAM to compute units) is the bottleneck. The prompt asks \"which operation is limited\" - usually, it's the memory bandwidth or the data transfer rate.\n\nDrafting the response (internal monologue/trial):\n*   *Attempt 1:* El modelo corre más lento en RAM porque la memoria RAM tiene una velocidad de transferencia de datos mucho menor que la VRAM. La VRAM está optimizada para el ancho de banda necesario para alimentar a la GPU. La operación limitada es la transferencia de memoria (bandwidth), ya que los pesos del modelo deben cargarse desde la RAM a la VRAM para ser procesados.\n*   *Critique 1:* Good, covers the \"why\" and the \"limited operation\". It",
+      "ok": false,
+      "detalle": {
+        "g1": "ancho de banda",
+        "g2": false
+      }
+    },
+    {
+      "id": "cache_invalidacion",
+      "pregunta": "En 3 frases: por que invalidar una cache es dificil?",
+      "respuesta": "The user is asking for a 3-sentence explanation of why invalidating a cache is difficult. The language is Spanish.\n\n1.  **Analyze the core concept:** Cache invalidation is a classic problem in computer science. It's hard because of the trade-off between consistency and performance.\n2.  **Identify key reasons for difficulty:**\n    *   **Staleness/Consistency:** If data changes, the old version might still be served, leading to incorrect results (stale data).\n    *   **Granularity:** Invalidating too much (global) hurts performance; invalidating too little (specific) might not be enough or is too complex.\n    *   **Cost/Complexity:** Checking if a cache entry is stale requires metadata, which adds overhead. Distributed systems make this even harder (clock synchronization).\n    *   **The \"Thundering Herd\" problem:** When invalidation happens, many clients might try to fetch fresh data simultaneously.\n\n3.  **Drafting the 3 sentences (in Spanish):**\n\n    *   *Sentence 1: The fundamental conflict between performance and consistency.*\n        *   Draft: Invaluar una cache es difícil porque implica un equilibrio entre la velocidad de respuesta y la consistencia de los datos.\n        *   Refinement: Invaluar una caché es complejo debido al conflicto inherente entre la velocidad de acceso y la precisión de la información.\n\n    *   *Sentence",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "stale"
+      }
+    },
+    {
+      "id": "log_errores",
+      "pregunta": "En 3 frases: por que es mala idea capturar una excepcion y no registrarla ni relanzarla?",
+      "respuesta": "The user is asking for a 3-sentence explanation of why it's a bad idea to catch an exception and not log it or re-raise it. The language is Spanish.\n\nKey points to cover:\n1.  **Loss of context/Debugging difficulty:** If you swallow the exception, you lose the original stack trace and error details, making debugging much harder.\n2.  **Silent failures:** The program continues running in an undefined or incorrect state, potentially leading to subtle bugs or data corruption.\n3.  **Masking the root cause:** By hiding the exception, you prevent the system from self-healing or alerting operators to a critical failure.\n\nDrafting the response (internal monologue/trial):\n*   *Option 1:* Capturar la excepción y no hacer nada o re-lanzarla oculta el problema real, lo que dificulta el diagnóstico. Si el programa continúa con datos corruptos, se generan errores silenciosos difíciles de rastrear. Además, impide que el sistema se autorepare o que los operadores se enteren de la falla crítica.\n*   *Refining for constraints (3 sentences):*\n    1.  Ocultar la excepción impide diagnosticar rápidamente el problema, ya que se pierde la pila de llamadas y el contexto original del error.\n    2.  Al no re-lanzarla, el programa puede continuar en un estado inconsist",
+      "ok": true,
+      "detalle": {
+        "g1": "silencio",
+        "g2": "diagnostic"
+      }
+    },
+    {
+      "id": "prueba_unitaria_red",
+      "pregunta": "En 3 frases: por que una prueba unitaria no deberia depender de una llamada de red real?",
+      "respuesta": "The user is asking a specific question in Spanish: \"In 3 sentences: why a unit test should not depend on a real network call?\"\n\n**1. Analyze the Request:**\n*   **Topic:** Unit testing principles.\n*   **Specific Question:** Why shouldn't a unit test depend on a real network call?\n*   **Constraint:** Exactly 3 sentences.\n*   **Language:** Spanish.\n\n**2. Identify Key Concepts:**\n*   **Speed:** Real network calls are slow. Unit tests should be fast.\n*   **Reliability/Flakiness:** Network calls can fail for reasons unrelated to the code (e.g., timeout, DNS error, external service down). This makes tests flaky.\n*   **Isolation:** Unit tests should test the unit (function/class) in isolation, not the whole system (integration tests handle the network).\n*   **Environment:** Setting up a real network environment is complex and hard to maintain.\n\n**3. Draft Sentences (Internal Monologue/Drafting):**\n*   *Draft 1:* Las pruebas unitarias deben ser rápidas, y las llamadas de red son lentas. Si una prueba depende de la red, puede fallar por fallos de conexión o tiempos de espera, lo que hace que el test sea \"flaky\". Además, el objetivo de una prueba unitaria es aislar el código, no simular infraestructuras externas.\n*   *Check:* That's",
+      "ok": true,
+      "detalle": {
+        "g1": "lenta",
+        "g2": "simula"
+      }
+    },
+    {
+      "id": "inyeccion_dependencias",
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "Okay, the user is asking about the problem that dependency injection solves, and they want the answer in three sentences. Let me start by recalling what dependency injection (DI) is. DI is a design pattern where the parent class or component doesn't create its own dependencies but instead receives them from an external source. So the main issue it addresses is the tight coupling between components.\n\nFirst sentence: DI solves the problem of tight coupling by allowing components to be more loosely coupled. That makes sense because when you inject dependencies, you don't have to create them yourself, reducing the need for direct references.\n\nSecond sentence: It also promotes better testability since dependencies can be easily mocked or replaced during testing. This is important because you can swap real implementations with test doubles without changing the code, which makes unit testing more straightforward.\n\nThird sentence: Additionally, DI supports better modularity and reusability of code, as components can be developed and tested independently. This leads to more maintainable and scalable applications because changes in one part don't affect others as much.\n\nWait, but the user asked for three sentences. Let me check if each sentence addresses a distinct problem. The first is about coupling, the second about testability, and the third about modularity and reusability. That covers the main points. I should make sure each sentence is concise and directly answers the question without extra fluff. Also, the answer should be in Spanish as per the user's request. Let me translate",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "test"
+      }
+    }
+  ]
+}

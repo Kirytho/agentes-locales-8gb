@@ -1,0 +1,1804 @@
+{
+  "reps": 5,
+  "resumen": {
+    "monolito": {
+      "piezas": 110,
+      "piezas_de": 110,
+      "integracion": 10,
+      "de": 10,
+      "segundos": 244.57724976539612,
+      "tokens": 15869,
+      "truncadas": 0
+    },
+    "secuencial": {
+      "piezas": 110,
+      "piezas_de": 110,
+      "integracion": 10,
+      "de": 10,
+      "segundos": 171.20204138755798,
+      "tokens": 8445,
+      "truncadas": 0
+    },
+    "paralelo": {
+      "piezas": 110,
+      "piezas_de": 110,
+      "integracion": 10,
+      "de": 10,
+      "segundos": 84.56688785552979,
+      "tokens": 10496,
+      "truncadas": 0
+    }
+  },
+  "detalle": [
+    {
+      "rep": 1,
+      "tarea": "biblioteca",
+      "modo": "monolito",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 23.985742807388306,
+      "tokens": 1508,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    \"\"\"Crea un diccionario de libro con 'prestado' en False.\"\"\"\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"Agrega el libro a la biblioteca si no existe ya con ese título.\"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    \"\"\"Devuelve el libro con ese título, o None.\"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"Devuelve la lista de libros de ese autor, ordenada por año ascendente.\"\"\"\n    libros_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_autor.sort(key=lambda x: x['anio'])\n    return libros_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    \"\"\"Marca el libro como prestado si existe y no está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and not libro['prestado']:\n        libro['prestado'] = True\n        return True\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    \"\"\"Desmarca el libro como prestado si existe y está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and libro['prestado']:\n        libro['prestado'] = False\n        return True\n    return False\n\ndef disponibles(bib: list) -> list:\n    \"\"\"Lista de títulos no prestados, ordenada alfabéticamente.\"\"\"\n    titulos_disponibles = [libro['titulo'] for libro in bib if not libro['prestado']]\n    titulos_disponibles.sort()\n    return titulos_disponibles\n\ndef prestados(bib: list) -> list:\n    \"\"\"Lista de títulos prestados, ordenada alfabéticamente.\"\"\"\n    titulos_prestados = [libro['titulo'] for libro in bib if libro['prestado']]\n    titulos_prestados.sort()\n    return titulos_prestados\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"Devuelve un diccionario {decada: cantidad}.\"\"\"\n    conteo = {}\n    for libro in bib:\n        decada = (libro['anio'] // 10) * 10\n        conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"El libro de menor año. Devuelve None si la biblioteca está vacía.\"\"\"\n    if not bib:\n        return None\n    \n    # Encontrar el libro con el año mínimo\n    mas_antiguo_libro = min(bib, key=lambda x: x['anio'])\n    return mas_antiguo_libro\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    biblioteca = []\n\n    # 1. Crear y agregar libros\n    libro1 = crear_libro(\"Cien años de soledad\", \"Gabriel García Márquez\", 1967)\n    libro2 = crear_libro(\"1984\", \"George Orwell\", 1949)\n    libro3 = crear_libro(\"Orgullo y prejuicio\", \"Jane Austen\", 1813)\n    libro4 = crear_libro(\"Don Quijote de la Mancha\", \"Miguel de Cervantes\", 1605)\n    libro5 = crear_libro(\"El Hobbit\", \"J.R.R. Tolkien\", 1937)\n\n    biblioteca = agregar_libro(biblioteca, libro1)\n    biblioteca = agregar_libro(biblioteca, libro2)\n    biblioteca = agregar_libro(biblioteca, libro3)\n    biblioteca = agregar_libro(biblioteca, libro4)\n    biblioteca = agregar_libro(biblioteca, libro5)\n\n    # Intentar agregar duplicado\n    libro_duplicado = crear_libro(\"1984\", \"George Orwell\", 1949)\n    biblioteca = agregar_libro(biblioteca, libro_duplicado)\n    print(f\"Biblioteca después de agregar duplicado (debería ser {len(biblioteca)}): {len(biblioteca)}\")\n\n    # 2. Buscar\n    print(\"\\n--- Búsqueda ---\")\n    busqueda_titulo = buscar_por_titulo(biblioteca, \"1984\")\n    print(f\"Búsqueda por título '1984': {busqueda_titulo}\")\n\n    busqueda_autor = buscar_por_autor(biblioteca, \"Jane Austen\")\n    print(f\"Libros de Jane Austen: {busqueda_autor}\")\n\n    # 3. Préstamo y Devolución\n    print(\"\\n--- Préstamo/Devolución ---\")\n    print(f\"Prestar '1984': {prestar(biblioteca, '1984')}\")\n    print(f\"Prestar 'Cien años de soledad' (ya prestado): {prestar(biblioteca, 'Cien años de soledad')}\") # Debe ser False\n    print(f\"Devolver '1984': {devolver(biblioteca, '1984')}\")\n    print(f\"Devolver 'No existe': {devolver(biblioteca, 'No existe')}\") # Debe ser False\n\n    # 4. Listas de estado\n    print(\"\\n--- Estado ---\")\n    print(f\"Disponibles: {disponibles(biblioteca)}\")\n    print(f\"Prestados: {prestados(biblioteca)}\")\n\n    # 5. Conteo por década\n    print(\"\\n--- Conteo por Década ---\")\n    print(f\"Conteo: {contar_por_decada(biblioteca)}\")\n\n    # 6. Más antiguo\n    print(\"\\n--- Más Antiguo ---\")\n    print(f\"Más antiguo: {mas_antiguo(biblioteca)}\")\n\n    # Caso borde: Biblioteca vacía\n    biblioteca_vacia = []\n    print(f\"Más antiguo en biblioteca vacía: {mas_antiguo(biblioteca_vacia)}\")"
+    },
+    {
+      "rep": 1,
+      "tarea": "biblioteca",
+      "modo": "secuencial",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 13.946871757507324,
+      "tokens": 714,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    libros_del_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and not libro['prestado']:\n        libro['prestado'] = True\n        return True\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False  # Existe, pero no estaba prestado\n    return False  # No existe\n\ndef disponibles(bib: list) -> list:\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    titulos_disponibles.sort()\n    return titulos_disponibles\n\ndef prestados(bib: list) -> list:\n    titulos_prestados = []\n    for libro in bib:\n        if libro['prestado']:\n            titulos_prestados.append(libro['titulo'])\n    titulos_prestados.sort()\n    return titulos_prestados\n\ndef contar_por_decada(bib: list) -> dict:\n    decadas = {}\n    for libro in bib:\n        anio = libro['anio']\n        decada = (anio // 10) * 10\n        if decada in decadas:\n            decadas[decada] += 1\n        else:\n            decadas[decada] = 1\n    return decadas\n\ndef mas_antiguo(bib: list) -> dict or None:\n    if not bib:\n        return None\n    \n    # Usamos la función min con una clave lambda para encontrar el diccionario\n    # con el valor mínimo en la clave 'anio'.\n    return min(bib, key=lambda libro: libro['anio'])"
+    },
+    {
+      "rep": 1,
+      "tarea": "biblioteca",
+      "modo": "paralelo",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 5.95020318031311,
+      "tokens": 805,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib, libro):\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n\n    Args:\n        bib (list): La lista de libros (biblioteca).\n        libro (dict): El libro a agregar.\n\n    Returns:\n        list: La biblioteca modificada.\n    \"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib, autor):\n    libros_del_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                return False\n    return False\n\ndef devolver(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False  # Existe, pero no estaba prestado\n    return False  # No existe\n\ndef disponibles(bib):\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    return sorted(titulos_disponibles)\n\ndef prestados(bib):\n    titulos_prestados = []\n    for libro in bib:\n        if libro.get('prestado', False) is True:\n            titulos_prestados.append(libro['titulo'])\n    return sorted(titulos_prestados)\n\ndef contar_por_decada(bib):\n    \"\"\"\n    Cuenta la cantidad de libros por década en la biblioteca.\n\n    Args:\n        bib (list): Lista de diccionarios de libros.\n\n    Returns:\n        dict: Diccionario {decada: cantidad}.\n    \"\"\"\n    conteo = {}\n    for libro in bib:\n        anio = libro.get('anio')\n        if isinstance(anio, int):\n            decada = (anio // 10) * 10\n            conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib):\n    if not bib:\n        return None\n    \n    min_anio = float('inf')\n    libro_mas_antiguo = None\n    \n    for libro in bib:\n        if libro['anio'] < min_anio:\n            min_anio = libro['anio']\n            libro_mas_antiguo = libro\n            \n    return libro_mas_antiguo"
+    },
+    {
+      "rep": 1,
+      "tarea": "notas",
+      "modo": "monolito",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 31.297013998031616,
+      "tokens": 2049,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "from typing import List, Dict, Optional, Any\n\ndef parsear_fila(linea: str) -> Optional[Dict[str, Any]]:\n    \"\"\"\n    Parsea una línea en formato 'alumno,materia,nota'.\n    Devuelve el dict con 'nota' convertida a float. Si no tiene 3 partes o la nota no es un número, devuelve None.\n    \"\"\"\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str.strip())\n        return {'alumno': alumno.strip(), 'materia': materia.strip(), 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota: float) -> bool:\n    \"\"\"\n    True si la nota esta entre 0 y 10 inclusive.\n    \"\"\"\n    return 0.0 <= nota <= 10.0\n\ndef promedio(notas: List[float]) -> float:\n    \"\"\"\n    Promedio de una lista de numeros. Con lista vacia devuelve 0.0.\n    \"\"\"\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El mayor de una lista de numeros. Con lista vacia devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El menor de una lista de numeros. Con lista vacia devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas: List[Dict[str, Any]], alumno: str) -> List[float]:\n    \"\"\"\n    Lista de las notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    return [fila['nota'] for fila in filas if fila['alumno'] == alumno]\n\ndef agrupar_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"\n    Dict {materia: [filas de esa materia]}.\n    \"\"\"\n    grupos: Dict[str, List[Dict[str, Any]]] = {}\n    for fila in filas:\n        materia = fila['materia']\n        if materia not in grupos:\n            grupos[materia] = []\n        grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, float]:\n    \"\"\"\n    Dict {materia: promedio de sus notas}.\n    \"\"\"\n    grupos = agrupar_por_materia(filas)\n    promedios: Dict[str, float] = {}\n    for materia, lista_filas in grupos.items():\n        notas = [fila['nota'] for fila in lista_filas]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas: List[Dict[str, Any]], corte: float) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos con al menos una nota mayor o igual al corte, ordenada alfabeticamente.\n    \"\"\"\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas: List[Dict[str, Any]]) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos, ordenada alfabeticamente.\n    \"\"\"\n    return sorted(list(set(fila['alumno'] for fila in filas)))\n\ndef formatear_nota(nota: float) -> str:\n    \"\"\"\n    El numero como string con exactamente dos decimales.\n    \"\"\"\n    return f\"{nota:.2f}\"\n\ndef resumen(filas: List[Dict[str, Any]]) -> Dict[str, Any]:\n    \"\"\"\n    Dict con las claves 'filas' (cantidad), 'alumnos' (cantidad de alumnos distintos) y 'promedio' (promedio de todas las notas).\n    \"\"\"\n    total_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n    \n    todas_las_notas = [fila['nota'] for fila in filas]\n    promedio_total = promedio(todas_las_notas)\n    \n    alumnos_distintos = len(set(fila['alumno'] for fila in filas))\n    \n    return {\n        'filas': total_filas,\n        'alumnos': alumnos_distintos,\n        'promedio': promedio_total\n    }\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    datos_crudos = [\n        \"Ana,Matematica,8.5\",\n        \"Luis,Ciencias,7.0\",\n        \"Ana,Ciencias,9.0\",\n        \"Pedro,Matematica,5.5\",\n        \"Luis,Matematica,6.0\",\n        \"Ana,Matematica,10.0\",\n        \"Pedro,Ciencias,4.0\"\n    ]\n\n    filas_procesadas = []\n    for linea in datos_crudos:\n        fila = parsear_fila(linea)\n        if fila:\n            filas_procesadas.append(fila)\n\n    print(\"--- Pruebas de Funciones ---\")\n    \n    # 1. parsear_fila\n    print(\"\\nPrueba parsear_fila:\")\n    print(f\"Válido: {parsear_fila('Ana,Matematica,8.5')}\")\n    print(f\"Inválido (partes): {parsear_fila('Ana,Matematica')}\")\n    print(f\"Inválido (nota): {parsear_fila('Ana,Matematica,abc')}\")\n\n    # 2. nota_valida\n    print(\"\\nPrueba nota_valida:\")\n    print(f\"8.5: {nota_valida(8.5)}\")\n    print(f\"10.0: {nota_valida(10.0)}\")\n    print(f\"0.0: {nota_valida(0.0)}\")\n    print(f\"-1.0: {nota_valida(-1.0)}\")\n\n    # 3. promedio\n    print(\"\\nPrueba promedio:\")\n    print(f\"Promedio [1, 2, 3]: {promedio([1, 2, 3])}\")\n    print(f\"Promedio []: {promedio([])}\")\n\n    # 4. maximo\n    print(\"\\nPrueba maximo:\")\n    print(f\"Max [1, 5, 2]: {maximo([1, 5, 2])}\")\n    print(f\"Max []: {maximo([])}\")\n\n    # 5. minimo\n    print(\"\\nPrueba minimo:\")\n    print(f\"Min [1, 5, 2]: {minimo([1, 5, 2])}\")\n    print(f\"Min []: {minimo([])}\")\n\n    # 6. notas_de\n    print(\"\\nPrueba notas_de (Ana):\")\n    print(notas_de(filas_procesadas, \"Ana\"))\n\n    # 7. agrupar_por_materia\n    print(\"\\nPrueba agrupar_por_materia:\")\n    print(agrupar_por_materia(filas_procesadas))\n\n    # 8. promedio_por_materia\n    print(\"\\nPrueba promedio_por_materia:\")\n    print(promedio_por_materia(filas_procesadas))\n\n    # 9. aprobados\n    print(\"\\nPrueba aprobados (Corte 7.0):\")\n    print(aprobados(filas_procesadas, 7.0)) # Ana, Luis\n\n    # 10. alumnos\n    print(\"\\nPrueba alumnos:\")\n    print(alumnos(filas_procesadas)) # Ana, Luis, Pedro\n\n    # 11. formatear_nota\n    print(\"\\nPrueba formatear_nota:\")\n    print(f\"8.5 -> {formatear_nota(8.5)}\")\n    print(f\"10.0 -> {formatear_nota(10.0)}\")\n    print(f\"7.0 -> {formatear_nota(7.0)}\")\n\n    # 12. resumen\n    print(\"\\nPrueba resumen:\")\n    print(resumen(filas_procesadas))"
+    },
+    {
+      "rep": 1,
+      "tarea": "notas",
+      "modo": "secuencial",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 16.933412075042725,
+      "tokens": 805,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str)\n        return {\n            'alumno': alumno,\n            'materia': materia,\n            'nota': nota\n        }\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    notas_alumno = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas_alumno.append(fila.get('nota'))\n    return notas_alumno\n\ndef agrupar_por_materia(filas):\n    agrupacion = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in agrupacion:\n                agrupacion[materia] = []\n            agrupacion[materia].append(fila)\n    return agrupacion\n\ndef promedio_por_materia(filas):\n    agrupacion = agrupar_por_materia(filas)\n    promedios = {}\n    for materia, filas_materia in agrupacion.items():\n        notas = [fila['nota'] for fila in filas_materia]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    alumnos_unicos = set()\n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    num_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n    \n    alumnos_unicos = set()\n    total_notas = 0.0\n    \n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n        total_notas += fila['nota']\n        \n    num_alumnos = len(alumnos_unicos)\n    promedio_total = total_notas / num_filas\n    \n    return {\n        'filas': num_filas,\n        'alumnos': num_alumnos,\n        'promedio': promedio_total\n    }"
+    },
+    {
+      "rep": 1,
+      "tarea": "notas",
+      "modo": "paralelo",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 9.848882913589478,
+      "tokens": 1187,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno = partes[0].strip()\n    materia = partes[1].strip()\n    nota_str = partes[2].strip()\n    \n    try:\n        nota = float(nota_str)\n        return {'alumno': alumno, 'materia': materia, 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve la lista de notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    notas = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas.append(fila.get('nota'))\n    return notas\n\ndef agrupar_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: lista de las filas de esa materia}.\n    \"\"\"\n    agrupacion = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in agrupacion:\n                agrupacion[materia] = []\n            agrupacion[materia].append(fila)\n    return agrupacion\n\ndef promedio_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: promedio de las notas de esa materia}.\n    \"\"\"\n    notas_por_materia = {}\n    for fila in filas:\n        materia = fila['materia']\n        nota = fila['nota']\n        \n        if materia not in notas_por_materia:\n            notas_por_materia[materia] = {'suma': 0.0, 'cantidad': 0}\n        \n        notas_por_materia[materia]['suma'] += nota\n        notas_por_materia[materia]['cantidad'] += 1\n        \n    promedios = {}\n    for materia, datos in notas_por_materia.items():\n        promedio = datos['suma'] / datos['cantidad']\n        promedios[materia] = promedio\n        \n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    \"\"\"\n    Recibe una lista de dicts con clave 'alumno'. Devuelve la lista de alumnos distintos, ordenada alfabeticamente.\n    \"\"\"\n    if not filas:\n        return []\n    \n    alumnos_unicos = set()\n    for fila in filas:\n        if 'alumno' in fila and isinstance(fila['alumno'], str):\n            alumnos_unicos.add(fila['alumno'])\n            \n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota: float) -> str:\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    \"\"\"\n    Calcula un resumen estadístico de las notas.\n\n    Args:\n        filas: Lista de diccionarios, cada uno con 'alumno', 'materia' y 'nota'.\n\n    Returns:\n        Dict con 'filas' (cantidad de filas), 'alumnos' (cantidad de alumnos distintos) \n        y 'promedio' (promedio de todas las notas, 0.0 si no hay filas).\n    \"\"\"\n    num_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n\n    alumnos_distintos = set(fila['alumno'] for fila in filas)\n    \n    total_notas = sum(fila['nota'] for fila in filas)\n    promedio_total = total_notas / num_filas\n    \n    return {\n        'filas': num_filas,\n        'alumnos': len(alumnos_distintos),\n        'promedio': promedio_total\n    }"
+    },
+    {
+      "rep": 2,
+      "tarea": "biblioteca",
+      "modo": "monolito",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 20.880350351333618,
+      "tokens": 1351,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    \"\"\"Crea un diccionario de libro con 'prestado' en False.\"\"\"\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"Agrega el libro a la biblioteca si no existe ya con ese título.\"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    \"\"\"Devuelve el libro con ese título, o None.\"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"Devuelve la lista de libros de ese autor, ordenada por año ascendente.\"\"\"\n    libros_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_autor.sort(key=lambda x: x['anio'])\n    return libros_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    \"\"\"Marca el libro como prestado si existe y no está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and not libro['prestado']:\n        libro['prestado'] = True\n        return True\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    \"\"\"Desmarca el libro como prestado si existe y está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and libro['prestado']:\n        libro['prestado'] = False\n        return True\n    return False\n\ndef disponibles(bib: list) -> list:\n    \"\"\"Lista de títulos no prestados, ordenada alfabéticamente.\"\"\"\n    titulos = [libro['titulo'] for libro in bib if not libro['prestado']]\n    titulos.sort()\n    return titulos\n\ndef prestados(bib: list) -> list:\n    \"\"\"Lista de títulos prestados, ordenada alfabéticamente.\"\"\"\n    titulos = [libro['titulo'] for libro in bib if libro['prestado']]\n    titulos.sort()\n    return titulos\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"Devuelve un diccionario {decada: cantidad}.\"\"\"\n    conteo = {}\n    for libro in bib:\n        decada = (libro['anio'] // 10) * 10\n        conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"El libro de menor año. Devuelve None si la biblioteca está vacía.\"\"\"\n    if not bib:\n        return None\n    \n    # Usamos min con una clave lambda para encontrar el libro con el año más pequeño\n    return min(bib, key=lambda x: x['anio'])\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    biblioteca = []\n\n    # 1. Crear y agregar libros\n    libro1 = crear_libro(\"Cien años de soledad\", \"Gabriel García Márquez\", 1967)\n    libro2 = crear_libro(\"1984\", \"George Orwell\", 1949)\n    libro3 = crear_libro(\"Orgullo y prejuicio\", \"Jane Austen\", 1813)\n    libro4 = crear_libro(\"Don Quijote de la Mancha\", \"Miguel de Cervantes\", 1605)\n    libro5 = crear_libro(\"El Hobbit\", \"J.R.R. Tolkien\", 1937)\n\n    biblioteca = agregar_libro(biblioteca, libro1)\n    biblioteca = agregar_libro(biblioteca, libro2)\n    biblioteca = agregar_libro(biblioteca, libro3)\n    biblioteca = agregar_libro(biblioteca, libro4)\n    biblioteca = agregar_libro(biblioteca, libro5)\n\n    print(\"--- Estado Inicial ---\")\n    print(\"Disponibles:\", disponibles(biblioteca))\n    print(\"Prestados:\", prestados(biblioteca))\n\n    # 2. Buscar\n    print(\"\\n--- Búsqueda ---\")\n    libro_orwell = buscar_por_titulo(biblioteca, \"1984\")\n    print(\"Buscando 1984:\", libro_orwell)\n\n    libros_austen = buscar_por_autor(biblioteca, \"Jane Austen\")\n    print(\"Libros de Jane Austen:\", libros_austen)\n\n    # 3. Prestar y Devolver\n    print(\"\\n--- Préstamo ---\")\n    print(\"Prestar 1984:\", prestar(biblioteca, \"1984\"))\n    print(\"Disponibles después de prestar:\", disponibles(biblioteca))\n    \n    print(\"Prestar libro inexistente:\", prestar(biblioteca, \"No existe\"))\n    \n    print(\"Devolver 1984:\", devolver(biblioteca, \"1984\"))\n    print(\"Disponibles después de devolver:\", disponibles(biblioteca))\n\n    # 4. Contar por Década\n    print(\"\\n--- Conteo por Década ---\")\n    print(\"Conteo:\", contar_por_decada(biblioteca))\n\n    # 5. Más Antiguo\n    print(\"\\n--- Más Antiguo ---\")\n    print(\"Libro más antiguo:\", mas_antiguo(biblioteca))\n\n    # Caso borde: Biblioteca vacía\n    biblioteca_vacia = []\n    print(\"\\n--- Caso Borde (Vacío) ---\")\n    print(\"Más antiguo en biblioteca vacía:\", mas_antiguo(biblioteca_vacia))"
+    },
+    {
+      "rep": 2,
+      "tarea": "biblioteca",
+      "modo": "secuencial",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 20.07301950454712,
+      "tokens": 1038,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n    Devuelve la biblioteca.\n    \"\"\"\n    for libro_existente in bib:\n        if libro_existente['titulo'] == libro['titulo']:\n            return bib  # Ya existe, no se agrega\n    \n    bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"\n    Devuelve la lista de libros de ese autor, ordenada por anio ascendente.\n    \"\"\"\n    libros_del_autor = []\n    for libro in bib:\n        if libro['autor'] == autor:\n            libros_del_autor.append(libro)\n    \n    # Ordenar por año ascendente\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    \n    return libros_del_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    \"\"\"\n    Marca un libro como prestado si existe y no lo está.\n    Devuelve True si se prestó, False en caso contrario.\n    \"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                # Ya estaba prestado\n                return False\n    # Libro no encontrado\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    \"\"\"\n    Si el libro existe y está prestado, lo desmarca y devuelve True. \n    Si no existe o no estaba prestado, devuelve False.\n    \"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                # Existe, pero no estaba prestado\n                return False\n    # Libro no encontrado\n    return False\n\ndef disponibles(bib: list) -> list:\n    \"\"\"\n    Devuelve la lista de títulos no prestados, ordenada alfabéticamente.\n    \"\"\"\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    \n    titulos_disponibles.sort()\n    return titulos_disponibles\n\ndef prestados(bib: list) -> list:\n    \"\"\"\n    Devuelve la lista de títulos con 'prestado' en True, ordenada alfabéticamente.\n    \"\"\"\n    titulos_prestados = []\n    for libro in bib:\n        if libro.get('prestado', False) is True:\n            titulos_prestados.append(libro['titulo'])\n    \n    titulos_prestados.sort()\n    return titulos_prestados\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"\n    Devuelve un dict {decada: cantidad} donde la decada se calcula como anio // 10 * 10.\n    \"\"\"\n    decadas = {}\n    for libro in bib:\n        anio = libro.get('anio')\n        if anio is not None:\n            decada = (anio // 10) * 10\n            decadas[decada] = decadas.get(decada, 0) + 1\n    return decadas\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"\n    Devuelve el libro de menor anio. Con biblioteca vacia devuelve None.\n    \"\"\"\n    if not bib:\n        return None\n    \n    # Usamos la función min con una clave lambda para encontrar el diccionario con el menor 'anio'\n    return min(bib, key=lambda libro: libro['anio'])"
+    },
+    {
+      "rep": 2,
+      "tarea": "biblioteca",
+      "modo": "paralelo",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.924524307250977,
+      "tokens": 963,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    \"\"\"\n    Crea un diccionario que representa un libro.\n\n    Args:\n        titulo: El título del libro.\n        autor: El autor del libro.\n        anio: El año de publicación del libro.\n\n    Returns:\n        Un diccionario con la información del libro, con 'prestado' en False.\n    \"\"\"\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib, libro):\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n\n    Args:\n        bib (list): La lista de libros (biblioteca).\n        libro (dict): El libro a agregar.\n\n    Returns:\n        list: La biblioteca modificada.\n    \"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib, autor):\n    libros_del_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                return False\n    return False\n\ndef devolver(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False  # Existe, pero no estaba prestado\n    return False  # No existe\n\ndef disponibles(bib):\n    \"\"\"\n    Devuelve la lista de títulos de libros no prestados, ordenada alfabéticamente.\n\n    Args:\n        bib (list): La lista de libros, donde cada libro es un dict.\n\n    Returns:\n        list: Lista de títulos de libros disponibles, ordenados alfabéticamente.\n    \"\"\"\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    return sorted(titulos_disponibles)\n\ndef prestados(bib):\n    titulos_prestados = []\n    for libro in bib:\n        if libro.get('prestado', False) is True:\n            titulos_prestados.append(libro['titulo'])\n    return sorted(titulos_prestados)\n\ndef contar_por_decada(bib):\n    \"\"\"\n    Cuenta la cantidad de libros por década en la biblioteca.\n\n    Args:\n        bib (list): Lista de diccionarios de libros.\n\n    Returns:\n        dict: Diccionario donde la clave es la década (ej: 1980) y el valor es la cantidad.\n    \"\"\"\n    conteo = {}\n    for libro in bib:\n        anio = libro.get('anio')\n        if isinstance(anio, int):\n            decada = (anio // 10) * 10\n            conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib):\n    if not bib:\n        return None\n    \n    min_anio = float('inf')\n    libro_mas_antiguo = None\n    \n    for libro in bib:\n        if libro['anio'] < min_anio:\n            min_anio = libro['anio']\n            libro_mas_antiguo = libro\n            \n    return libro_mas_antiguo"
+    },
+    {
+      "rep": 2,
+      "tarea": "notas",
+      "modo": "monolito",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 29.981545448303223,
+      "tokens": 1961,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "from typing import List, Dict, Optional, Any\n\ndef parsear_fila(linea: str) -> Optional[Dict[str, Any]]:\n    \"\"\"\n    Parsea una línea de formato 'alumno,materia,nota' a un diccionario.\n    Devuelve None si no tiene 3 partes o la nota no es un número.\n    \"\"\"\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    try:\n        nota = float(nota_str.strip())\n        return {'alumno': alumno.strip(), 'materia': materia.strip(), 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota: float) -> bool:\n    \"\"\"\n    True si la nota esta entre 0 y 10 inclusive.\n    \"\"\"\n    return 0.0 <= nota <= 10.0\n\ndef promedio(notas: List[float]) -> float:\n    \"\"\"\n    Promedio de una lista de números. Con lista vacía devuelve 0.0.\n    \"\"\"\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El mayor de una lista de números. Con lista vacía devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El menor de una lista de números. Con lista vacía devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas: List[Dict[str, Any]], alumno: str) -> List[float]:\n    \"\"\"\n    Lista de las notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    return [fila['nota'] for fila in filas if fila['alumno'] == alumno]\n\ndef agrupar_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"\n    Agrupa las filas por materia.\n    \"\"\"\n    grupos: Dict[str, List[Dict[str, Any]]] = {}\n    for fila in filas:\n        materia = fila['materia']\n        if materia not in grupos:\n            grupos[materia] = []\n        grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, float]:\n    \"\"\"\n    Diccionario {materia: promedio de sus notas}.\n    \"\"\"\n    grupos = agrupar_por_materia(filas)\n    promedios: Dict[str, float] = {}\n    for materia, lista_filas in grupos.items():\n        notas = [fila['nota'] for fila in lista_filas]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas: List[Dict[str, Any]], corte: float) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos con al menos una nota mayor o igual al corte, \n    ordenada alfabéticamente.\n    \"\"\"\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas: List[Dict[str, Any]]) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos, ordenada alfabéticamente.\n    \"\"\"\n    return sorted(list(set(fila['alumno'] for fila in filas)))\n\ndef formatear_nota(nota: float) -> str:\n    \"\"\"\n    El número como string con exactamente dos decimales.\n    \"\"\"\n    return f\"{nota:.2f}\"\n\ndef resumen(filas: List[Dict[str, Any]]) -> Dict[str, Any]:\n    \"\"\"\n    Diccionario con las claves 'filas' (cantidad), 'alumnos' (cantidad de alumnos distintos) \n    y 'promedio' (promedio de todas las notas).\n    \"\"\"\n    total_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n    \n    total_notas = sum(fila['nota'] for fila in filas)\n    promedio_general = total_notas / total_filas\n    \n    alumnos_unicos = len(set(fila['alumno'] for fila in filas))\n    \n    return {\n        'filas': total_filas,\n        'alumnos': alumnos_unicos,\n        'promedio': promedio_general\n    }\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    datos_crudos = [\n        \"Ana,Matematicas,8.5\",\n        \"Luis,Ciencias,9.0\",\n        \"Ana,Ciencias,7.0\",\n        \"Pedro,Matematicas,5.5\",\n        \"Luis,Matematicas,6.0\",\n        \"Ana,Matematicas,10.0\",\n        \"Pedro,Ciencias,4.0\"\n    ]\n\n    # 1. Parsear filas\n    filas_procesadas = []\n    for linea in datos_crudos:\n        fila = parsear_fila(linea)\n        if fila:\n            filas_procesadas.append(fila)\n\n    print(\"--- Filas Procesadas ---\")\n    print(filas_procesadas)\n\n    # 2. Pruebas de funciones individuales\n    print(\"\\n--- Pruebas de Funciones ---\")\n    \n    # nota_valida\n    print(f\"Nota 8.5 válida: {nota_valida(8.5)}\")\n    print(f\"Nota 11.0 válida: {nota_valida(11.0)}\")\n    print(f\"Nota -1.0 válida: {nota_valida(-1.0)}\")\n\n    # promedio\n    print(f\"Promedio [10, 20, 30]: {promedio([10, 20, 30])}\")\n    print(f\"Promedio []: {promedio([])}\")\n\n    # maximo/minimo\n    print(f\"Máximo [1, 5, 2]: {maximo([1, 5, 2])}\")\n    print(f\"Mínimo [1, 5, 2]: {minimo([1, 5, 2])}\")\n    print(f\"Máximo []: {maximo([])}\")\n\n    # notas_de\n    notas_ana = notas_de(filas_procesadas, \"Ana\")\n    print(f\"Notas de Ana: {notas_ana}\")\n\n    # agrupar_por_materia\n    grupos = agrupar_por_materia(filas_procesadas)\n    print(f\"Agrupado por materia: {grupos}\")\n\n    # promedio_por_materia\n    promedios_materia = promedio_por_materia(filas_procesadas)\n    print(f\"Promedio por materia: {promedios_materia}\")\n\n    # aprobados\n    corte = 7.0\n    aprobados_corte = aprobados(filas_procesadas, corte)\n    print(f\"Alumnos aprobados con corte {corte}: {aprobados_corte}\")\n\n    # alumnos\n    lista_alumnos = alumnos(filas_procesadas)\n    print(f\"Lista de alumnos: {lista_alumnos}\")\n\n    # formatear_nota\n    print(f\"Formato 8.5: {formatear_nota(8.5)}\")\n    print(f\"Formato 7: {formatear_nota(7.0)}\")\n    print(f\"Formato 7.123: {formatear_nota(7.123)}\")\n\n    # resumen\n    resumen_total = resumen(filas_procesadas)\n    print(f\"Resumen general: {resumen_total}\")\n    \n    # Caso borde: lista vacía\n    resumen_vacio = resumen([])\n    print(f\"Resumen vacío: {resumen_vacio}\")"
+    },
+    {
+      "rep": 2,
+      "tarea": "notas",
+      "modo": "secuencial",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 16.811070919036865,
+      "tokens": 821,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str)\n        return {\n            'alumno': alumno,\n            'materia': materia,\n            'nota': nota\n        }\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    notas_alumno = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas_alumno.append(fila.get('nota'))\n    return notas_alumno\n\ndef agrupar_por_materia(filas):\n    agrupacion = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in agrupacion:\n                agrupacion[materia] = []\n            agrupacion[materia].append(fila)\n    return agrupacion\n\ndef promedio_por_materia(filas):\n    agrupacion = agrupar_por_materia(filas)\n    promedios = {}\n    for materia, filas_materia in agrupacion.items():\n        notas = [fila['nota'] for fila in filas_materia]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila.get('nota') is not None and fila.get('nota') >= corte:\n            alumnos_aprobados.add(fila.get('alumno'))\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    alumnos_unicos = set()\n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n\n    total_filas = len(filas)\n    \n    alumnos_unicos = set()\n    total_notas = 0.0\n    \n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n        total_notas += fila['nota']\n        \n    cantidad_alumnos = len(alumnos_unicos)\n    promedio_general = total_notas / total_filas\n    \n    return {\n        'filas': total_filas,\n        'alumnos': cantidad_alumnos,\n        'promedio': promedio_general\n    }"
+    },
+    {
+      "rep": 2,
+      "tarea": "notas",
+      "modo": "paralelo",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.665729284286499,
+      "tokens": 1285,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str)\n        return {\n            'alumno': alumno,\n            'materia': materia,\n            'nota': nota\n        }\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve la lista de notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    notas = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas.append(fila.get('nota'))\n    return notas\n\ndef agrupar_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: lista de las filas de esa materia}.\n    \"\"\"\n    grupos = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in grupos:\n                grupos[materia] = []\n            grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: promedio de las notas de esa materia}.\n    \"\"\"\n    notas_por_materia = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        nota = fila.get('nota')\n        \n        if materia is not None and isinstance(nota, (int, float)):\n            if materia not in notas_por_materia:\n                notas_por_materia[materia] = {'suma': 0.0, 'cantidad': 0}\n            \n            notas_por_materia[materia]['suma'] += nota\n            notas_por_materia[materia]['cantidad'] += 1\n            \n    promedios = {}\n    for materia, datos in notas_por_materia.items():\n        promedio = datos['suma'] / datos['cantidad']\n        promedios[materia] = promedio\n        \n    return promedios\n\ndef aprobados(filas, corte):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve la lista de alumnos distintos que tienen al menos una nota mayor o igual al corte, \n    ordenada alfabéticamente.\n    \"\"\"\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila.get('nota', -1.0) >= corte:\n            alumnos_aprobados.add(fila.get('alumno'))\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    \"\"\"\n    Recibe una lista de dicts con clave 'alumno'. Devuelve la lista de alumnos distintos, ordenada alfabeticamente.\n    \"\"\"\n    if not filas:\n        return []\n    \n    alumnos_unicos = set()\n    for fila in filas:\n        if 'alumno' in fila and isinstance(fila['alumno'], str):\n            alumnos_unicos.add(fila['alumno'])\n            \n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    \"\"\"\n    Calcula un resumen estadístico de las notas.\n\n    Args:\n        filas: Lista de diccionarios, cada uno con 'alumno', 'materia' y 'nota'.\n\n    Returns:\n        Dict con 'filas' (cantidad de filas), 'alumnos' (cantidad de alumnos distintos) \n        y 'promedio' (promedio de todas las notas, 0.0 si no hay filas).\n    \"\"\"\n    num_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n\n    alumnos_distintos = set()\n    suma_notas = 0.0\n    \n    for fila in filas:\n        alumnos_distintos.add(fila['alumno'])\n        suma_notas += fila['nota']\n        \n    cantidad_alumnos = len(alumnos_distintos)\n    promedio_total = suma_notas / num_filas\n    \n    return {\n        'filas': num_filas,\n        'alumnos': cantidad_alumnos,\n        'promedio': promedio_total\n    }"
+    },
+    {
+      "rep": 3,
+      "tarea": "biblioteca",
+      "modo": "monolito",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 25.20922327041626,
+      "tokens": 1632,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    \"\"\"Crea un diccionario de libro con 'prestado' en False.\"\"\"\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"Agrega el libro a la biblioteca si no existe ya con ese título.\"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    \"\"\"Devuelve el libro con ese título, o None.\"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"Devuelve la lista de libros de ese autor, ordenada por año ascendente.\"\"\"\n    libros_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_autor.sort(key=lambda x: x['anio'])\n    return libros_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    \"\"\"Marca el libro como prestado si existe y no está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and not libro['prestado']:\n        libro['prestado'] = True\n        return True\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    \"\"\"Desmarca el libro como prestado si existe y está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and libro['prestado']:\n        libro['prestado'] = False\n        return True\n    return False\n\ndef disponibles(bib: list) -> list:\n    \"\"\"Lista de títulos no prestados, ordenada alfabéticamente.\"\"\"\n    titulos = [libro['titulo'] for libro in bib if not libro['prestado']]\n    titulos.sort()\n    return titulos\n\ndef prestados(bib: list) -> list:\n    \"\"\"Lista de títulos prestados, ordenada alfabéticamente.\"\"\"\n    titulos = [libro['titulo'] for libro in bib if libro['prestado']]\n    titulos.sort()\n    return titulos\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"Devuelve un diccionario {decada: cantidad}.\"\"\"\n    conteo = {}\n    for libro in bib:\n        decada = (libro['anio'] // 10) * 10\n        conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"El libro de menor año. Devuelve None si la biblioteca está vacía.\"\"\"\n    if not bib:\n        return None\n    \n    # Encontrar el libro con el año mínimo\n    libro_mas_antiguo = min(bib, key=lambda x: x['anio'])\n    return libro_mas_antiguo\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    biblioteca = []\n\n    # 1. Crear y agregar libros\n    libro1 = crear_libro(\"Cien años de soledad\", \"Gabriel García Márquez\", 1967)\n    libro2 = crear_libro(\"1984\", \"George Orwell\", 1949)\n    libro3 = crear_libro(\"Don Quijote de la Mancha\", \"Miguel de Cervantes\", 1605)\n    libro4 = crear_libro(\"Orgullo y Prejuicio\", \"Jane Austen\", 1813)\n    libro5 = crear_libro(\"El Hobbit\", \"J.R.R. Tolkien\", 1937)\n\n    biblioteca = agregar_libro(biblioteca, libro1)\n    biblioteca = agregar_libro(biblioteca, libro2)\n    biblioteca = agregar_libro(biblioteca, libro3)\n    biblioteca = agregar_libro(biblioteca, libro4)\n    biblioteca = agregar_libro(biblioteca, libro5)\n\n    # Intentar agregar duplicado\n    libro_duplicado = crear_libro(\"1984\", \"George Orwell\", 1949)\n    biblioteca = agregar_libro(biblioteca, libro_duplicado)\n    print(f\"Biblioteca después de agregar duplicado (debería ser igual): {len(biblioteca)}\")\n\n    # 2. Buscar por título\n    print(\"\\n--- Búsqueda por Título ---\")\n    libro_buscado = buscar_por_titulo(biblioteca, \"1984\")\n    print(f\"Encontrado: {libro_buscado['titulo'] if libro_buscado else 'No encontrado'}\")\n    \n    libro_no_existente = buscar_por_titulo(biblioteca, \"Moby Dick\")\n    print(f\"No encontrado: {libro_no_existente}\")\n\n    # 3. Buscar por autor\n    print(\"\\n--- Búsqueda por Autor (Jane Austen) ---\")\n    libros_austen = buscar_por_autor(biblioteca, \"Jane Austen\")\n    for libro in libros_austen:\n        print(f\"  {libro['titulo']} ({libro['anio']})\")\n\n    # 4. Prestar y Devolver\n    print(\"\\n--- Préstamo ---\")\n    print(f\"Prestar '1984': {prestar(biblioteca, '1984')}\")\n    print(f\"Prestar '1984' de nuevo: {prestar(biblioteca, '1984')}\") # Ya prestado\n    \n    print(\"\\n--- Devolución ---\")\n    print(f\"Devolver '1984': {devolver(biblioteca, '1984')}\")\n    print(f\"Devolver 'Moby Dick': {devolver(biblioteca, 'Moby Dick')}\") # No existe\n\n    # 5. Disponibles y Prestados\n    print(\"\\n--- Disponibles ---\")\n    print(disponibles(biblioteca))\n\n    print(\"\\n--- Prestados ---\")\n    # Prestamos otro libro para probar la lista de prestados\n    prestar(biblioteca, \"Cien años de soledad\")\n    print(prestados(biblioteca))\n\n    # 6. Contar por Década\n    print(\"\\n--- Conteo por Década ---\")\n    print(contar_por_decada(biblioteca))\n\n    # 7. Más Antiguo\n    print(\"\\n--- Más Antiguo ---\")\n    print(f\"El más antiguo es: {mas_antiguo(biblioteca)['titulo']} ({mas_antiguo(biblioteca)['anio']})\")\n\n    # Caso borde: Biblioteca vacía\n    biblioteca_vacia = []\n    print(\"\\n--- Caso borde: Biblioteca vacía ---\")\n    print(f\"Más antiguo en biblioteca vacía: {mas_antiguo(biblioteca_vacia)}\")"
+    },
+    {
+      "rep": 3,
+      "tarea": "biblioteca",
+      "modo": "secuencial",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 17.96544909477234,
+      "tokens": 907,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n    Devuelve la biblioteca modificada.\n    \"\"\"\n    if any(libro_existente['titulo'] == libro['titulo'] for libro_existente in bib):\n        return bib\n    bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"\n    Devuelve la lista de libros de ese autor, ordenada por anio ascendente.\n    \"\"\"\n    libros_del_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                return False  # Ya estaba prestado\n    return False  # No existe\n\ndef devolver(bib: list, titulo: str) -> bool:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False  # Existe, pero no estaba prestado\n    return False  # No existe\n\ndef disponibles(bib: list) -> list:\n    \"\"\"\n    Devuelve la lista de titulos con 'prestado' en False, ordenada alfabeticamente.\n    \"\"\"\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    \n    titulos_disponibles.sort()\n    return titulos_disponibles\n\ndef prestados(bib: list) -> list:\n    \"\"\"\n    Devuelve la lista de titulos con 'prestado' en True, ordenada alfabeticamente.\n    \"\"\"\n    titulos_prestados = []\n    for libro in bib:\n        if libro['prestado']:\n            titulos_prestados.append(libro['titulo'])\n    \n    titulos_prestados.sort()\n    return titulos_prestados\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"\n    Devuelve un dict {decada: cantidad} donde la decada se calcula como anio // 10 * 10.\n    \"\"\"\n    decadas = {}\n    for libro in bib:\n        anio = libro['anio']\n        decada = (anio // 10) * 10\n        decadas[decada] = decadas.get(decada, 0) + 1\n    return decadas\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"\n    Devuelve el libro de menor anio. Con biblioteca vacia devuelve None.\n    \"\"\"\n    if not bib:\n        return None\n    \n    # Usamos la función min con una clave lambda para encontrar el diccionario con el menor 'anio'\n    return min(bib, key=lambda libro: libro['anio'])"
+    },
+    {
+      "rep": 3,
+      "tarea": "biblioteca",
+      "modo": "paralelo",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.573452949523926,
+      "tokens": 862,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib, libro):\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n\n    Args:\n        bib (list): La lista de libros (biblioteca).\n        libro (dict): El libro a agregar.\n\n    Returns:\n        list: La biblioteca modificada.\n    \"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib, autor):\n    libros_del_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                return False\n    return False\n\ndef devolver(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False\n    return False\n\ndef disponibles(bib):\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    return sorted(titulos_disponibles)\n\ndef prestados(bib):\n    \"\"\"\n    Devuelve la lista de títulos de los libros prestados, ordenada alfabéticamente.\n\n    Args:\n        bib (list): La biblioteca, una lista de diccionarios de libros.\n\n    Returns:\n        list: Lista de títulos de los libros prestados, ordenada alfabéticamente.\n    \"\"\"\n    titulos_prestados = []\n    for libro in bib:\n        if libro.get('prestado', False) is True:\n            titulos_prestados.append(libro.get('titulo'))\n    \n    return sorted(titulos_prestados)\n\ndef contar_por_decada(bib):\n    \"\"\"\n    Cuenta la cantidad de libros por década en la biblioteca.\n\n    Args:\n        bib (list): Lista de diccionarios de libros.\n\n    Returns:\n        dict: Diccionario donde la clave es la década y el valor es la cantidad de libros.\n    \"\"\"\n    conteo = {}\n    for libro in bib:\n        anio = libro.get('anio')\n        if isinstance(anio, int):\n            decada = (anio // 10) * 10\n            conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib):\n    if not bib:\n        return None\n    \n    mas_antiguo_libro = bib[0]\n    for libro in bib[1:]:\n        if libro['anio'] < mas_antiguo_libro['anio']:\n            mas_antiguo_libro = libro\n    return mas_antiguo_libro"
+    },
+    {
+      "rep": 3,
+      "tarea": "notas",
+      "modo": "monolito",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 31.170772790908813,
+      "tokens": 2035,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "from typing import List, Dict, Optional, Any\n\ndef parsear_fila(linea: str) -> Optional[Dict[str, Any]]:\n    \"\"\"\n    Parsea una línea de formato 'alumno,materia,nota' a un diccionario.\n    Devuelve None si no tiene 3 partes o la nota no es un número.\n    \"\"\"\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    try:\n        nota = float(nota_str.strip())\n        return {'alumno': alumno.strip(), 'materia': materia.strip(), 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota: float) -> bool:\n    \"\"\"\n    Verifica si la nota está entre 0 y 10 inclusive.\n    \"\"\"\n    return 0.0 <= nota <= 10.0\n\ndef promedio(notas: List[float]) -> float:\n    \"\"\"\n    Calcula el promedio de una lista de números. Devuelve 0.0 si la lista está vacía.\n    \"\"\"\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    Devuelve el mayor de una lista de números. Devuelve None si la lista está vacía.\n    \"\"\"\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    Devuelve el menor de una lista de números. Devuelve None si la lista está vacía.\n    \"\"\"\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas: List[Dict[str, Any]], alumno: str) -> List[float]:\n    \"\"\"\n    Devuelve una lista de las notas de un alumno, en el orden en que aparecen.\n    \"\"\"\n    notas = []\n    for fila in filas:\n        if fila['alumno'] == alumno:\n            notas.append(fila['nota'])\n    return notas\n\ndef agrupar_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"\n    Agrupa las filas por materia.\n    \"\"\"\n    grupos: Dict[str, List[Dict[str, Any]]] = {}\n    for fila in filas:\n        materia = fila['materia']\n        if materia not in grupos:\n            grupos[materia] = []\n        grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, float]:\n    \"\"\"\n    Calcula el promedio de las notas para cada materia.\n    \"\"\"\n    grupos = agrupar_por_materia(filas)\n    promedios: Dict[str, float] = {}\n    for materia, lista_filas in grupos.items():\n        notas = [fila['nota'] for fila in lista_filas]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas: List[Dict[str, Any]], corte: float) -> List[str]:\n    \"\"\"\n    Devuelve una lista de alumnos distintos con al menos una nota >= corte, ordenada alfabéticamente.\n    \"\"\"\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas: List[Dict[str, Any]]) -> List[str]:\n    \"\"\"\n    Devuelve una lista de alumnos distintos, ordenada alfabéticamente.\n    \"\"\"\n    alumnos_unicos = set()\n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota: float) -> str:\n    \"\"\"\n    Formatea el número como string con exactamente dos decimales.\n    \"\"\"\n    return f\"{nota:.2f}\"\n\ndef resumen(filas: List[Dict[str, Any]]) -> Dict[str, Any]:\n    \"\"\"\n    Devuelve un diccionario con el resumen: 'filas' (cantidad), \n    'alumnos' (cantidad de alumnos distintos) y 'promedio' (promedio de todas las notas).\n    \"\"\"\n    total_notas = sum(fila['nota'] for fila in filas)\n    cantidad_filas = len(filas)\n    \n    alumnos_unicos = set(fila['alumno'] for fila in filas)\n    cantidad_alumnos = len(alumnos_unicos)\n    \n    promedio_total = promedio([fila['nota'] for fila in filas])\n    \n    return {\n        'filas': cantidad_filas,\n        'alumnos': cantidad_alumnos,\n        'promedio': promedio_total\n    }\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    datos_crudos = [\n        \"Ana,Matematicas,8.5\",\n        \"Luis,Ciencias,7.0\",\n        \"Ana,Ciencias,9.0\",\n        \"Pedro,Matematicas,5.5\",\n        \"Luis,Matematicas,6.0\",\n        \"Ana,Matematicas,10.0\",\n        \"Pedro,Ciencias,4.0\",\n        \"Ana,Historia,7.5\"\n    ]\n\n    # 1. Parseo\n    filas_procesadas = []\n    for linea in datos_crudos:\n        fila = parsear_fila(linea)\n        if fila:\n            filas_procesadas.append(fila)\n\n    print(\"--- Filas Procesadas ---\")\n    print(filas_procesadas)\n\n    # 2. Pruebas de funciones individuales\n    print(\"\\n--- Pruebas de Funciones ---\")\n    \n    # nota_valida\n    print(f\"Nota 8.5 válida: {nota_valida(8.5)}\")\n    print(f\"Nota 11.0 válida: {nota_valida(11.0)}\")\n    print(f\"Nota -1.0 válida: {nota_valida(-1.0)}\")\n\n    # promedio\n    print(f\"Promedio [10, 20, 30]: {promedio([10, 20, 30])}\")\n    print(f\"Promedio []: {promedio([])}\")\n\n    # maximo/minimo\n    print(f\"Máximo [1, 5, 2]: {maximo([1, 5, 2])}\")\n    print(f\"Mínimo [1, 5, 2]: {minimo([1, 5, 2])}\")\n    print(f\"Máximo []: {maximo([])}\")\n\n    # notas_de\n    notas_ana = notas_de(filas_procesadas, \"Ana\")\n    print(f\"Notas de Ana: {notas_ana}\")\n\n    # agrupar_por_materia\n    grupos = agrupar_por_materia(filas_procesadas)\n    print(\"\\nGrupos por Materia:\", {m: len(f) for m, f in grupos.items()})\n\n    # promedio_por_materia\n    promedios_materia = promedio_por_materia(filas_procesadas)\n    print(\"Promedio por Materia:\", {m: f\"{p:.2f}\" for m, p in promedios_materia.items()})\n\n    # aprobados\n    aprobados_corte_7 = aprobados(filas_procesadas, 7.0)\n    print(f\"Aprobados (Corte 7.0): {aprobados_corte_7}\")\n\n    # alumnos\n    lista_alumnos = alumnos(filas_procesadas)\n    print(\"Lista de Alumnos:\", lista_alumnos)\n\n    # formatear_nota\n    print(f\"Formato 8.5: {formatear_nota(8.5)}\")\n    print(f\"Formato 7.0: {formatear_nota(7.0)}\")\n\n    # resumen\n    resumen_final = resumen(filas_procesadas)\n    print(\"\\n--- Resumen General ---\")\n    print(f\"Total de filas: {resumen_final['filas']}\")\n    print(f\"Total de alumnos: {resumen_final['alumnos']}\")\n    print(f\"Promedio general: {resumen_final['promedio']:.2f}\")"
+    },
+    {
+      "rep": 3,
+      "tarea": "notas",
+      "modo": "secuencial",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 17.33698534965515,
+      "tokens": 818,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str)\n        return {\n            'alumno': alumno,\n            'materia': materia,\n            'nota': nota\n        }\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    notas_alumno = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas_alumno.append(fila.get('nota'))\n    return notas_alumno\n\ndef agrupar_por_materia(filas):\n    agrupacion = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in agrupacion:\n                agrupacion[materia] = []\n            agrupacion[materia].append(fila)\n    return agrupacion\n\ndef promedio_por_materia(filas):\n    agrupacion = agrupar_por_materia(filas)\n    promedios = {}\n    for materia, filas_materia in agrupacion.items():\n        notas = [fila['nota'] for fila in filas_materia]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila.get('nota', 0.0) >= corte:\n            alumnos_aprobados.add(fila.get('alumno'))\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    alumnos_unicos = set()\n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    num_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n    \n    alumnos_unicos = set()\n    total_notas = 0.0\n    \n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n        total_notas += fila['nota']\n        \n    num_alumnos = len(alumnos_unicos)\n    promedio_general = total_notas / num_filas\n    \n    return {\n        'filas': num_filas,\n        'alumnos': num_alumnos,\n        'promedio': promedio_general\n    }"
+    },
+    {
+      "rep": 3,
+      "tarea": "notas",
+      "modo": "paralelo",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.679126977920532,
+      "tokens": 1204,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str)\n        return {\n            'alumno': alumno,\n            'materia': materia,\n            'nota': nota\n        }\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve la lista de notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    notas = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas.append(fila.get('nota'))\n    return notas\n\ndef agrupar_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: lista de las filas de esa materia}.\n    \"\"\"\n    grupos = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in grupos:\n                grupos[materia] = []\n            grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas):\n    \"\"\"\n    Calcula el promedio de las notas para cada materia.\n\n    Args:\n        filas: Lista de diccionarios, cada uno con 'alumno', 'materia' y 'nota'.\n\n    Returns:\n        Dict {materia: promedio de las notas de esa materia}.\n    \"\"\"\n    notas_por_materia = {}\n    for fila in filas:\n        materia = fila['materia']\n        nota = fila['nota']\n\n        if materia not in notas_por_materia:\n            notas_por_materia[materia] = {'suma': 0.0, 'cantidad': 0}\n\n        notas_por_materia[materia]['suma'] += nota\n        notas_por_materia[materia]['cantidad'] += 1\n\n    promedios = {}\n    for materia, datos in notas_por_materia.items():\n        promedio = datos['suma'] / datos['cantidad']\n        promedios[materia] = promedio\n\n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    \"\"\"\n    Recibe una lista de dicts con clave 'alumno'. Devuelve la lista de alumnos distintos, ordenada alfabeticamente.\n    \"\"\"\n    if not filas:\n        return []\n    \n    alumnos_unicos = set()\n    for fila in filas:\n        if 'alumno' in fila and isinstance(fila['alumno'], str):\n            alumnos_unicos.add(fila['alumno'])\n            \n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota: float) -> str:\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    \"\"\"\n    Calcula un resumen estadístico de las notas.\n\n    Args:\n        filas: Lista de diccionarios, cada uno con 'alumno', 'materia' y 'nota'.\n\n    Returns:\n        Dict con 'filas' (cantidad de filas), 'alumnos' (cantidad de alumnos distintos) \n        y 'promedio' (promedio de todas las notas, 0.0 si no hay filas).\n    \"\"\"\n    num_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n\n    alumnos_distintos = set()\n    suma_notas = 0.0\n\n    for fila in filas:\n        alumnos_distintos.add(fila['alumno'])\n        suma_notas += fila['nota']\n\n    cantidad_alumnos = len(alumnos_distintos)\n    promedio_total = suma_notas / num_filas\n\n    return {\n        'filas': num_filas,\n        'alumnos': cantidad_alumnos,\n        'promedio': promedio_total\n    }"
+    },
+    {
+      "rep": 4,
+      "tarea": "biblioteca",
+      "modo": "monolito",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 21.547672748565674,
+      "tokens": 1391,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    \"\"\"Crea un diccionario de libro con 'prestado' en False.\"\"\"\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"Agrega el libro a la biblioteca si no existe ya con ese título.\"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    \"\"\"Devuelve el libro con ese título, o None.\"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"Devuelve la lista de libros de ese autor, ordenada por año ascendente.\"\"\"\n    libros_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_autor.sort(key=lambda x: x['anio'])\n    return libros_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    \"\"\"Marca el libro como prestado si existe y no está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and not libro['prestado']:\n        libro['prestado'] = True\n        return True\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    \"\"\"Desmarca el libro como prestado si existe y está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and libro['prestado']:\n        libro['prestado'] = False\n        return True\n    return False\n\ndef disponibles(bib: list) -> list:\n    \"\"\"Lista de títulos no prestados, ordenada alfabéticamente.\"\"\"\n    titulos = [libro['titulo'] for libro in bib if not libro['prestado']]\n    titulos.sort()\n    return titulos\n\ndef prestados(bib: list) -> list:\n    \"\"\"Lista de títulos prestados, ordenada alfabéticamente.\"\"\"\n    titulos = [libro['titulo'] for libro in bib if libro['prestado']]\n    titulos.sort()\n    return titulos\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"Devuelve un diccionario {decada: cantidad}.\"\"\"\n    conteo = {}\n    for libro in bib:\n        decada = (libro['anio'] // 10) * 10\n        conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"El libro de menor año. Devuelve None si la biblioteca está vacía.\"\"\"\n    if not bib:\n        return None\n    \n    # Usamos min con una clave lambda para encontrar el libro con el año más pequeño\n    return min(bib, key=lambda x: x['anio'])\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    biblioteca = []\n\n    # 1. Crear libros\n    libro1 = crear_libro(\"Cien años de soledad\", \"Gabriel García Márquez\", 1967)\n    libro2 = crear_libro(\"1984\", \"George Orwell\", 1949)\n    libro3 = crear_libro(\"Orgullo y prejuicio\", \"Jane Austen\", 1813)\n    libro4 = crear_libro(\"Don Quijote de la Mancha\", \"Miguel de Cervantes\", 1605)\n    libro5 = crear_libro(\"El Hobbit\", \"J.R.R. Tolkien\", 1937)\n\n    # 2. Agregar libros\n    biblioteca = agregar_libro(biblioteca, libro1)\n    biblioteca = agregar_libro(biblioteca, libro2)\n    biblioteca = agregar_libro(biblioteca, libro3)\n    biblioteca = agregar_libro(biblioteca, libro4)\n    biblioteca = agregar_libro(biblioteca, libro5)\n\n    print(\"--- Estado Inicial ---\")\n    print(\"Disponibles:\", disponibles(biblioteca))\n    print(\"Prestados:\", prestados(biblioteca))\n    print(\"Conteo por década:\", contar_por_decada(biblioteca))\n    print(\"Más antiguo:\", mas_antiguo(biblioteca))\n\n    # 3. Buscar\n    print(\"\\n--- Búsqueda ---\")\n    libro_orwell = buscar_por_titulo(biblioteca, \"1984\")\n    print(\"Buscando '1984':\", libro_orwell)\n    \n    libros_austen = buscar_por_autor(biblioteca, \"Jane Austen\")\n    print(\"Libros de Jane Austen:\", libros_austen)\n\n    # 4. Prestar y Devolver\n    print(\"\\n--- Préstamo ---\")\n    print(\"Prestar '1984':\", prestar(biblioteca, \"1984\"))\n    print(\"Disponibles después de prestar:\", disponibles(biblioteca))\n    \n    print(\"Prestar 'Cien años de soledad' (ya prestado):\", prestar(biblioteca, \"Cien años de soledad\")) # Falso\n    \n    print(\"Devolver '1984':\", devolver(biblioteca, \"1984\"))\n    print(\"Disponibles después de devolver:\", disponibles(biblioteca))\n\n    # 5. Casos borde\n    print(\"\\n--- Casos Borde ---\")\n    print(\"Biblioteca vacía (Más antiguo):\", mas_antiguo([]))\n    \n    # Intentar prestar un libro inexistente\n    print(\"Prestar libro inexistente:\", prestar(biblioteca, \"Libro Fantasma\"))\n    \n    # Intentar devolver un libro no prestado\n    print(\"Devolver libro no prestado:\", devolver(biblioteca, \"Don Quijote de la Mancha\"))"
+    },
+    {
+      "rep": 4,
+      "tarea": "biblioteca",
+      "modo": "secuencial",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 18.942502975463867,
+      "tokens": 986,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n    Devuelve la biblioteca modificada.\n    \"\"\"\n    if any(libro_existente['titulo'] == libro['titulo'] for libro_existente in bib):\n        return bib\n    bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"\n    Devuelve la lista de libros de un autor dado, ordenada por año ascendente.\n    \"\"\"\n    libros_del_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    \"\"\"\n    Marca un libro como prestado si existe y no está prestado.\n    Devuelve True si se pudo prestar, False en caso contrario.\n    \"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                # El libro existe pero ya está prestado\n                return False\n    # El libro no existe\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    \"\"\"\n    Marca un libro como no prestado si existe y estaba prestado.\n    Devuelve True si se pudo devolver, False en caso contrario.\n    \"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                # El libro existe pero no estaba prestado\n                return False\n    # El libro no existe\n    return False\n\ndef disponibles(bib: list) -> list:\n    \"\"\"\n    Devuelve la lista de títulos de libros no prestados, ordenada alfabéticamente.\n    \"\"\"\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    \n    titulos_disponibles.sort()\n    return titulos_disponibles\n\ndef prestados(bib: list) -> list:\n    \"\"\"\n    Devuelve la lista de títulos de libros prestados, ordenada alfabéticamente.\n    \"\"\"\n    titulos_prestados = []\n    for libro in bib:\n        if libro['prestado']:\n            titulos_prestados.append(libro['titulo'])\n    \n    titulos_prestados.sort()\n    return titulos_prestados\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"\n    Devuelve un diccionario {decada: cantidad} donde la decada se calcula como anio // 10 * 10.\n    \"\"\"\n    decadas = {}\n    for libro in bib:\n        anio = libro['anio']\n        decada = (anio // 10) * 10\n        decadas[decada] = decadas.get(decada, 0) + 1\n    return decadas\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"\n    Devuelve el libro de menor año. Con biblioteca vacía devuelve None.\n    \"\"\"\n    if not bib:\n        return None\n    \n    # Usamos la función min con una clave lambda para encontrar el diccionario con el menor 'anio'\n    return min(bib, key=lambda libro: libro['anio'])"
+    },
+    {
+      "rep": 4,
+      "tarea": "biblioteca",
+      "modo": "paralelo",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.710772514343262,
+      "tokens": 874,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib, libro):\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n\n    Args:\n        bib (list): La lista de libros (biblioteca).\n        libro (dict): El libro a agregar.\n\n    Returns:\n        list: La biblioteca modificada.\n    \"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib, autor):\n    libros_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_autor.sort(key=lambda libro: libro['anio'])\n    return libros_autor\n\ndef prestar(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                return False\n    return False\n\ndef devolver(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False  # Existe, pero no estaba prestado\n    return False  # No existe\n\ndef disponibles(bib):\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    return sorted(titulos_disponibles)\n\ndef prestados(bib):\n    \"\"\"\n    Devuelve la lista de títulos de los libros prestados, ordenada alfabéticamente.\n\n    Args:\n        bib (list): La biblioteca, una lista de diccionarios de libros.\n\n    Returns:\n        list: Lista de títulos de los libros prestados, ordenada alfabéticamente.\n    \"\"\"\n    titulos_prestados = []\n    for libro in bib:\n        if libro.get('prestado', False) is True:\n            titulos_prestados.append(libro['titulo'])\n    \n    return sorted(titulos_prestados)\n\ndef contar_por_decada(bib):\n    \"\"\"\n    Cuenta la cantidad de libros por década en la biblioteca.\n\n    Args:\n        bib (list): Lista de diccionarios de libros.\n\n    Returns:\n        dict: Diccionario donde la clave es la década (ej: 1980) y el valor es la cantidad.\n    \"\"\"\n    decadas = {}\n    for libro in bib:\n        anio = libro.get('anio')\n        if isinstance(anio, int):\n            decada = (anio // 10 * 10)\n            decadas[decada] = decadas.get(decada, 0) + 1\n    return decadas\n\ndef mas_antiguo(bib):\n    if not bib:\n        return None\n    \n    mas_antiguo_libro = bib[0]\n    for libro in bib[1:]:\n        if libro['anio'] < mas_antiguo_libro['anio']:\n            mas_antiguo_libro = libro\n    return mas_antiguo_libro"
+    },
+    {
+      "rep": 4,
+      "tarea": "notas",
+      "modo": "monolito",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 17.540237426757812,
+      "tokens": 1139,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "from typing import List, Dict, Optional, Any\n\ndef parsear_fila(linea: str) -> Optional[Dict[str, Any]]:\n    \"\"\"\n    Parsea una línea de formato 'alumno,materia,nota' a un diccionario.\n    Devuelve None si no tiene 3 partes o la nota no es un número.\n    \"\"\"\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str.strip())\n        return {'alumno': alumno.strip(), 'materia': materia.strip(), 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota: float) -> bool:\n    \"\"\"\n    True si la nota esta entre 0 y 10 inclusive.\n    \"\"\"\n    return 0.0 <= nota <= 10.0\n\ndef promedio(notas: List[float]) -> float:\n    \"\"\"\n    Promedio de una lista de números. Con lista vacía devuelve 0.0.\n    \"\"\"\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El mayor de una lista de números. Con lista vacía devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El menor de una lista de números. Con lista vacía devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas: List[Dict[str, Any]], alumno: str) -> List[float]:\n    \"\"\"\n    Lista de las notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    return [fila['nota'] for fila in filas if fila['alumno'] == alumno]\n\ndef agrupar_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"\n    Agrupa las filas por materia.\n    \"\"\"\n    grupos: Dict[str, List[Dict[str, Any]]] = {}\n    for fila in filas:\n        materia = fila['materia']\n        if materia not in grupos:\n            grupos[materia] = []\n        grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, float]:\n    \"\"\"\n    Diccionario {materia: promedio de sus notas}.\n    \"\"\"\n    grupos = agrupar_por_materia(filas)\n    promedios: Dict[str, float] = {}\n    for materia, lista_filas in grupos.items():\n        notas = [fila['nota'] for fila in lista_filas]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas: List[Dict[str, Any]], corte: float) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos con al menos una nota mayor o igual al corte, ordenada alfabéticamente.\n    \"\"\"\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas: List[Dict[str, Any]]) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos, ordenada alfabéticamente.\n    \"\"\"\n    return sorted(list(set(fila['alumno'] for fila in filas)))\n\ndef formatear_nota(nota: float) -> str:\n    \"\"\"\n    El número como string con exactamente dos decimales.\n    \"\"\"\n    return f\"{nota:.2f}\"\n\ndef resumen(filas: List[Dict[str, Any]]) -> Dict[str, Any]:\n    \"\"\"\n    Diccionario con las claves 'filas' (cantidad), 'alumnos' (cantidad de alumnos distintos) y 'promedio' (promedio de todas las notas).\n    \"\"\"\n    total_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n    \n    todas_las_notas = [fila['nota'] for fila in filas]\n    promedio_total = promedio(todas_las_notas)\n    \n    alumnos_unicos = len(set(fila['alumno'] for fila in filas))\n    \n    return {\n        'filas': total_filas,\n        'alumnos': alumnos_unicos,\n        'promedio': promedio_total\n    }"
+    },
+    {
+      "rep": 4,
+      "tarea": "notas",
+      "modo": "secuencial",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 16.757569313049316,
+      "tokens": 797,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str)\n        return {\n            'alumno': alumno,\n            'materia': materia,\n            'nota': nota\n        }\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    notas_alumno = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas_alumno.append(fila.get('nota'))\n    return notas_alumno\n\ndef agrupar_por_materia(filas):\n    agrupacion = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in agrupacion:\n                agrupacion[materia] = []\n            agrupacion[materia].append(fila)\n    return agrupacion\n\ndef promedio_por_materia(filas):\n    agrupacion = agrupar_por_materia(filas)\n    promedios = {}\n    for materia, filas_materia in agrupacion.items():\n        notas = [fila['nota'] for fila in filas_materia]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    alumnos_unicos = set()\n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    num_filas = len(filas)\n    \n    alumnos_unicos = set()\n    total_notas = 0.0\n    \n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n        total_notas += fila['nota']\n        \n    num_alumnos = len(alumnos_unicos)\n    \n    promedio_general = 0.0\n    if num_filas > 0:\n        promedio_general = total_notas / num_filas\n        \n    return {\n        'filas': num_filas,\n        'alumnos': num_alumnos,\n        'promedio': promedio_general\n    }"
+    },
+    {
+      "rep": 4,
+      "tarea": "notas",
+      "modo": "paralelo",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.253118991851807,
+      "tokens": 1200,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno = partes[0].strip()\n    materia = partes[1].strip()\n    nota_str = partes[2].strip()\n    \n    try:\n        nota = float(nota_str)\n        return {'alumno': alumno, 'materia': materia, 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve la lista de notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    notas = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas.append(fila.get('nota'))\n    return notas\n\ndef agrupar_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: lista de las filas de esa materia}.\n    \"\"\"\n    grupos = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in grupos:\n                grupos[materia] = []\n            grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: promedio de las notas de esa materia}.\n    \"\"\"\n    notas_por_materia = {}\n    for fila in filas:\n        materia = fila['materia']\n        nota = fila['nota']\n        \n        if materia not in notas_por_materia:\n            notas_por_materia[materia] = {'suma': 0.0, 'cantidad': 0}\n        \n        notas_por_materia[materia]['suma'] += nota\n        notas_por_materia[materia]['cantidad'] += 1\n        \n    promedios = {}\n    for materia, datos in notas_por_materia.items():\n        promedio = datos['suma'] / datos['cantidad']\n        promedios[materia] = promedio\n        \n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    \"\"\"\n    Recibe una lista de dicts con clave 'alumno'. Devuelve la lista de alumnos distintos, ordenada alfabéticamente.\n    \"\"\"\n    if not filas:\n        return []\n    \n    alumnos_unicos = set()\n    for fila in filas:\n        if 'alumno' in fila and isinstance(fila['alumno'], str):\n            alumnos_unicos.add(fila['alumno'])\n            \n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    \"\"\"\n    Calcula un resumen estadístico de las notas.\n\n    Args:\n        filas: Lista de diccionarios, cada uno con 'alumno', 'materia' y 'nota'.\n\n    Returns:\n        Dict con 'filas' (cantidad de filas), 'alumnos' (cantidad de alumnos distintos) \n        y 'promedio' (promedio de todas las notas, 0.0 si no hay filas).\n    \"\"\"\n    num_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n\n    alumnos_distintos = set()\n    suma_notas = 0.0\n\n    for fila in filas:\n        alumnos_distintos.add(fila['alumno'])\n        suma_notas += fila['nota']\n\n    cantidad_alumnos = len(alumnos_distintos)\n    promedio_total = suma_notas / num_filas\n\n    return {\n        'filas': num_filas,\n        'alumnos': cantidad_alumnos,\n        'promedio': promedio_total\n    }"
+    },
+    {
+      "rep": 5,
+      "tarea": "biblioteca",
+      "modo": "monolito",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 25.394769430160522,
+      "tokens": 1657,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    \"\"\"Crea un diccionario de libro con 'prestado' en False.\"\"\"\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    \"\"\"Agrega el libro a la biblioteca si no existe ya con ese título.\"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    \"\"\"Devuelve el libro con ese título, o None.\"\"\"\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    \"\"\"Devuelve la lista de libros de ese autor, ordenada por año ascendente.\"\"\"\n    libros_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_autor.sort(key=lambda x: x['anio'])\n    return libros_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    \"\"\"Marca el libro como prestado si existe y no está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and not libro['prestado']:\n        libro['prestado'] = True\n        return True\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    \"\"\"Desmarca el libro como prestado si existe y está prestado.\"\"\"\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and libro['prestado']:\n        libro['prestado'] = False\n        return True\n    return False\n\ndef disponibles(bib: list) -> list:\n    \"\"\"Lista de títulos no prestados, ordenada alfabéticamente.\"\"\"\n    titulos_disponibles = [libro['titulo'] for libro in bib if not libro['prestado']]\n    titulos_disponibles.sort()\n    return titulos_disponibles\n\ndef prestados(bib: list) -> list:\n    \"\"\"Lista de títulos prestados, ordenada alfabéticamente.\"\"\"\n    titulos_prestados = [libro['titulo'] for libro in bib if libro['prestado']]\n    titulos_prestados.sort()\n    return titulos_prestados\n\ndef contar_por_decada(bib: list) -> dict:\n    \"\"\"Devuelve un diccionario {decada: cantidad} basado en el año.\"\"\"\n    conteo = {}\n    for libro in bib:\n        decada = (libro['anio'] // 10) * 10\n        conteo[decada] = conteo.get(decada, 0) + 1\n    return conteo\n\ndef mas_antiguo(bib: list) -> dict or None:\n    \"\"\"Devuelve el libro de menor año. Devuelve None si la biblioteca está vacía.\"\"\"\n    if not bib:\n        return None\n    \n    # Usamos min con una clave lambda para encontrar el libro con el año más pequeño\n    return min(bib, key=lambda libro: libro['anio'])\n\nif __name__ == '__main__':\n    # Ejemplo de uso\n    biblioteca = []\n\n    # 1. Crear y agregar libros\n    libro1 = crear_libro(\"Cien años de soledad\", \"Gabriel García Márquez\", 1967)\n    libro2 = crear_libro(\"1984\", \"George Orwell\", 1949)\n    libro3 = crear_libro(\"Orgullo y Prejuicio\", \"Jane Austen\", 1813)\n    libro4 = crear_libro(\"Don Quijote de la Mancha\", \"Miguel de Cervantes\", 1605)\n    libro5 = crear_libro(\"El Hobbit\", \"J.R.R. Tolkien\", 1937)\n\n    biblioteca = agregar_libro(biblioteca, libro1)\n    biblioteca = agregar_libro(biblioteca, libro2)\n    biblioteca = agregar_libro(biblioteca, libro3)\n    biblioteca = agregar_libro(biblioteca, libro4)\n    biblioteca = agregar_libro(biblioteca, libro5)\n\n    # Intentar agregar duplicado\n    libro_duplicado = crear_libro(\"1984\", \"George Orwell\", 1949)\n    biblioteca = agregar_libro(biblioteca, libro_duplicado)\n    print(f\"Tamaño de la biblioteca después de intentar duplicado: {len(biblioteca)}\")\n\n    # 2. Buscar por título\n    print(\"\\n--- Búsqueda por Título ---\")\n    libro_buscado = buscar_por_titulo(biblioteca, \"1984\")\n    print(f\"Encontrado: {libro_buscado['titulo'] if libro_buscado else 'No encontrado'}\")\n    \n    libro_no_existente = buscar_por_titulo(biblioteca, \"Moby Dick\")\n    print(f\"No encontrado: {libro_no_existente}\")\n\n    # 3. Buscar por autor\n    print(\"\\n--- Búsqueda por Autor (Jane Austen) ---\")\n    libros_austen = buscar_por_autor(biblioteca, \"Jane Austen\")\n    for libro in libros_austen:\n        print(f\"- {libro['titulo']} ({libro['anio']})\")\n\n    # 4. Prestar y Devolver\n    print(\"\\n--- Préstamo ---\")\n    print(f\"Prestar '1984': {prestar(biblioteca, '1984')}\")\n    print(f\"Prestar 'Cien años de soledad' (ya prestado): {prestar(biblioteca, '1984')}\") # Intento fallido\n    \n    print(\"\\n--- Devolución ---\")\n    print(f\"Devolver '1984': {devolver(biblioteca, '1984')}\")\n    print(f\"Devolver 'Moby Dick' (no existe): {devolver(biblioteca, 'Moby Dick')}\")\n\n    # 5. Disponibles y Prestados\n    print(\"\\n--- Disponibles ---\")\n    print(disponibles(biblioteca))\n\n    print(\"\\n--- Prestados ---\")\n    # Prestamos un libro para probar la lista de prestados\n    prestar(biblioteca, \"Orgullo y Prejuicio\")\n    print(prestados(biblioteca))\n\n    # 6. Contar por Década\n    print(\"\\n--- Conteo por Década ---\")\n    print(contar_por_decada(biblioteca))\n\n    # 7. Más Antiguo\n    print(\"\\n--- Más Antiguo ---\")\n    print(f\"El libro más antiguo es: {mas_antiguo(biblioteca)['titulo']} ({mas_antiguo(biblioteca)['anio']})\")\n\n    # Caso borde: Biblioteca vacía\n    biblioteca_vacia = []\n    print(\"\\n--- Caso Borde: Biblioteca Vacía ---\")\n    print(f\"Más antiguo en biblioteca vacía: {mas_antiguo(biblioteca_vacia)}\")"
+    },
+    {
+      "rep": 5,
+      "tarea": "biblioteca",
+      "modo": "secuencial",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 14.755435705184937,
+      "tokens": 727,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib: list, libro: dict) -> list:\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib: list, titulo: str) -> dict or None:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib: list, autor: str) -> list:\n    libros_del_autor = [libro for libro in bib if libro['autor'] == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib: list, titulo: str) -> bool:\n    libro = buscar_por_titulo(bib, titulo)\n    if libro and not libro['prestado']:\n        libro['prestado'] = True\n        return True\n    return False\n\ndef devolver(bib: list, titulo: str) -> bool:\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False  # Existe, pero no estaba prestado\n    return False  # No existe\n\ndef disponibles(bib: list) -> list:\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    titulos_disponibles.sort()\n    return titulos_disponibles\n\ndef prestados(bib: list) -> list:\n    titulos_prestados = []\n    for libro in bib:\n        if libro['prestado']:\n            titulos_prestados.append(libro['titulo'])\n    titulos_prestados.sort()\n    return titulos_prestados\n\ndef contar_por_decada(bib: list) -> dict:\n    decadas = {}\n    for libro in bib:\n        anio = libro['anio']\n        decada = (anio // 10) * 10\n        if decada in decadas:\n            decadas[decada] += 1\n        else:\n            decadas[decada] = 1\n    return decadas\n\ndef mas_antiguo(bib: list) -> dict or None:\n    if not bib:\n        return None\n    \n    libro_mas_antiguo = bib[0]\n    for libro in bib[1:]:\n        if libro['anio'] < libro_mas_antiguo['anio']:\n            libro_mas_antiguo = libro\n    return libro_mas_antiguo"
+    },
+    {
+      "rep": 5,
+      "tarea": "biblioteca",
+      "modo": "paralelo",
+      "piezas_ok": 10,
+      "piezas_de": 10,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 6.840132236480713,
+      "tokens": 911,
+      "detalle": {
+        "crear_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "agregar_libro": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_titulo": {
+          "ok": true,
+          "err": ""
+        },
+        "buscar_por_autor": {
+          "ok": true,
+          "err": ""
+        },
+        "prestar": {
+          "ok": true,
+          "err": ""
+        },
+        "devolver": {
+          "ok": true,
+          "err": ""
+        },
+        "disponibles": {
+          "ok": true,
+          "err": ""
+        },
+        "prestados": {
+          "ok": true,
+          "err": ""
+        },
+        "contar_por_decada": {
+          "ok": true,
+          "err": ""
+        },
+        "mas_antiguo": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def crear_libro(titulo: str, autor: str, anio: int) -> dict:\n    return {\n        'titulo': titulo,\n        'autor': autor,\n        'anio': anio,\n        'prestado': False\n    }\n\ndef agregar_libro(bib, libro):\n    \"\"\"\n    Agrega el libro al final de la biblioteca si no existe ya un libro con el mismo título.\n\n    Args:\n        bib (list): La lista de libros (biblioteca).\n        libro (dict): El libro a agregar.\n\n    Returns:\n        list: La biblioteca modificada.\n    \"\"\"\n    if not any(l['titulo'] == libro['titulo'] for l in bib):\n        bib.append(libro)\n    return bib\n\ndef buscar_por_titulo(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            return libro\n    return None\n\ndef buscar_por_autor(bib, autor):\n    libros_del_autor = [libro for libro in bib if libro.get('autor') == autor]\n    libros_del_autor.sort(key=lambda libro: libro['anio'])\n    return libros_del_autor\n\ndef prestar(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if not libro['prestado']:\n                libro['prestado'] = True\n                return True\n            else:\n                return False\n    return False\n\ndef devolver(bib, titulo):\n    for libro in bib:\n        if libro['titulo'] == titulo:\n            if libro['prestado']:\n                libro['prestado'] = False\n                return True\n            else:\n                return False\n    return False\n\ndef disponibles(bib):\n    titulos_disponibles = []\n    for libro in bib:\n        if not libro['prestado']:\n            titulos_disponibles.append(libro['titulo'])\n    return sorted(titulos_disponibles)\n\ndef prestados(bib):\n    \"\"\"\n    Devuelve la lista de títulos de los libros prestados, ordenada alfabéticamente.\n\n    Args:\n        bib (list): La lista de libros, donde cada libro es un dict con 'titulo' y 'prestado'.\n\n    Returns:\n        list: Lista de títulos de los libros prestados, ordenada alfabéticamente.\n    \"\"\"\n    titulos_prestados = []\n    for libro in bib:\n        if libro.get('prestado', False) is True:\n            titulos_prestados.append(libro.get('titulo'))\n    \n    return sorted(titulos_prestados)\n\ndef contar_por_decada(bib):\n    \"\"\"\n    Cuenta la cantidad de libros por década en la biblioteca.\n\n    Args:\n        bib: Lista de diccionarios de libros, cada uno con una clave 'anio'.\n\n    Returns:\n        Dict[int, int]: Un diccionario donde la clave es la década (ej: 1980) \n                         y el valor es la cantidad de libros de esa década.\n    \"\"\"\n    decadas = {}\n    for libro in bib:\n        anio = libro.get('anio')\n        if isinstance(anio, int):\n            decada = (anio // 10) * 10\n            decadas[decada] = decadas.get(decada, 0) + 1\n    return decadas\n\ndef mas_antiguo(bib):\n    if not bib:\n        return None\n    \n    min_anio = float('inf')\n    libro_mas_antiguo = None\n    \n    for libro in bib:\n        if libro['anio'] < min_anio:\n            min_anio = libro['anio']\n            libro_mas_antiguo = libro\n            \n    return libro_mas_antiguo"
+    },
+    {
+      "rep": 5,
+      "tarea": "notas",
+      "modo": "monolito",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 17.569921493530273,
+      "tokens": 1146,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "from typing import List, Dict, Optional, Any\n\ndef parsear_fila(linea: str) -> Optional[Dict[str, Any]]:\n    \"\"\"\n    Parsea una línea de formato 'alumno,materia,nota' a un diccionario.\n    Devuelve None si no tiene 3 partes o la nota no es un número.\n    \"\"\"\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str.strip())\n        return {'alumno': alumno.strip(), 'materia': materia.strip(), 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota: float) -> bool:\n    \"\"\"\n    True si la nota esta entre 0 y 10 inclusive.\n    \"\"\"\n    return 0.0 <= nota <= 10.0\n\ndef promedio(notas: List[float]) -> float:\n    \"\"\"\n    Promedio de una lista de números. Con lista vacía devuelve 0.0.\n    \"\"\"\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El mayor de una lista de números. Con lista vacía devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas: List[float]) -> Optional[float]:\n    \"\"\"\n    El menor de una lista de números. Con lista vacía devuelve None.\n    \"\"\"\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas: List[Dict[str, Any]], alumno: str) -> List[float]:\n    \"\"\"\n    Lista de las notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    return [fila['nota'] for fila in filas if fila['alumno'] == alumno]\n\ndef agrupar_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"\n    Dict {materia: [filas de esa materia]}.\n    \"\"\"\n    grupos: Dict[str, List[Dict[str, Any]]] = {}\n    for fila in filas:\n        materia = fila['materia']\n        if materia not in grupos:\n            grupos[materia] = []\n        grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas: List[Dict[str, Any]]) -> Dict[str, float]:\n    \"\"\"\n    Dict {materia: promedio de sus notas}.\n    \"\"\"\n    grupos = agrupar_por_materia(filas)\n    promedios: Dict[str, float] = {}\n    for materia, lista_filas in grupos.items():\n        notas = [fila['nota'] for fila in lista_filas]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas: List[Dict[str, Any]], corte: float) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos con al menos una nota mayor o igual al corte, \n    ordenada alfabéticamente.\n    \"\"\"\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas: List[Dict[str, Any]]) -> List[str]:\n    \"\"\"\n    Lista de alumnos distintos, ordenada alfabéticamente.\n    \"\"\"\n    return sorted(list(set(fila['alumno'] for fila in filas)))\n\ndef formatear_nota(nota: float) -> str:\n    \"\"\"\n    El número como string con exactamente dos decimales.\n    \"\"\"\n    return f\"{nota:.2f}\"\n\ndef resumen(filas: List[Dict[str, Any]]) -> Dict[str, Any]:\n    \"\"\"\n    Dict con las claves 'filas' (cantidad), 'alumnos' (cantidad de alumnos distintos) \n    y 'promedio' (promedio de todas las notas).\n    \"\"\"\n    total_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n        \n    total_notas = sum(fila['nota'] for fila in filas)\n    promedio_general = total_notas / total_filas\n    \n    alumnos_unicos = len(set(fila['alumno'] for fila in filas))\n    \n    return {\n        'filas': total_filas,\n        'alumnos': alumnos_unicos,\n        'promedio': promedio_general\n    }"
+    },
+    {
+      "rep": 5,
+      "tarea": "notas",
+      "modo": "secuencial",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 17.67972469329834,
+      "tokens": 832,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.strip().split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno = partes[0].strip()\n    materia = partes[1].strip()\n    nota_str = partes[2].strip()\n    \n    try:\n        nota = float(nota_str)\n        return {'alumno': alumno, 'materia': materia, 'nota': nota}\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    notas_alumno = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas_alumno.append(fila.get('nota'))\n    return notas_alumno\n\ndef agrupar_por_materia(filas):\n    agrupacion = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia is not None:\n            if materia not in agrupacion:\n                agrupacion[materia] = []\n            agrupacion[materia].append(fila)\n    return agrupacion\n\ndef promedio_por_materia(filas):\n    agrupacion = agrupar_por_materia(filas)\n    promedios = {}\n    for materia, filas_materia in agrupacion.items():\n        notas = [fila['nota'] for fila in filas_materia]\n        promedios[materia] = promedio(notas)\n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila.get('nota', -1) >= corte:\n            alumnos_aprobados.add(fila.get('alumno'))\n    \n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    alumnos_unicos = set()\n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    num_filas = len(filas)\n    \n    if not filas:\n        return {'filas': 0, 'alumnos': 0, 'promedio': 0.0}\n    \n    alumnos_unicos = set()\n    total_notas = 0.0\n    \n    for fila in filas:\n        alumnos_unicos.add(fila['alumno'])\n        total_notas += fila['nota']\n        \n    num_alumnos = len(alumnos_unicos)\n    promedio_total = total_notas / num_filas\n    \n    return {\n        'filas': num_filas,\n        'alumnos': num_alumnos,\n        'promedio': promedio_total\n    }"
+    },
+    {
+      "rep": 5,
+      "tarea": "notas",
+      "modo": "paralelo",
+      "piezas_ok": 12,
+      "piezas_de": 12,
+      "integracion": true,
+      "integracion_err": "",
+      "segundos": 10.120944499969482,
+      "tokens": 1205,
+      "detalle": {
+        "parsear_fila": {
+          "ok": true,
+          "err": ""
+        },
+        "nota_valida": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio": {
+          "ok": true,
+          "err": ""
+        },
+        "maximo": {
+          "ok": true,
+          "err": ""
+        },
+        "minimo": {
+          "ok": true,
+          "err": ""
+        },
+        "notas_de": {
+          "ok": true,
+          "err": ""
+        },
+        "agrupar_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "promedio_por_materia": {
+          "ok": true,
+          "err": ""
+        },
+        "aprobados": {
+          "ok": true,
+          "err": ""
+        },
+        "alumnos": {
+          "ok": true,
+          "err": ""
+        },
+        "formatear_nota": {
+          "ok": true,
+          "err": ""
+        },
+        "resumen": {
+          "ok": true,
+          "err": ""
+        }
+      },
+      "truncado": false,
+      "codigo": "def parsear_fila(linea):\n    partes = linea.split(',')\n    if len(partes) != 3:\n        return None\n    \n    alumno, materia, nota_str = partes\n    \n    try:\n        nota = float(nota_str)\n        return {\n            'alumno': alumno,\n            'materia': materia,\n            'nota': nota\n        }\n    except ValueError:\n        return None\n\ndef nota_valida(nota):\n    return 0 <= nota <= 10\n\ndef promedio(notas):\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\ndef maximo(notas):\n    if not notas:\n        return None\n    return max(notas)\n\ndef minimo(notas):\n    if not notas:\n        return None\n    return min(notas)\n\ndef notas_de(filas, alumno):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve la lista de notas de ese alumno, en el orden en que aparecen.\n    \"\"\"\n    notas = []\n    for fila in filas:\n        if fila.get('alumno') == alumno:\n            notas.append(fila.get('nota'))\n    return notas\n\ndef agrupar_por_materia(filas):\n    \"\"\"\n    Recibe una lista de dicts con claves 'alumno', 'materia' y 'nota'. \n    Devuelve un dict {materia: lista de las filas de esa materia}.\n    \"\"\"\n    grupos = {}\n    for fila in filas:\n        materia = fila.get('materia')\n        if materia:\n            if materia not in grupos:\n                grupos[materia] = []\n            grupos[materia].append(fila)\n    return grupos\n\ndef promedio_por_materia(filas):\n    \"\"\"\n    Calcula el promedio de las notas para cada materia.\n\n    Args:\n        filas: Lista de diccionarios, cada uno con 'alumno', 'materia' y 'nota'.\n\n    Returns:\n        Dict[str, float]: Diccionario donde la clave es la materia y el valor es su promedio.\n    \"\"\"\n    materia_notas = {}\n    for fila in filas:\n        materia = fila['materia']\n        nota = fila['nota']\n\n        if materia not in materia_notas:\n            materia_notas[materia] = {'suma': 0.0, 'cantidad': 0}\n\n        materia_notas[materia]['suma'] += nota\n        materia_notas[materia]['cantidad'] += 1\n\n    promedios = {}\n    for materia, datos in materia_notas.items():\n        promedio = datos['suma'] / datos['cantidad']\n        promedios[materia] = promedio\n\n    return promedios\n\ndef aprobados(filas, corte):\n    alumnos_aprobados = set()\n    for fila in filas:\n        if fila['nota'] >= corte:\n            alumnos_aprobados.add(fila['alumno'])\n    return sorted(list(alumnos_aprobados))\n\ndef alumnos(filas):\n    \"\"\"\n    Recibe una lista de dicts con clave 'alumno'. Devuelve la lista de alumnos distintos, ordenada alfabéticamente.\n    \"\"\"\n    if not filas:\n        return []\n    \n    alumnos_unicos = set()\n    for fila in filas:\n        if 'alumno' in fila and isinstance(fila['alumno'], str):\n            alumnos_unicos.add(fila['alumno'])\n            \n    return sorted(list(alumnos_unicos))\n\ndef formatear_nota(nota):\n    return f\"{nota:.2f}\"\n\ndef resumen(filas):\n    \"\"\"\n    Calcula un resumen estadístico de las notas.\n\n    Args:\n        filas: Lista de diccionarios, cada uno con 'alumno' (str), \n               'materia' (str) y 'nota' (float).\n\n    Returns:\n        dict: Contiene 'filas' (cantidad de filas), 'alumnos' (cantidad de alumnos distintos) \n              y 'promedio' (promedio de todas las notas).\n    \"\"\"\n    num_filas = len(filas)\n    \n    if not filas:\n        return {\n            'filas': 0,\n            'alumnos': 0,\n            'promedio': 0.0\n        }\n\n    alumnos_distintos = set()\n    suma_notas = 0.0\n\n    for fila in filas:\n        alumnos_distintos.add(fila['alumno'])\n        suma_notas += fila['nota']\n\n    cantidad_alumnos = len(alumnos_distintos)\n    promedio_total = suma_notas / num_filas\n\n    return {\n        'filas': num_filas,\n        'alumnos': cantidad_alumnos,\n        'promedio': promedio_total\n    }"
+    }
+  ]
+}

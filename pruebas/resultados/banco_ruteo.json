@@ -1,0 +1,139 @@
+{
+  "_meta": {
+    "proposito": "Banco de evaluacion para comparar estrategias de enrutado con 10 clases de experto.",
+    "regla": "Escrito ANTES de implementar los enrutadores y sus keywords, para que ninguna estrategia se ajuste al banco.",
+    "advertencia": "Redactado por el asistente. Conviene que el autor lo revise y agregue frases propias: un banco escrito por quien luego construye el enrutador puede tener sesgos inconscientes.",
+    "fecha": "2026-07-22",
+    "frases_por_clase": 10
+  },
+
+  "code_write": [
+    "hazme una funcion que valide emails",
+    "necesito una clase para manejar la conexion a redis",
+    "implementa un endpoint POST para crear usuarios",
+    "escribime un script que renombre archivos por fecha",
+    "crea un formulario de login en react",
+    "programa un worker que procese la cola cada minuto",
+    "agregame un middleware de autenticacion",
+    "quiero una funcion recursiva que recorra el arbol",
+    "arma un cliente http con reintentos",
+    "genera el modelo de datos para un carrito de compras"
+  ],
+
+  "code_fix": [
+    "me tira TypeError: cannot read property of undefined",
+    "el test falla desde que actualice la libreria",
+    "por que este bucle nunca termina",
+    "tengo un memory leak en el servidor de node",
+    "la app crashea al abrir la pantalla de perfil",
+    "no me compila, dice que falta un simbolo",
+    "el endpoint devuelve 500 pero no veo el error",
+    "se me cuelga cuando proceso archivos grandes",
+    "este stacktrace no lo entiendo, resolvelo",
+    "la variable llega vacia y no se por que"
+  ],
+
+  "code_review": [
+    "revisa este modulo y decime que mejorarias",
+    "esta funcion quedo muy larga, como la parto",
+    "hay codigo duplicado entre estos dos archivos",
+    "simplifica estos condicionales anidados",
+    "renombra las variables para que se entiendan",
+    "extrae esta logica a una clase aparte",
+    "esta clase tiene demasiadas responsabilidades",
+    "reemplaza estos if por un diccionario",
+    "el codigo funciona pero quedo feo, ordenalo",
+    "aplica el patron estrategia aca"
+  ],
+
+  "data_sql": [
+    "necesito un query que junte pedidos con clientes",
+    "como armo un indice para acelerar esta busqueda",
+    "escribime la migracion para agregar una columna",
+    "esta consulta tarda 8 segundos, como la optimizo",
+    "cual es el join correcto para traer los huerfanos",
+    "disename el esquema de una base de reservas",
+    "necesito un group by con having sobre ventas",
+    "como hago un upsert en postgres",
+    "la tabla tiene 40 millones de filas y no rinde",
+    "armame una vista materializada de ventas mensuales"
+  ],
+
+  "devops": [
+    "escribime un dockerfile para una app de python",
+    "como configuro el pipeline de github actions",
+    "el contenedor se reinicia solo, que reviso",
+    "necesito un manifiesto de kubernetes para el deploy",
+    "como paso las variables de entorno al contenedor",
+    "configura nginx como proxy inverso",
+    "quiero desplegar esto en aws con terraform",
+    "el build tarda 20 minutos, como lo acelero",
+    "armame un docker compose con base y api",
+    "como roto los logs del servidor en produccion"
+  ],
+
+  "reasoning": [
+    "conviene monolito o microservicios para este caso",
+    "que ventajas tiene event sourcing frente a crud",
+    "analiza si vale la pena migrar a otro framework",
+    "cual de estas dos arquitecturas escala mejor",
+    "que riesgos tiene acoplar el dominio a la base",
+    "evalua si necesitamos una cola de mensajes",
+    "compara sql contra nosql para este proyecto",
+    "que opinas de separar el frontend del backend",
+    "vale la pena el esfuerzo de tipar todo el proyecto",
+    "decidime entre rest y graphql con argumentos"
+  ],
+
+  "explain": [
+    "que es la inyeccion de dependencias",
+    "como funciona el garbage collector",
+    "explicame que hace el event loop",
+    "para que sirve un indice invertido",
+    "que significa que una funcion sea pura",
+    "como funciona el handshake de tls",
+    "que es la inmutabilidad y por que importa",
+    "explicame los niveles de aislamiento de transacciones",
+    "en que consiste el teorema cap",
+    "que diferencia hay entre concurrencia y paralelismo"
+  ],
+
+  "writing": [
+    "redacta el readme del proyecto",
+    "escribime un correo formal para el cliente",
+    "documenta esta api con ejemplos",
+    "traduce esta guia al ingles",
+    "arma la descripcion del producto para la web",
+    "necesito un texto de presentacion para la propuesta",
+    "redacta las notas de la version 2.0",
+    "escribi un resumen ejecutivo de una pagina",
+    "pasa estos apuntes a un documento formal",
+    "corregime la redaccion de este parrafo"
+  ],
+
+  "math": [
+    "cuanto es el 18 por ciento de 4500",
+    "calcula la desviacion estandar de estos valores",
+    "resolveme esta ecuacion de segundo grado",
+    "cual es la probabilidad de sacar dos ases seguidos",
+    "convierte 250 millas a kilometros",
+    "cuantas combinaciones hay de 5 elementos tomados de a 3",
+    "sacame el promedio ponderado de estas notas",
+    "si crece 7 por ciento mensual cuanto es al ano",
+    "calcula el interes compuesto a 5 anos",
+    "cual es la mediana de esta serie de numeros"
+  ],
+
+  "quick": [
+    "hola",
+    "gracias",
+    "ok",
+    "dale",
+    "listo",
+    "perfecto",
+    "buenas",
+    "si",
+    "genial",
+    "entendido"
+  ]
+}

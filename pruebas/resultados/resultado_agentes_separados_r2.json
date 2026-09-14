@@ -1,0 +1,2212 @@
+{
+  "tareas": 53,
+  "resumen": {
+    "directo": {
+      "ok": 50,
+      "de": 53,
+      "segundos": 819.4401824474335,
+      "tokens": 59432,
+      "truncadas": 0,
+      "planes_con_codigo": 0
+    },
+    "solo_rol": {
+      "ok": 50,
+      "de": 53,
+      "segundos": 187.31024312973022,
+      "tokens": 13655,
+      "truncadas": 0,
+      "planes_con_codigo": 0
+    },
+    "pipeline": {
+      "ok": 38,
+      "de": 53,
+      "segundos": 1774.225952386856,
+      "tokens": 128101,
+      "truncadas": 9,
+      "planes_con_codigo": 0
+    },
+    "agentes": {
+      "ok": 51,
+      "de": 53,
+      "segundos": 424.8014419078827,
+      "tokens": 29727,
+      "truncadas": 0,
+      "planes_con_codigo": 0
+    }
+  },
+  "detalle": [
+    {
+      "id": "fizzbuzz",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.34061884880066,
+        "tokens": 673,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.2898507118225098,
+        "tokens": 171,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 37.43104147911072,
+        "tokens": 2705,
+        "plan_tok": 745,
+        "plan_seg": 9.997404336929321,
+        "code_seg": 27.433637142181396,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.343858242034912,
+        "tokens": 424,
+        "plan_tok": 247,
+        "plan_seg": 3.585690498352051,
+        "code_seg": 2.7581677436828613,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "duracion",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 14.21778130531311,
+        "tokens": 1020,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.344933271408081,
+        "tokens": 234,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 31.03854537010193,
+        "tokens": 2200,
+        "plan_tok": 679,
+        "plan_seg": 9.544092893600464,
+        "code_seg": 21.494452476501465,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.643495798110962,
+        "tokens": 532,
+        "plan_tok": 275,
+        "plan_seg": 3.9258735179901123,
+        "code_seg": 3.7176222801208496,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "palindromo",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 11.214869976043701,
+        "tokens": 802,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.4517130851745605,
+        "tokens": 177,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 28.0029354095459,
+        "tokens": 2000,
+        "plan_tok": 672,
+        "plan_seg": 9.154368877410889,
+        "code_seg": 18.84856653213501,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.501863479614258,
+        "tokens": 651,
+        "plan_tok": 271,
+        "plan_seg": 3.911177158355713,
+        "code_seg": 5.590686321258545,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "aplanar",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 16.44259262084961,
+        "tokens": 1158,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.531991720199585,
+        "tokens": 104,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "AssertionError: Fallo Caso 5: Esperado [1, 2, 3, 4, 5, 6], Obtenido [1, 1, 2, 3,",
+        "segundos": 33.792070627212524,
+        "tokens": 2392,
+        "plan_tok": 686,
+        "plan_seg": 9.656130075454712,
+        "code_seg": 24.135940551757812,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.973787307739258,
+        "tokens": 343,
+        "plan_tok": 228,
+        "plan_seg": 3.2125320434570312,
+        "code_seg": 1.7612552642822266,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "busqueda",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 16.8153874874115,
+        "tokens": 1204,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.954838514328003,
+        "tokens": 210,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 35.86792755126953,
+        "tokens": 2520,
+        "plan_tok": 701,
+        "plan_seg": 9.974766254425049,
+        "code_seg": 25.893161296844482,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.378361463546753,
+        "tokens": 511,
+        "plan_tok": 257,
+        "plan_seg": 3.6894562244415283,
+        "code_seg": 3.6889052391052246,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "agrupar",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 21.58364510536194,
+        "tokens": 1530,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.3226044178009033,
+        "tokens": 233,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 39.81862759590149,
+        "tokens": 2778,
+        "plan_tok": 730,
+        "plan_seg": 10.381318092346191,
+        "code_seg": 29.437309503555298,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.837528228759766,
+        "tokens": 535,
+        "plan_tok": 269,
+        "plan_seg": 3.9229440689086914,
+        "code_seg": 3.914584159851074,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "contar_palabras",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 13.00560450553894,
+        "tokens": 923,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.242658853530884,
+        "tokens": 160,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: f-string: valid expression required before '}'",
+        "segundos": 28.878878355026245,
+        "tokens": 2060,
+        "plan_tok": 694,
+        "plan_seg": 9.559879779815674,
+        "code_seg": 19.31899857521057,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.243103981018066,
+        "tokens": 429,
+        "plan_tok": 214,
+        "plan_seg": 3.072174310684204,
+        "code_seg": 3.1709296703338623,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "rotar",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 18.692681074142456,
+        "tokens": 1340,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.92988920211792,
+        "tokens": 206,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 36.71022891998291,
+        "tokens": 2591,
+        "plan_tok": 875,
+        "plan_seg": 12.292187452316284,
+        "code_seg": 24.418041467666626,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.041374206542969,
+        "tokens": 547,
+        "plan_tok": 248,
+        "plan_seg": 3.5817461013793945,
+        "code_seg": 4.459628105163574,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "romano",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 16.181485891342163,
+        "tokens": 1149,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.1802239418029785,
+        "tokens": 301,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 26.810417890548706,
+        "tokens": 1896,
+        "plan_tok": 737,
+        "plan_seg": 10.222529172897339,
+        "code_seg": 16.587888717651367,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.698821544647217,
+        "tokens": 673,
+        "plan_tok": 275,
+        "plan_seg": 3.94327449798584,
+        "code_seg": 5.755547046661377,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "desde_romano",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 15.515862226486206,
+        "tokens": 1110,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": false,
+        "err": "NameError: name 'desde_romano' is not defined",
+        "segundos": 9.448324918746948,
+        "tokens": 678,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 31.60804581642151,
+        "tokens": 2237,
+        "plan_tok": 780,
+        "plan_seg": 10.830663681030273,
+        "code_seg": 20.777382135391235,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.796931028366089,
+        "tokens": 606,
+        "plan_tok": 280,
+        "plan_seg": 4.051225423812866,
+        "code_seg": 4.745705604553223,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "racha",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 14.111930847167969,
+        "tokens": 1002,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.137661933898926,
+        "tokens": 519,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 36.43554663658142,
+        "tokens": 2583,
+        "plan_tok": 888,
+        "plan_seg": 12.280807256698608,
+        "code_seg": 24.154739379882812,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.174793243408203,
+        "tokens": 550,
+        "plan_tok": 282,
+        "plan_seg": 4.133923768997192,
+        "code_seg": 4.040869474411011,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "camel",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 14.954809188842773,
+        "tokens": 1068,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.729992151260376,
+        "tokens": 270,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 34.648905992507935,
+        "tokens": 2474,
+        "plan_tok": 669,
+        "plan_seg": 9.284545421600342,
+        "code_seg": 25.364360570907593,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.013826370239258,
+        "tokens": 478,
+        "plan_tok": 220,
+        "plan_seg": 3.216977834701538,
+        "code_seg": 3.7968485355377197,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "snake",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 13.943647623062134,
+        "tokens": 996,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.073800325393677,
+        "tokens": 296,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "TypeError: cannot use 'list' as a dict key (unhashable type: 'list')",
+        "segundos": 37.25606346130371,
+        "tokens": 2675,
+        "plan_tok": 697,
+        "plan_seg": 9.506427764892578,
+        "code_seg": 27.749635696411133,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.369464874267578,
+        "tokens": 436,
+        "plan_tok": 256,
+        "plan_seg": 3.707448720932007,
+        "code_seg": 2.6620161533355713,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "primos",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 15.815909624099731,
+        "tokens": 1130,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.9244799613952637,
+        "tokens": 138,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid character '✅' (U+2705)",
+        "segundos": 39.765704870224,
+        "tokens": 2855,
+        "plan_tok": 807,
+        "plan_seg": 10.978805780410767,
+        "code_seg": 28.786899089813232,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.121273517608643,
+        "tokens": 550,
+        "plan_tok": 260,
+        "plan_seg": 3.770599603652954,
+        "code_seg": 4.3506739139556885,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "mcd",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 12.120383739471436,
+        "tokens": 867,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.134401321411133,
+        "tokens": 155,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 34.86916136741638,
+        "tokens": 2514,
+        "plan_tok": 688,
+        "plan_seg": 9.359820365905762,
+        "code_seg": 25.50934100151062,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.059982538223267,
+        "tokens": 489,
+        "plan_tok": 277,
+        "plan_seg": 3.9799039363861084,
+        "code_seg": 3.080078601837158,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "intervalos",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 20.689621210098267,
+        "tokens": 1467,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.890976667404175,
+        "tokens": 345,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 40.93885803222656,
+        "tokens": 2853,
+        "plan_tok": 805,
+        "plan_seg": 11.355931520462036,
+        "code_seg": 29.582926511764526,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.312569379806519,
+        "tokens": 568,
+        "plan_tok": 279,
+        "plan_seg": 4.048787355422974,
+        "code_seg": 4.263782024383545,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "anagrama",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 12.392377138137817,
+        "tokens": 877,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.5068953037261963,
+        "tokens": 252,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 36.34810709953308,
+        "tokens": 2594,
+        "plan_tok": 769,
+        "plan_seg": 10.61246657371521,
+        "code_seg": 25.73564052581787,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 10.984179735183716,
+        "tokens": 763,
+        "plan_tok": 243,
+        "plan_seg": 3.4669432640075684,
+        "code_seg": 7.5172364711761475,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "comprimir",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.056275129318237,
+        "tokens": 575,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.4248123168945312,
+        "tokens": 174,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 29.66757345199585,
+        "tokens": 2144,
+        "plan_tok": 656,
+        "plan_seg": 8.89413332939148,
+        "code_seg": 20.77344012260437,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.902540683746338,
+        "tokens": 407,
+        "plan_tok": 228,
+        "plan_seg": 3.2593533992767334,
+        "code_seg": 2.6431872844696045,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "parentesis",
+      "directo": {
+        "ok": false,
+        "err": "SyntaxError: f-string: valid expression required before '}'",
+        "segundos": 16.29802656173706,
+        "tokens": 1181,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.3254904747009277,
+        "tokens": 163,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: closing parenthesis ')' does not match opening parenthesis '{' on l",
+        "segundos": 30.650657176971436,
+        "tokens": 2165,
+        "plan_tok": 772,
+        "plan_seg": 10.778626441955566,
+        "code_seg": 19.87203073501587,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.492425203323364,
+        "tokens": 515,
+        "plan_tok": 276,
+        "plan_seg": 3.953104019165039,
+        "code_seg": 3.539321184158325,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "transpuesta",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 20.9628803730011,
+        "tokens": 1501,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.1612136363983154,
+        "tokens": 150,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 41.00172662734985,
+        "tokens": 2870,
+        "plan_tok": 822,
+        "plan_seg": 11.654921531677246,
+        "code_seg": 29.346805095672607,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.649594306945801,
+        "tokens": 522,
+        "plan_tok": 244,
+        "plan_seg": 3.5488033294677734,
+        "code_seg": 4.100790977478027,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "raiz_digital",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 17.262145280838013,
+        "tokens": 1213,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.265368223190308,
+        "tokens": 457,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 32.4500036239624,
+        "tokens": 2314,
+        "plan_tok": 727,
+        "plan_seg": 9.995662450790405,
+        "code_seg": 22.454341173171997,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.66667628288269,
+        "tokens": 526,
+        "plan_tok": 270,
+        "plan_seg": 3.914393186569214,
+        "code_seg": 3.7522830963134766,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "sin_duplicados",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 14.95280933380127,
+        "tokens": 1071,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.8176426887512207,
+        "tokens": 129,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 31.152928352355957,
+        "tokens": 2243,
+        "plan_tok": 632,
+        "plan_seg": 8.695918083190918,
+        "code_seg": 22.45701026916504,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.300720930099487,
+        "tokens": 362,
+        "plan_tok": 233,
+        "plan_seg": 3.3352837562561035,
+        "code_seg": 1.9654371738433838,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "n_mayor",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 11.254467487335205,
+        "tokens": 808,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.9558868408203125,
+        "tokens": 215,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 30.19978165626526,
+        "tokens": 2168,
+        "plan_tok": 639,
+        "plan_seg": 8.788458824157715,
+        "code_seg": 21.411322832107544,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.7952492237091064,
+        "tokens": 537,
+        "plan_tok": 269,
+        "plan_seg": 3.8385636806488037,
+        "code_seg": 3.9566855430603027,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "bytes",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 10.377886533737183,
+        "tokens": 747,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.0716679096221924,
+        "tokens": 221,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 33.47356677055359,
+        "tokens": 2394,
+        "plan_tok": 694,
+        "plan_seg": 9.549101114273071,
+        "code_seg": 23.924465656280518,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 14.090368032455444,
+        "tokens": 983,
+        "plan_tok": 229,
+        "plan_seg": 3.304072856903076,
+        "code_seg": 10.786295175552368,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "lotes",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 16.141032934188843,
+        "tokens": 1156,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.3613951206207275,
+        "tokens": 164,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 36.43729615211487,
+        "tokens": 2569,
+        "plan_tok": 778,
+        "plan_seg": 10.910840272903442,
+        "code_seg": 25.526455879211426,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.573694467544556,
+        "tokens": 373,
+        "plan_tok": 295,
+        "plan_seg": 4.251328229904175,
+        "code_seg": 1.3223662376403809,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "transpuesta",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 24.46986985206604,
+        "tokens": 1741,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.228881597518921,
+        "tokens": 150,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: unterminated string literal (detected at line 189)",
+        "segundos": 39.4733784198761,
+        "tokens": 2761,
+        "plan_tok": 713,
+        "plan_seg": 10.189702033996582,
+        "code_seg": 29.283676385879517,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.876153469085693,
+        "tokens": 469,
+        "plan_tok": 217,
+        "plan_seg": 3.2311909198760986,
+        "code_seg": 3.6449625492095947,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "intervalos",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 20.053786039352417,
+        "tokens": 1416,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.88559889793396,
+        "tokens": 346,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 41.33204913139343,
+        "tokens": 2911,
+        "plan_tok": 863,
+        "plan_seg": 12.117011070251465,
+        "code_seg": 29.215038061141968,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": false,
+        "err": "NameError: name 'intervals_ordenados' is not defined. Did you mean: 'intervalos_",
+        "segundos": 8.146780490875244,
+        "tokens": 562,
+        "plan_tok": 261,
+        "plan_seg": 3.7569363117218018,
+        "code_seg": 4.389844179153442,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "parentesis",
+      "directo": {
+        "ok": false,
+        "err": "SyntaxError: closing parenthesis ')' does not match opening parenthesis '{'",
+        "segundos": 16.41718554496765,
+        "tokens": 1161,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.725358009338379,
+        "tokens": 120,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 25.625709295272827,
+        "tokens": 1827,
+        "plan_tok": 668,
+        "plan_seg": 9.286041736602783,
+        "code_seg": 16.339667558670044,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.732747793197632,
+        "tokens": 461,
+        "plan_tok": 244,
+        "plan_seg": 3.50665283203125,
+        "code_seg": 3.226094961166382,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "mediana",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.345007419586182,
+        "tokens": 671,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.9895927906036377,
+        "tokens": 142,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 28.45807933807373,
+        "tokens": 2051,
+        "plan_tok": 616,
+        "plan_seg": 8.406282663345337,
+        "code_seg": 20.051796674728394,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.864089250564575,
+        "tokens": 543,
+        "plan_tok": 288,
+        "plan_seg": 4.161278963088989,
+        "code_seg": 3.702810287475586,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "top_frecuentes",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 13.761121034622192,
+        "tokens": 996,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.221931219100952,
+        "tokens": 375,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 31.001325130462646,
+        "tokens": 2192,
+        "plan_tok": 754,
+        "plan_seg": 10.545602321624756,
+        "code_seg": 20.45572280883789,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.976900100708008,
+        "tokens": 620,
+        "plan_tok": 269,
+        "plan_seg": 3.917126417160034,
+        "code_seg": 5.059773683547974,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "trozos",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 13.929147243499756,
+        "tokens": 1003,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 0.765052080154419,
+        "tokens": 51,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 30.375373363494873,
+        "tokens": 2197,
+        "plan_tok": 722,
+        "plan_seg": 9.78823971748352,
+        "code_seg": 20.587133646011353,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.57906699180603,
+        "tokens": 306,
+        "plan_tok": 232,
+        "plan_seg": 3.320294141769409,
+        "code_seg": 1.258772850036621,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "dedup",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 14.633151531219482,
+        "tokens": 1049,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.7626583576202393,
+        "tokens": 124,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 33.69120216369629,
+        "tokens": 2413,
+        "plan_tok": 685,
+        "plan_seg": 9.471997022628784,
+        "code_seg": 24.219205141067505,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.398921728134155,
+        "tokens": 443,
+        "plan_tok": 319,
+        "plan_seg": 4.513573169708252,
+        "code_seg": 1.8853485584259033,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "binaria",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 17.61847424507141,
+        "tokens": 1264,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.331876277923584,
+        "tokens": 160,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 39.53533673286438,
+        "tokens": 2783,
+        "plan_tok": 735,
+        "plan_seg": 10.338382005691528,
+        "code_seg": 29.19695472717285,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.434048175811768,
+        "tokens": 503,
+        "plan_tok": 258,
+        "plan_seg": 3.7396504878997803,
+        "code_seg": 3.6943976879119873,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "anidar",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 16.069370985031128,
+        "tokens": 1142,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.944096803665161,
+        "tokens": 212,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 33.81492209434509,
+        "tokens": 2425,
+        "plan_tok": 707,
+        "plan_seg": 9.67313027381897,
+        "code_seg": 24.141791820526123,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.644641399383545,
+        "tokens": 523,
+        "plan_tok": 201,
+        "plan_seg": 2.9642112255096436,
+        "code_seg": 4.680430173873901,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "rle",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 12.369903802871704,
+        "tokens": 883,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.0185470581054688,
+        "tokens": 143,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 25.836437463760376,
+        "tokens": 1831,
+        "plan_tok": 720,
+        "plan_seg": 9.981900930404663,
+        "code_seg": 15.854536533355713,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.696173906326294,
+        "tokens": 385,
+        "plan_tok": 245,
+        "plan_seg": 3.463876247406006,
+        "code_seg": 2.232297658920288,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "anagrama",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 12.36091923713684,
+        "tokens": 861,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.926145315170288,
+        "tokens": 138,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 31.781721115112305,
+        "tokens": 2339,
+        "plan_tok": 730,
+        "plan_seg": 10.081611633300781,
+        "code_seg": 21.700109481811523,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.875391721725464,
+        "tokens": 508,
+        "plan_tok": 237,
+        "plan_seg": 3.1648383140563965,
+        "code_seg": 3.7105534076690674,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "movil",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.882732629776001,
+        "tokens": 747,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.552656650543213,
+        "tokens": 198,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 33.18666386604309,
+        "tokens": 2499,
+        "plan_tok": 678,
+        "plan_seg": 8.789415121078491,
+        "code_seg": 24.3972487449646,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.07112979888916,
+        "tokens": 656,
+        "plan_tok": 293,
+        "plan_seg": 3.9443418979644775,
+        "code_seg": 5.126787900924683,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "bytes_humano",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 17.594733238220215,
+        "tokens": 1315,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.3553946018218994,
+        "tokens": 245,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 31.281820058822632,
+        "tokens": 2319,
+        "plan_tok": 686,
+        "plan_seg": 9.246698141098022,
+        "code_seg": 22.03512191772461,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 14.10632586479187,
+        "tokens": 1042,
+        "plan_tok": 291,
+        "plan_seg": 3.972649574279785,
+        "code_seg": 10.133676290512085,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "query",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 16.240885972976685,
+        "tokens": 1219,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.858792543411255,
+        "tokens": 210,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 29.3099205493927,
+        "tokens": 2143,
+        "plan_tok": 820,
+        "plan_seg": 11.010215997695923,
+        "code_seg": 18.299704551696777,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.2780163288116455,
+        "tokens": 525,
+        "plan_tok": 252,
+        "plan_seg": 3.4502763748168945,
+        "code_seg": 3.827739953994751,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "islas",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 19.027376174926758,
+        "tokens": 1440,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.5094199180603027,
+        "tokens": 260,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 35.475834131240845,
+        "tokens": 2617,
+        "plan_tok": 770,
+        "plan_seg": 10.315070867538452,
+        "code_seg": 25.160763263702393,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.706427812576294,
+        "tokens": 543,
+        "plan_tok": 268,
+        "plan_seg": 3.7177810668945312,
+        "code_seg": 3.9886467456817627,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "levenshtein",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 21.844897747039795,
+        "tokens": 1628,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.123692274093628,
+        "tokens": 536,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 39.15454912185669,
+        "tokens": 2873,
+        "plan_tok": 908,
+        "plan_seg": 12.212878704071045,
+        "code_seg": 26.941670417785645,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 12.209678888320923,
+        "tokens": 884,
+        "plan_tok": 262,
+        "plan_seg": 3.668090343475342,
+        "code_seg": 8.541588544845581,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "password",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 15.026202917098999,
+        "tokens": 1121,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.628028869628906,
+        "tokens": 354,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 27.676457166671753,
+        "tokens": 2079,
+        "plan_tok": 758,
+        "plan_seg": 9.934624195098877,
+        "code_seg": 17.741832971572876,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 10.381760358810425,
+        "tokens": 772,
+        "plan_tok": 233,
+        "plan_seg": 3.1145219802856445,
+        "code_seg": 7.26723837852478,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "base_n",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 15.834105730056763,
+        "tokens": 1194,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.2521960735321045,
+        "tokens": 243,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 35.21615171432495,
+        "tokens": 2643,
+        "plan_tok": 755,
+        "plan_seg": 9.956198692321777,
+        "code_seg": 25.259953022003174,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.075855016708374,
+        "tokens": 649,
+        "plan_tok": 307,
+        "plan_seg": 4.21693229675293,
+        "code_seg": 4.858922719955444,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "particion",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.973129272460938,
+        "tokens": 747,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 0.8546938896179199,
+        "tokens": 60,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 27.681801557540894,
+        "tokens": 2096,
+        "plan_tok": 619,
+        "plan_seg": 8.063158750534058,
+        "code_seg": 19.618642807006836,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.157071113586426,
+        "tokens": 370,
+        "plan_tok": 228,
+        "plan_seg": 3.0673465728759766,
+        "code_seg": 2.089724540710449,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "interseccion",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 19.209192752838135,
+        "tokens": 1465,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.3035638332366943,
+        "tokens": 246,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 38.29861831665039,
+        "tokens": 2857,
+        "plan_tok": 809,
+        "plan_seg": 10.817199468612671,
+        "code_seg": 27.48141884803772,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.3510541915893555,
+        "tokens": 526,
+        "plan_tok": 276,
+        "plan_seg": 3.8527939319610596,
+        "code_seg": 3.498260259628296,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "dias_entre",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 13.27892279624939,
+        "tokens": 980,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 2.7223708629608154,
+        "tokens": 207,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 29.126450538635254,
+        "tokens": 2199,
+        "plan_tok": 646,
+        "plan_seg": 8.335472345352173,
+        "code_seg": 20.79097819328308,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.9951012134552,
+        "tokens": 516,
+        "plan_tok": 268,
+        "plan_seg": 3.5779762268066406,
+        "code_seg": 3.4171249866485596,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "escapar_csv",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 11.502544641494751,
+        "tokens": 875,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 1.9515388011932373,
+        "tokens": 145,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 27.04954695701599,
+        "tokens": 2070,
+        "plan_tok": 699,
+        "plan_seg": 8.985520601272583,
+        "code_seg": 18.064026355743408,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.171710252761841,
+        "tokens": 447,
+        "plan_tok": 274,
+        "plan_seg": 3.6374452114105225,
+        "code_seg": 2.5342650413513184,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "titulo",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 17.0275719165802,
+        "tokens": 1283,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.778731346130371,
+        "tokens": 280,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 35.824666023254395,
+        "tokens": 2665,
+        "plan_tok": 804,
+        "plan_seg": 10.661254167556763,
+        "code_seg": 25.163411855697632,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 8.913883209228516,
+        "tokens": 638,
+        "plan_tok": 287,
+        "plan_seg": 3.9514665603637695,
+        "code_seg": 4.962416648864746,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "aplanar_prof",
+      "directo": {
+        "ok": false,
+        "err": "TypeError: 'NoneType' object is not iterable",
+        "segundos": 18.729592084884644,
+        "tokens": 1387,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.3364875316619873,
+        "tokens": 248,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 31.334226369857788,
+        "tokens": 2308,
+        "plan_tok": 724,
+        "plan_seg": 9.692129611968994,
+        "code_seg": 21.642096757888794,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.532034635543823,
+        "tokens": 474,
+        "plan_tok": 241,
+        "plan_seg": 3.3068573474884033,
+        "code_seg": 3.22517728805542,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "romanos_suma",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 20.980632066726685,
+        "tokens": 1579,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": false,
+        "err": "ValueError: La suma (4000) excede el límite de 3999 para la representación roman",
+        "segundos": 12.628767490386963,
+        "tokens": 954,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: invalid syntax",
+        "segundos": 39.301913022994995,
+        "tokens": 2881,
+        "plan_tok": 833,
+        "plan_seg": 11.116663217544556,
+        "code_seg": 28.18524980545044,
+        "truncado": true,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": false,
+        "err": "ValueError: Error en la suma: El número debe estar entre 1 y 3999 para la repres",
+        "segundos": 17.99273705482483,
+        "tokens": 1299,
+        "plan_tok": 298,
+        "plan_seg": 4.135230302810669,
+        "code_seg": 13.85750675201416,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "cola_prioridad",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 15.201427221298218,
+        "tokens": 1111,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.9917712211608887,
+        "tokens": 301,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 32.79549193382263,
+        "tokens": 2455,
+        "plan_tok": 764,
+        "plan_seg": 10.060501337051392,
+        "code_seg": 22.73499059677124,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.8552350997924805,
+        "tokens": 564,
+        "plan_tok": 261,
+        "plan_seg": 3.604257106781006,
+        "code_seg": 4.250977993011475,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "camino_dict",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 17.14568853378296,
+        "tokens": 1275,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": true,
+        "err": "",
+        "segundos": 3.6246800422668457,
+        "tokens": 273,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 34.34805083274841,
+        "tokens": 2569,
+        "plan_tok": 787,
+        "plan_seg": 10.301205396652222,
+        "code_seg": 24.04684543609619,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.678101301193237,
+        "tokens": 402,
+        "plan_tok": 265,
+        "plan_seg": 3.6503162384033203,
+        "code_seg": 2.027785062789917,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    },
+    {
+      "id": "reintentos",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 17.567877769470215,
+        "tokens": 1311,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "solo_rol": {
+        "ok": false,
+        "err": "SyntaxError: no binding for nonlocal 'contador_fallos' found",
+        "segundos": 10.55900526046753,
+        "tokens": 812,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 30.98365569114685,
+        "tokens": 2304,
+        "plan_tok": 774,
+        "plan_seg": 10.190715074539185,
+        "code_seg": 20.792940616607666,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      },
+      "agentes": {
+        "ok": true,
+        "err": "",
+        "segundos": 11.133920669555664,
+        "tokens": 787,
+        "plan_tok": 249,
+        "plan_seg": 3.839787721633911,
+        "code_seg": 7.294132947921753,
+        "truncado": false,
+        "plan_tenia_codigo": false
+      }
+    }
+  ]
+}

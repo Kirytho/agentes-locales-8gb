@@ -1,0 +1,351 @@
+[
+  {
+    "etiqueta": "CALENTAMIENTO",
+    "config": {},
+    "segundos": 242.16189336776733,
+    "prompt_total": 3622,
+    "reusados": 1438,
+    "turnos": [
+      {
+        "segundos": 102.95123386383057,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.9619247913360596,
+        "prompt": 343,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 40.98591327667236,
+        "prompt": 410,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 23.250438690185547,
+        "prompt": 540,
+        "reusados": 286,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 22.270708084106445,
+        "prompt": 562,
+        "reusados": 197,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 19.87381386756897,
+        "prompt": 580,
+        "reusados": 197,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 14.816167116165161,
+        "prompt": 562,
+        "reusados": 198,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.051693677902222,
+        "prompt": 561,
+        "reusados": 197,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "referencia 1",
+    "config": {},
+    "segundos": 129.71661067008972,
+    "prompt_total": 3530,
+    "reusados": 1431,
+    "turnos": [
+      {
+        "segundos": 27.66471242904663,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.37962818145752,
+        "prompt": 278,
+        "reusados": 144,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 16.811447858810425,
+        "prompt": 412,
+        "reusados": 144,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 14.358825206756592,
+        "prompt": 538,
+        "reusados": 285,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.16914439201355,
+        "prompt": 567,
+        "reusados": 198,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 13.689212322235107,
+        "prompt": 549,
+        "reusados": 198,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 13.353517770767212,
+        "prompt": 563,
+        "reusados": 198,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 13.290122509002686,
+        "prompt": 559,
+        "reusados": 201,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "cabeza5 1",
+    "config": {
+      "INTERMEDIARIO_CABEZA_FIJA": "5"
+    },
+    "segundos": 130.76978659629822,
+    "prompt_total": 3549,
+    "reusados": 1961,
+    "turnos": [
+      {
+        "segundos": 28.687620162963867,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 12.916385650634766,
+        "prompt": 278,
+        "reusados": 159,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 17.64437747001648,
+        "prompt": 414,
+        "reusados": 144,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.497575044631958,
+        "prompt": 540,
+        "reusados": 285,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 14.406770944595337,
+        "prompt": 570,
+        "reusados": 305,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 14.521206617355347,
+        "prompt": 554,
+        "reusados": 335,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 13.593925952911377,
+        "prompt": 568,
+        "reusados": 335,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 13.501924753189087,
+        "prompt": 561,
+        "reusados": 335,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "historial25 1",
+    "config": {
+      "INTERMEDIARIO_MAX_MSGS_CPU": "16",
+      "INTERMEDIARIO_MAX_MSGS": "25"
+    },
+    "segundos": 111.89489698410034,
+    "prompt_total": 4895,
+    "reusados": 3096,
+    "turnos": [
+      {
+        "segundos": 27.279131174087524,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.205106496810913,
+        "prompt": 277,
+        "reusados": 163,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.344591856002808,
+        "prompt": 414,
+        "reusados": 144,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.880460500717163,
+        "prompt": 540,
+        "reusados": 285,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 15.844550132751465,
+        "prompt": 679,
+        "reusados": 422,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.5653975009918213,
+        "prompt": 849,
+        "reusados": 539,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.461785078048706,
+        "prompt": 996,
+        "reusados": 647,
+        "backend": "principal"
+      },
+      {
+        "segundos": 17.31387424468994,
+        "prompt": 1076,
+        "reusados": 833,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "referencia 2",
+    "config": {},
+    "segundos": 82.95802354812622,
+    "prompt_total": 4475,
+    "reusados": 2222,
+    "turnos": [
+      {
+        "segundos": 27.91332697868347,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.8956716060638428,
+        "prompt": 348,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 16.102343797683716,
+        "prompt": 405,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.567390203475952,
+        "prompt": 659,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 15.972853183746338,
+        "prompt": 560,
+        "reusados": 168,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.3564107418060303,
+        "prompt": 873,
+        "reusados": 545,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.426649570465088,
+        "prompt": 998,
+        "reusados": 655,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.723377466201782,
+        "prompt": 568,
+        "reusados": 200,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "cabeza5 2",
+    "config": {
+      "INTERMEDIARIO_CABEZA_FIJA": "5"
+    },
+    "segundos": 79.05604553222656,
+    "prompt_total": 4340,
+    "reusados": 2480,
+    "turnos": [
+      {
+        "segundos": 25.020927906036377,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.597644567489624,
+        "prompt": 342,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.728226661682129,
+        "prompt": 406,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 3.8338348865509033,
+        "prompt": 657,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 14.653104066848755,
+        "prompt": 540,
+        "reusados": 300,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.559448003768921,
+        "prompt": 813,
+        "reusados": 543,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.491732120513916,
+        "prompt": 957,
+        "reusados": 654,
+        "backend": "principal"
+      },
+      {
+        "segundos": 14.171127319335938,
+        "prompt": 561,
+        "reusados": 329,
+        "backend": "qwen3"
+      }
+    ]
+  }
+]

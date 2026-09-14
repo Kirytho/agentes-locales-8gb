@@ -1,0 +1,222 @@
+{
+ "filas": [
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "1",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 16.958450317382812,
+   "tokens": 990,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "2",
+   "piezas": 5,
+   "fallos": [],
+   "segundos": 51.599449634552,
+   "tokens": 2867,
+   "llamadas": 5
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "3",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 22.44100308418274,
+   "tokens": 1229,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "4",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 51.75894594192505,
+   "tokens": 2838,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "5",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 14.832342386245728,
+   "tokens": 801,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "6",
+   "piezas": 8,
+   "fallos": [],
+   "segundos": 706.5352189540863,
+   "tokens": 26909,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "7",
+   "piezas": 9,
+   "fallos": [],
+   "segundos": 911.7736172676086,
+   "tokens": 31106,
+   "llamadas": 9
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "8",
+   "piezas": 10,
+   "fallos": [],
+   "segundos": 95.55315971374512,
+   "tokens": 4707,
+   "llamadas": 10
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "9",
+   "piezas": 8,
+   "fallos": [],
+   "segundos": 168.81673455238342,
+   "tokens": 8390,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "10",
+   "piezas": 19,
+   "fallos": [
+    "example_app/utils.py: faltan 1 firmas -> ['def get_weekly_calorie_chart(user)']",
+    "example_app/utils.py: importa get_weekly_calorie_chart de .utils, que no lo define",
+    "example_app/views.py: importa get_weekly_calorie_chart de .utils, que no lo define"
+   ],
+   "segundos": 970.5358364582062,
+   "tokens": 29885,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "11",
+   "piezas": 7,
+   "fallos": [],
+   "segundos": 204.86271047592163,
+   "tokens": 9633,
+   "llamadas": 7
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "12",
+   "piezas": 13,
+   "fallos": [
+    "example_app/forms.py: faltan 3 firmas -> ['    class Meta()', 'class ClaimForm()', 'class SignUpForm(UserCreationForm)']",
+    "example_app/views.py: importa ClaimForm de .forms, que no lo define",
+    "example_app/views.py: importa SignUpForm de .forms, que no lo define"
+   ],
+   "segundos": 99.58941888809204,
+   "tokens": 4323,
+   "llamadas": 13
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "13",
+   "piezas": 19,
+   "fallos": [
+    "example_app/forms.py: faltan 4 firmas -> ['class CustomerForm()', 'class PreferredProductForm()', 'class ProductForm()']",
+    "example_app/views.py: importa CustomerForm de .forms, que no lo define",
+    "example_app/views.py: importa ProductForm de .forms, que no lo define",
+    "example_app/views.py: importa PurchaseRecordForm de .forms, que no lo define",
+    "example_app/views.py: importa PreferredProductForm de .forms, que no lo define"
+   ],
+   "segundos": 271.834095954895,
+   "tokens": 10519,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "14",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 3.6834168434143066,
+   "tokens": 192,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "15",
+   "piezas": 3,
+   "fallos": [],
+   "segundos": 6.345076322555542,
+   "tokens": 352,
+   "llamadas": 3
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "16",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.478353261947632,
+   "tokens": 503,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "17",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 9.074321031570435,
+   "tokens": 540,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "18",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 19.10351324081421,
+   "tokens": 1121,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "19",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.266265630722046,
+   "tokens": 494,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "secuencial",
+   "tarea": "20",
+   "piezas": 11,
+   "fallos": [
+    "example_app/forms.py: faltan 3 firmas -> ['    class Meta()', 'class BlogPostForm()', 'class CommentForm()']",
+    "example_app/utils.py: faltan 1 firmas -> ['def filter_by_date(posts, year, month)']",
+    "example_app/views.py: importa CommentForm de .forms, que no lo define"
+   ],
+   "segundos": 82.48447155952454,
+   "tokens": 3841,
+   "llamadas": 11
+  }
+ ]
+}

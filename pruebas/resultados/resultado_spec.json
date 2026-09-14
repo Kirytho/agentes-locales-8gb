@@ -1,0 +1,965 @@
+{
+  "repeticiones": 3,
+  "max_tokens": 320,
+  "crudos": [
+    {
+      "config": "baseline",
+      "flags": [],
+      "ctx": "16384",
+      "vram_mib": "6875",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "codigo_clase",
+          "tok_s": 58.49945858867609,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_refactor",
+          "tok_s": 60.73838698024724,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_tests",
+          "tok_s": 59.86240336928779,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 59.709034731174214,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 1,
+          "prompt": "copia_larga",
+          "tok_s": 59.15560549274585,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_clase",
+          "tok_s": 58.733385296389486,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_refactor",
+          "tok_s": 59.34137322184096,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_tests",
+          "tok_s": 59.47747122897243,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 59.47826914480267,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 2,
+          "prompt": "copia_larga",
+          "tok_s": 59.17906067296208,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_clase",
+          "tok_s": 59.258629685504296,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_refactor",
+          "tok_s": 60.07968463435715,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_tests",
+          "tok_s": 59.48195058584924,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 3,
+          "prompt": "prosa",
+          "tok_s": 59.48087595920739,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 3,
+          "prompt": "copia_larga",
+          "tok_s": 58.88593334664401,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        }
+      ]
+    },
+    {
+      "config": "ngram-cache",
+      "flags": [
+        "--spec-type",
+        "ngram-cache"
+      ],
+      "ctx": "16384",
+      "vram_mib": "6880",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "codigo_clase",
+          "tok_s": 58.18686933315529,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_refactor",
+          "tok_s": 60.29634064682106,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_tests",
+          "tok_s": 59.370689247318815,
+          "hash": "f9bf066494d3",
+          "n": 128
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 59.09582741705948,
+          "hash": "10b71dacceb8",
+          "n": 184
+        },
+        {
+          "rep": 1,
+          "prompt": "copia_larga",
+          "tok_s": 123.97051206407414,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_clase",
+          "tok_s": 43.23706151201626,
+          "hash": "72369a56ac46",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_refactor",
+          "tok_s": 47.10498544290669,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_tests",
+          "tok_s": 48.8325861422572,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 54.080542151426116,
+          "hash": "5d4c18569815",
+          "n": 180
+        },
+        {
+          "rep": 2,
+          "prompt": "copia_larga",
+          "tok_s": 123.7302664724617,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_clase",
+          "tok_s": 43.15869303069378,
+          "hash": "a69bd71d9d56",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_refactor",
+          "tok_s": 48.53657955060236,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_tests",
+          "tok_s": 48.80554336510285,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 3,
+          "prompt": "prosa",
+          "tok_s": 53.5374574219308,
+          "hash": "00b4b451eadc",
+          "n": 178
+        },
+        {
+          "rep": 3,
+          "prompt": "copia_larga",
+          "tok_s": 123.58380681379319,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        }
+      ]
+    },
+    {
+      "config": "copyspec",
+      "flags": [
+        "--spec-type",
+        "copyspec"
+      ],
+      "ctx": "16384",
+      "vram_mib": "6880",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "codigo_clase",
+          "tok_s": 61.975385154796484,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_refactor",
+          "tok_s": 56.341425082214,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_tests",
+          "tok_s": 54.33516049460278,
+          "hash": "f9bf066494d3",
+          "n": 128
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 58.38033490852126,
+          "hash": "1094f1ee6a46",
+          "n": 180
+        },
+        {
+          "rep": 1,
+          "prompt": "copia_larga",
+          "tok_s": 141.78778445066538,
+          "hash": "0be107f69a2a",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_clase",
+          "tok_s": 62.13438801712335,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_refactor",
+          "tok_s": 56.38551070434406,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_tests",
+          "tok_s": 53.221899266396214,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 58.29334126297436,
+          "hash": "2199a6fe3730",
+          "n": 178
+        },
+        {
+          "rep": 2,
+          "prompt": "copia_larga",
+          "tok_s": 112.0999651439171,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_clase",
+          "tok_s": 61.903902991639605,
+          "hash": "63177f725352",
+          "n": 313
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_refactor",
+          "tok_s": 56.350169841389096,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_tests",
+          "tok_s": 54.14462282559636,
+          "hash": "f9bf066494d3",
+          "n": 128
+        },
+        {
+          "rep": 3,
+          "prompt": "prosa",
+          "tok_s": 58.37847114520976,
+          "hash": "066dca2df527",
+          "n": 166
+        },
+        {
+          "rep": 3,
+          "prompt": "copia_larga",
+          "tok_s": 112.30998116351034,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        }
+      ]
+    },
+    {
+      "config": "suffix",
+      "flags": [
+        "--spec-type",
+        "suffix"
+      ],
+      "ctx": "16384",
+      "vram_mib": "6880",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "codigo_clase",
+          "tok_s": 49.419960503726344,
+          "hash": "d2ae4bbb2db6",
+          "n": 249
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_refactor",
+          "tok_s": 49.21655700346223,
+          "hash": "f0547f9f7e43",
+          "n": 320
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_tests",
+          "tok_s": 50.92855578368541,
+          "hash": "dd1f3df53776",
+          "n": 143
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 40.531669772626145,
+          "hash": "5c434f83d599",
+          "n": 184
+        },
+        {
+          "rep": 1,
+          "prompt": "copia_larga",
+          "tok_s": 173.73439919387238,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_clase",
+          "tok_s": 49.377800058380814,
+          "hash": "d2ae4bbb2db6",
+          "n": 249
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_refactor",
+          "tok_s": 39.80250827090181,
+          "hash": "a919532e650b",
+          "n": 67
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_tests",
+          "tok_s": 50.8209188923187,
+          "hash": "d5069efec9e0",
+          "n": 142
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 40.92969153701059,
+          "hash": "80cdd496cc03",
+          "n": 248
+        },
+        {
+          "rep": 2,
+          "prompt": "copia_larga",
+          "tok_s": 173.14977293030557,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_clase",
+          "tok_s": 49.16389318182304,
+          "hash": "50d3d98b8935",
+          "n": 253
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_refactor",
+          "tok_s": 45.45248734818695,
+          "hash": "d5e78d8e6217",
+          "n": 261
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_tests",
+          "tok_s": 54.716888137796346,
+          "hash": "4141c87a40ec",
+          "n": 131
+        },
+        {
+          "rep": 3,
+          "prompt": "prosa",
+          "tok_s": 37.71627761942647,
+          "hash": "292270a2c378",
+          "n": 213
+        },
+        {
+          "rep": 3,
+          "prompt": "copia_larga",
+          "tok_s": 172.8455344275896,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        }
+      ]
+    },
+    {
+      "config": "recycle",
+      "flags": [
+        "--spec-type",
+        "recycle"
+      ],
+      "ctx": "16384",
+      "vram_mib": "6880",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "codigo_clase",
+          "tok_s": 38.30931419144601,
+          "hash": "e9fc4fc42e36",
+          "n": 320
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_refactor",
+          "tok_s": 60.14947143651975,
+          "hash": "2e0e80033808",
+          "n": 320
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_tests",
+          "tok_s": 38.444870970382546,
+          "hash": "b4b7da71bc51",
+          "n": 147
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 29.289862063927565,
+          "hash": "5ca6da0c44a1",
+          "n": 168
+        },
+        {
+          "rep": 1,
+          "prompt": "copia_larga",
+          "tok_s": 69.33314728938811,
+          "hash": "686901e33a9d",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_clase",
+          "tok_s": 42.0377648888239,
+          "hash": "474336dd592d",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_refactor",
+          "tok_s": 57.193156481369776,
+          "hash": "977c13c56284",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_tests",
+          "tok_s": 51.309572618518295,
+          "hash": "470fbf8fc92f",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 29.210828570994583,
+          "hash": "325c8a5eb7fb",
+          "n": 250
+        },
+        {
+          "rep": 2,
+          "prompt": "copia_larga",
+          "tok_s": 61.785481469146404,
+          "hash": "6bae68e19d9d",
+          "n": 187
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_clase",
+          "tok_s": 37.0771094963515,
+          "hash": "bdcf96f2d939",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_refactor",
+          "tok_s": 58.50491422996746,
+          "hash": "7da74878b7b5",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_tests",
+          "tok_s": 72.73062825398537,
+          "hash": "b046e11e748a",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "prosa",
+          "tok_s": 34.09748278529976,
+          "hash": "962a1405f252",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "copia_larga",
+          "tok_s": 66.2165459007923,
+          "hash": "a8661473e3e5",
+          "n": 320
+        }
+      ]
+    },
+    {
+      "config": "baseline-ctx8k",
+      "flags": [],
+      "ctx": "8192",
+      "vram_mib": "6730",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "codigo_clase",
+          "tok_s": 58.85249361063566,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_refactor",
+          "tok_s": 59.66362277517491,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_tests",
+          "tok_s": 59.01563819225582,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 59.01836309774342,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 1,
+          "prompt": "copia_larga",
+          "tok_s": 58.43081845873378,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_clase",
+          "tok_s": 58.70118826640423,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_refactor",
+          "tok_s": 59.689739019705996,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_tests",
+          "tok_s": 59.4274453195615,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 59.00633945477521,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 2,
+          "prompt": "copia_larga",
+          "tok_s": 58.43534257171751,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_clase",
+          "tok_s": 58.738099684405576,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_refactor",
+          "tok_s": 59.55826574689199,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_tests",
+          "tok_s": 59.23932879929524,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 3,
+          "prompt": "prosa",
+          "tok_s": 58.75898548591207,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 3,
+          "prompt": "copia_larga",
+          "tok_s": 58.460088201658074,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        }
+      ]
+    },
+    {
+      "config": "baseline-ctx4k",
+      "flags": [],
+      "ctx": "4096",
+      "vram_mib": "6676",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "codigo_clase",
+          "tok_s": 58.944180565516575,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_refactor",
+          "tok_s": 60.325631408275406,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo_tests",
+          "tok_s": 59.35578864935424,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 59.342528510180834,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 1,
+          "prompt": "copia_larga",
+          "tok_s": 58.55480162182161,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_clase",
+          "tok_s": 58.980455850778974,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_refactor",
+          "tok_s": 59.659001706038126,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo_tests",
+          "tok_s": 59.45822053053995,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 59.363294300405144,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 2,
+          "prompt": "copia_larga",
+          "tok_s": 58.5931205817125,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_clase",
+          "tok_s": 58.93717719567989,
+          "hash": "5d5d4c4c38fd",
+          "n": 251
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_refactor",
+          "tok_s": 59.5905813427117,
+          "hash": "77d2f45ee14e",
+          "n": 57
+        },
+        {
+          "rep": 3,
+          "prompt": "codigo_tests",
+          "tok_s": 59.19035235443946,
+          "hash": "dcdf2b891fbb",
+          "n": 124
+        },
+        {
+          "rep": 3,
+          "prompt": "prosa",
+          "tok_s": 59.12549043038378,
+          "hash": "c2bd325d849e",
+          "n": 190
+        },
+        {
+          "rep": 3,
+          "prompt": "copia_larga",
+          "tok_s": 58.54916629646517,
+          "hash": "fdc79e799fcb",
+          "n": 320
+        }
+      ]
+    }
+  ],
+  "resumen": [
+    {
+      "config": "baseline",
+      "ctx": "16384",
+      "media": 59.424101529244055,
+      "min": 58.49945858867609,
+      "max": 60.73838698024724,
+      "vram_mib": "6875",
+      "por_prompt": {
+        "codigo_clase": 58.83049119018995,
+        "codigo_refactor": 60.053148278815115,
+        "codigo_tests": 59.60727506136982,
+        "prosa": 59.55605994506143,
+        "copia_larga": 59.07353317078398
+      },
+      "hashes": {
+        "codigo_clase": "5d5d4c4c38fd",
+        "codigo_refactor": "77d2f45ee14e",
+        "codigo_tests": "dcdf2b891fbb",
+        "prosa": "c2bd325d849e",
+        "copia_larga": "fdc79e799fcb"
+      }
+    },
+    {
+      "config": "ngram-cache",
+      "ctx": "16384",
+      "media": 66.36851737410798,
+      "min": 43.15869303069378,
+      "max": 123.97051206407414,
+      "vram_mib": "6880",
+      "por_prompt": {
+        "codigo_clase": 48.19420795862178,
+        "codigo_refactor": 51.979301880110036,
+        "codigo_tests": 52.336272918226285,
+        "prosa": 55.571275663472136,
+        "copia_larga": 123.76152845010968
+      },
+      "hashes": {
+        "codigo_clase": "a69bd71d9d56",
+        "codigo_refactor": "77d2f45ee14e",
+        "codigo_tests": "dcdf2b891fbb",
+        "prosa": "00b4b451eadc",
+        "copia_larga": "fdc79e799fcb"
+      }
+    },
+    {
+      "config": "copyspec",
+      "ctx": "16384",
+      "media": 70.53615616352667,
+      "min": 53.221899266396214,
+      "max": 141.78778445066538,
+      "vram_mib": "6880",
+      "por_prompt": {
+        "codigo_clase": 62.00455872118648,
+        "codigo_refactor": 56.35903520931572,
+        "codigo_tests": 53.90056086219845,
+        "prosa": 58.35071577223513,
+        "copia_larga": 122.0659102526976
+      },
+      "hashes": {
+        "codigo_clase": "63177f725352",
+        "codigo_refactor": "77d2f45ee14e",
+        "codigo_tests": "f9bf066494d3",
+        "prosa": "066dca2df527",
+        "copia_larga": "fdc79e799fcb"
+      }
+    },
+    {
+      "config": "suffix",
+      "ctx": "16384",
+      "media": 71.85379431074082,
+      "min": 37.71627761942647,
+      "max": 173.73439919387238,
+      "vram_mib": "6880",
+      "por_prompt": {
+        "codigo_clase": 49.32055124797673,
+        "codigo_refactor": 44.823850874183655,
+        "codigo_tests": 52.15545427126682,
+        "prosa": 39.72587964302107,
+        "copia_larga": 173.24323551725584
+      },
+      "hashes": {
+        "codigo_clase": "50d3d98b8935",
+        "codigo_refactor": "d5e78d8e6217",
+        "codigo_tests": "4141c87a40ec",
+        "prosa": "292270a2c378",
+        "copia_larga": "fdc79e799fcb"
+      }
+    },
+    {
+      "config": "recycle",
+      "ctx": "16384",
+      "media": 49.71267670979422,
+      "min": 29.210828570994583,
+      "max": 72.73062825398537,
+      "vram_mib": "6880",
+      "por_prompt": {
+        "codigo_clase": 39.14139619220714,
+        "codigo_refactor": 58.615847382618995,
+        "codigo_tests": 54.1616906142954,
+        "prosa": 30.86605780674064,
+        "copia_larga": 65.77839155310893
+      },
+      "hashes": {
+        "codigo_clase": "bdcf96f2d939",
+        "codigo_refactor": "7da74878b7b5",
+        "codigo_tests": "b046e11e748a",
+        "prosa": "962a1405f252",
+        "copia_larga": "a8661473e3e5"
+      }
+    },
+    {
+      "config": "baseline-ctx8k",
+      "ctx": "8192",
+      "media": 58.99971724565807,
+      "min": 58.43081845873378,
+      "max": 59.689739019705996,
+      "vram_mib": "6730",
+      "por_prompt": {
+        "codigo_clase": 58.76392718714849,
+        "codigo_refactor": 59.637209180590965,
+        "codigo_tests": 59.22747077037085,
+        "prosa": 58.92789601281023,
+        "copia_larga": 58.442083077369794
+      },
+      "hashes": {
+        "codigo_clase": "5d5d4c4c38fd",
+        "codigo_refactor": "77d2f45ee14e",
+        "codigo_tests": "dcdf2b891fbb",
+        "prosa": "c2bd325d849e",
+        "copia_larga": "fdc79e799fcb"
+      }
+    },
+    {
+      "config": "baseline-ctx4k",
+      "ctx": "4096",
+      "media": 59.19798608962022,
+      "min": 58.54916629646517,
+      "max": 60.325631408275406,
+      "vram_mib": "6676",
+      "por_prompt": {
+        "codigo_clase": 58.95393787065848,
+        "codigo_refactor": 59.858404819008406,
+        "codigo_tests": 59.33478717811121,
+        "prosa": 59.27710441365659,
+        "copia_larga": 58.56569616666642
+      },
+      "hashes": {
+        "codigo_clase": "5d5d4c4c38fd",
+        "codigo_refactor": "77d2f45ee14e",
+        "codigo_tests": "dcdf2b891fbb",
+        "prosa": "c2bd325d849e",
+        "copia_larga": "fdc79e799fcb"
+      }
+    }
+  ]
+}

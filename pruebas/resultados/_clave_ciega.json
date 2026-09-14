@@ -1,0 +1,18 @@
+{
+  "P1": {
+    "X": "control",
+    "Y": "especialista"
+  },
+  "P2": {
+    "X": "control",
+    "Y": "especialista"
+  },
+  "P3": {
+    "X": "especialista",
+    "Y": "control"
+  },
+  "P4": {
+    "X": "control",
+    "Y": "especialista"
+  }
+}

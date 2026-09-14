@@ -1,0 +1,55 @@
+{
+  "etiqueta": "Ornith-ctx16384",
+  "repes": 3,
+  "filas": [
+    {
+      "chars": 10033,
+      "lineas": 548,
+      "formato": 3,
+      "aplica": 3,
+      "pasa": 3,
+      "seg": 11.87473440170288,
+      "motivos": []
+    },
+    {
+      "chars": 20091,
+      "lineas": 1083,
+      "formato": 3,
+      "aplica": 3,
+      "pasa": 3,
+      "seg": 11.76311707496643,
+      "motivos": []
+    },
+    {
+      "chars": 30055,
+      "lineas": 1613,
+      "formato": 3,
+      "aplica": 3,
+      "pasa": 3,
+      "seg": 14.76636815071106,
+      "motivos": []
+    },
+    {
+      "chars": 40019,
+      "lineas": 2143,
+      "formato": 3,
+      "aplica": 3,
+      "pasa": 3,
+      "seg": 16.27240300178528,
+      "motivos": []
+    },
+    {
+      "chars": 60041,
+      "lineas": 3208,
+      "formato": 0,
+      "aplica": 0,
+      "pasa": 0,
+      "seg": 0.0,
+      "motivos": [
+        "HTTPError: HTTP Error 400: Bad Request",
+        "HTTPError: HTTP Error 400: Bad Request",
+        "HTTPError: HTTP Error 400: Bad Request"
+      ]
+    }
+  ]
+}

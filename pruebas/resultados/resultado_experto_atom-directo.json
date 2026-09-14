@@ -1,0 +1,208 @@
+{
+  "etiqueta": "atom-directo",
+  "codigo": {
+    "aciertos": 6,
+    "total": 12,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n: int) -> list[str]:\n    \"\"\"\n    Devuelve una lista de strings del 1 al n, donde:\n    - Multiplos de 3 son 'Fizz'\n    - Multiplos de 5 son 'Buzz'\n    - Multiplos de ambos (15, 30, ...) son 'FizzBuzz'\n    - Los demás números se convierten a string.\n    \"\"\"\n    result = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "ValueError: invalid literal for int() with base 10: '30m'",
+        "codigo": "def parsear_duracion(s: str) -> int:\n    \"\"\"\n    Recibe un string como '1h30m', '45m' o '2h' y devuelve la cantidad total de MINUTOS como entero.\n    \n    Args:\n        s: String que representa una duración en formato 'XhYm' o 'Ym'.\n        \n    Returns:\n        El total de minutos como entero.\n    \"\"\"\n    if not s:\n        raise ValueError(\"El string no puede estar vacío.\")\n\n    # Separar horas y minutos\n    if 'h' in s:\n        horas, minutos = s.split('h')\n        minutos = int(minutos)\n        total = horas * 60 + minutos\n    elif 'm' in s:\n        minutos = int(s)\n        total = minutos\n    else:\n        raise ValueError(\"Formato de entrada inválido. Espera 'XhYm' o 'Ym'.\")\n\n    return total"
+      },
+      {
+        "id": "palindromo",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_palindromo(s: str) -> bool:\n    \"\"\"\n    Verifica si una string es palíndromo, ignorando mayúsculas,\n    espacios y signos de puntuación.\n    \n    Args:\n        s: La string a verificar.\n        \n    Returns:\n        True si la string es palíndromo, False de lo contrario.\n    \"\"\"\n    # Convertir a minúsculas y eliminar espacios y signos de puntuación\n    cleaned = ''.join(ch.lower() for ch in s if ch.isalnum())\n    # Verificar si es palíndromo\n    return cleaned == cleaned[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista: list) -> list:\n    \"\"\"\n    Recibe una lista con sublistas anidadas a cualquier profundidad\n    y devuelve una lista plana con todos los elementos.\n    \n    Args:\n        lista: Lista con sublistas anidadas a cualquier profundidad.\n        \n    Returns:\n        Una lista plana con todos los elementos.\n    \"\"\"\n    result = []\n    for item in lista:\n        if isinstance(item, list):\n            result.extend(aplanar(item))\n        else:\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    \"\"\"\n    Busqueda binaria sobre una lista ordenada.\n    Devuelve el índice de x, o -1 si no está presente.\n    \n    Args:\n        lista: Lista ordenada (ascendente).\n        x: Valor a buscar.\n    \n    Returns:\n        El índice de x, o -1 si no está en la lista.\n    \"\"\"\n    low = 0\n    high = len(lista) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def agrupar_por(items, clave):\n    \"\"\"\n    Agrupa los items de una lista de diccionarios por el valor de una clave.\n    \n    Args:\n        items: Lista de diccionarios.\n        clave: Clave a agrupar por.\n    \n    Returns:\n        Diccionario con la clave como clave y los items como valores.\n    \"\"\"\n    return dict(\n        {clave: [item[clave] for item in items] for item in items}\n    )"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": false,
+        "error": "NameError: name 'text' is not defined. Did you mean: 'texto'?",
+        "codigo": "from collections import Counter\nimport string\n\n\ndef contar_palabras(texto: str) -> dict[str, int]:\n    \"\"\"\n    Cuenta cuántas veces aparece cada palabra en un texto.\n    Ignora mayúsculas y signos de puntuación.\n    \n    Args:\n        texto: La entrada a analizar.\n        \n    Returns:\n        Un diccionario con las palabras como claves y sus conteos como valores.\n    \"\"\"\n    # Normalizar: convertir a minúsculas y eliminar signos de puntuación\n    normalized = text.lower().replace(string.punctuation, \"\")\n    \n    # Contar frecuencias\n    return dict(Counter(normalized.split()))"
+      },
+      {
+        "id": "rotar",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def rotar(lista: list, n: int) -> list:\n    \"\"\"\n    Rota la lista n posiciones hacia la derecha.\n    Si n es mayor que el largo, rota lo que corresponda.\n    Si n es negativo, rota hacia la izquierda.\n    Lista vacía devuelve lista vacía.\n    \"\"\"\n    if not lista:\n        return []\n    \n    n = n % len(lista)\n    if n < 0:\n        n = len(lista) + n\n    \n    return lista[n:] + lista[:n]"
+      },
+      {
+        "id": "romano",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_romano(n: int) -> str:\n    \"\"\"\n    Convierte un entero entre 1 y 3999 a su representación en números romanos\n    usando la notación sustractiva (IV, IX, XL, CM, etc.).\n    \n    Args:\n        n: Un entero entre 1 y 3999.\n        \n    Returns:\n        La representación en números romanos.\n    \"\"\"\n    if n < 1 or n > 3999:\n        raise ValueError(\"El número debe estar entre 1 y 3999.\")\n    \n    # Definimos los valores de los símbolos\n    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\n    sym = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"]\n    \n    # Construir la cadena de caracteres\n    result = []\n    for i in range(len(val)):\n        while n >= val[i]:\n            result.append(sym[i])\n            n -= val[i]\n    \n    return \"\".join(result)\n\n\n# Ejemplo de uso\nif __name__ == \"__main__\":\n    print(a_romano(1))   # I\n    print(a_romano(4))   # IV\n    print(a_romano(9))   # IX\n    print(a_romano(40))  # XL\n    print(a_romano(900)) # CM\n    print(a_romano(1994)) # MCMXCIV\n    print(a_romano(3999)) # MMMCMXCIX"
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "NameError: name 'desde_romano' is not defined",
+        "codigo": "def from_romano(s: str) -> int:\n    \"\"\"\n    Convierte una cadena de caracteres en notación romana a un entero.\n    \n    Maneja la notación sustractiva (IV = 4, IX = 9, XL = 40, etc.).\n    \n    Args:\n        s: Cadena de caracteres representando una notación romana.\n        \n    Returns:\n        El entero correspondiente a la notación romana.\n        \n    Raises:\n        ValueError: Si la cadena no es una notación romana válida.\n    \"\"\"\n    # Definición de las combinaciones sustractivas\n    subtractive = {\n        \"IV\": 4,\n        \"IX\": 9,\n        \"XL\": 40,\n        \"LX\": 60,\n        \"XC\": 90,\n        \"CD\": 400,\n        \"CM\": 900,\n        \"MCM\": 990,\n        \"MM\": 1000,\n    }\n\n    # Validación de entrada\n    if not s or not s.strip():\n        raise ValueError(\"La cadena no puede estar vacía.\")\n\n    # Normalización: eliminar espacios y convertir a minúsculas\n    s = s.strip().lower()\n\n    # Verificar que no haya combinaciones sustractivas\n    if any(subtractive.get(k, 0) > 0 for k in s):\n        raise ValueError(\"La cadena no es una notación romana válida.\")\n\n    # Convertir a un diccionario de valores\n    values = {\n        \"i\": 1,\n        \"v\": 5,\n        \"x\": 10,\n        \"l\": 50,\n        \"c\": 100,\n        \"d\": 500,\n        \"m\": 1000,\n    }\n\n    # Calcular el valor total\n    total = 0\n    for char in s:\n        if char in values:\n            total += values[char]\n\n    return total"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    \"\"\"\n    Encuentra la racha más larga de elementos consecutivos iguales y devuelve\n    la tupla (elemento, longitud). Si hay empate, devuelve la primera.\n    Si la lista está vacía, devuelve None.\n    \"\"\"\n    if not lista:\n        return None\n\n    max_racha = 1\n    max_elemento = lista[0]\n    racha_actual = 1\n\n    for i in range(1, len(lista)):\n        if lista[i] == lista[i - 1]:\n            racha_actual += 1\n        else:\n            if racha_actual > max_racha:\n                max_racha = racha_actual\n                max_elemento = lista[i - 1]\n            racha_actual = 1\n\n    # Verificar la última racha\n    if racha_actual > max_racha:\n        max_racha = racha_actual\n        max_elemento = lista[-1]\n\n    return (max_elemento, max_racha)"
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_camel(s: str) -> str:\n    \"\"\"Convierte un texto en snake_case a camelCase: la primera palabra en minúscula y las siguientes con inicial en mayúscula, sin guiones bajos.\"\"\"\n    words = s.split()\n    result = words[0].lower()\n    for i in range(1, len(words)):\n        result += words[i].capitalize()\n    return result"
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 2,
+    "total": 12
+  },
+  "velocidad_media": 190.35097397398832,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "Un índice acelera las lecturas porque el motor de búsqueda puede navegar directamente a la fila exacta sin escanear todas las filas del índice, mientras que enlentece las escrituras porque cada escritura (INSERT, UPDATE, DELETE) requiere una búsqueda en el índice para localizar la fila donde realizar el cambio, lo que incrementa el tiempo de procesamiento.",
+      "ok": false,
+      "detalle": {
+        "g1": "localiza",
+        "g2": false
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "## Monolito\n\nUn monolito es el modelo de arquitectura en el que todo el sistema se ejecuta en un solo proceso. Es adecuado cuando:\n\n1. **La complejidad del negocio es baja** y se puede manejar con una sola aplicación.\n2. **No hay requisitos de escalabilidad horizontal** (no se necesita manejar picos de tráfico).\n3. **La consistencia de datos es crítica** y se puede tolerar un pequeño tiempo de inactividad.\n4. **El equipo de desarrollo es pequeño** y no hay necesidad de una arquitectura distribuida.\n5. **El presupuesto es limitado** y se prefieren los costos operativos bajos.\n\n## Microservicios\n\nLos microservicios son una arquitectura en la que cada módulo del sistema es una aplicación independiente, con su propio código, despliegue y despliegue. Es adecuado cuando:\n\n1. **Se requiere escalabilidad horizontal** y manejar picos de tráfico masivos.\n2. **Hay requisitos de disponibilidad y tolerancia a fallos** (cada servicio puede ser escalado independientemente).\n3. **Se necesita especialización** (cada módulo se puede construir con la tecnología adecuada).\n4. **Se requiere alta disponibilidad** (si un servicio cae, no afecta al resto).\n5. **Se tiene un equipo de desarrollo grande** y se puede mantener la coherencia de datos entre servicios.\n\n---\n\n**En resumen:**",
+      "ok": true,
+      "detalle": {
+        "g1": "una sola",
+        "g2": "escala"
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "Python compila el código a nivel de máquina (código binario) antes de ejecutarse para lograr dos objetivos principales:\n\n1. **Optimización de rendimiento**: Al traducir el código a máquina nativa, Python puede aprovechar las instrucciones específicas del hardware (CPU, GPU, memoria) para maximizar la velocidad de ejecución.\n\n2. **Portabilidad y eficiencia**: Permite ejecutar el programa en cualquier sistema operativo o arquitectura sin necesidad de recompilar el código para cada entorno, ya que el compilador nativo se adapta a la arquitectura del hardware en tiempo de ejecución.\n\nEn resumen, este proceso permite que Python sea tanto un lenguaje de alto nivel (fácil de leer y escribir) como un motor de bajo nivel (eficiente y rápido) al mismo tiempo.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "indice_no_conviene",
+      "pregunta": "En 3 frases: cuando NO conviene crear un indice en una tabla?",
+      "respuesta": "1. Cuando el índice no mejora el rendimiento de la consulta y el índice es demasiado pequeño para el tamaño de la base de datos.\n\n2. Cuando el índice no se actualiza correctamente, por ejemplo, cuando se inserta o elimina un registro que no está en la tabla.\n\n3. Cuando el índice es demasiado pequeño para el tamaño de la base de datos y se genera un error de espacio.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "n_mas_1",
+      "pregunta": "En 3 frases: que es el problema N+1 en un ORM y como se corrige?",
+      "respuesta": "## ¿Qué es el problema N+1?\n\nEl problema **N+1** es un problema de rendimiento en aplicaciones con **N** consultas de base de datos y **1** llamada a la API (o a un servicio externo) que genera un total de **N + 1** consultas.\n\n## ¿Por qué es un problema?\n\nCuando una aplicación genera un objeto que contiene **N** entidades (por ejemplo, un array de 100 usuarios), y cada entidad tiene una relación de \"tiene\" con otra entidad (por ejemplo, cada usuario tiene 100 comentarios), el ORM debe hacer **N + 1** consultas:\n\n```\n1. Crear el objeto principal (ej. `User`)\n2. Crear los N objetos relacionados (ej. `Comment`)\n3. Crear los N objetos relacionados (ej. `Comment`)\n4. Crear los N objetos relacionados (ej. `Comment`)\n...\nN. Crear los N objetos relacionados (ej. `Comment`)\n```\n\nEsto resulta en **N + 1** llamadas a la base de datos, lo que puede ser muy lento, especialmente en aplicaciones con muchas entidades.\n\n## ¿Cómo se corrige?\n\nSe corrige mediante **N+1 Query Optimization** (o **N+1 Query Caching**), que consiste en:\n\n1. **Crear un objeto principal** (ej. `User`).\n2. **Crear",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "desnormalizar",
+      "pregunta": "En 3 frases: por que a veces conviene desnormalizar una base de datos?",
+      "respuesta": "1. Desnormalizar una base de datos puede eliminar redundancias y mejorar la integridad referencial, lo que reduce la carga de mantenimiento y aumenta la consistencia de los datos.\n\n2. Al reducir la cantidad de datos repetidos, se disminuye el consumo de almacenamiento y se acelera la carga de lectura, ya que no se deben realizar consultas joins complejas para recuperar información duplicada.\n\n3. Al simplificar la estructura del esquema, se facilita el desarrollo de nuevas aplicaciones, la migración de datos y la implementación de nuevas funcionalidades sin necesidad de refactorizar toda la base de datos.",
+      "ok": true,
+      "detalle": {
+        "g1": "join",
+        "g2": "duplica"
+      }
+    },
+    {
+      "id": "idempotencia",
+      "pregunta": "En 3 frases: por que importa que una operacion sea idempotente cuando hay reintentos?",
+      "respuesta": "# Por qué importa la idempotencia con reintentos\n\n1. **Evita duplicados de trabajo**: Si una operación es idempotente, un reintentado no altera el estado del sistema, por lo que el cliente no debe ejecutar el mismo trabajo de nuevo.\n\n2. **Garantiza consistencia**: Al eliminar la necesidad de reintentar, se reduce el riesgo de errores transitorios (como fallos de red o timeouts) que podrían causar duplicados de datos o operaciones innecesarias.\n\n3. **Simplifica el código y la lógica**: Al eliminar la lógica de reintentamiento, el cliente no necesita manejar estados de \"en curso\", \"en espera\" o \"reintentando\", lo que reduce la complejidad y el riesgo de errores de implementación.",
+      "ok": false,
+      "detalle": {
+        "g1": "reintent",
+        "g2": false
+      }
+    },
+    {
+      "id": "reintento_sin_espera",
+      "pregunta": "En 3 frases: por que reintentar inmediatamente un servicio caido empeora las cosas, y que habria que hacer en su lugar?",
+      "respuesta": "1. Reintentar inmediatamente un servicio caído empeora las cosas porque el sistema no se ha recuperado completamente, por lo que el primer intento fallará de nuevo y se generará una nueva carga de errores.\n\n2. Lo que se debe hacer en su lugar es **reintentar con un retraso exponencial** (o con un tiempo de espera aleatorio) para que, si el servicio se recupera, el segundo intento tenga mayor probabilidad de éxito.\n\n3. Además, es crucial **reintentar de forma asíncrona** (sin bloquear la ejecución) y **con un límite de intentos** para evitar que el sistema se quede atrapado en un bucle infinito de fallos.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "espera"
+      }
+    },
+    {
+      "id": "cola_mensajes",
+      "pregunta": "En 3 frases: que gana y que pierde un sistema al meter una cola de mensajes entre dos servicios?",
+      "respuesta": "1. **Gana** la cola de mensajes la que tenga mayor prioridad (o la que esté en la cola más larga, según el algoritmo de selección).\n2. **Pierde** la cola de mensajes la que tenga menor prioridad o esté en la cola más corta.\n3. **Pierde** el servicio al que se le asigna la cola de mensajes, ya que ese servicio no recibe la prioridad que le corresponde.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "deadlock_orden",
+      "pregunta": "En 3 frases: por que dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados?",
+      "respuesta": "Dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados porque el sistema de semáforos no garantiza que la secuencia de acceso a los recursos sea única ni predecible. Cada hilo espera por un semáforo específico, pero si ambos acaban de liberar sus recursos antes de que el hilo que espera el segundo semáforo haya completado su espera, el hilo que espera el primero se bloquea indefinidamente, ya que el segundo semáforo nunca se libera.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "indefinidamente"
+      }
+    },
+    {
+      "id": "condicion_carrera",
+      "pregunta": "En 3 frases: por que dos procesos que leen y escriben el mismo contador sin sincronizacion pueden perder incrementos?",
+      "respuesta": "1. El contador se incrementa en el hilo que lo lee, pero si el hilo que lo escribe no se sincroniza con él, puede terminar ejecutando antes de que el contador esté listo para recibir el nuevo valor.\n\n2. Si el hilo que escribe no espera al contador, puede terminar de escribir el nuevo valor antes de que el hilo que lee lo haya procesado, lo que resulta en un contador incorrecto.\n\n3. La falta de sincronización permite que el hilo que escribe complete su operación antes de que el hilo que lee la haya procesado, provocando que el contador refleje un valor menor al esperado.",
+      "ok": false,
+      "detalle": {
+        "g1": "lee",
+        "g2": false
+      }
+    },
+    {
+      "id": "gc_ciclos",
+      "pregunta": "En 3 frases: por que contar referencias no alcanza para liberar toda la memoria?",
+      "respuesta": "1. Las referencias son solo un pequeño fragmento de la información que el cerebro almacena, ya que la memoria es un sistema complejo que involucra múltiples sistemas neuronales.\n2. La memoria funciona de forma distribuida, con múltiples \"nodos\" o redes neuronales que se activan de manera independiente, por lo que una sola referencia no puede acceder a todo el conocimiento almacenado.\n3. Además, la memoria se almacena de forma no lineal y de manera dinámica, lo que significa que incluso si se recuerda una referencia, el cerebro puede recuperar información de forma diferente o de manera incompleta.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,627 @@
+{
+  "repeticiones": 2,
+  "bloques": 48,
+  "crudos": [
+    {
+      "config": "baseline-cpu",
+      "flags": [],
+      "vram_mib": "6780",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 25.175742416909035,
+          "hash": "b6387388e5ed",
+          "n": 200,
+          "prompt_tok_s": 71.53664285688737
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 29.02169603952523,
+          "hash": "5e29686e32f8",
+          "n": 200,
+          "prompt_tok_s": 74.14499537399703
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 27.136117887979662,
+          "hash": "f8b55eac6482",
+          "n": 200,
+          "prompt_tok_s": 52.19513149910942
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 24.214869188855154,
+          "hash": "bf04f2192b3f",
+          "n": 200,
+          "prompt_tok_s": 20.520818370236604
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 28.965156075847,
+          "hash": "2ffb1f662284",
+          "n": 200,
+          "prompt_tok_s": 78.27881894279349
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 29.048386478324673,
+          "hash": "f72c60dd1072",
+          "n": 200,
+          "prompt_tok_s": 54.385604130586636
+        }
+      ]
+    },
+    {
+      "config": "ncmoe-48",
+      "flags": [
+        "--n-gpu-layers",
+        "99",
+        "--n-cpu-moe",
+        "48"
+      ],
+      "vram_mib": "2272",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 22.16520346770175,
+          "hash": "fdb485e29eea",
+          "n": 200,
+          "prompt_tok_s": 72.45444879372398
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 22.034007728207868,
+          "hash": "0e53c97a65f2",
+          "n": 200,
+          "prompt_tok_s": 52.97366517879764
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 21.305378404293204,
+          "hash": "3661bede6804",
+          "n": 200,
+          "prompt_tok_s": 39.15057924505449
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 18.373595086018742,
+          "hash": "82e6b9d5c8e8",
+          "n": 200,
+          "prompt_tok_s": 16.68502018887443
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 21.597101323448772,
+          "hash": "4b0cf14704ce",
+          "n": 200,
+          "prompt_tok_s": 49.667283188812334
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 21.620990522438806,
+          "hash": "158b195c0f96",
+          "n": 200,
+          "prompt_tok_s": 36.05154469602915
+        }
+      ]
+    },
+    {
+      "config": "ncmoe-46",
+      "flags": [
+        "--n-gpu-layers",
+        "99",
+        "--n-cpu-moe",
+        "46"
+      ],
+      "vram_mib": "2968",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 22.780976290129402,
+          "hash": "ddc3f9995d3e",
+          "n": 200,
+          "prompt_tok_s": 70.05094454942356
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 22.76976161995014,
+          "hash": "0e53c97a65f2",
+          "n": 200,
+          "prompt_tok_s": 56.90540960142708
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 23.101888221282824,
+          "hash": "b2707c4fbebd",
+          "n": 200,
+          "prompt_tok_s": 40.462793197192894
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 19.91147755309445,
+          "hash": "82e6b9d5c8e8",
+          "n": 200,
+          "prompt_tok_s": 17.793910923681917
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 21.769612624982067,
+          "hash": "375054c73814",
+          "n": 200,
+          "prompt_tok_s": 52.232484517610295
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 22.3000518810707,
+          "hash": "f8e8eca99569",
+          "n": 200,
+          "prompt_tok_s": 40.24261265101983
+        }
+      ]
+    },
+    {
+      "config": "ncmoe-44",
+      "flags": [
+        "--n-gpu-layers",
+        "99",
+        "--n-cpu-moe",
+        "44"
+      ],
+      "vram_mib": "3664",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 23.873900920207575,
+          "hash": "e52882245c4c",
+          "n": 200,
+          "prompt_tok_s": 75.99506032107912
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 22.785095084480297,
+          "hash": "0e53c97a65f2",
+          "n": 200,
+          "prompt_tok_s": 55.27909332673189
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 23.90920527116685,
+          "hash": "98443ca4f053",
+          "n": 200,
+          "prompt_tok_s": 40.263879399615234
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 19.95326347097194,
+          "hash": "82e6b9d5c8e8",
+          "n": 200,
+          "prompt_tok_s": 19.004542085558448
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 23.852634606976565,
+          "hash": "4b0cf14704ce",
+          "n": 200,
+          "prompt_tok_s": 59.5508570792376
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 23.87062978001902,
+          "hash": "ad01d4ec749c",
+          "n": 200,
+          "prompt_tok_s": 42.44099375586879
+        }
+      ]
+    },
+    {
+      "config": "ncmoe-42",
+      "flags": [
+        "--n-gpu-layers",
+        "99",
+        "--n-cpu-moe",
+        "42"
+      ],
+      "vram_mib": "4336",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 25.097966776064524,
+          "hash": "e52882245c4c",
+          "n": 200,
+          "prompt_tok_s": 77.83956293085413
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 25.012337335390683,
+          "hash": "0e53c97a65f2",
+          "n": 200,
+          "prompt_tok_s": 62.81827356265645
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 24.954100052216454,
+          "hash": "1982f8ef9e93",
+          "n": 200,
+          "prompt_tok_s": 44.163088766428324
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 21.42068632093179,
+          "hash": "82e6b9d5c8e8",
+          "n": 200,
+          "prompt_tok_s": 20.795641233597436
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 24.617387334526537,
+          "hash": "c7d0d3837120",
+          "n": 200,
+          "prompt_tok_s": 60.29868824136254
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 24.80945716659625,
+          "hash": "b666bc879d5b",
+          "n": 200,
+          "prompt_tok_s": 44.75868773122408
+        }
+      ]
+    },
+    {
+      "config": "ncmoe-40",
+      "flags": [
+        "--n-gpu-layers",
+        "99",
+        "--n-cpu-moe",
+        "40"
+      ],
+      "vram_mib": "5030",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 26.009956871590013,
+          "hash": "ddc3f9995d3e",
+          "n": 200,
+          "prompt_tok_s": 89.47044679304368
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 26.22785025261354,
+          "hash": "0e53c97a65f2",
+          "n": 200,
+          "prompt_tok_s": 64.19542202907773
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 26.131923881886838,
+          "hash": "bcc96e49e0da",
+          "n": 200,
+          "prompt_tok_s": 46.981097449073225
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 22.76491503166201,
+          "hash": "fdb485e29eea",
+          "n": 200,
+          "prompt_tok_s": 20.032452573168534
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 25.893671521945855,
+          "hash": "460ff7f0ad72",
+          "n": 200,
+          "prompt_tok_s": 66.12843867881129
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 25.59118189290807,
+          "hash": "f1172f0981ef",
+          "n": 200,
+          "prompt_tok_s": 46.59771176111683
+        }
+      ]
+    },
+    {
+      "config": "ncmoe-38",
+      "flags": [
+        "--n-gpu-layers",
+        "99",
+        "--n-cpu-moe",
+        "38"
+      ],
+      "vram_mib": "5698",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 27.313460332729843,
+          "hash": "ddc3f9995d3e",
+          "n": 200,
+          "prompt_tok_s": 95.54406372789052
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 27.57736692403704,
+          "hash": "0e53c97a65f2",
+          "n": 200,
+          "prompt_tok_s": 70.0546731035743
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 27.283447187158444,
+          "hash": "5d8e1c74e18d",
+          "n": 200,
+          "prompt_tok_s": 49.52456418383518
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 23.674626352250268,
+          "hash": "6eac424ff722",
+          "n": 200,
+          "prompt_tok_s": 22.084805653710248
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 26.397479251911278,
+          "hash": "02d1e3e41b3b",
+          "n": 200,
+          "prompt_tok_s": 69.6139603230693
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 27.176379595321965,
+          "hash": "c0e267724882",
+          "n": 200,
+          "prompt_tok_s": 49.691370006599634
+        }
+      ]
+    },
+    {
+      "config": "ncmoe-36",
+      "flags": [
+        "--n-gpu-layers",
+        "99",
+        "--n-cpu-moe",
+        "36"
+      ],
+      "vram_mib": "6346",
+      "medidas": [
+        {
+          "rep": 1,
+          "prompt": "razonamiento",
+          "tok_s": 28.525461827226984,
+          "hash": "73fa501d0af2",
+          "n": 200,
+          "prompt_tok_s": 102.31278040096377
+        },
+        {
+          "rep": 1,
+          "prompt": "codigo",
+          "tok_s": 28.46451584989636,
+          "hash": "118fc99b50a7",
+          "n": 200,
+          "prompt_tok_s": 74.28460693753634
+        },
+        {
+          "rep": 1,
+          "prompt": "prosa",
+          "tok_s": 28.276976376848395,
+          "hash": "1d2262bf8e89",
+          "n": 200,
+          "prompt_tok_s": 52.31887043558729
+        },
+        {
+          "rep": 2,
+          "prompt": "razonamiento",
+          "tok_s": 25.007508504428454,
+          "hash": "82e6b9d5c8e8",
+          "n": 200,
+          "prompt_tok_s": 22.632114971144052
+        },
+        {
+          "rep": 2,
+          "prompt": "codigo",
+          "tok_s": 28.27598492324484,
+          "hash": "02d1e3e41b3b",
+          "n": 200,
+          "prompt_tok_s": 74.00852706942322
+        },
+        {
+          "rep": 2,
+          "prompt": "prosa",
+          "tok_s": 28.196082323537635,
+          "hash": "ad01d4ec749c",
+          "n": 200,
+          "prompt_tok_s": 51.38531600363551
+        }
+      ]
+    }
+  ],
+  "resumen": [
+    {
+      "config": "baseline-cpu",
+      "vram_mib": "6780",
+      "media": 27.26032801457346,
+      "min": 24.214869188855154,
+      "max": 29.048386478324673,
+      "prompt_media": 58.51033519560176,
+      "por_prompt": {
+        "razonamiento": 24.695305802882096,
+        "codigo": 28.993426057686115,
+        "prosa": 28.09225218315217
+      },
+      "hashes": {
+        "razonamiento": "bf04f2192b3f",
+        "codigo": "2ffb1f662284",
+        "prosa": "f72c60dd1072"
+      }
+    },
+    {
+      "config": "ncmoe-48",
+      "vram_mib": "2272",
+      "media": 21.182712755351524,
+      "min": 18.373595086018742,
+      "max": 22.16520346770175,
+      "prompt_media": 44.49709021521534,
+      "por_prompt": {
+        "razonamiento": 20.26939927686025,
+        "codigo": 21.81555452582832,
+        "prosa": 21.463184463366005
+      },
+      "hashes": {
+        "razonamiento": "82e6b9d5c8e8",
+        "codigo": "4b0cf14704ce",
+        "prosa": "158b195c0f96"
+      }
+    },
+    {
+      "config": "ncmoe-46",
+      "vram_mib": "2968",
+      "media": 22.105628031751596,
+      "min": 19.91147755309445,
+      "max": 23.101888221282824,
+      "prompt_media": 46.28135924005926,
+      "por_prompt": {
+        "razonamiento": 21.346226921611926,
+        "codigo": 22.269687122466102,
+        "prosa": 22.70097005117676
+      },
+      "hashes": {
+        "razonamiento": "82e6b9d5c8e8",
+        "codigo": "375054c73814",
+        "prosa": "f8e8eca99569"
+      }
+    },
+    {
+      "config": "ncmoe-44",
+      "vram_mib": "3664",
+      "media": 23.040788188970378,
+      "min": 19.95326347097194,
+      "max": 23.90920527116685,
+      "prompt_media": 48.75573766134852,
+      "por_prompt": {
+        "razonamiento": 21.913582195589758,
+        "codigo": 23.31886484572843,
+        "prosa": 23.889917525592935
+      },
+      "hashes": {
+        "razonamiento": "82e6b9d5c8e8",
+        "codigo": "4b0cf14704ce",
+        "prosa": "ad01d4ec749c"
+      }
+    },
+    {
+      "config": "ncmoe-42",
+      "vram_mib": "4336",
+      "media": 24.318655830954373,
+      "min": 21.42068632093179,
+      "max": 25.097966776064524,
+      "prompt_media": 51.778990411020494,
+      "por_prompt": {
+        "razonamiento": 23.25932654849816,
+        "codigo": 24.81486233495861,
+        "prosa": 24.881778609406354
+      },
+      "hashes": {
+        "razonamiento": "82e6b9d5c8e8",
+        "codigo": "c7d0d3837120",
+        "prosa": "b666bc879d5b"
+      }
+    },
+    {
+      "config": "ncmoe-40",
+      "vram_mib": "5030",
+      "media": 25.436583242101054,
+      "min": 22.76491503166201,
+      "max": 26.22785025261354,
+      "prompt_media": 55.56759488071521,
+      "por_prompt": {
+        "razonamiento": 24.38743595162601,
+        "codigo": 26.0607608872797,
+        "prosa": 25.861552887397455
+      },
+      "hashes": {
+        "razonamiento": "fdb485e29eea",
+        "codigo": "460ff7f0ad72",
+        "prosa": "f1172f0981ef"
+      }
+    },
+    {
+      "config": "ncmoe-38",
+      "vram_mib": "5698",
+      "media": 26.57045994056814,
+      "min": 23.674626352250268,
+      "max": 27.57736692403704,
+      "prompt_media": 59.41890616644653,
+      "por_prompt": {
+        "razonamiento": 25.494043342490055,
+        "codigo": 26.987423087974157,
+        "prosa": 27.229913391240203
+      },
+      "hashes": {
+        "razonamiento": "6eac424ff722",
+        "codigo": "02d1e3e41b3b",
+        "prosa": "c0e267724882"
+      }
+    },
+    {
+      "config": "ncmoe-36",
+      "vram_mib": "6346",
+      "media": 27.791088300863777,
+      "min": 25.007508504428454,
+      "max": 28.525461827226984,
+      "prompt_media": 62.823702636381704,
+      "por_prompt": {
+        "razonamiento": 26.766485165827717,
+        "codigo": 28.370250386570603,
+        "prosa": 28.236529350193017
+      },
+      "hashes": {
+        "razonamiento": "82e6b9d5c8e8",
+        "codigo": "02d1e3e41b3b",
+        "prosa": "ad01d4ec749c"
+      }
+    }
+  ]
+}

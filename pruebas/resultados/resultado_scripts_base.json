@@ -1,0 +1,12 @@
+{
+  "etiqueta": "base",
+  "repeticiones": 1,
+  "aciertos": 2,
+  "total": 4,
+  "detalle": {
+    "cadena_enlazada": 0,
+    "dir_mas_profundo": 0,
+    "suma_con_dos_filtros": 1,
+    "archivo_con_mas_lineas": 1
+  }
+}

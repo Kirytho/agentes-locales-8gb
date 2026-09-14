@@ -1,0 +1,208 @@
+{
+  "etiqueta": "atom-proxy",
+  "codigo": {
+    "aciertos": 3,
+    "total": 12,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n: int) -> list[str]:\n    \"\"\"Devuelve una lista de strings del 1 al n, donde los multiplos de 3 son 'Fizz',\n    los de 5 'Buzz' y los de ambos 'FizzBuzz'. El resto es el número como string.\"\"\"\n    result: list[str] = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "import re\nfrom typing import Union\n\n\ndef parsear_duracion(s: str) -> int:\n    \"\"\"\n    Recibe un string de duración y devuelve la cantidad total en minutos.\n\n    Formatos aceptados:\n        - '1h30m'  -> 90 minutos\n        - '45m'    -> 45 minutos\n        - '2h'     -> 120 minutos\n        - '30s'    -> 30 segundos\n        - '1h15m20s' -> 730 minutos\n\n    Args:\n        s: String de duración en formato 'h:m' o 's' (o combinaciones).\n\n    Returns:\n        El total en minutos como entero.\n\n    Raises:\n        ValueError: Si el formato es inválido (ej: 'hhmm', 'ss', 'm:ss', etc.).\n    \"\"\"\n    if not s:\n        raise ValueError(\"El string no puede estar vacío.\")\n\n    # Reemplazamos 'h' por '', 'm' por '', y 's' por ''\n    cleaned = re.sub(r'(\\d+)h(\\d*)\\s?(m)', r'\\1', s)\n    cleaned = re.sub(r'(\\d+)m(\\d*)\\s?(s)', r'\\1', cleaned)\n    cleaned = re.sub(r'(\\d+)s(\\d*)\\s?(m)', r'\\1', cleaned)\n\n    # Verificar que quede un solo número\n    if cleaned == '':\n        raise ValueError(\"El string no tiene un formato válido.\")\n\n    partes = cleaned.split()\n    if len(partes) != 1:\n        raise ValueError(\"El string no tiene un formato válido.\")\n\n    try:\n        valor = int(partes[0])\n    except ValueError:\n        raise ValueError(\"El string no puede ser convertido a entero.\")\n\n    return valor"
+      },
+      {
+        "id": "palindromo",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def es_palindromo(s: str) -> bool:\n    \"\"\"\n    Determina si una string es palíndromo, ignorando mayúsculas,\n    espacios y signos de puntuación.\n    \n    Args:\n        s: La string a verificar.\n        \n    Returns:\n        True si la string es un palíndromo, False en caso contrario.\n    \"\"\"\n    cleaned = ''.join(c for c in s if c.isalnum() or c == ' ')\n    cleaned = cleaned.lower()\n    return cleaned == cleaned[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": false,
+        "error": "TypeError: 'int' object is not iterable",
+        "codigo": "from typing import List\n\n\ndef aplanar(lista: List) -> List:\n    \"\"\"\n    Recibe una lista con sublistas anidadas a cualquier profundidad\n    y devuelve una lista plana con todos los elementos.\n    \"\"\"\n    if not lista:\n        return []\n    if len(lista) == 1 and isinstance(lista[0], list):\n        return aplanar(lista[0])\n    return [elem for sublist in lista for elem in sublist]"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista: list, x) -> int:\n    \"\"\"\n    Realiza una búsqueda binaria sobre una lista ordenada\n    y devuelve el índice de x, o -1 si no está en la lista.\n    \"\"\"\n    if not lista:\n        return -1\n\n    left = 0\n    right = len(lista) - 1\n\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "from collections import defaultdict\nfrom typing import Any, Dict, List\n\n\ndef agrupar_por(items: List[Any], clave: str) -> Dict[str, List[Any]]:\n    \"\"\"\n    Agrupa los items de la lista por el valor de la clave.\n\n    Args:\n        items: Lista de diccionarios o objetos con la clave como índice.\n        clave: El nombre de la clave por la que agrupar.\n\n    Returns:\n        Un diccionario donde las claves son los valores de la clave\n        y los valores son las listas correspondientes de items.\n\n    Example:\n        >>> items = [{\"nombre\": \"a\", \"edad\": 25}, {\"nombre\": \"b\", \"edad\": 30}]\n        >>> agrupar_por(items, \"edad\")\n        {'25': [{'nombre': 'a', 'edad': 25}], '30': [{'nombre': 'b', 'edad': 30}]}\n    \"\"\"\n    grouped = defaultdict(list)\n    for item in items:\n        grouped[item[clave]] = item\n    return dict(grouped)\n\n\n# Ejemplo de uso:\nif __name__ == \"__main__\":\n    items = [{\"nombre\": \"a\", \"edad\": 25}, {\"nombre\": \"b\", \"edad\": 30},\n            {\"nombre\": \"c\", \"edad\": 35}]\n    agrupado = agrupar_por(items, \"edad\")\n    for clave, lista in agrupado.items():\n        print(f\"Clave: {clave}, Items: {lista}\")"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": true,
+        "error": "",
+        "codigo": "import re\nfrom collections import Counter\n\n\ndef contar_palabras(texto: str) -> dict[str, int]:\n    \"\"\"\n    Contar la frecuencia de cada palabra en un texto.\n    \n    Ignora mayúsculas y signos de puntuación.\n    \n    Args:\n        texto: La entrada a procesar.\n        \n    Returns:\n        Un diccionario donde las claves son las palabras únicas\n        y los valores son las frecuencias.\n    \"\"\"\n    words = re.sub(r'[^\\w\\s]', ' ', texto.lower())\n    return dict(Counter(words.split()))"
+      },
+      {
+        "id": "rotar",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def rotar(lista: list, n: int) -> list:\n    \"\"\"Rotar la lista n posiciones hacia la derecha.\n    \n    - Si n es mayor que el largo de la lista, rota lo que corresponda (módulo).\n    - Si n es negativo, rota hacia la izquierda.\n    - Con lista vacia, devuelve lista vacia.\n    \"\"\"\n    if len(lista) == 0:\n        return []\n    \n    if n < 0:\n        n = -n\n        # Rotar n posiciones a la derecha equivale a rotar -n a la izquierda\n        # Invertimos la lista y rotamos n posiciones a la izquierda\n        lista = lista[::-1]\n        lista = lista[n:] + lista[:n]\n    else:\n        # Rotar n posiciones a la derecha equivale a rotar (len - n) a la izquierda\n        n = len(lista) - (n % len(lista))\n        lista = lista[n:] + lista[:n]\n    \n    return lista"
+      },
+      {
+        "id": "romano",
+        "ok": false,
+        "error": "NameError: name 'mil' is not defined. Did you mean: 'min'?",
+        "codigo": "from typing import List\n\n\ndef a_romano(n: int) -> str:\n    \"\"\"Convierte un entero entre 1 y 3999 a número romano usando la notación sustractiva.\n    IV = 4, IX = 9, XL = 40, CM = 900.\n    \"\"\"\n    unidades = ['I', 'X', 'C', 'M']\n    decenas = ['X', 'C', 'M']\n    centenas = ['C', 'M']\n\n    def a_romano_segundo(num: int) -> str:\n        if num < 4:\n            return unidades[num - 1]\n        elif num == 4:\n            return 'IV'\n        elif num == 9:\n            return 'IX'\n        elif num == 40:\n            return 'XL'\n        elif num == 49:\n            return 'XLIX'\n        elif num == 90:\n            return 'XC'\n        elif num == 99:\n            return 'XCIX'\n        return a_romano_segundo(num // 10) + decenas[num - 1]\n\n    return a_romano_segundo(mil) + centena[centena] + centenas[centena] + decenas[decena] + unidades[unidad]\n\n\n# Prueba rápida\nif __name__ == \"__main__\":\n    for n in range(1, 4000):\n        print(f\"{n:>6} -> {a_romano(n)}\")"
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "NameError: name 'desde_romano' is not defined",
+        "codigo": "from typing import List\n\n\ndef from_romano(s: str) -> int:\n    \"\"\"\n    Convierte una cadena de texto romana a un entero.\n    Maneja la notación sustractiva (IV = 4, IX = 9, XL = 40, XC = 90, CD = 400, CM = 900).\n    \"\"\"\n    romanos = {\n        \"I\": 1,\n        \"V\": 5,\n        \"X\": 10,\n        \"L\": 50,\n        \"C\": 100,\n        \"D\": 500,\n        \"M\": 1000,\n    }\n\n    def from_romano_rec(s: str, value: int) -> int:\n        if not s:\n            return 0\n        if s[-1] in romanos:\n            return value * romanos[s[-1]]\n        return from_romano_rec(s[:-1], value * 10) + from_romano(s[-1], value)\n\n    return from_romano_rec(s, 0)\n\n\nif __name__ == \"__main__\":\n    print(from_romano(\"III\"))    # 3\n    print(from_romano(\"IV\"))     # 4\n    print(from_romano(\"IX\"))     # 9\n    print(from_romano(\"XL\"))     # 40\n    print(from_romano(\"XC\"))     # 90\n    print(from_romano(\"CD\"))     # 400\n    print(from_romano(\"CM\"))     # 900\n    print(from_romano(\"IIII\"))   # 4\n    print(from_romano(\"-III\"))   # -3\n    print(from_romano(\"MCMXXXVII\"))  # 1937"
+      },
+      {
+        "id": "racha",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "from typing import Optional\n\n\ndef mayor_racha(lista: list) -> Optional[tuple]:\n    \"\"\"\n    Encuentra la racha más larga de elementos consecutivos iguales\n    y devuelve la tupla (elemento, longitud).\n    Si hay empate, devuelve la primera.\n    Con lista vacia devuelve None.\n    \"\"\"\n    if not lista:\n        return None\n\n    max_racha = [1, lista[0]]  # [longitud, elemento]\n\n    for i in range(1, len(lista)):\n        if lista[i] == lista[i - 1]:\n            current_length = i - i + 1\n            if current_length > max_racha[0]:\n                max_racha = [current_length, lista[i]]\n        else:\n            max_racha[0] = max(max_racha[0], i - i + 1)\n\n    return max_racha[1]"
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_camel(s: str) -> str:\n    \"\"\"Convierte un texto a snake_case a camelCase: la primera palabra en minúscula\n    y las siguientes con la inicial en mayúscula, sin guiones bajos.\"\"\"\n    words = s.split()\n    result = []\n    for i, word in enumerate(words):\n        if i == 0:\n            result.append(word.lower())\n        else:\n            result.append(word.capitalize())\n    return \" \".join(result)"
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 3,
+    "total": 12
+  },
+  "velocidad_media": 0.0,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "# Por qué un índice acelera las lecturas pero enlentece las escrituras\n\n## Velocidad de lectura: el índice acelera\n\n**Razón:** El índice permite buscar un registro en tiempo logarítmico (O(log n)) sobre un índice físico (B-Tree), evitando escanear la tabla completa. El acceso al índice no requiere mover registros físicos de la base de datos.\n\n## Velocidad de escritura: el índice enlentece\n\n**Razón:** El índice físico requiere mover registros físicos en la estructura física de la tabla para insertar o eliminar, lo que incrementa el costo de I/O. Aunque el índice de búsqueda ofrece O(1) de escritura en el índice, no garantiza consistencia de datos y puede degradar el orden de los registros físicos.\n\n---\n\n**Resumen:** El índice acelera la lectura porque reduce drásticamente la búsqueda en O(log n) sin mover datos del disco. Enlentece la escritura porque, en el caso del índice físico, el movimiento de registros físicos del disco se vuelve el cuello de botella, mientras que la inserción en el índice de búsqueda es más rápida pero compromete la consistencia y el orden de los datos.",
+      "ok": false,
+      "detalle": {
+        "g1": "b-tree",
+        "g2": false
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "# Monolito vs. Microservicios\n\n1. **Un monolito conviene** cuando la aplicación tiene un único propósito, es de bajo volumen, se ejecuta de forma monolítica y no requiere actualizaciones frecuentes.\n\n2. **Los microservicios convienen** cuando la aplicación es compleja, necesita escalabilidad independiente, tiene dependencias que requieren despliegues paralelos, el equipo es distribuido geográficamente, y se requiere alta disponibilidad y resiliencia.\n\n3. **El monolito es mejor** cuando el equipo es pequeño, la aplicación es de bajo volumen y no se requiere actualizaciones frecuentes, mientras que los microservicios son una opción cuando el equipo es grande, la aplicación es de alto volumen o se requiere alta disponibilidad.",
+      "ok": true,
+      "detalle": {
+        "g1": "monolito conviene",
+        "g2": "escala"
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "# ¿Por qué Python no compila a nivel de máquina?\n\nPython no compila a nivel de máquina porque es un lenguaje de **alto nivel** diseñado para ser escrito, depurado y ejecutado de forma interactiva. Al interpretarlo directamente, Python evita la ineficiencia inherente en la traducción del lenguaje a código binario.\n\nA diferencia de otros lenguajes que compilan a nivel de máquina (como C o C++), Python permite que el intérprete interprete y ejecute el script directamente, lo que resulta en un tiempo de ejecución más rápido en aplicaciones interactivas.\n\nEsto significa que Python prioriza la **flexibilidad y la portabilidad** sobre la velocidad de ejecución, lo cual es clave para aplicaciones de desarrollo y análisis de datos donde la velocidad no es el requisito principal.",
+      "ok": true,
+      "detalle": {
+        "g1": "no compila",
+        "g2": "interpret"
+      }
+    },
+    {
+      "id": "indice_no_conviene",
+      "pregunta": "En 3 frases: cuando NO conviene crear un indice en una tabla?",
+      "respuesta": "No conviene crear un índice cuando los datos de la tabla son pequeños, cuando el índice no va a tener un uso real ni práctico, o cuando el índice sea redundante y no mejore el rendimiento del query.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "n_mas_1",
+      "pregunta": "En 3 frases: que es el problema N+1 en un ORM y como se corrige?",
+      "respuesta": "## El problema N+1 en un ORM\n\nEl problema **N+1** ocurre cuando un ORM realiza una llamada por consulta (por cada objeto de la relación) y luego una llamada adicional por cada columna del resultado, generando una llamada N+1 a la base de datos. Esto causa sobrecarga significativa de llamadas, especialmente con objetos enlazados.\n\nLa corrección se logra mediante dos estrategias principales: implementar un **modelo relacional** (relación de muchos a muchos) para descomponer la relación en dos consultas unínicas, o utilizar un **ORM que optimice consultas** (como Hibernate o MyBatis), que puedan generar llamadas un solo batch o usar CTEs para reducir la sobrecarga de llamadas repetidas.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "batch"
+      }
+    },
+    {
+      "id": "desnormalizar",
+      "pregunta": "En 3 frases: por que a veces conviene desnormalizar una base de datos?",
+      "respuesta": "# ¿Por qué conviene desnormalizar una base de datos?\n\n1. **Mejora el rendimiento de consultas al reducir la carga de I/O**, ya que permite consultar solo los campos relevantes en un único registro en lugar de acceder a columnas redundantes en múltiples tablas.\n\n2. **Optimiza la concurrencia y la consistencia** al eliminar redundancias y transacciones atómicas entre tablas, lo que minimiza puntos de conflicto como el row versioning y el row locking.\n\n3. **Reduce la complejidad de mantenimiento**, al disminuir el esfuerzo en la actualización de datos, eliminar el problema de las \"última vista\" y reducir la carga de almacenamiento y procesamiento en las tablas.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "redundan"
+      }
+    },
+    {
+      "id": "idempotencia",
+      "pregunta": "En 3 frases: por que importa que una operacion sea idempotente cuando hay reintentos?",
+      "respuesta": "# Respuesta Final Consolidada\n\nLa operatividad idempotente es crucial cuando hay reintentos porque **garantiza que una operación repetida produce el mismo resultado**, evitando que la ejecución múltiple genere un resultado inconsistente o duplicado. En presencia de reintentos, si una operación no es idempotente, cada ejecución posterior podría modificar el estado del sistema de manera distinta, acumulando cambios erróneos y haciendo que la recuperación de errores se vuelva impredecible. Por ejemplo, si una operación depende de una variable que ya fue modificada por un error anterior, ejecutarla nuevamente sobre ese estado corrupto podría generar un resultado incorrecto. La idempotencia elimina esta dependencia del historial, permitiendo aplicar la operación sin miedo a que una ejecución posterior altere el estado de forma inestable.",
+      "ok": true,
+      "detalle": {
+        "g1": "repetida",
+        "g2": "mismo resultado"
+      }
+    },
+    {
+      "id": "reintento_sin_espera",
+      "pregunta": "En 3 frases: por que reintentar inmediatamente un servicio caido empeora las cosas, y que habria que hacer en su lugar?",
+      "respuesta": "Porque reintentar inmediatamente un servicio caído empeora las cosas porque aumenta la probabilidad de que el sistema detecte el fallo y falle en una redonda consecutiva, lo que genera más lentitud y aumenta el impacto de cualquier error que ocurra. En su lugar, se debe implementar una estrategia de **reintentamiento con backoff exponencial y jitter**: reintentar en intervalos incrementales (con un factor de rebote mayor a 1) y añadir ruido aleatorio aleatorio para evitar que los intentos se ejecuten simultáneamente, reduciendo la probabilidad de que múltiples llamadas colisionen en el mismo momento.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "backoff"
+      }
+    },
+    {
+      "id": "cola_mensajes",
+      "pregunta": "En 3 frases: que gana y que pierde un sistema al meter una cola de mensajes entre dos servicios?",
+      "respuesta": "# Respuesta consolidada\n\nCuando un sistema introduce una cola de mensajes entre dos servicios, **gana el servicio que produce (el que genera los mensajes)** y **pierde el que consume (el que espera las mensajes)**.\n\nLa cola actúa como un cuello de botella que introduce latencia, retrasa la entrega de datos y puede causar que el servicio de consumo se quede esperando mensajes que nunca llegarán, lo que degrada el rendimiento y la experiencia del usuario.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "latencia"
+      }
+    },
+    {
+      "id": "deadlock_orden",
+      "pregunta": "En 3 frases: por que dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados?",
+      "respuesta": "# Por qué dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados\n\nDos hilos que compiten por dos recursos (candados) y toman en orden secuencial pueden entrar en un **ciclo de espera inactivo** que no se rompe hasta que uno de ellos desista. Por ejemplo, si el hilo A obtiene el candado 2, el hilo B espera; si el hilo B obtiene el candado 1, el hilo A espera. Ambos permanecen esperando a sus pares respectivos, creando un ciclo de bloqueo que no se soluciona sin que al menos uno de ellos abandone la espera. Esta condición —conocida como **condición de Peterson** o **condición de Bakery**— garantiza que, en ausencia de contención externa (como un semáforo), la ejecución ordenada no puede progresar indefinidamente.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "indefinidamente"
+      }
+    },
+    {
+      "id": "condicion_carrera",
+      "pregunta": "En 3 frases: por que dos procesos que leen y escriben el mismo contador sin sincronizacion pueden perder incrementos?",
+      "respuesta": "Los dos procesos pueden perder incrementos porque solo se comunican a través de mensajes en un canal, por lo que una lectura y una escritura no ocurren necesariamente en el mismo orden. Cuando el primer proceso lee un valor X y el segundo lee un valor Y, es posible que X < Y, generando un salto de 1 en la lectura del primer proceso. Cuando el segundo proceso escribe X+1, el primer proceso lee X+1, y el segundo vuelve a escribir X+1, creando un hueco de 1. Esto significa que en la siguiente lectura, el contador se restará en lugar de sumar, ya que el primer proceso ya incrementó el valor a X+1 antes de leerlo.",
+      "ok": false,
+      "detalle": {
+        "g1": "lee",
+        "g2": false
+      }
+    },
+    {
+      "id": "gc_ciclos",
+      "pregunta": "En 3 frases: por que contar referencias no alcanza para liberar toda la memoria?",
+      "respuesta": "Contar referencias no libera toda la memoria porque, al reasignar un puntero, solo se libera la caja de memoria que apuntaba a ese puntero, no toda la memoria que el objeto contenga. Los arrays y estructuras contienen valores fijos que no se reasignan con el contenedor, por lo que esos valores siguen ocupando espacio en la memoria. Para liberar la memoria correctamente se necesita una asignación explícita como `free()` que reasigne la memoria del objeto entero a la memoria del sistema, lo cual solo es posible cuando se ha asignado la memoria con `malloc`, `calloc` o `realloc` previamente.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    }
+  ]
+}

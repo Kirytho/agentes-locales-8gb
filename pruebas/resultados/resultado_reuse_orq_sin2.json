@@ -1,0 +1,164 @@
+{
+  "turnos": [
+    [
+      {
+        "prompt_ms": 968.566,
+        "prompt_n": 50,
+        "cache_n": 42,
+        "prompt_tokens": 92,
+        "cached": 42,
+        "pared": 5.036172866821289,
+        "contenido": "¡Genial que estés es"
+      },
+      {
+        "prompt_ms": 1020.888,
+        "prompt_n": 48,
+        "cache_n": 44,
+        "prompt_tokens": 92,
+        "cached": 44,
+        "pared": 5.04576301574707,
+        "contenido": "¡Perfecto! Vamos a e"
+      }
+    ],
+    [
+      {
+        "prompt_ms": 1311.712,
+        "prompt_n": 116,
+        "cache_n": 16,
+        "prompt_tokens": 132,
+        "cached": 16,
+        "pared": 5.666980504989624,
+        "contenido": "Perfecto, vamos a cr"
+      },
+      {
+        "prompt_ms": 1234.932,
+        "prompt_n": 117,
+        "cache_n": 16,
+        "prompt_tokens": 133,
+        "cached": 16,
+        "pared": 5.312719345092773,
+        "contenido": "¡Exacto! Vamos a emp"
+      }
+    ],
+    [
+      {
+        "prompt_ms": 1603.501,
+        "prompt_n": 246,
+        "cache_n": 0,
+        "prompt_tokens": 246,
+        "cached": 0,
+        "pared": 5.695687294006348,
+        "contenido": "¡Perfecto! Vamos a c"
+      },
+      {
+        "prompt_ms": 1461.788,
+        "prompt_n": 252,
+        "cache_n": 0,
+        "prompt_tokens": 252,
+        "cached": 0,
+        "pared": 5.610130786895752,
+        "contenido": "¡Perfecto! Ya tienes"
+      }
+    ],
+    [
+      {
+        "prompt_ms": 1629.148,
+        "prompt_n": 289,
+        "cache_n": 0,
+        "prompt_tokens": 289,
+        "cached": 0,
+        "pared": 5.979129314422607,
+        "contenido": "¡Buena pregunta! Cua"
+      },
+      {
+        "prompt_ms": 1430.754,
+        "prompt_n": 291,
+        "cache_n": 0,
+        "prompt_tokens": 291,
+        "cached": 0,
+        "pared": 6.016222238540649,
+        "contenido": "¡Buena pregunta! 🎯\n\n"
+      }
+    ],
+    [
+      {
+        "prompt_ms": 1645.336,
+        "prompt_n": 312,
+        "cache_n": 0,
+        "prompt_tokens": 312,
+        "cached": 0,
+        "pared": 5.78731107711792,
+        "contenido": "¡Perfecto! Vamos a a"
+      },
+      {
+        "prompt_ms": 1467.205,
+        "prompt_n": 314,
+        "cache_n": 0,
+        "prompt_tokens": 314,
+        "cached": 0,
+        "pared": 5.50694465637207,
+        "contenido": "¡Perfecto! Vamos a c"
+      }
+    ],
+    [
+      {
+        "prompt_ms": 1518.264,
+        "prompt_n": 307,
+        "cache_n": 0,
+        "prompt_tokens": 307,
+        "cached": 0,
+        "pared": 5.710732460021973,
+        "contenido": "¡Perfecto! Vamos a c"
+      },
+      {
+        "prompt_ms": 1486.384,
+        "prompt_n": 315,
+        "cache_n": 0,
+        "prompt_tokens": 315,
+        "cached": 0,
+        "pared": 5.5809571743011475,
+        "contenido": "¡Claro! Vamos a comp"
+      }
+    ],
+    [
+      {
+        "prompt_ms": 1637.447,
+        "prompt_n": 311,
+        "cache_n": 0,
+        "prompt_tokens": 311,
+        "cached": 0,
+        "pared": 6.013341665267944,
+        "contenido": "¡Perfecto! Vamos a c"
+      },
+      {
+        "prompt_ms": 1498.286,
+        "prompt_n": 313,
+        "cache_n": 0,
+        "prompt_tokens": 313,
+        "cached": 0,
+        "pared": 5.6304192543029785,
+        "contenido": "¡Perfecto! Vamos a c"
+      }
+    ],
+    [
+      {
+        "prompt_ms": 1542.145,
+        "prompt_n": 316,
+        "cache_n": 0,
+        "prompt_tokens": 316,
+        "cached": 0,
+        "pared": 5.6674206256866455,
+        "contenido": "¡Claro! Aquí tienes "
+      },
+      {
+        "prompt_ms": 1425.238,
+        "prompt_n": 319,
+        "cache_n": 0,
+        "prompt_tokens": 319,
+        "cached": 0,
+        "pared": 5.616155624389648,
+        "contenido": "¡Perfecto! Vamos a c"
+      }
+    ]
+  ]
+}

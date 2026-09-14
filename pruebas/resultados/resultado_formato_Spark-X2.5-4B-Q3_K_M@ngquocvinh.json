@@ -1,0 +1,69 @@
+{
+  "etiqueta": "Spark-X2.5-4B-Q3_K_M@ngquocvinh",
+  "repes": 5,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 65,
+      "aplica": 65,
+      "pasa": 54,
+      "rompio": 4,
+      "chars": 170934,
+      "seg": 814.4710431098938,
+      "n": 65
+    },
+    "bloques": {
+      "formato": 62,
+      "aplica": 57,
+      "pasa": 38,
+      "rompio": 10,
+      "chars": 54723,
+      "seg": 255.22753953933716,
+      "n": 65
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: no hizo el cambio",
+      "multi_constante: regresion: AttributeError: module 'limites' has no attribute 'dentro_de_tope'",
+      "agregar_caso: regresion: AssertionError",
+      "multi_constante: regresion: AttributeError: module 'limites' has no attribute 'dentro_de_tope'",
+      "agregar_caso: no hizo el cambio",
+      "cambiar_orden: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "filtrar_lista: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "parametro_opcional: regresion: SyntaxError: invalid syntax",
+      "multi_constante: no hizo el cambio"
+    ],
+    "bloques": [
+      "agregar_caso: no hizo el cambio",
+      "arreglar_bug: SEARCH no esta en m.py",
+      "extender_registro: SEARCH no esta en m.py",
+      "dos_lugares: SEARCH no esta en m.py",
+      "multi_constante: regresion: AssertionError",
+      "multi_renombrar: regresion: AttributeError: module 'nucleo' has no attribute 'calc'",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: sin bloques parseables",
+      "filtrar_lista: no hizo el cambio",
+      "multi_constante: regresion: AttributeError: module 'limites' has no attribute 'dentro_de_tope'",
+      "multi_renombrar: regresion: AttributeError: module 'nucleo' has no attribute 'calc'",
+      "agregar_caso: no hizo el cambio",
+      "parametro_opcional: no hizo el cambio",
+      "dos_lugares: sin bloques parseables",
+      "filtrar_lista: no hizo el cambio",
+      "multi_constante: regresion: NameError: name 'dentro_de_tope' is not defined",
+      "multi_renombrar: SEARCH no esta en m.py",
+      "agregar_caso: regresion: AssertionError",
+      "parametro_opcional: no hizo el cambio",
+      "extender_registro: SEARCH no esta en m.py",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "multi_constante: regresion: AssertionError",
+      "multi_renombrar: regresion: AttributeError: module 'nucleo' has no attribute 'calc'",
+      "agregar_caso: no hizo el cambio",
+      "arreglar_bug: no hizo el cambio",
+      "dos_lugares: sin bloques parseables",
+      "multi_constante: regresion: NameError: name 'TOPE' is not defined"
+    ]
+  }
+}

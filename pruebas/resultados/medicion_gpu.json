@@ -1,0 +1,272 @@
+{
+  "censo": {
+    "base_mib": 915,
+    "total_mib": 8192,
+    "individual": {
+      "qwen3-4b": {
+        "vram_total_mib": 4310,
+        "delta_mib": 3395,
+        "proceso_mib": null
+      },
+      "coder-1.5b": {
+        "vram_total_mib": 2676,
+        "delta_mib": 1761,
+        "proceso_mib": null
+      },
+      "qwen3.5-2b": {
+        "vram_total_mib": 3108,
+        "delta_mib": 2193,
+        "proceso_mib": null
+      }
+    },
+    "juntos": {
+      "vram_total_mib": 7920,
+      "libre_mib": 272,
+      "por_proceso": {
+        "qwen3-4b": null,
+        "coder-1.5b": null,
+        "qwen3.5-2b": null
+      }
+    }
+  },
+  "_config": {
+    "ctx": 2048,
+    "threads": 6,
+    "max_tokens": 400,
+    "repeticiones": 3,
+    "prompt": "Enumera y explica en una frase cada uno de los pasos que sigue una peticion HTTP desde que el navegador la envia hasta que recibe la respuesta. Se exhaustivo."
+  },
+  "solo_gpu": {
+    "qwen3-4b": {
+      "tps_mediana": 91.2,
+      "tps_muestras": [
+        91.2,
+        91.7,
+        91.2
+      ],
+      "tokens": [
+        400,
+        400,
+        400
+      ]
+    },
+    "coder-1.5b": {
+      "tps_mediana": 142.9,
+      "tps_muestras": [
+        143.1,
+        140.8,
+        142.9
+      ],
+      "tokens": [
+        400,
+        400,
+        400
+      ]
+    },
+    "qwen3.5-2b": {
+      "tps_mediana": 106.8,
+      "tps_muestras": [
+        106.8,
+        105.8,
+        106.9
+      ],
+      "tokens": [
+        400,
+        400,
+        400
+      ]
+    }
+  },
+  "solo_cpu": {
+    "qwen3-4b": {
+      "tps_mediana": 11.8,
+      "tps_muestras": [
+        11.9,
+        11.8,
+        8.2
+      ],
+      "tokens": [
+        400,
+        400,
+        400
+      ]
+    },
+    "coder-1.5b": {
+      "tps_mediana": 26.5,
+      "tps_muestras": [
+        23.8,
+        26.5,
+        26.6
+      ],
+      "tokens": [
+        400,
+        400,
+        400
+      ]
+    },
+    "qwen3.5-2b": {
+      "tps_mediana": 17.5,
+      "tps_muestras": [
+        18.5,
+        17.5,
+        16.8
+      ],
+      "tokens": [
+        400,
+        400,
+        400
+      ]
+    }
+  },
+  "contencion": {
+    "uno_solo": {
+      "qwen3-4b": {
+        "tps_mediana": 84.1,
+        "tps_muestras": [
+          83.8,
+          84.3
+        ],
+        "tokens": [
+          400,
+          400
+        ]
+      },
+      "coder-1.5b": {
+        "tps_mediana": 138.3,
+        "tps_muestras": [
+          138.2,
+          138.4
+        ],
+        "tokens": [
+          400,
+          400
+        ]
+      },
+      "qwen3.5-2b": {
+        "tps_mediana": 103.9,
+        "tps_muestras": [
+          103.1,
+          104.6
+        ],
+        "tokens": [
+          400,
+          400
+        ]
+      }
+    },
+    "dos_a_la_vez": {
+      "por_modelo": {
+        "coder-1.5b": {
+          "tokens": 400,
+          "tps": 78.3
+        },
+        "qwen3.5-2b": {
+          "tokens": 400,
+          "tps": 66.0
+        }
+      },
+      "suma_tps": 144.3,
+      "caudal_real": 128.5,
+      "pared_s": 6.2,
+      "tokens_totales": 800
+    },
+    "tres_a_la_vez": {
+      "por_modelo": {
+        "coder-1.5b": {
+          "tokens": 400,
+          "tps": 28.5
+        },
+        "qwen3.5-2b": {
+          "tokens": 400,
+          "tps": 24.7
+        },
+        "qwen3-4b": {
+          "tokens": 400,
+          "tps": 19.4
+        }
+      },
+      "suma_tps": 72.6,
+      "caudal_real": 57.9,
+      "pared_s": 20.7,
+      "tokens_totales": 1200
+    }
+  },
+  "contencion_ctx2048": {
+    "vram": {
+      "usada_mib": 7551,
+      "libre_mib": 641,
+      "ctx": 2048
+    },
+    "uno_solo": {
+      "qwen3-4b": {
+        "tps_mediana": 89.6,
+        "tps_muestras": [
+          89.3,
+          90.0
+        ],
+        "tokens": [
+          400,
+          400
+        ]
+      },
+      "coder-1.5b": {
+        "tps_mediana": 141.2,
+        "tps_muestras": [
+          140.8,
+          141.5
+        ],
+        "tokens": [
+          400,
+          400
+        ]
+      },
+      "qwen3.5-2b": {
+        "tps_mediana": 104.7,
+        "tps_muestras": [
+          103.7,
+          105.6
+        ],
+        "tokens": [
+          400,
+          400
+        ]
+      }
+    },
+    "dos_a_la_vez": {
+      "por_modelo": {
+        "coder-1.5b": {
+          "tokens": 400,
+          "tps": 79.3
+        },
+        "qwen3.5-2b": {
+          "tokens": 400,
+          "tps": 67.2
+        }
+      },
+      "suma_tps": 146.5,
+      "caudal_real": 131.3,
+      "pared_s": 6.1,
+      "tokens_totales": 800
+    },
+    "tres_a_la_vez": {
+      "por_modelo": {
+        "coder-1.5b": {
+          "tokens": 400,
+          "tps": 49.1
+        },
+        "qwen3.5-2b": {
+          "tokens": 400,
+          "tps": 41.0
+        },
+        "qwen3-4b": {
+          "tokens": 400,
+          "tps": 37.4
+        }
+      },
+      "suma_tps": 127.5,
+      "caudal_real": 111.4,
+      "pared_s": 10.8,
+      "tokens_totales": 1200
+    }
+  }
+}

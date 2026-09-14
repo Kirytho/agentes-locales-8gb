@@ -1,0 +1,587 @@
+[
+  {
+    "etiqueta": "CALENTAMIENTO",
+    "config": {},
+    "segundos": 77.26783609390259,
+    "prompt_total": 4272,
+    "reusados": 2057,
+    "turnos": [
+      {
+        "segundos": 19.743664264678955,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.225494384765625,
+        "prompt": 345,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 14.974650859832764,
+        "prompt": 402,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.501847505569458,
+        "prompt": 582,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 18.288439989089966,
+        "prompt": 549,
+        "reusados": 0,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.653393507003784,
+        "prompt": 815,
+        "reusados": 547,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.4903154373168945,
+        "prompt": 959,
+        "reusados": 656,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.390030145645142,
+        "prompt": 556,
+        "reusados": 200,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "referencia 1",
+    "config": {},
+    "segundos": 79.23850321769714,
+    "prompt_total": 4289,
+    "reusados": 2261,
+    "turnos": [
+      {
+        "segundos": 24.036887168884277,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.285946369171143,
+        "prompt": 345,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 14.501830101013184,
+        "prompt": 407,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.587653160095215,
+        "prompt": 587,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.972977638244629,
+        "prompt": 550,
+        "reusados": 198,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.4821786880493164,
+        "prompt": 818,
+        "reusados": 550,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.4907822608947754,
+        "prompt": 965,
+        "reusados": 659,
+        "backend": "principal"
+      },
+      {
+        "segundos": 15.880247831344604,
+        "prompt": 553,
+        "reusados": 200,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "cabeza5 1",
+    "config": {
+      "INTERMEDIARIO_CABEZA_FIJA": "5"
+    },
+    "segundos": 74.74899649620056,
+    "prompt_total": 4313,
+    "reusados": 2384,
+    "turnos": [
+      {
+        "segundos": 23.44743251800537,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.275647163391113,
+        "prompt": 345,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.499058723449707,
+        "prompt": 410,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.53607177734375,
+        "prompt": 582,
+        "reusados": 288,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.799331665039062,
+        "prompt": 549,
+        "reusados": 197,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.5205657482147217,
+        "prompt": 814,
+        "reusados": 546,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.504702091217041,
+        "prompt": 980,
+        "reusados": 655,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.166186809539795,
+        "prompt": 569,
+        "reusados": 335,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "historial25 1",
+    "config": {
+      "INTERMEDIARIO_MAX_MSGS_CPU": "16",
+      "INTERMEDIARIO_MAX_MSGS": "25"
+    },
+    "segundos": 78.2961196899414,
+    "prompt_total": 4866,
+    "reusados": 3122,
+    "turnos": [
+      {
+        "segundos": 24.195551872253418,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.216945171356201,
+        "prompt": 345,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.575479745864868,
+        "prompt": 411,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.518683671951294,
+        "prompt": 580,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 14.843995094299316,
+        "prompt": 656,
+        "reusados": 443,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.6698217391967773,
+        "prompt": 812,
+        "reusados": 544,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.4931020736694336,
+        "prompt": 943,
+        "reusados": 653,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.782540321350098,
+        "prompt": 1055,
+        "reusados": 828,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "referencia 2",
+    "config": {},
+    "segundos": 73.34879493713379,
+    "prompt_total": 4229,
+    "reusados": 2468,
+    "turnos": [
+      {
+        "segundos": 23.783761262893677,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 3.9912924766540527,
+        "prompt": 345,
+        "reusados": 341,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.376550674438477,
+        "prompt": 410,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.5200681686401367,
+        "prompt": 578,
+        "reusados": 290,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.68909239768982,
+        "prompt": 549,
+        "reusados": 214,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.539891004562378,
+        "prompt": 808,
+        "reusados": 544,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.4814908504486084,
+        "prompt": 933,
+        "reusados": 649,
+        "backend": "principal"
+      },
+      {
+        "segundos": 11.96664810180664,
+        "prompt": 542,
+        "reusados": 197,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "cabeza5 2",
+    "config": {
+      "INTERMEDIARIO_CABEZA_FIJA": "5"
+    },
+    "segundos": 74.92384147644043,
+    "prompt_total": 4240,
+    "reusados": 2377,
+    "turnos": [
+      {
+        "segundos": 24.60741090774536,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.202908277511597,
+        "prompt": 345,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.259178638458252,
+        "prompt": 403,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.6164259910583496,
+        "prompt": 576,
+        "reusados": 289,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.079318284988403,
+        "prompt": 550,
+        "reusados": 200,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.7499427795410156,
+        "prompt": 808,
+        "reusados": 545,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.508086919784546,
+        "prompt": 934,
+        "reusados": 649,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.900569677352905,
+        "prompt": 560,
+        "reusados": 331,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "historial25 2",
+    "config": {
+      "INTERMEDIARIO_MAX_MSGS_CPU": "16",
+      "INTERMEDIARIO_MAX_MSGS": "25"
+    },
+    "segundos": 75.39910936355591,
+    "prompt_total": 4898,
+    "reusados": 3149,
+    "turnos": [
+      {
+        "segundos": 24.58229970932007,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.258194208145142,
+        "prompt": 345,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.24198603630066,
+        "prompt": 412,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.546508550643921,
+        "prompt": 577,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.084035634994507,
+        "prompt": 665,
+        "reusados": 446,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.5868284702301025,
+        "prompt": 814,
+        "reusados": 544,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.4892451763153076,
+        "prompt": 937,
+        "reusados": 655,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.610011577606201,
+        "prompt": 1084,
+        "reusados": 850,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "referencia 3",
+    "config": {},
+    "segundos": 73.10706162452698,
+    "prompt_total": 4256,
+    "reusados": 2253,
+    "turnos": [
+      {
+        "segundos": 20.987483263015747,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.229583978652954,
+        "prompt": 350,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.83597445487976,
+        "prompt": 401,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.514848470687866,
+        "prompt": 583,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.475740432739258,
+        "prompt": 548,
+        "reusados": 197,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.7118873596191406,
+        "prompt": 812,
+        "reusados": 549,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.5112833976745605,
+        "prompt": 938,
+        "reusados": 653,
+        "backend": "principal"
+      },
+      {
+        "segundos": 12.84026026725769,
+        "prompt": 560,
+        "reusados": 200,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "cabeza5 3",
+    "config": {
+      "INTERMEDIARIO_CABEZA_FIJA": "5"
+    },
+    "segundos": 83.81286382675171,
+    "prompt_total": 4279,
+    "reusados": 2396,
+    "turnos": [
+      {
+        "segundos": 23.440850734710693,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.369068384170532,
+        "prompt": 344,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 21.225858211517334,
+        "prompt": 407,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.59236741065979,
+        "prompt": 590,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.839337348937988,
+        "prompt": 555,
+        "reusados": 197,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.6051669120788574,
+        "prompt": 817,
+        "reusados": 552,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.3879692554473877,
+        "prompt": 940,
+        "reusados": 658,
+        "backend": "principal"
+      },
+      {
+        "segundos": 13.352245569229126,
+        "prompt": 562,
+        "reusados": 335,
+        "backend": "qwen3"
+      }
+    ]
+  },
+  {
+    "etiqueta": "historial25 3",
+    "config": {
+      "INTERMEDIARIO_MAX_MSGS_CPU": "16",
+      "INTERMEDIARIO_MAX_MSGS": "25"
+    },
+    "segundos": 99.68714570999146,
+    "prompt_total": 4925,
+    "reusados": 3167,
+    "turnos": [
+      {
+        "segundos": 28.767832279205322,
+        "prompt": 64,
+        "reusados": 63,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 4.735591411590576,
+        "prompt": 344,
+        "reusados": 130,
+        "backend": "principal"
+      },
+      {
+        "segundos": 25.137352466583252,
+        "prompt": 408,
+        "reusados": 170,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.681870698928833,
+        "prompt": 592,
+        "reusados": 291,
+        "backend": "principal"
+      },
+      {
+        "segundos": 16.92833638191223,
+        "prompt": 665,
+        "reusados": 444,
+        "backend": "qwen3"
+      },
+      {
+        "segundos": 2.617842197418213,
+        "prompt": 821,
+        "reusados": 554,
+        "backend": "principal"
+      },
+      {
+        "segundos": 2.5527775287628174,
+        "prompt": 946,
+        "reusados": 662,
+        "backend": "principal"
+      },
+      {
+        "segundos": 16.26554274559021,
+        "prompt": 1085,
+        "reusados": 853,
+        "backend": "qwen3"
+      }
+    ]
+  }
+]

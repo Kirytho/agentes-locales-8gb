@@ -1,0 +1,178 @@
+{
+  "etiqueta": "qwen3-4b_linux",
+  "codigo": {
+    "aciertos": 0,
+    "total": 25,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": false,
+        "error": "NameError: name 'fizzbuzz' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "NameError: name 'parsear_duracion' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "palindromo",
+        "ok": false,
+        "error": "NameError: name 'es_palindromo' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "aplanar",
+        "ok": false,
+        "error": "SyntaxError: expected '('",
+        "codigo": "def planaplan\ndef plan\ndef aplanplanlan():\ndefin\ndef aplan\ndef\ndef\ndef\ndef\ndef\ndef\ndef aplanplan\ndef aplanar(lista):\n    def aplanar_recursivo(element):\n        for elemento in element:\n            if\n            if\n            if isinstance(list\n                aplanar_rec(element)\n                aplanar(elemento)\n            else:\n                aplanar(elemento)\n        return\n    return aplanar_recursivo(lista)"
+      },
+      {
+        "id": "busqueda",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 9)",
+        "codigo": "Okay\n\n1\n\n\n\n\n\n\"Q\n\nQ\n\n\"Q\n\nQ\n\nQ\n\n\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef buscar(lista(lista, x):\n         \n\n\n\n\n    #    if not lista:\n        return -1\n    left = 0\n    right = len(1 -1\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nWait, but the code is not correct. Let me check the syntax again.\n\nWait, the code is in Python, so the syntax is different. Let me correct the code.\n\n.\n\n.\n\nThe code has several syntax errors. Let me fix them.\n\nThe function is called 'buscar' and the parameters are 'lista' and 'x'. The code is in Python, so the syntax is different.\n\nThe code should be:\n\ndef buscar(lista, x):\n    if not lista:\n        return -1\n    left = 0\n    right = len(lista) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nWait, but in the code, the 'right' is initialized as len(lista) - 1, but in Python, the list is 0-based. So that's correct.\n\nBut the code is correct. Let me check again.\n\nYes, the code is correct. The function 'buscar. The code is in Python, so the syntax\n\n\nWait, but in the code, the 'right' is initialized as len(lista) - 1, which is correct. So the code is correct.\n\nBut the code is not correct. Let me check again.\n\nThe code is correct? Let me check the code again.\n\nYes, the code is correct. The code is correct. The function 'buscar' is correct. The code is correct.\n\nBut the code has a syntax error. Let me check again.\n\nIn the code, the line 'right = len(lista) - 1' is correct. But in Python, the code is correct.\n\nBut the code has a syntax error. Let me check again.\n\nThe code is:\n\ndef buscar(lista, x):\n    if not lista:\n        return -1\n    left = 0 \n    right = len(lista) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            left = mid + 1\n        else:\n            right = mid -1\n    return -1\n\nWait, in the code code, the 'right' is initialized as len(lista) - 1, but in Python, the code is correct.\n\nBut the code has a syntax error. Let me check again.\n\nThe"
+      },
+      {
+        "id": "agrupar",
+        "ok": false,
+        "error": "NameError: name 'agrupar_por' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "contar_palabras",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>\n\n</think>\n\n```python\ndef\ndefunto\ndef contar\ndef contar\ndef\ndef\ndef\ndef\ndef\n\ndef\ndef\ndef contar\n\ndef contar_pal\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\n\n\n\n\n\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\n\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef\ndef"
+      },
+      {
+        "id": "rotar",
+        "ok": false,
+        "error": "NameError: name 'rotar' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "romano",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>\n\n\n\n\n\n\n\n\n\n后\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n后\n\n\n\n\n\n的的的\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n后\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</think>\n\n\n\n\n\n\n\n\n\n的\n\n\n\n\n\n\n\nOkay\n\nOkay\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n的的的的\n\n\n\n\n\n的\n\n的\n\n的\n\n的\n\n\n\n的\n\n\n\nOkay\n\nOkay\n\nOkay\n\nOkay, I need to write the code for the function a..... The function is the..\n\nOkay\n\nOkay, I need, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the the, the function, the, the, the function,,,,, the,, the, the,, the function, the function, the, the function, the function, the function, the function, the function, the function, the function, the function, the function, the, the, the function, the function, the, the function, the function, the function, the function, the function, the function, the function, the, the, the, the function,,, the function,, the, the,,, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the, the function,,,,,,, the function,,,,,, the function, the function, the function, the function, the function, the function, the function, the function,,,, the function, the function, the,,,,,\n\nOkay,,\n\n\n\n\n\nOkay, I need, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the function, the"
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 17)",
+        "codigo": ".\n\nLa función\n\n\ndef romroman:\n    def\n    def rom\n    def roman\n    def\ndef roman\n    def from_romrom(s):\n         \n\n   \n       def from_romom(s):\n        valores = {'I':1, 'V':5, 'IV':, 'M, 'D':500, 'M':1000}\n        res = 0\n        for i in range(len(s)):\n            if i + 1 < len(s):\n                if s[i] in valores and s[i+1] in valores:\n                    if valores[s[i]] < valores[s[i+1]]:\n                        res -= valores[s[i]]\n                    else:\n                        res += valores[s[i]\n            else:\n                res += valores[s[i]\n        return res\n    def from_romano(s):\n        return from_romano(s)\n\n    from_romano = from_romano\n\n    def from_romano(s):\n        valores = {'I':1, 'V':5, 'X':10, 'L':50, 'C':500, 'D':500, 'M':1000}\n        res = 0\n        for i in range(len(s)):\n            if i + 1 < len(s):\n                if s[i] in valores and s[i+1] in valor:\n                    if valor[s[i]] < valor[s[i+1]]:\n                        res -= valor[s[i]]\n                    else:\n                        res += valor[s[i]]\n            else:\n                res += valor[s[i]\n        return res\n\n    def from_romano(s):\n        return from_romano(s)\n\n    from_romano = from_romano\n\n    def from_romano(s):\n        valores = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}\n        res = 0\n\n        for i in range(len(s)):\n            if i + 1 < len(s):\n                if s[i] in valores and s[i+1] in valores:\n                    if valores[s[i]] < valores[s[i+1]]:\n                                               res -= valores[s[i]]\n                    else:\n                        res += valores[s[i]]\n                else:\n                    res += valores[s[i]\n        return res\n\n    def from_romano(s):\n\n        return from_romano(s)\n\n    from_romano = from_romano\n\n    def from_romano(s):\n        valores = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}\n        res = 0\n        for i in range(len(s)):\n            if i + 1 < len(s):\n                if s[i] in valores and s[i+1] in valores:\n                    if valores[s[i]] < valores[s[i+1]]:\n                        res -= valores[s[i]]\n                    else:\n                        res += valores[s[i]]\n                else:\n                    res += valores[s[i]]\n        return res\n\n    def from_romano(s):\n        return from_romano(s)\n\n    from_romano = from_romano\n\n    def from_romano(s):\n        valores = {'I':1, 'V':5,"
+      },
+      {
+        "id": "racha",
+        "ok": false,
+        "error": "NameError: name 'mayor_racha' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>\n\n</think>\n\n</think>\n\n</think>\n\n</think>\n\n</think>\n\n\n\n</think>\n\n\n\n</think>\n\n</think>\n\n</think>\n\n\n\n</think>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</think>\n\n</think>\n\n</think>"
+      },
+      {
+        "id": "snake",
+        "ok": false,
+        "error": "SyntaxError: expected '('",
+        "codigo": "def a_sn\ndef a_sn_sn"
+      },
+      {
+        "id": "primos",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 9)",
+        "codigo": "I need to write a Python in Python that generates a function called. The function that is, the user wants a function that that returns the function that returns a list of of that contains all the prime numbers less of numbers less than or equal to n. If n is less than 2, return an empty empty empty empty list. The function that is, the function that is, the function is called primos(n), and the user wants the code in Python. The code should be written in a way that is efficient and correct.\n\nFirst, I need to generate all prime numbers up to n. The standard approach for generating primes is the Sieve of Eratosthenes. However, the user wants a function that returns the list of primes up to n. So, the function that is, the function that generates the list of primes less than or equal to n.\n\nThe Sieve of Eratosthenes is an efficient algorithm for generating all primes up to a certain number. The algorithm works by creating a list of booleans (True/False) for each number up to n, where True indicates that the number is prime. The algorithm starts with the first two numbers as True (assuming 0 and 1 are not primes, but the sieve starts with 2). Then, for each prime number found, it marks its multiples as non-prime.\n\nBut wait, the user wants the list of primes up to n. So, the sieve of Eratosthenes is a good approach here.\n\nBut let's think about the steps:\n\n1. If n < 2, return empty list.\n2. Else, generate all primes up to n.\n\nSo, the function primos(n) should return the list of primes <=n.\n\nNow, the Sieve of Eratosthenes is a efficient for this. Let's implementy implement that.\n\nBut let's think about the code.\n\n.\n\nThe code for:\n\ndef primos(n):\n    if n < 2:\n        return []\n    # Create a list of booleans for numbers up to n\n    is_prime = [True] * (n + 1)\n    # 0 and 1 are not primes\n    is_prime[0] = is_prime[1] = False\n    for i in range(2, int(n**0.5) + 1):\n        if is_prime[i]:\n            # Mark multiples of i as non-prime\n            for j in range(i*i, n+1, i):\n                is_prime[j] = False\n    # Collect all primes\n    return [i for i in range(2, n+1) if is_prime[i]]\n\nWait, but this code has some issues. Let's see.\n\nWait, the code is in Python, so the sieve is implemented correctly.\n\nBut in the code above, the line for i in range(2, int(n**0.5) + 1: is not correct. The range in Python is exclusive of the upper bound. So, the correct code would be for i in range(2, int(n**0.5) + 1). But the code is written as for i in range(2, int(n**0.5) + 1: which is not correct. The code should be:\n\nfor i in range(2, int(n**0.5) + 1):\n\nBut in the code above, the line is"
+      },
+      {
+        "id": "mcd",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>\n\n```\n\npython\ndefin\n\ndef\n\n\n\ndef\n\ndef\n\ndef\n\n\n\n\ndef\n\n\ndef\ndef\n\ndef\n\ndef\n\ndef mcd\ndef mcd\n\n\ndef\n\n\n\n\ndef\ndef mcd\ndef mcd\ndef mcd(a, b):\n      \n         \n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b\n    while\n    while\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, a):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef m\ndef mcd(a\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b:\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, a):\n\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b:\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef mcd(a,"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>\n\n</think>\n\n</think>\n\n</think>\n\n\n\n</think>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n的\n\n\n\n```python\ndef fusionar(intervalos):\ndef fusion fusionusionsionar(interval\n    def   \n\n\n#defineore\n   \ndef\n\n\ndef\n\n\n\n\n\n\n\ndef\ndef\n\ndef\ndef fusion\ndef\ndef fusionusion\n\n\n\n\n\n\n\n\ndef\ndef\ndef\ndef\ndef\n\n\n\n\n\n\n\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\n\ndef\n\ndef\ndef fusionarar(interval\ndef fusionar(intervalos):\n    #\n    #\n    #\n    #\n   \n   \n    #\n    #\n   \n   \n   \n   \n    #\n    #\n      \n    #\n    #\n    #\n    #\n    #\n    #\n\n    #\n    #\n    #\n    #\n    #\n    #\n\n    #\n    #\n    #\n    #\n    #\n    #\n    #\n   \n    #\n   \n   \n    #\n    #\n    #\n    #\n    #\n    #\n    #\n    #\n\n\n\n\ndef\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef\n\ndef fusionar(intervalos):\n\n   \n\n\n\n\n\n\n    #\n    #\n    #\n    #\n    #\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef fusionar\n\n\ndef fusionar(intervalos):\n       #\n   \n   \n   \n   \n    #\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef\n\ndef\n\ndef fusion\n\ndef\n\ndef fusionusar\n\ndef\n\ndef\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef\n\n\n\n\n\ndef\n\n\n\n\n\n\ndef\n\n\n\n\ndef\n\n\n\n\n\ndef\n\n\n\n\n\n\n\n\n\n\n\ndef\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef\n\ndef fusionar(intervalos):\n   \n\n\n\ndef\n\ndef fusion\n\ndef fusion\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\n\n\n\n\n\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef\n\ndef"
+      },
+      {
+        "id": "anagrama",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef\ndef\ndef\ndef\ndef es_ananima(a(a, b):\n    dap    \n    \n\n    return True if\n    def\n   def\n   def es_anagram(adef es_an\n   def es\n    return sorted\n    def\n    return\n    def\n    return\n    return\n    def\n    def\n    def\n    returndef\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def\n    def"
+      },
+      {
+        "id": "comprimir",
+        "ok": false,
+        "error": "NameError: name 'comprimir' is not defined",
+        "codigo": ""
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "SyntaxError: expected '('",
+        "codigo": "def balance\nbalanceado(s\n    def balance\nbalance\n    def balance\n    \n             \n    def balanceados():\n\n        return\n        def balanceados\n                   def balancear\n            def balancear\n            def\n            def balancear\n                                            \n           \n            def balancear\n                def balancear\n                    def balancear\n                        def balancear\n                            def balancear\n                                def balancear\n                                    def balancear\n                                        def balancear\n                                            def balancear\n                                                def balancear\n                                                    def balancear\n                                                        def balancear\n                                                            def balancear\n                                                                def balancear\n                                                                    def balancear\n                                                                        def balancear"
+      },
+      {
+        "id": "transpuesta",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "No.\n\nNo, no. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No..... No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No. No."
+      },
+      {
+        "id": "raiz_digital",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>\n\n\n\n```python\ndatetime\ndatetime\ndef\ndef\ndef\ndef raiz_digitalal(n):\n    def:\n    def raiz_dig(n):\n    def\n    def raiz_dgitn\n   \n   \n    def ra\n    def\n    def\n    def\n    def raiz_digital(n):\n    def\n    def\n    def raiz_digital(n, n):\n    def\n    def\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int n//i)\n    return n\n    def\n    def\n   def\n    def    def raiz_digital(n):\n        n = int(input())\n        while n > 9:\n            n = sum sum(n) + sum(int n//i)\n        return n\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n   \n\n\ndef\n    def\n         \n   def\n    def\n    def raiz_digital(n):\n        while\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n    def\n    def\n    def\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n)\n        return n\n    def\n\n\n\n\n    def ra\n    def\n    def\n\n\n\n    def ra\n   \n\n\n\n                  \n    def raiz_digitaligital(n):\n        while n > 9:\n\n            n = sum(int(d) for d in str(n(n)\n        return        n\n    def\n    def raiz_digital(n\n    def\n    def raiz_digital(n):\n        while n > 9:\n\n n = sum(int(d) for d in str(n)\n        return n\n    def\n    def raiz_digi(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n)\n        return n\n    def\n    def\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n    def\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n))\n        return n\n    def\n    def raiz_digital(n):\n        while n > 9:\n            n = sum(int(d) for d in str(n"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>"
+      },
+      {
+        "id": "n_mayor",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "</think>\n\n</think>\n\n</think>\n\n\n\n</think>\n\n\n\n</think>"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "SyntaxError: unterminated triple-quoted string literal (detected at line 370)",
+        "codigo": "def formatar_bytes(n\n\n\ndef formatar_bytes\n    def\n\n\n\n\ndef\n\ndef\n\n\n\ndef format\n   \n\n\ndef formatar_bytes(n):\n    \"\"\"\n    Convi un\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n\ndef formatar_bytes\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n\n\n    \"\"\"\n\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n   \n\"\"\"\n    \"\"\"\n\"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n   \n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n\n\n\n\n\n\ndef\n\n\ndef format\ndef formatar_bytes(n):\n\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n    \"\"\"\n\n   \n    \"\"\"\n\n\n\ndef formatar_bytes\n(n\n\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n   \n\n   \n   \n\n\n\n\n\n\n\n\n\ndef formatar_bytes(n):\n    \"\"\"\n    Convierte una cantidad de bytes a texto legible usando base 1024 y las\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\""
+      },
+      {
+        "id": "lotes",
+        "ok": false,
+        "error": "NameError: name 'en_lotes' is not defined",
+        "codigo": ""
+      }
+    ]
+  },
+  "velocidad_media": 82.42886589124336,
+  "razonamiento": [
+    {
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "</think>\n\nUn\n\nUn índice de datos: un índice en una base de datos ac ac. 1. **A** **Acelera las lecturas** porque permite a la base de datos **indexar** los datos de forma más eficiente, lo que permite **buscar y accederer a los datos de forma más rápida.** 2. **Enlentece** las escrituras** porque, aunque el índice permite **buscar** rápidamente, **insertar** o **actualizar** datos, **el proceso de **modificar** o **agregar** nuevos datos puede ser más **lento** debido a la necesidad de **mantener** el índice. 3. **********El índice actúa como una **puntera** que guía, pero, **acelera** las consultas pero **enlent** las operaciones de **modificación** y **actualización**."
+    },
+    {
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "</think>\n\nCuando se necesita un sistema sistemai monolito y microservicios depende del contexto de la aplici de la funcionalidad que se necesite. Un monolito es adecuado para proyectos pequeños o con funcionalidades muy específicas, mientras que los microservicios son adecuados para sistemas complejos y escalables. La elección depende de la complejidad, del tiempo de desarrollo, de la necesidad de escalar y de la capacidad de integración con otros sistemas."
+    },
+    {
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "La compilación de Python compila el código ma máquina nat antes antes de ejec antes la la la porque antes porque porque porque porque porque porque porqueい porque porque. En primer lugar, porque el código Python se traduce a código máquina nat. En segundo lugar, porque el. En tercer lugar, porque porque. La traducción a código máquina es nat. El código. El código máquina. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código. El código"
+    },
+    {
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "La inyecciónion de dependencias resuelve el el problemas de diseño, como la falta de crear instancias de objetos que dependen multiple objetos deenencias entre entre entre entre entre entre instancias de clases, y permitir que se usen de forma automcica en diferentesacuerdo a la necesidad de cada objeto. También. También, permite a los objetos acceder a métodos y atributos de otras clases sin tener que conocer su tipo concretamente. También ayuda a evitar la redundancia de código y mejora la mantenibilidad del código."
+    }
+  ]
+}

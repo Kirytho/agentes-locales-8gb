@@ -1,0 +1,26 @@
+{
+  "etiqueta": "principal-junto",
+  "puerto": "8080",
+  "max_tokens": 128,
+  "niveles": [
+    {
+      "agentes": 2,
+      "agregado": 77.86523015977015,
+      "media_agente": 44.01379784723054,
+      "pared": 3.287731885910034,
+      "tokens": 256,
+      "detalle": [
+        {
+          "tok_s": 44.44685198226015,
+          "n": 128,
+          "segundos": 3.2873446941375732
+        },
+        {
+          "tok_s": 43.580743712200935,
+          "n": 128,
+          "segundos": 3.264375686645508
+        }
+      ]
+    }
+  ]
+}

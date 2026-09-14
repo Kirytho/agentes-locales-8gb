@@ -1,0 +1,230 @@
+{
+ "filas": [
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "1",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 12.287241220474243,
+   "tokens": 816,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "2",
+   "piezas": 5,
+   "fallos": [],
+   "segundos": 66.0832622051239,
+   "tokens": 5214,
+   "llamadas": 5
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "3",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 13.099797010421753,
+   "tokens": 1177,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "4",
+   "piezas": 4,
+   "fallos": [
+    "qr_app/views.py: SyntaxError linea 1"
+   ],
+   "segundos": 185.8893301486969,
+   "tokens": 9827,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "5",
+   "piezas": 4,
+   "fallos": [],
+   "segundos": 9.561344385147095,
+   "tokens": 922,
+   "llamadas": 4
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "6",
+   "piezas": 8,
+   "fallos": [],
+   "segundos": 29.55850052833557,
+   "tokens": 2377,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "7",
+   "piezas": 9,
+   "fallos": [],
+   "segundos": 209.84804916381836,
+   "tokens": 10993,
+   "llamadas": 9
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "8",
+   "piezas": 10,
+   "fallos": [
+    "example_app/templates/view_event_details.html: sigue siendo la cascara del esqueleto"
+   ],
+   "segundos": 67.37633752822876,
+   "tokens": 5014,
+   "llamadas": 10
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "9",
+   "piezas": 8,
+   "fallos": [],
+   "segundos": 57.671858072280884,
+   "tokens": 3823,
+   "llamadas": 8
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "10",
+   "piezas": 19,
+   "fallos": [
+    "example_app/models.py: SyntaxError linea 2",
+    "example_app/utils.py: SyntaxError linea 2",
+    "example_app/forms.py: importa Meal de .models, que no lo define",
+    "example_app/forms.py: importa Activity de .models, que no lo define",
+    "example_app/forms.py: importa UserProfile de .models, que no lo define",
+    "example_app/views.py: importa Meal de .models, que no lo define",
+    "example_app/views.py: importa Activity de .models, que no lo define",
+    "example_app/views.py: importa UserProfile de .models, que no lo define",
+    "example_app/views.py: importa get_weekly_calorie_chart de .utils, que no lo define",
+    "example_app/views.py: importa Meal de .models, que no lo define",
+    "example_app/views.py: importa Activity de .models, que no lo define",
+    "example_app/views.py: importa UserProfile de .models, que no lo define"
+   ],
+   "segundos": 417.6778419017792,
+   "tokens": 31794,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "11",
+   "piezas": 7,
+   "fallos": [],
+   "segundos": 200.18272805213928,
+   "tokens": 10055,
+   "llamadas": 7
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "12",
+   "piezas": 13,
+   "fallos": [
+    "example_app/utils.py: SyntaxError linea 1"
+   ],
+   "segundos": 196.63312554359436,
+   "tokens": 11526,
+   "llamadas": 13
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "13",
+   "piezas": 19,
+   "fallos": [
+    "example_app/forms.py: faltan 4 firmas -> ['class CustomerForm()', 'class PreferredProductForm()', 'class ProductForm()']",
+    "example_app/templates/edit_preferred_product.html: sigue siendo la cascara del esqueleto",
+    "example_app/views.py: importa CustomerForm de .forms, que no lo define",
+    "example_app/views.py: importa ProductForm de .forms, que no lo define",
+    "example_app/views.py: importa PurchaseRecordForm de .forms, que no lo define",
+    "example_app/views.py: importa PreferredProductForm de .forms, que no lo define"
+   ],
+   "segundos": 88.34708642959595,
+   "tokens": 7674,
+   "llamadas": 19
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "14",
+   "piezas": 2,
+   "fallos": [],
+   "segundos": 5.232007741928101,
+   "tokens": 401,
+   "llamadas": 2
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "15",
+   "piezas": 3,
+   "fallos": [],
+   "segundos": 3.991546630859375,
+   "tokens": 374,
+   "llamadas": 3
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "16",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.443932294845581,
+   "tokens": 506,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "17",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 9.227126598358154,
+   "tokens": 557,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "18",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 18.45644998550415,
+   "tokens": 1099,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "19",
+   "piezas": 1,
+   "fallos": [],
+   "segundos": 8.483493089675903,
+   "tokens": 512,
+   "llamadas": 1
+  },
+  {
+   "rep": 1,
+   "brazo": "paralelo",
+   "tarea": "20",
+   "piezas": 11,
+   "fallos": [],
+   "segundos": 41.44506645202637,
+   "tokens": 3768,
+   "llamadas": 11
+  }
+ ]
+}

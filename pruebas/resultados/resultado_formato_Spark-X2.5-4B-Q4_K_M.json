@@ -1,0 +1,54 @@
+{
+  "etiqueta": "Spark-X2.5-4B-Q4_K_M",
+  "repes": 5,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 65,
+      "aplica": 65,
+      "pasa": 61,
+      "rompio": 1,
+      "chars": 172618,
+      "seg": 771.1994967460632,
+      "n": 65
+    },
+    "bloques": {
+      "formato": 64,
+      "aplica": 59,
+      "pasa": 46,
+      "rompio": 9,
+      "chars": 56571,
+      "seg": 249.55243110656738,
+      "n": 65
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "parametro_opcional: regresion: SyntaxError: invalid syntax",
+      "agregar_caso: no hizo el cambio"
+    ],
+    "bloques": [
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: AssertionError",
+      "multi_constante: regresion: ImportError: cannot import name 'TOPE' from 'limites' (/tmp/tmpjphaxt78/limites.py)",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "multi_constante: regresion: IndentationError: unexpected indent",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo",
+      "agregar_caso: no hizo el cambio",
+      "extender_registro: regresion: ValueError: operacion desconocida: producto",
+      "dos_lugares: SEARCH no esta en m.py",
+      "multi_constante: regresion: NameError: name 'TOPE' is not defined",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: SyntaxError: expected '('",
+      "agregar_caso: sin bloques parseables",
+      "dos_lugares: SEARCH no esta en m.py",
+      "filtrar_lista: regresion: SyntaxError: invalid syntax",
+      "multi_constante: regresion: IndentationError: unexpected indent"
+    ]
+  }
+}

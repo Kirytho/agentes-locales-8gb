@@ -1,0 +1,52 @@
+{
+  "etiqueta": "K2-sin-razonar",
+  "repes": 5,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 65,
+      "aplica": 65,
+      "pasa": 60,
+      "rompio": 0,
+      "chars": 172685,
+      "seg": 1022.6804370880127,
+      "n": 65
+    },
+    "bloques": {
+      "formato": 59,
+      "aplica": 54,
+      "pasa": 49,
+      "rompio": 2,
+      "chars": 26356,
+      "seg": 145.70778846740723,
+      "n": 65
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio"
+    ],
+    "bloques": [
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: sin bloques parseables",
+      "parametro_opcional: SEARCH no esta en m.py",
+      "multi_renombrar: SEARCH no esta en nucleo.py",
+      "agregar_caso: no hizo el cambio",
+      "manejar_error: sin bloques parseables",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "validar_entrada: sin bloques parseables",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "multi_renombrar: SEARCH no esta en nucleo.py",
+      "agregar_caso: sin bloques parseables",
+      "dos_lugares: sin bloques parseables",
+      "cambiar_orden: sin bloques parseables",
+      "multi_renombrar: SEARCH no esta en nucleo.py"
+    ]
+  }
+}

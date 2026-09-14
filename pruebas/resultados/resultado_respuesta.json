@@ -1,0 +1,60 @@
+{
+  "largo": [
+    {
+      "clase": "codigo GPU",
+      "prompt": "Escribe una funcion Python que valide un",
+      "normal": {
+        "segundos": 19.525819063186646,
+        "salida": 998,
+        "backend": "principal"
+      },
+      "breve": {
+        "segundos": 7.356550693511963,
+        "salida": 340,
+        "backend": "principal"
+      }
+    },
+    {
+      "clase": "codigo GPU",
+      "prompt": "Escribe una funcion que agrupe una lista",
+      "normal": {
+        "segundos": 15.935154438018799,
+        "salida": 808,
+        "backend": "principal"
+      },
+      "breve": {
+        "segundos": 5.613943815231323,
+        "salida": 257,
+        "backend": "principal"
+      }
+    },
+    {
+      "clase": "analisis RAM",
+      "prompt": "Analiza que ventajas y desventajas tiene",
+      "normal": {
+        "segundos": 116.74102592468262,
+        "salida": 1396,
+        "backend": "principal"
+      },
+      "breve": {
+        "segundos": 35.69431185722351,
+        "salida": 325,
+        "backend": "qwen3"
+      }
+    },
+    {
+      "clase": "analisis RAM",
+      "prompt": "Explica por que conviene separar el clas",
+      "normal": {
+        "segundos": 116.10661697387695,
+        "salida": 1359,
+        "backend": "principal"
+      },
+      "breve": {
+        "segundos": 6.9475789070129395,
+        "salida": 65,
+        "backend": "qwen3"
+      }
+    }
+  ]
+}

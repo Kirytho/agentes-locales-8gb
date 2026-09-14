@@ -1,0 +1,374 @@
+{
+  "etiqueta": "2b-Q8_0-r3",
+  "codigo": {
+    "aciertos": 26,
+    "total": 53,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n: int) -> list[str]:\n    \"\"\"\n    Devuelve una lista de strings del 1 al n, donde:\n    - Multiplos de 3 son 'Fizz'\n    - Multiplos de 5 son 'Buzz'\n    - Multiplos de 15 son 'FizzBuzz'\n    - El resto es el número como string.\n    \"\"\"\n    result = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "ValueError: invalid literal for int() with base 10: '1h30m'",
+        "codigo": "def parsear_duracion(s: str) -> int:\n    \"\"\"\n    Recibe un string como '1h30m', '45m' o '2h' y devuelve la cantidad total de MINUTOS como entero.\n    \n    Args:\n        s: String que representa una duración en formato HH:MM o MM.\n        \n    Returns:\n        El total de minutos como entero.\n    \"\"\"\n    if not s:\n        raise ValueError(\"La entrada debe ser un string no vacío.\")\n    \n    # Separar horas y minutos\n    if ':' in s:\n        horas, minutos = s.split(':')\n        total_minutos = int(horas) * 60 + int(minutos)\n    else:\n        minutos = int(s)\n        total_minutos = minutos\n    \n    return total_minutos"
+      },
+      {
+        "id": "palindromo",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def es_palindromo(s: str) -> bool:\n    \"\"\"\n    Verifica si una string es palíndromo, ignorando mayúsculas, espacios\n    y signos de puntuación.\n    \n    Args:\n        s: La string a verificar.\n        \n    Returns:\n        True si la string es palíndromo, False en caso contrario.\n    \"\"\"\n    # Limpiar la string: eliminar espacios, signos de puntuación y convertir a minúsculas\n    cleaned = ''.join(ch.lower() for ch in s if ch.isspace() or ch not in '.!?;:()[]{}|\\\\-')\n    \n    # Verificar si es palíndromo\n    return cleaned == cleaned[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista: list) -> list:\n    \"\"\"\n    Recibe una lista con sublistas anidadas a cualquier profundidad\n    y devuelve una lista plana con todos los elementos.\n    \n    Args:\n        lista: Lista con sublistas anidadas a cualquier profundidad.\n        \n    Returns:\n        Lista plana con todos los elementos.\n    \"\"\"\n    result = []\n    for item in lista:\n        if isinstance(item, list):\n            result.extend(aplanar(item))\n        else:\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista: list, x: int) -> int:\n    \"\"\"\n    Realiza una búsqueda binaria sobre una lista ordenada y devuelve\n    el índice de x, o -1 si no está presente.\n    \n    Args:\n        lista: Lista ordenada (ascendente).\n        x: Valor a buscar.\n    \n    Returns:\n        El índice de x si existe, o -1 si no.\n    \"\"\"\n    low = 0\n    high = len(lista) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def agrupar_por(items, clave):\n    \"\"\"\n    Agrupa una lista de diccionarios por el valor de una clave específica.\n    \n    Args:\n        items: Lista de diccionarios.\n        clave: Clave a agrupar por.\n    \n    Returns:\n        Diccionario con los items agrupados por el valor de la clave.\n    \"\"\"\n    return {clave: [] for clave in items[0].keys()}"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": true,
+        "error": "",
+        "codigo": "def contar_palabras(texto: str) -> dict[str, int]:\n    \"\"\"\n    Cuenta cuántas veces aparece cada palabra en un texto.\n    Ignora mayúsculas y signos de puntuación.\n    \n    Args:\n        texto: La entrada a analizar.\n        \n    Returns:\n        Un diccionario con las palabras como claves y sus conteos como valores.\n    \"\"\"\n    import re\n    import string\n\n    # Normalizar: convertir a minúsculas y eliminar signos de puntuación\n    cleaned = re.sub(r'[^a-zA-Z\\s]', '', texto.lower())\n\n    # Contar palabras\n    counts = {}\n    for word in cleaned.split():\n        if word:  # Ignorar palabras vacías\n            counts[word] = counts.get(word, 0) + 1\n\n    return counts"
+      },
+      {
+        "id": "rotar",
+        "ok": true,
+        "error": "",
+        "codigo": "def rotar(lista: list, n: int) -> list:\n    \"\"\"\n    Rota la lista n posiciones hacia la derecha.\n    Si n es mayor que el largo, rota lo que corresponda.\n    Si n es negativo, rota hacia la izquierda.\n    Lista vacía devuelve lista vacía.\n    \"\"\"\n    if not lista:\n        return []\n    \n    n = n % len(lista)\n    if n < 0:\n        n += len(lista)\n    \n    return lista[-n:] + lista[:-n]"
+      },
+      {
+        "id": "romano",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_romano(n: int) -> str:\n    \"\"\"\n    Convierte un entero entre 1 y 3999 a su representación en números romanos.\n    Utiliza la notación sustractiva (IV, IX, XL, XC, CM, CD, CM).\n    \n    Args:\n        n: Un entero entre 1 y 3999.\n        \n    Returns:\n        La representación en números romanos.\n    \"\"\"\n    if not 1 <= n <= 3999:\n        raise ValueError(\"El número debe estar entre 1 y 3999.\")\n    \n    # Definición de los valores de los símbolos\n    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\n    simb = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"]\n    \n    # Construcción de la cadena de caracteres\n    resultado = []\n    \n    for i in range(len(val)):\n        while n >= val[i]:\n            resultado.append(simb[i])\n            n -= val[i]\n    \n    return \"\".join(resultado)\n\n\n# Ejemplo de uso (opcional):\n# print(a_romano(1))   # \"I\"\n# print(a_romano(4))   # \"IV\"\n# print(a_romano(9))   # \"IX\"\n# print(a_romano(40))  # \"XL\"\n# print(a_romano(900)) # \"CM\"\n# print(a_romano(3999))# \"MMMCMXCIX\""
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "NameError: name 'desde_romano' is not defined",
+        "codigo": "def from_romano(s: str) -> int:\n    \"\"\"\n    Convierte una cadena de números romanos a un entero.\n    \n    Maneja la notación sustractiva (IV = 4, IX = 9, XL = 40, etc.).\n    \n    Args:\n        s: String con números romanos.\n        \n    Returns:\n        El entero correspondiente.\n        \n    Raises:\n        ValueError: Si la entrada no es válida.\n    \"\"\"\n    values = {\n        'I': 1, 'V': 5, 'X': 10, 'L': 50,\n        'C': 100, 'D': 500, 'M': 1000\n    }\n    \n    # Validar que la entrada sea una cadena\n    if not isinstance(s, str):\n        raise ValueError(\"Entrada debe ser una cadena de caracteres.\")\n    \n    # Validar que la cadena no esté vacía\n    if not s:\n        raise ValueError(\"La cadena no puede estar vacía.\")\n    \n    # Validar que cada carácter sea un número romano válido\n    for char in s:\n        if char not in values:\n            raise ValueError(f\"Carácter no válido: '{char}'\")\n    \n    # Validar que no haya dos números consecutivos en orden descendente\n    for i in range(len(s) - 1):\n        if values[s[i]] >= values[s[i + 1]]:\n            raise ValueError(\"No se permiten números descendentes consecutivos.\")\n    \n    # Calcular el valor\n    total = 0\n    for i in range(len(s)):\n        total += values[s[i]] * (10 ** (len(s) - 1 - i))\n    \n    return total\n\n\n# Ejemplo de uso (solo para demostración):\n# print(from_romano(\"IV\"))   # 4\n# print(from_romano(\"MCMXCIV\"))  # 1994\n# print(from_romano(\"III\"))  # 3"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    \"\"\"\n    Encuentra la racha más larga de elementos consecutivos iguales.\n    Devuelve la tupla (elemento, longitud). Si hay empate, devuelve la primera.\n    Si la lista está vacía, devuelve None.\n    \"\"\"\n    if not lista:\n        return None\n\n    max_racha = 1\n    max_element = lista[0]\n    current_racha = 1\n\n    for i in range(1, len(lista)):\n        if lista[i] == lista[i - 1]:\n            current_racha += 1\n        else:\n            if current_racha > max_racha:\n                max_racha = current_racha\n                max_element = lista[i - 1]\n            current_racha = 1\n\n    # Verificar la última racha\n    if current_racha > max_racha:\n        max_racha = current_racha\n        max_element = lista[-1]\n\n    return (max_element, max_racha)"
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_camel(s: str) -> str:\n    \"\"\"Convierte un texto a snake_case a camelCase: la primera palabra en minúscula y las siguientes con la inicial en mayúscula, sin guiones bajos.\"\"\"\n    words = s.split()\n    result = words[0].lower()\n    for i in range(1, len(words)):\n        result += words[i].upper()\n    return result"
+      },
+      {
+        "id": "snake",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_snake(s: str) -> str:\n    \"\"\"\n    Convierte una cadena de texto de camelCase o PascalCase a snake_case.\n    \n    Reglas:\n        - Todo en minusculas.\n        - Un guion bajo (_ ) antes de cada mayuscula interna.\n        - No debe empezar con guion bajo.\n    \n    Args:\n        s: Cadena de texto en camelCase o PascalCase.\n    \n    Returns:\n        Cadena de texto en snake_case.\n    \"\"\"\n    if not s:\n        return s\n    \n    result = []\n    current = \"\"\n    lower = False\n    \n    for char in s:\n        if char.isupper():\n            if lower:\n                result.append(\"_\")\n            lower = False\n            current += char\n        else:\n            current += char\n            lower = False\n    \n    result.append(current)\n    return \"\".join(result)"
+      },
+      {
+        "id": "primos",
+        "ok": true,
+        "error": "",
+        "codigo": "def primos(n: int) -> list[int]:\n    \"\"\"Devuelve la lista ordenada de todos los números primos menores o iguales a n.\"\"\"\n    if n < 2:\n        return []\n    \n    primos = []\n    for i in range(2, n + 1):\n        es_primo = True\n        for j in range(2, int(i**0.5) + 1):\n            if i % j == 0:\n                es_primo = False\n                break\n        if es_primo:\n            primos.append(i)\n    return primos"
+      },
+      {
+        "id": "mcd",
+        "ok": true,
+        "error": "",
+        "codigo": "def mcd(a, b):\n    \"\"\"\n    Devuelve el máximo común divisor de dos enteros no negativos.\n    El mcd de un número con 0 es ese número.\n    \"\"\"\n    if b == 0:\n        return a\n    while b != 0:\n        a, b = b, a % b\n    return a"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "NameError: name 'intervals' is not defined. Did you mean: 'intervalos'?",
+        "codigo": "def fusionar(intervalos: list[tuple[int, int]]) -> list[tuple[int, int]]:\n    \"\"\"\n    Recibe una lista de tuplas (inicio, fin) posiblemente desordenada\n    y devuelve la lista de intervalos fusionados, ordenada por inicio.\n    \n    Dos intervalos se fusionan si se tocan en un extremo.\n    \n    Args:\n        intervals: Lista de tuplas (inicio, fin) posiblemente desordenada.\n        \n    Returns:\n        Lista de intervalos fusionados ordenados por inicio.\n    \"\"\"\n    if not intervals:\n        return []\n    \n    # Ordenar por inicio\n    intervals.sort(key=lambda x: x[0])\n    \n    # Fusionar intervalos que se tocan en un extremo\n    resultado = [intervalos[0]]\n    for i in range(1, len(intervalos)):\n        if (intervalos[i][0] <= resultado[-1][1] and\n            intervalos[i][1] >= resultado[-1][0]):\n            resultado[-1] = (resultado[-1][0], max(resultado[-1][1], intervalos[i][1]))\n        else:\n            resultado.append(intervalos[i])\n    \n    return resultado"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Verifica si dos textos son anagramas, ignorando mayúsculas y espacios.\n    \n    Args:\n        a: Primer texto.\n        b: Segundo texto.\n    \n    Returns:\n        True si los textos son anagramas, False de lo contrario.\n    \"\"\"\n    return sorted(a.lower().replace(\" \", \"\")) == sorted(b.lower().replace(\" \", \"\"))"
+      },
+      {
+        "id": "comprimir",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def comprimir(s: str) -> str:\n    \"\"\"\n    Aplica codificación por repeticiones.\n    'aaabb' se convierte en 'a3b2'.\n    \n    Si la versión comprimida es más corta que la original,\n    devuelve la versión comprimida.\n    Si no es más corta, devuelve la original sin cambios.\n    \n    Args:\n        s: La cadena de texto a comprimir.\n        \n    Returns:\n        La cadena comprimida si es más corta, o la original.\n    \"\"\"\n    if not s:\n        return s\n    \n    # Contar frecuencias de cada carácter\n    counts = {}\n    for char in s:\n        counts[char] = counts.get(char, 0) + 1\n    \n    # Construir la cadena comprimida\n    compressed = \"\"\n    for char, count in counts.items():\n        if count > 1:\n            compressed += char + str(count)\n    \n    # Verificar si es más corta\n    if len(compressed) < len(s):\n        return compressed\n    else:\n        return s"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def balanceado(s: str) -> bool:\n    \"\"\"\n    Verifica si los parentesis, corchetes y llaves del texto están correctamente\n    balanceados y anidados.\n\n    Un texto vacío está balanceado.\n\n    Args:\n        s: La cadena de texto a verificar.\n\n    Returns:\n        True si los paréntesis, corchetes y llaves están balanceados, False en caso contrario.\n    \"\"\"\n    if not s:\n        return True\n\n    open_brackets = {'(', '[', '{'}\n    close_brackets = {')', ']', '}'}\n    stack = []\n\n    for char in s:\n        if char in open_brackets:\n            stack.append(char)\n        elif char in close_brackets:\n            if not stack:\n                return False\n            top = stack.pop()\n            if top != char:\n                return False\n\n    return len(stack) == 0"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n    \"\"\"\n    Recibe una matriz como lista de listas y devuelve su transpuesta.\n    \n    Args:\n        m: Una matriz representada como lista de listas.\n        \n    Returns:\n        La matriz transpuesta.\n    \"\"\"\n    if not m:\n        return []\n    \n    # El número de columnas de la matriz original es el número de filas de la transpuesta\n    num_filas = len(m)\n    num_col = len(m[0])\n    \n    # La matriz transpuesta tendrá num_col filas y num_filas columnas\n    transpuesta = [[0] * num_filas for _ in range(num_col)]\n    \n    for i in range(num_filas):\n        for j in range(num_col):\n            transpuesta[j][i] = m[i][j]\n    \n    return transpuesta"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": false,
+        "error": "NameError: name 'raiz_digital' is not defined",
+        "codigo": "def suma_digitos(n: int) -> int:\n    \"\"\"Suma los dígitos de un número y repite el proceso hasta quedarse con un solo dígito.\"\"\"\n    while n >= 10:\n        n = sum(int(d) for d in str(n))\n    return n\n\n\n# Ejemplo de uso\nif __name__ == \"__main__\":\n    print(suma_digitos(9875))  # 2"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": true,
+        "error": "",
+        "codigo": "def sin_duplicados(lista):\n    \"\"\"\n    Elimina los elementos repetidos de una lista,\n    conservando el orden de la primera aparición.\n    \n    Args:\n        lista: Lista de elementos que puede contener duplicados.\n        \n    Returns:\n        Nueva lista con elementos únicos en el mismo orden.\n    \"\"\"\n    seen = set()\n    result = []\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "n_mayor",
+        "ok": true,
+        "error": "",
+        "codigo": "def n_esimo_mayor(lista: list, n: int) -> object:\n    \"\"\"\n    Devuelve el n-esimo valor más grande contando valores DISTINCTOS.\n    Los valores repetidos cuentan una sola vez.\n    Si no hay suficientes valores distintos, devuelve None.\n    \n    Args:\n        lista: Lista de valores (puede contener duplicados).\n        n: Índice del valor más grande (1-based).\n    \n    Returns:\n        El n-esimo valor más grande distinto, o None si no existe.\n    \"\"\"\n    if n <= 0:\n        return None\n    if n > len(set(lista)):\n        return None\n    \n    # Obtener los valores únicos ordenados de mayor a menor\n    valores_distintos = sorted(set(lista), reverse=True)\n    \n    if n > len(valores_distintos):\n        return None\n    \n    return valores_distintos[n - 1]"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def formatear_bytes(n: int) -> str:\n    \"\"\"\n    Convierte una cantidad de bytes a texto legible usando base 1024\n    y las unidades B, KB, MB, GB.\n    \n    Los bytes se muestran sin decimales y las demas unidades con UN decimal.\n    \n    Args:\n        n: Cantidad de bytes a convertir.\n        \n    Returns:\n        String representando la cantidad en unidades de bytes.\n    \"\"\"\n    if n == 0:\n        return \"0 B\"\n    \n    unidades = [\"B\", \"KB\", \"MB\", \"GB\"]\n    \n    for i in range(4):\n        if n >= 1024 ** i:\n            valor = n / 1024 ** i\n            if i == 0:\n                return f\"{int(valor)} B\"\n            else:\n                return f\"{valor:.1f} {unidades[i]}\"\n    \n    return f\"{n} B\""
+      },
+      {
+        "id": "lotes",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def en_lotes(lista, tamano):\n    \"\"\"Partir una lista en sublistas de un tamaño dado. El último lote puede ser más chico.\"\"\"\n    if not lista:\n        return []\n    \n    # Calcular cuántos lotes completos caben\n    num_lotes = len(lista) // tamano\n    # El último lote puede ser más chico\n    num_lotes += 1\n    \n    # Crear sublistas\n    sublistas = [lista[i:i + tamano] for i in range(num_lotes)]\n    \n    return sublistas"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n    if not m:\n        return []\n    rows = len(m)\n    cols = len(m[0])\n    return [[m[i][j] for i in range(rows)] for j in range(cols)]"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "NameError: name 'intervals' is not defined. Did you mean: 'intervalos'?",
+        "codigo": "def fusionar(intervalos: list[tuple[int, int]]) -> list[tuple[int, int]]:\n    \"\"\"\n    Fusionar una lista de intervalos (inicio, fin) ordenados por inicio.\n    Dos intervalos se fusionan si se tocan (inicio2 == fin1).\n    \n    Args:\n        intervals: Lista de tuplas (inicio, fin) ordenadas por inicio.\n        \n    Returns:\n        Lista de intervalos fusionados ordenados por inicio.\n    \"\"\"\n    if not intervals:\n        return []\n    \n    result = [intervals[0]]\n    \n    for inicio, fin in intervals[1:]:\n        if inicio == fin - 1:\n            # Se tocan: fusionar el último con el actual\n            result[-1] = (result[-1][0], fin)\n        else:\n            result.append((inicio, fin))\n    \n    return result"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def balanceado(s: str) -> bool:\n    \"\"\"\n    Verifica si los parentesis, corchetes y llaves del string están bien balanceados y anidados.\n    Los demás caracteres se ignoran.\n    \n    Args:\n        s: La cadena de texto a verificar.\n        \n    Returns:\n        True si los paréntesis, corchetes y llaves están balanceados, False en caso contrario.\n    \"\"\"\n    open_paren = 0\n    open_bracket = 0\n    open_brace = 0\n\n    for char in s:\n        if char == '(':\n            open_paren += 1\n        elif char == '[':\n            open_bracket += 1\n        elif char == '{':\n            open_brace += 1\n        elif char == ')':\n            if open_paren == 0:\n                return False\n            open_paren -= 1\n        elif char == ']':\n            if open_bracket == 0:\n                return False\n            open_bracket -= 1\n        elif char == '}':\n            if open_brace == 0:\n                return False\n            open_brace -= 1\n\n    return open_paren == 0 and open_bracket == 0 and open_brace == 0"
+      },
+      {
+        "id": "mediana",
+        "ok": true,
+        "error": "",
+        "codigo": "def mediana(nums: list[int | float]) -> float | None:\n    \"\"\"\n    Devuelve la mediana de una lista de números.\n    \n    Si la lista tiene un número par de elementos, devuelve el promedio\n    de los dos elementos centrales. Si la lista está vacía, devuelve None.\n    \n    Args:\n        nums: Lista de números (int o float).\n        \n    Returns:\n        La mediana del conjunto de números, o None si la lista está vacía.\n    \"\"\"\n    if not nums:\n        return None\n    \n    sorted_nums = sorted(nums)\n    n = len(sorted_nums)\n    \n    if n % 2 == 0:\n        return (sorted_nums[n // 2 - 1] + sorted_nums[n // 2]) / 2.0\n    else:\n        return sorted_nums[n // 2]"
+      },
+      {
+        "id": "top_frecuentes",
+        "ok": true,
+        "error": "",
+        "codigo": "from collections import Counter\nfrom typing import List, Tuple\n\n\ndef top_frecuentes(texto: str, k: int) -> List[Tuple[str, int]]:\n    \"\"\"\n    Devuelve las k palabras más frecuentes de un texto, ordenadas por cantidad descendente\n    y, a igual cantidad, alfabéticamente.\n\n    Args:\n        texto: La entrada de texto a analizar.\n        k: El número de palabras más frecuentes a devolver.\n\n    Returns:\n        Una lista de tuplas (palabra, cantidad) ordenadas por cantidad descendente\n        y, a igual cantidad, alfabéticamente.\n    \"\"\"\n    if not texto or not texto.strip():\n        return []\n\n    # Convertir todo el texto a minúsculas y separar por espacios\n    tokens = texto.lower().split()\n\n    # Contar la frecuencia de cada palabra\n    word_counts = Counter(tokens)\n\n    # Obtener las k palabras más frecuentes ordenadas por cantidad descendente\n    # y, a igual cantidad, alfabéticamente\n    top_k = sorted(word_counts.items(), key=lambda x: (-x[1], x[0]))\n\n    return top_k[:k]"
+      },
+      {
+        "id": "trozos",
+        "ok": false,
+        "error": "ValueError: n debe ser un número positivo",
+        "codigo": "def trozos(lista: list, n: int) -> list:\n    \"\"\"\n    Divide una lista en sublistas de tamaño n.\n    La última sublista puede ser de tamaño menor que n.\n    \n    Args:\n        lista: Lista de elementos a dividir.\n        n: Tamaño máximo de cada sublista.\n        \n    Returns:\n        Una lista de sublistas.\n        \n    Raises:\n        ValueError: Si n es negativo.\n    \"\"\"\n    if n <= 0:\n        raise ValueError(\"n debe ser un número positivo\")\n    \n    return [lista[i:i + n] for i in range(0, len(lista), n)]"
+      },
+      {
+        "id": "dedup",
+        "ok": true,
+        "error": "",
+        "codigo": "def dedup(lista):\n    \"\"\"\n    Elimina duplicados de una lista, conservando el orden de la primera aparición.\n    \n    Args:\n        lista: Una lista de elementos que puede contener elementos repetidos.\n        \n    Returns:\n        Una lista con los elementos únicos, en el orden de su primera aparición.\n    \"\"\"\n    seen = set()\n    result = []\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "binaria",
+        "ok": true,
+        "error": "",
+        "codigo": "def binaria(lista, x):\n    \"\"\"\n    Busca el elemento x en una lista ordenada usando busqueda binaria.\n    Devuelve el índice si se encuentra, o -1 si no.\n    \n    Args:\n        lista: Lista ordenada (ascendente).\n        x: Elemento a buscar.\n    \n    Returns:\n        El índice de x si existe, o -1 si no.\n    \"\"\"\n    low = 0\n    high = len(lista) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1"
+      },
+      {
+        "id": "anidar",
+        "ok": true,
+        "error": "",
+        "codigo": "def anidar(plano: dict) -> dict:\n    \"\"\"\n    Convierte un diccionario de claves con puntos en un diccionario anidado.\n    \n    Ejemplo: {'a.b': 1} -> {'a': {'b': 1}}\n    \n    Args:\n        plano: Un diccionario donde las claves son strings con puntos '.' separadores.\n        \n    Returns:\n        Un diccionario anidado donde cada clave con puntos se descompone en una\n        cadena de claves.\n    \"\"\"\n    result = {}\n    for key, value in plano.items():\n        if '.' in key:\n            parts = key.split('.')\n            current = result\n            for part in parts[:-1]:\n                current = current.setdefault(part, {})\n            current[parts[-1]] = value\n        else:\n            result[key] = value\n    return result\n\n\n# Ejemplo de uso:\nif __name__ == \"__main__\":\n    plano = {'a.b': 1, 'c.d.e': 2, 'f': 3}\n    print(anidar(plano))\n    # Salida: {'a': {'b': 1}, 'c': {'d': {'e': 2}}, 'f': 3}"
+      },
+      {
+        "id": "rle",
+        "ok": false,
+        "error": "NameError: name 'comprimir' is not defined",
+        "codigo": "def compress(s: str) -> str:\n    \"\"\"Aplica run-length encoding a una string.\n    \n    Caracteres que aparecen una sola vez llevan el 1.\n    String vacía devuelve string vacía.\n    \"\"\"\n    if not s:\n        return \"\"\n    \n    result = []\n    current_char = s[0]\n    count = 1\n    \n    for i in range(1, len(s)):\n        if s[i] == current_char:\n            count += 1\n        else:\n            result.append(current_char)\n            result.append(str(count))\n            current_char = s[i]\n            count = 1\n    \n    result.append(current_char)\n    result.append(str(count))\n    \n    return ''.join(result)\n\n\n# Ejemplos de uso:\n# print(compress('aaabb'))   # 'a3b2'\n# print(compress('abc'))     # 'a1b1c1'\n# print(compress(''))        # ''"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Verifica si dos strings son anagramas, ignorando mayúsculas y espacios.\n    \n    Args:\n        a: Primer string.\n        b: Segundo string.\n    \n    Returns:\n        True si los strings son anagramas, False de lo contrario.\n    \"\"\"\n    # Normalizar: convertir a minúsculas y eliminar espacios\n    a_normalized = a.lower().replace(\" \", \"\")\n    b_normalized = b.lower().replace(\" \", \"\")\n    \n    # Contar frecuencias de cada carácter\n    from collections import Counter\n    count_a = Counter(a_normalized)\n    count_b = Counter(b_normalized)\n    \n    # Comparar conteos\n    return count_a == count_b"
+      },
+      {
+        "id": "movil",
+        "ok": true,
+        "error": "",
+        "codigo": "def promedio_movil(nums, ventana):\n    \"\"\"\n    Calcula la lista de promedios moviles de tamaño 'ventana'.\n    \n    Args:\n        nums: Lista de números.\n        ventana: Tamaño de la ventana deslizante.\n    \n    Returns:\n        Lista de promedios moviles. Si la lista es más corta que la ventana,\n        devuelve una lista vacia.\n    \"\"\"\n    if len(nums) < ventana:\n        return []\n    \n    result = []\n    for i in range(len(nums) - ventana + 1):\n        window = nums[i:i + ventana]\n        result.append(sum(window) / ventana)\n    \n    return result"
+      },
+      {
+        "id": "bytes_humano",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def formatear_bytes(n: int) -> str:\n    \"\"\"\n    Convierte un número de bytes a texto legible usando múltiplos de 1024\n    y las unidades B, KB, MB, GB.\n\n    Args:\n        n: Número entero en bytes.\n\n    Returns:\n        String representando el tamaño en formato legible.\n    \"\"\"\n    if n == 0:\n        return \"0 B\"\n\n    unidades = [\"B\", \"KB\", \"MB\", \"GB\"]\n    exponente = 0\n\n    while n >= 1024 and exponente < len(unidades) - 1:\n        n //= 1024\n        exponente += 1\n\n    if exponente == 0:\n        return f\"{n} B\"\n    else:\n        return f\"{n:.1f} {unidades[exponente]}\""
+      },
+      {
+        "id": "query",
+        "ok": true,
+        "error": "",
+        "codigo": "def parsear_query(s: str) -> dict:\n    \"\"\"\n    Convierte un query string tipo 'a=1&b=2' en un dict {'a':'1','b':'2'}.\n    Una clave sin valor ('c=') queda con string vacio.\n    String vacio devuelve dict vacio.\n    \"\"\"\n    if not s:\n        return {}\n    result = {}\n    for part in s.split(\"&\"):\n        if \"=\" in part:\n            key, value = part.split(\"=\", 1)\n            result[key] = value\n    return result"
+      },
+      {
+        "id": "islas",
+        "ok": true,
+        "error": "",
+        "codigo": "def contar_islas(grid):\n    \"\"\"\n    Recibe una matriz de 0 y 1 y devuelve el número de grupos de 1 conectados.\n    Dos celdas son conectadas si comparten un lado (no en diagonal).\n    \n    Args:\n        grid: Una matriz de 0 y 1.\n        \n    Returns:\n        El número de grupos de 1 conectados.\n    \"\"\"\n    if not grid or not grid[0]:\n        return 0\n\n    rows = len(grid)\n    cols = len(grid[0])\n    visited = [[False] * cols for _ in range(rows)]\n\n    def dfs(r, c):\n        visited[r][c] = True\n        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n            nr, nc = r + dr, c + dc\n            if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1 and not visited[nr][nc]:\n                dfs(nr, nc)\n\n    count = 0\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1 and not visited[r][c]:\n                dfs(r, c)\n                count += 1\n\n    return count"
+      },
+      {
+        "id": "levenshtein",
+        "ok": false,
+        "error": "NameError: name 'distancia' is not defined",
+        "codigo": "def distancia_edicion(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la distancia de Levenshtein entre dos strings.\n    \n    La distancia es el mínimo número de inserciones, borrados o sustituciones\n    necesarias para convertir una cadena en otra.\n    \n    Args:\n        a: La primera cadena.\n        b: La segunda cadena.\n        \n    Returns:\n        El número mínimo de operaciones de edición.\n    \"\"\"\n    m = len(a)\n    n = len(b)\n    \n    # Tablas de tamaño (m+1) x (n+1)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    \n    # Base cases: insertar o borrar un carácter\n    for i in range(m + 1):\n        dp[i][0] = i  # borrar i caracteres de a\n    for j in range(n + 1):\n        dp[0][j] = j  # insertar j caracteres en a\n    \n    # Lógica de la matriz\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if a[i - 1] == b[j - 1]:\n                dp[i][j] = dp[i - 1][j - 1]\n            else:\n                dp[i][j] = 1 + min(\n                    dp[i - 1][j],   # sustitución\n                    dp[i][j - 1],   # inserción\n                    dp[i - 1][j - 1]  # borrado\n                )\n    \n    return dp[m][n]"
+      },
+      {
+        "id": "password",
+        "ok": true,
+        "error": "",
+        "codigo": "import string\n\ndef validar_password(p: str) -> bool:\n    \"\"\"\n    Verifica si una contraseña cumple con los siguientes requisitos:\n    - Al menos 8 caracteres\n    - Al menos una mayúscula\n    - Al menos una minúscula\n    - Al menos un dígito\n    - Al menos un carácter no alfanumérico\n\n    Args:\n        p: La contraseña a validar.\n\n    Returns:\n        True si la contraseña cumple todos los requisitos, False en caso contrario.\n    \"\"\"\n    if len(p) < 8:\n        return False\n\n    has_upper = any(c in string.ascii_uppercase for c in p)\n    has_lower = any(c in string.ascii_lowercase for c in p)\n    has_digit = any(c in string.digits for c in p)\n    has_special = any(c not in string.ascii_letters + string.digits for c in p)\n\n    return has_upper and has_lower and has_digit and has_special"
+      },
+      {
+        "id": "base_n",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_base(n: int, base: int) -> str:\n    \"\"\"\n    Convierte un entero no negativo a string en la base dada (2 a 16).\n    Usa digitos 0-9 y letras minusculas a-f.\n    El cero devuelve '0'.\n    \n    Args:\n        n: El entero no negativo a convertir.\n        base: La base para convertir (2 a 16).\n    \n    Returns:\n        La representación del número en la base dada.\n    \"\"\"\n    if n == 0:\n        return '0'\n    \n    digits = '0123456789abcdef'\n    \n    while n > 0:\n        remainder = n % base\n        n = n // base\n        digits = digits[remainder] + digits\n    \n    return digits[::-1]"
+      },
+      {
+        "id": "particion",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def pares_primero(nums):\n    \"\"\"\n    Divide la lista en dos listas:\n    - pares: números pares que aparecen primero en el orden original\n    - impares: números impares que aparecen después de los pares\n    \"\"\"\n    pares = []\n    impares = []\n    for num in nums:\n        if num % 2 == 0:\n            pares.append(num)\n        else:\n            impares.append(num)\n    return pares, impares"
+      },
+      {
+        "id": "interseccion",
+        "ok": true,
+        "error": "",
+        "codigo": "def interseccion(a: list[int], b: list[int]) -> list[int]:\n    \"\"\"\n    Devuelve la lista ordenada de valores presentes en ambas listas,\n    sin repetidos.\n\n    Args:\n        a: Lista ordenada de enteros.\n        b: Lista ordenada de enteros.\n\n    Returns:\n        Lista ordenada de valores presentes en ambas listas, sin repetidos.\n    \"\"\"\n    return sorted(set(a) & set(b))"
+      },
+      {
+        "id": "dias_entre",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "from datetime import datetime, timedelta\n\n\ndef dias_entre(a: str, b: str) -> int:\n    \"\"\"\n    Recibe dos fechas en formato 'YYYY-MM-DD' y devuelve la cantidad de días\n    entre ellas como entero positivo.\n\n    Args:\n        a: Fecha inicial en formato 'YYYY-MM-DD'.\n        b: Fecha final en formato 'YYYY-MM-DD'.\n\n    Returns:\n        El número de días entre las dos fechas (a >= b).\n    \"\"\"\n    fecha_a = datetime.strptime(a, \"%Y-%m-%d\")\n    fecha_b = datetime.strptime(b, \"%Y-%m-%d\")\n\n    if fecha_a < fecha_b:\n        fecha_a, fecha_b = fecha_b, fecha_a\n\n    delta = fecha_b - fecha_a\n    return delta.days\n\n\n# Ejemplo de uso (opcional para validación):\nif __name__ == \"__main__\":\n    print(dias_entre(\"2024-01-01\", \"2024-01-15\"))  # 14\n    print(dias_entre(\"2024-01-01\", \"2024-01-01\"))  # 0\n    print(dias_entre(\"2024-01-01\", \"2024-01-02\"))  # 1"
+      },
+      {
+        "id": "escapar_csv",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def campo_csv(s: str) -> str:\n    \"\"\"\n    Prepara un campo para CSV:\n    - Si el campo contiene coma (,), comilla doble (\") o salto de línea (\\n),\n      lo devuelve entre comillas dobles y con las comillas internas duplicadas.\n    - Si no, lo devuelve tal cual.\n    \"\"\"\n    if s in ('\",\\n'):\n        return '\"' + s + '\"'\n    return s"
+      },
+      {
+        "id": "titulo",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def titular(s: str) -> str:\n    \"\"\"\n    Capitaliza la primera letra de cada palabra, excepto 'de', 'del', 'la', 'las', 'el', 'los'\n    y 'y' cuando no son la primera palabra.\n    \n    Args:\n        s: La cadena de texto a procesar.\n        \n    Returns:\n        La cadena con las palabras capitalizadas.\n    \"\"\"\n    words = s.split()\n    result = []\n    for word in words:\n        if word == \"de\" or word == \"del\" or word == \"la\" or word == \"las\" or word == \"el\" or word == \"los\" or word == \"y\":\n            result.append(word)\n        else:\n            result.append(word.capitalize())\n    return \" \".join(result)\n\n\n# Ejemplo de uso:\n# titular(\"Hola mundo, esto es un ejemplo\")\n# Salida: \"Hola Mundo, Esto Es Un Ejemplo\""
+      },
+      {
+        "id": "aplanar_prof",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def aplanar_hasta(lista: list, profundidad: int) -> list:\n    \"\"\"\n    Aplanar una lista anidada recursivamente hasta la profundidad indicada.\n    \n    Args:\n        lista: Lista que puede contener listas anidadas.\n        profundidad: Nivel máximo de anidación a aplana (0 = lista plana, 1 = aplana un nivel, etc.).\n    \n    Returns:\n        Lista con todos los elementos aplanados hasta la profundidad dada.\n    \"\"\"\n    if profundidad <= 0:\n        return lista\n    if isinstance(lista, list):\n        return [aplanar_hasta(item, profundidad - 1) for item in lista]\n    return lista"
+      },
+      {
+        "id": "romanos_suma",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def sumar_romanos(a: str, b: str) -> str:\n    \"\"\"\n    Suma dos números romanos y devuelve el resultado en romano.\n    \n    Args:\n        a: Primer número en formato romano.\n        b: Segundo número en formato romano.\n    \n    Returns:\n        El resultado de la suma en formato romano.\n    \"\"\"\n    def valor_romano(s: str) -> int:\n        valores = {\n            \"I\": 1, \"V\": 5, \"X\": 10, \"L\": 50,\n            \"C\": 100, \"D\": 500, \"M\": 1000\n        }\n        total = 0\n        for i in range(len(s) - 1, -1, -1):\n            total += valores[s[i]]\n            if i > 0 and valores[s[i]] < valores[s[i - 1]]:\n                total -= valores[s[i]]\n        return total\n\n    def romano_de_numero(n: int) -> str:\n        if n == 0:\n            return \"0\"\n        if n < 10:\n            return str(n)\n        if n < 40:\n            return \"X\" + romano_de_numero(n - 10)\n        if n < 50:\n            return \"L\" + romano_de_numero(n - 50)\n        if n < 60:\n            return \"C\" + romano_de_numero(n - 60)\n        if n < 70:\n            return \"D\" + romano_de_numero(n - 70)\n        if n < 80:\n            return \"M\" + romano_de_numero(n - 80)\n        if n < 90:\n            return \"CM\" + romano_de_numero(n - 900)\n        if n < 100:\n            return \"XC\" + romano_de_numero(n - 1000)\n        if n < 1000:\n            return \"M\" + romano_de_numero(n - 1000)\n        if n < 10000:\n            return \"M\" + romano_de_numero(n // 1000) + romano_de_numero(n % 1000)\n        return str(n)\n\n    a_val = valor_romano(a)\n    b_val = valor_romano(b)\n    resultado = a_val + b_val\n    return romano_de_numero(resultado)\n\n\n# Ejemplo de uso:\n# print(sumar_romanos(\"III\", \"IV\"))  # \"VII\"\n# print(sumar_romanos(\"III\", \"III\"))  # \"VI\"\n# print(sumar_romanos(\"III\", \"X\"))    # \"XIII\"\n# print(sumar_romanos(\"III\", \"XIII\")) # \"XVI\""
+      },
+      {
+        "id": "cola_prioridad",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def atender(tareas):\n    \"\"\"\n    Recibe una lista de tuplas (prioridad, nombre) y devuelve\n    los nombres ordenados por prioridad ASCENDENTE (1 es lo más urgente).\n    A igual prioridad, se conserva el orden de llegada.\n    \n    Args:\n        tareas: Lista de tuplas (prioridad, nombre)\n    \n    Returns:\n        Lista de nombres ordenados por prioridad ascendente.\n    \"\"\"\n    return sorted(tareas, key=lambda x: x[0])"
+      },
+      {
+        "id": "camino_dict",
+        "ok": false,
+        "error": "TypeError: argument of type 'int' is not a container or iterable",
+        "codigo": "def obtener(d: dict, camino: str, defecto=None) -> object:\n    \"\"\"\n    Busca en un dict anidado siguiendo un camino con puntos ('a.b.c')\n    y devuelve el valor encontrado o el defecto si algún tramo no existe.\n    \n    Args:\n        d: Un diccionario anidado.\n        camino: Un string que representa el camino a buscar (ej: 'a.b.c').\n        defecto: Valor por defecto si el camino no existe.\n    \n    Returns:\n        El valor encontrado en la ruta o el defecto por defecto.\n    \"\"\"\n    partes = camino.split('.')\n    actual = d\n    for parte in partes:\n        if parte not in actual:\n            return defecto\n        actual = actual[parte]\n    return actual"
+      },
+      {
+        "id": "reintentos",
+        "ok": true,
+        "error": "",
+        "codigo": "def con_reintentos(fn, veces):\n    \"\"\"\n    Ejecuta fn() y, si lanza una excepcion, la reintenta hasta 'veces' intentos en total.\n    Si todos fallan, vuelve a lanzar la ultima excepcion.\n    Devuelve el resultado si alguno funciona.\n    \n    Args:\n        fn: Función que puede lanzar excepciones.\n        veces: Número máximo de intentos.\n    \n    Returns:\n        El resultado de la primera función que no lanza excepción.\n    \"\"\"\n    for i in range(veces):\n        try:\n            return fn()\n        except Exception:\n            if i == veces - 1:\n                raise\n            # Reintentar la misma función\n            continue\n    return None  # Si todos fallaron"
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 2,
+    "total": 4
+  },
+  "velocidad_media": 143.31237106274116,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "# Por qué un índice acelera lecturas pero ralentiza escrituras\n\n## Lecturas (seleccionar filas)\nEl índice crea un **bucle de búsqueda** en la tabla:\n- El motor busca en el índice (que es una estructura ordenada) en lugar de escanear toda la tabla.\n- Esto reduce drásticamente el número de filas que debe leer.\n\n## Escrituras (insertar/actualizar)\nEl índice **bloquea** la escritura porque:\n- El motor debe leer la tabla completa para insertar o actualizar una fila.\n- Si la tabla es grande, esto consume mucho tiempo y bloquea el sistema.\n- El índice no ayuda a escribir porque el acceso directo a las filas es lo que se necesita.",
+      "ok": true,
+      "detalle": {
+        "g1": "ordenad",
+        "g2": "actualiz"
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "# Monolito vs. Microservicios\n\n## Cuando conviene un monolito\n\n- **Código simple y rápido a desarrollar**: Un solo archivo o módulo se puede entender, probar y desplegar en minutos.\n- **Menor superficie de ataque**: Un solo punto de fallo o de ataque es más fácil de detectar y proteger.\n- **Menor costo inicial**: No se requiere infraestructura compleja, herramientas de despliegue ni equipos dedicados.\n- **Ideal para proyectos pequeños, MVPs o prototipos**: Cuando la velocidad de entrega supera la complejidad de la arquitectura.\n\n## Cuando conviene microservicios\n\n- **Escalabilidad independiente**: Puedes escalar solo el servicio que tiene demanda sin afectar a los demás.\n- **Independencia tecnológica**: Cada servicio puede usar la tecnología que mejor se adapte a su negocio.\n- **Tecnologías modernas**: Permite integrar herramientas como Kubernetes, CI/CD, observabilidad y seguridad distribuida.\n- **Despliegue independiente**: Se pueden lanzar actualizaciones sin downtime del sistema completo.\n- **Adaptabilidad a equipos distribuidos**: Permite que diferentes equipos trabajen en servicios distintos sin bloquearse.\n\n---\n\n**En resumen**: el monolito es una decisión de **velocidad y simplicidad**, mientras que los microservicios son una decisión de **arquitectura, escalabilidad y mantenibilidad a largo plazo**.",
+      "ok": true,
+      "detalle": {
+        "g1": "simple",
+        "g2": "escalar"
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "Python compila a código a máquina nativo antes de ejecutarse porque, ao usar **compiladores**, transforma o código textual (Python) em código executável (C/C++), o que permite que o programa rode diretamente em qualquer hardware sem necessidade de um intermediário.\n\nIsso é possível porque Python é uma **linguagem de alto nível** que se executa em uma **linguagem de baixo nível** (C/C++), e a compilação é o processo que traduz a abstração da linguagem Python para instruções de máquina específicas do processador.\n\nAgora, se você quiser que Python execute diretamente sem compilar, pode usar a **interpretação** (como em `python3` ou `python3.11`), que traduz o código textual em instruções de máquina dinamicamente, mas isso é menos eficiente e mais lento que a compilação.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "interpret"
+      }
+    },
+    {
+      "id": "inyeccion_dependencias",
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "La inyección de dependencias resuelve el problema de la **dependencia de conocimiento** (o \"dependencia de tipo\") en el diseño de software.\n\nEn su lugar de que una clase dependa directamente de otra (lo que genera una cadena de llamadas a constructor y hace difícil inyectar o reemplazar), la inyección permite inyectar una **dependencia externa** como parámetro de la clase. Esto permite:\n\n1. **Reemplazo de dependencias** (mocking, testing).\n2. **Autonomía** de las clases: no necesitan saber qué otras clases existen.\n3. **Flexibilidad** para cambiar el comportamiento sin modificar el código fuente.\n\nEn resumen, transforma un problema de **dependencia de conocimiento** en un problema de **dependencia de inyección**.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "test"
+      }
+    }
+  ]
+}

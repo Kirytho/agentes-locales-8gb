@@ -1,0 +1,584 @@
+{
+  "etiqueta": "minicpm1b",
+  "codigo": {
+    "aciertos": 9,
+    "total": 53,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            result.append('FizzBuzz')\n        elif i % 3 == 0:\n            result.append('Fizz')\n        elif i % 5 == 0:\n            result.append('Buzz')\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "NameError: name 'parsear_duracion' is not defined. Did you mean: 'parse_duracion'?",
+        "codigo": "def parse_duracion(s):\n    total_minutes = 0\n    for unit in s.split():\n        if unit == 'h':\n            total_minutes += 60\n        elif unit == 'm':\n            total_minutes += 60\n    return total_minutes"
+      },
+      {
+        "id": "palindromo",
+        "ok": false,
+        "error": "NameError: name 'es_palindromo' is not defined. Did you mean: 'is_palindromo'?",
+        "codigo": "def is_palindromo(s):\n    s = s.lower().replace(\" \", \"\")\n    return s == s[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef aplanar(lista):\n    if not isinstance(lista, list):\n        return []\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, tuple) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, dict) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance(item, list) for item in lista):\n        return [item for item in lista]\n    if not all(isinstance"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    for i, val in enumerate(lista):\n        if val == x:\n            return i\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": true,
+        "error": "",
+        "codigo": "def agrupar_por(items, clave):\n    agrupados = {}\n    for item in items:\n        key = item.get(clave)\n        if key:\n            agrupados.setdefault(key, []).append(item)\n    return agrupados"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": false,
+        "error": "AssertionError: {'hola': 1, 'hola,': 1, 'mundo!': 1}",
+        "codigo": "def contar_palabras(texto):\n    # Convert to lowercase and split into words\n    words = [word.lower() for word in texto.lower().split()]\n    \n    # Initialize dictionary\n    counts = {}\n    \n    # Count occurrences\n    for word in words:\n        counts[word] = counts.get(word, 0) + 1\n    \n    return counts"
+      },
+      {
+        "id": "rotar",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def rotar(lista, n):\n    if not lista:\n        return []\n    if n > len(lista):\n        n = len(lista)\n    if n < 0:\n        n = len(lista)\n    return lista[-n:] + lista[:-n]"
+      },
+      {
+        "id": "romano",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_romano(n):\n    romano_n = \"\"\n    if 1 <= n <= 3999:\n        romano_n = \"\"\n        for i in range(4):\n            romano_n += chr(ord('4') + 4 * (i))\n        romano_n += chr(ord('9') + 4 * (3 - i))\n    return romano_n"
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "NameError: name 'desde_romano' is not defined",
+        "codigo": "def to_uppercase_roman(s):\n    roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    result = \"\"\n    for char in s:\n        if char.upper() in roman_map:\n            result += roman_map[char.upper()]\n        else:\n            result += char\n    return result"
+      },
+      {
+        "id": "racha",
+        "ok": false,
+        "error": "NameError: name 'mayor_racha' is not defined",
+        "codigo": "def find_longest_consecutive_sequence(lst):\n    if not lst:\n        return None\n    \n    max_len = 0\n    current_len = 1\n    last_value = lst[0]\n    \n    for i in range(1, len(lst)):\n        if lst[i] == last_value:\n            current_len += 1\n        else:\n            if current_len > max_len:\n                max_len = current_len\n            current_len = 1\n            last_value = lst[i]\n    \n    if current_len > max_len:\n        max_len = current_len\n    \n    return (lst[max_len - 1], max_len)"
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "NameError: name 'a_camel' is not defined",
+        "codigo": "def snake_to_camel(snake_str):\n    if not snake_str:\n        return \"\"\n    parts = snake_str.split('_')\n    camel = parts[0] + ''.join(part.capitalize() for part in parts[1:])\n    return camel"
+      },
+      {
+        "id": "snake",
+        "ok": false,
+        "error": "SyntaxError: unterminated string literal (detected at line 3)",
+        "codigo": "```python\ndef a_snake(s):\n    return s.lower().replace('_', '').replace('+', '').replace('!', '').replace('?', '').replace('.', '').replace(':', '').replace(';', '').replace('=', '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '').replace(\"'\", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '').replace('{', '').replace('}', '').replace('|', '').replace('\"', '').replace(\"'\", '').replace('\"', '"
+      },
+      {
+        "id": "primos",
+        "ok": false,
+        "error": "NameError: name 'primos' is not defined. Did you mean: 'primes'?",
+        "codigo": "def primes(n):\n    if n < 2:\n        return []\n    sieve = [True] * (n + 1)\n    sieve[0] = sieve[1] = False\n    for i in range(2, int(n**0.5) + 1):\n        if sieve[i]:\n            for j in range(i*i, n+1, i):\n                sieve[j] = False\n    return [i for i, is_prime in enumerate(sieve) if is_prime]"
+      },
+      {
+        "id": "mcd",
+        "ok": true,
+        "error": "",
+        "codigo": "def mcd(a, b):\n    if a == 0 or b == 0:\n        return max(a, b)\n    while b != 0:\n        if a == 0:\n            return 0\n        if b == 0:\n            return a\n        if a > b:\n            a, b = b, a\n        b = b % a\n    return a"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "NameError: name 'fusionar' is not defined",
+        "codigo": "def union_intervals(intervals):\n    if not intervals:\n        return []\n    \n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n    \n    for current in intervals[1:]:\n        last = merged[-1]\n        if current[0] <= last[1]:\n            merged[-1] = (last[0], max(last[1], current[1]))\n        else:\n            merged.append(current)\n    \n    return merged"
+      },
+      {
+        "id": "anagrama",
+        "ok": false,
+        "error": "NameError: name 'es_anagrama' is not defined. Did you mean: 'is_anagram'?",
+        "codigo": "def is_anagram(a, b):\n    # Normalize strings by removing non-alphanumeric characters and converting to lowercase\n    def normalize(s):\n        return ''.join(c.lower() for c in s if c.isalnum())\n    \n    a_norm = normalize(a)\n    b_norm = normalize(b)\n    \n    # Compare sorted characters\n    return sorted(a_norm) == sorted(b_norm)"
+      },
+      {
+        "id": "comprimir",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef comprimir(s):\n    if len(s) == 0:\n        return s\n    if len(s) == 1:\n        return s\n    if len(s) == 2:\n        return s\n    if len(s) == 3:\n        return s\n    if len(s) == 4:\n        return s\n    if len(s) == 5:\n        return s\n    if len(s) == 6:\n        return s\n    if len(s) == 7:\n        return s\n    if len(s) == 8:\n        return s\n    if len(s) == 9:\n        return s\n    if len(s) == 10:\n        return s\n    if len(s) == 11:\n        return s\n    if len(s) == 12:\n        return s\n    if len(s) == 13:\n        return s\n    if len(s) == 14:\n        return s\n    if len(s) == 15:\n        return s\n    if len(s) == 16:\n        return s\n    if len(s) == 17:\n        return s\n    if len(s) == 18:\n        return s\n    if len(s) == 19:\n        return s\n    if len(s) == 20:\n        return s\n    if len(s) == 21:\n        return s\n    if len(s) == 22:\n        return s\n    if len(s) == 23:\n        return s\n    if len(s) == 24:\n        return s\n    if len(s) == 25:\n        return s\n    if len(s) == 26:\n        return s\n    if len(s) == 27:\n        return s\n    if len(s) == 28:\n        return s\n    if len(s) == 29:\n        return s\n    if len(s) == 30:\n        return s\n    if len(s) == 31:\n        return s\n    if len(s) == 32:\n        return s\n    if len(s) == 33:\n        return s\n    if len(s) == 34:\n        return s\n    if len(s) == 35:\n        return s\n    if len(s) == 36:\n        return s\n    if len(s) == 37:\n        return s\n    if len(s) == 38:\n        return s\n    if len(s) == 39:\n        return s\n    if len(s) == 40:\n        return s\n    if len(s) == 41:\n        return s\n    if len(s) == 42:\n        return s\n    if len(s) == 43:\n        return s\n    if len(s) == 44:\n        return s\n    if len(s) == 45:\n        return s\n    if len(s) == 46:\n        return s\n    if len(s) == 47:\n        return s\n    if len(s) == 48:\n        return s\n    if len(s) == 49:\n        return s\n    if len(s) == 50:\n        return s\n    if len(s) == 51:\n        return s\n    if len(s) == 52:\n        return s\n    if"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "NameError: name 'balanceado' is not defined",
+        "codigo": "def balance_parentheses_and_quotes(text):\n    \"\"\"\n    Verifica si los parentesis, corchetes y llaves del texto estan correctamente balanceados y anidados.\n    \"\"\"\n    stack = []\n    opening = {'(', '[', '{'}\n    closing = {')', ']', '}'}\n    \n    for char in text:\n        if char in opening:\n            stack.append(char)\n        elif char in closing:\n            if not stack:\n                return False\n            last_opening = stack.pop()\n            if (char == ')' and last_opening != '(') or (char == ']' and last_opening != '[') or (char == '}' and last_opening != '{'):\n                return False\n    \n    return len(stack) == 0"
+      },
+      {
+        "id": "transpuesta",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def transpuesta(matriz):\n    return matriz"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": true,
+        "error": "",
+        "codigo": "def raiz_digital(n):\n    while n >= 10:\n        total = sum(int(d) for d in str(n))\n        n = total\n    return n"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": false,
+        "error": "NameError: name 'sin_duplicados' is not defined",
+        "codigo": "def eliminate_duplicates(lista):\n    seen = set()\n    result = []\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "n_mayor",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def n_esimo_mayor(lista, n):\n    seen = set()\n    count = 0\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            count += 1\n            if count == n:\n                return item\n    return None"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "NameError: name 'formatear_bytes' is not defined. Did you mean: 'format_bytes'?",
+        "codigo": "def format_bytes(n):\n    units = ['B', 'KB', 'MB', 'GB']\n    unit_index = 0\n    while n >= 1024:\n        n /= 1024\n        unit_index += 1\n    return f\"{n} B\" + \" \" * (unit_index - 1) + f\" {units[unit_index - 1]}\""
+      },
+      {
+        "id": "lotes",
+        "ok": false,
+        "error": "NameError: name 'en_lotes' is not defined",
+        "codigo": "def part_in_lotes(lista, tamano):\n    if not lista:\n        return []\n    return [lista[i:i+tamano] for i in range(0, len(lista), tamano)]"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(matriz):\n    if not matriz:\n        return []\n    return [[matriz[i][j] for i in range(len(matriz))] for j in range(len(matriz[0]))]"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "NameError: name 'intervals' is not defined. Did you mean: 'intervalos'?",
+        "codigo": "def fusionar(intervalos):\n    if not intervalos:\n        return []\n    \n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n    \n    for current in intervals[1:]:\n        last = merged[-1]\n        if current[0] <= last[1]:\n            merged[-1] = (last[0], max(last[1], current[1]))\n        else:\n            merged.append(current)\n    \n    return merged"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "NameError: name 'balanceado' is not defined",
+        "codigo": "def balance_parentheses_and_quotes(s):\n    balance = 0\n    for char in s:\n        if char == '(':\n            balance += 1\n        elif char == ')':\n            balance -= 1\n            if balance < 0:\n                return False\n    return balance == 0"
+      },
+      {
+        "id": "mediana",
+        "ok": false,
+        "error": "NameError: name 'mediana' is not defined. Did you mean: 'median'?",
+        "codigo": "def median(nums):\n    if len(nums) < 2:\n        return None\n    nums_sorted = sorted(nums)\n    n = len(nums_sorted)\n    mid = n // 2\n    if n % 2 == 0:\n        left = nums_sorted[mid - 1]\n        right = nums_sorted[mid]\n    else:\n        left = nums_sorted[mid]\n        right = nums_sorted[mid + 1]\n    return (left + right) / 2"
+      },
+      {
+        "id": "top_frecuentes",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def top_frecuentes(texto, k):\n    palavras = texto.split()\n    freq = {}\n    for palavra in palavras:\n        palavra = palavra.lower()\n        freq[palavra] = freq.get(palavra, 0) + 1\n    \n    return sorted(freq.items(), key=lambda item: (-item[1], item[0]))"
+      },
+      {
+        "id": "trozos",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def trozos(lista, n):\n    if n <= 0:\n        return []\n    return lista[:-n] if len(lista) >= n else lista"
+      },
+      {
+        "id": "dedup",
+        "ok": true,
+        "error": "",
+        "codigo": "def dedup(lista):\n    return list(dict.fromkeys(lista))"
+      },
+      {
+        "id": "binaria",
+        "ok": false,
+        "error": "NameError: name 'binaria' is not defined",
+        "codigo": "def binary_search(lst, x):\n    left = 0\n    right = len(lst) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if lst[mid] == x:\n            return mid\n        elif lst[mid] < x:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1"
+      },
+      {
+        "id": "anidar",
+        "ok": false,
+        "error": "NameError: name 'anidar' is not defined",
+        "codigo": "def convert_dict_clave(plano_dict):\n    return {k.split('.')[0]: v for k, v in plano_dict.items()}"
+      },
+      {
+        "id": "rle",
+        "ok": true,
+        "error": "",
+        "codigo": "def comprimir(s):\n    if not s:\n        return s\n    result = []\n    count = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i-1]:\n            count += 1\n        else:\n            result.append(s[i-1] + str(count))\n            count = 1\n    result.append(s[-1] + str(count))\n    return ''.join(result)"
+      },
+      {
+        "id": "anagrama",
+        "ok": false,
+        "error": "NameError: name 'es_anagrama' is not defined. Did you mean: 'is_anagram'?",
+        "codigo": "def is_anagram(a, b):\n    # Normalize strings: lowercase and remove all non-alphanumeric characters\n    def normalize(s):\n        return ''.join(c.lower() for c in s if c.isalnum())\n    \n    a_norm = normalize(a)\n    b_norm = normalize(b)\n    \n    # Compare sorted characters\n    return sorted(a_norm) == sorted(b_norm)"
+      },
+      {
+        "id": "movil",
+        "ok": false,
+        "error": "NameError: name 'promedio_movil' is not defined. Did you mean: 'promedios_movil'?",
+        "codigo": "def promedios_movil(nums, ventana):\n    if len(nums) <= ventana:\n        return []\n    return [sum(nums[i:i+ventana]) for i in range(len(nums) - ventana + 1)]"
+      },
+      {
+        "id": "bytes_humano",
+        "ok": false,
+        "error": "NameError: name 'formatear_bytes' is not defined. Did you mean: 'format_bytes'?",
+        "codigo": "def format_bytes(n):\n    units = ['B', 'KB', 'MB', 'GB']\n    value = n\n    units_list = []\n    while value >= 1024:\n        value /= 1024\n        units_list.append(units[len(units_list) - 1])\n    units_list.reverse()\n    formatted = ''\n    for unit in units_list:\n        formatted += str(value) + unit\n        value *= 1024\n    return formatted"
+      },
+      {
+        "id": "query",
+        "ok": false,
+        "error": "NameError: name 'parsear_query' is not defined. Did you mean: 'parse_query'?",
+        "codigo": "def parse_query(s):\n    result = {}\n    if '=' in s:\n        key, value = s.split('=', 1)\n        if key:\n            result[key] = value\n    return result"
+      },
+      {
+        "id": "islas",
+        "ok": false,
+        "error": "NameError: name 'contar_islas' is not defined",
+        "codigo": "def count_islands(grid):\n    if not grid:\n        return 0\n    \n    rows = len(grid)\n    cols = len(grid[0])\n    count = 0\n    \n    for i in range(rows):\n        for j in range(cols):\n            if grid[i][j] == 1:\n                # Start a new island\n                count += 1\n                # DFS to mark all connected 1s\n                stack = [(i, j)]\n                while stack:\n                    x, y = stack.pop()\n                    if 0 <= x < rows and 0 <= y < cols and grid[x][y] == 1:\n                        grid[x][y] = 0  # mark as visited\n                        # Check neighbors\n                        stack.append((x+1, y))\n                        stack.append((x-1, y))\n                        stack.append((x, y+1))\n                        stack.append((x, y-1))\n    \n    return count"
+      },
+      {
+        "id": "levenshtein",
+        "ok": false,
+        "error": "NameError: name 'distancia' is not defined",
+        "codigo": "def levenshtein_distance(a, b):\n    m, n = len(a), len(b)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    \n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n        \n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            cost = 0 if a[i - 1] == b[j - 1] else 1\n            dp[i][j] = min(\n                dp[i - 1][j] + 1,      # deletion\n                dp[i][j - 1] + 1,      # insertion\n                dp[i - 1][j - 1] + cost  # substitution\n            )\n    return dp[m][n]"
+      },
+      {
+        "id": "password",
+        "ok": true,
+        "error": "",
+        "codigo": "def validar_password(password):\n    # Check length\n    if len(password) < 8:\n        return False\n    # Check uppercase\n    if not any(c.isupper() for c in password):\n        return False\n    # Check lowercase\n    if not any(c.islower() for c in password):\n        return False\n    # Check digit\n    if not any(c.isdigit() for c in password):\n        return False\n    # Check non-alphanumeric\n    if not any(not c.isalnum() for c in password):\n        return False\n    return True"
+      },
+      {
+        "id": "base_n",
+        "ok": false,
+        "error": "NameError: name 'a_base' is not defined",
+        "codigo": "def convert_to_base(n, base):\n    digits = \"0123456789abcdef\"\n    if n == 0:\n        return \"0\"\n    result = \"\"\n    while n > 0:\n        remainder = n % base\n        result = digits[remainder] + result\n        n //= base\n    return result"
+      },
+      {
+        "id": "particion",
+        "ok": false,
+        "error": "NameError: name 'pares_primero' is not defined",
+        "codigo": "def pairs_prime_first(nums):\n    result = []\n    for num in nums:\n        if num % 2 == 0:\n            result.append((num, num))\n        else:\n            result.append((num, None))\n    return result"
+      },
+      {
+        "id": "interseccion",
+        "ok": false,
+        "error": "NameError: name 'interseccion' is not defined. Did you mean: 'intersection'?",
+        "codigo": "def intersection(a, b):\n    return sorted(set(a) & set(b))"
+      },
+      {
+        "id": "dias_entre",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "from datetime import datetime\n\ndef dias_entre(a, b):\n    d1 = datetime.strptime(a, '%Y-%m-%d')\n    d2 = datetime.strptime(b, '%Y-%m-%d')\n    return (d2 - d1).days"
+      },
+      {
+        "id": "escapar_csv",
+        "ok": false,
+        "error": "NameError: name 'campo_csv' is not defined",
+        "codigo": "def prepare_csv(s):\n    if ',' in s:\n        return s\n    elif ';' in s:\n        return s\n    else:\n        return s"
+      },
+      {
+        "id": "titulo",
+        "ok": false,
+        "error": "NameError: name 'titular' is not defined",
+        "codigo": "def capitalize_words(sentence):\n    words = sentence.split()\n    if not words:\n        return \"\"\n    result = []\n    for i, word in enumerate(words):\n        if i == 0:\n            result.append(word.capitalize())\n        else:\n            if word.startswith('de'):\n                result.append(word[2:].lower())\n            elif word.startswith('del'):\n                result.append(word[3:].lower())\n            elif word.startswith('la'):\n                result.append(word[2:].lower())\n            elif word.startswith('las'):\n                result.append(word[2:].lower())\n            elif word.startswith('el'):\n                result.append(word[1:].lower())\n            elif word.startswith('los'):\n                result.append(word[2:].lower())\n            else:\n                result.append(word.lower())\n    return ' '.join(result)\n\n# Example usage:\n# print(capitalize_words(\"the quick brown fox\"))  # \"The Quick Brown Fox\""
+      },
+      {
+        "id": "aplanar_prof",
+        "ok": false,
+        "error": "NameError: name 'aplanar_hasta' is not defined. Did you mean: 'aplane_hasta'?",
+        "codigo": "def aplane_hasta(lista, profundidad):\n    if profundidad == 0:\n        return lista\n    else:\n        return aplane_hasta(lista[0], profundity - 1) + aplane_hasta(lista[1:], profundity - 1)"
+      },
+      {
+        "id": "romanos_suma",
+        "ok": false,
+        "error": "NameError: name 'sumar_romanos' is not defined. Did you mean: 'sum_romanos'?",
+        "codigo": "def sum_romanos(a, b):\n    # Convert to int, sum, then convert back to string\n    return str(int(a) + int(b))"
+      },
+      {
+        "id": "cola_prioridad",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def atender(tareas):\n    return sorted(tareas, key=lambda x: x[0], reverse=True)"
+      },
+      {
+        "id": "camino_dict",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def obtener(d, camino, defecto=None):\n    for tramo in camino.split('.'):\n        if tramo not in d:\n            return defecto\n    return d[tramo]"
+      },
+      {
+        "id": "reintentos",
+        "ok": false,
+        "error": "NameError: name 'con_reintentos' is not defined",
+        "codigo": "import time\n\ndef retry(fn, veces):\n    for _ in range(veces):\n        try:\n            return fn()\n        except Exception:\n            time.sleep(1)\n    return None"
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 0,
+    "total": 25
+  },
+  "velocidad_media": 254.29759440285753,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "En la base de datos, un **indice** es un indicador de la intensidad de la lectura que indica la cantidad de texto que se ha escrito en cada página. Cuando un **indice acelera las lecturas**, significa que cada página contiene más texto que se ha escrito, lo que hace que las lecturas sean rápidas y eficientes. Por otro lado, un **indice enlentece las escrituras** significa que cada página contiene menos texto que se ha escrito, lo que hace que las lecturas sean lentas y menos eficientes. En resumen, el índice acelera las lecturas porque aumenta la cantidad de texto en cada página, mientras que enlentece las escrituras porque reduce la cantidad de texto en cada página.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "En el contexto de TI, un **monolito** (microservices) es un enfoque de desarrollo de software que divide el código de aplicación en pequeños componentes de código compartidos, cada uno de ellos independiente y que puede ser desarmado o desarmado individualmente. En cambio, un **microservicio** es un servicio de software que se divide en componentes más grandes que pueden ser desarmados o desarmados individualmente.\n\nPor lo tanto, las frases más concisas son:\n\n1. Un monolito es un código compartido compartido, mientras que un microservicio es un servicio de código compartido compartido.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "independiente"
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "En Python, la compilación de código nativo ocurre en el contexto de la **compilación de código** (compilación de código a máquina) y, posteriormente, en el **compilación de ejecución** (compilación de ejecución a máquina).\n\nAquí están las tres frases que describen estos procesos:\n\n1.  **Compilación de código (Compilación de código):**\n    El código Python está compilado a máquina nativa (por ejemplo, a C++ o a Rust) antes de que pueda ser ejecutado directamente. Esto ocurre en el contexto de la **compilación de código** (compilación de código a máquina) y **compilación de ejecución** (compilación de ejecución a máquina).\n\n2.  **Compilación de ejecución (Compilación de ejecución):**\n    El código compilado a máquina nativa se compila nuevamente para ejecutarse. Esto ocurre en el contexto de la **compilación de ejecución** (compilación de ejecución a máquina) y **compilación de ejecución** (compilación de ejecución a máquina).\n\n3.  **Efecto de compilación (Efecto de compilación):**\n    El efecto de compilación es el proceso de compilación de código a máquina nativa que ocur",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "indice_no_conviene",
+      "pregunta": "En 3 frases: cuando NO conviene crear un indice en una tabla?",
+      "respuesta": "1. Cuando NO conviene crear un indice en una tabla.\n2. La creación de un índice en una tabla puede ser un problema si el índice no es lo suficientemente eficiente para el uso de la tabla.\n3. Por lo tanto, es importante elegir el índice adecuado para el uso en la tabla.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "n_mas_1",
+      "pregunta": "En 3 frases: que es el problema N+1 en un ORM y como se corrige?",
+      "respuesta": "En un ORM (Oracle Database Management Studio), el problema N+1 ocurre cuando un unico entero único representa múltiples entradas de datos en una tabla. Esto provoca que el nombre de la tabla sea repetido, lo que genera problemas de redundancia y puede hacer que el nombre sea demasiado longo para ser utilizado eficazmente.\n\nPara corregir esto, el ORM puede reescribir la tabla para eliminar el nombre repetido y crear una nueva tabla con un nombre único. Esto reduce la redundancia y mejora la eficiencia del sistema.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "desnormalizar",
+      "pregunta": "En 3 frases: por que a veces conviene desnormalizar una base de datos?",
+      "respuesta": "Para desnormalizar una base de datos, a veces conviene porque permite a los usuarios o empresas tomar una decisión más rápida y segura, especialmente cuando la información crítica está en una base de datos amplia y compleja.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "idempotencia",
+      "pregunta": "En 3 frases: por que importa que una operacion sea idempotente cuando hay reintentos?",
+      "respuesta": "En una operación que requiere reintentos, una operación es **idempotente** si, en el caso en el que falla, el sistema reconoce que el fallo se ha producido y no requiere más intentos. Esto significa que el código no debe intentar nuevamente si el error se ha producido, y el sistema puede rechazar el intento de nuevo para ahorrar tiempo y recursos.",
+      "ok": false,
+      "detalle": {
+        "g1": "reintent",
+        "g2": false
+      }
+    },
+    {
+      "id": "reintento_sin_espera",
+      "pregunta": "En 3 frases: por que reintentar inmediatamente un servicio caido empeora las cosas, y que habria que hacer en su lugar?",
+      "respuesta": "El principal motivo por el que se debe reintentar un servicio caído es que el cliente necesita una solución inmediata y eficaz, ya que el problema es grave y potencialmente perjudicial para su situación. Por su parte, no es necesario cambiar el servicio inmediatamente si el problema es menor y que puede resolverse con un cambio de estrategia o solución alternativa. En general, la mejor respuesta es ofrecer un nuevo servicio que satisfaga el mismo cliente en el mismo tiempo, en lugar de intentar cambiar el servicio a otro cliente.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "cola_mensajes",
+      "pregunta": "En 3 frases: que gana y que pierde un sistema al meter una cola de mensajes entre dos servicios?",
+      "respuesta": "Para responder a esta pregunta, necesitamos entender qué significa \"meter una cola de mensajes entre dos servicios\" en este contexto. La \"cola de mensajes\" se refiere a la cantidad de mensajes que un servicio gestiona o procesa. En este contexto, \"gana\" significa que un servicio está gestionando mensajes, mientras que \"pierde\" significa que un servicio está rechazando o rechazando mensajes.\n\nEntonces, las frases que satisfacen la pregunta son:\n\n1. La cantidad de mensajes que un servicio gestiona es mayor que la cantidad de mensajes que otro servicio rechaza.\n2. Un servicio que gestiona más mensajes que otro rechazó es más grande en términos de mensajes.\n3. Un servicio que rechaza más mensajes que otro es más pequeño en términos de mensajes.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "deadlock_orden",
+      "pregunta": "En 3 frases: por que dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados?",
+      "respuesta": "Entonces, si dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados, el problema parece estar relacionado con una situación que podría ocurrir en un sistema de transporte, como un sistema de escaleras o una plataforma de transporte. La clave aquí es que los dos hilos tienen los mismos dos candados, pero en un orden diferente. Esto podría causar un deslizamiento o un bloqueo en el sistema, ya que los candados están en un orden específico y el deslizamiento podría causar un deslizamiento en el orden. Sin embargo, sin más detalles sobre el sistema, es difícil determinar por qué estos dos hilos podrían estar bloqueados. Sin embargo, si los candados están en un orden específico y el deslizamiento causa un deslizamiento en el orden, podría causar un bloqueo en el sistema.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "bloqueados"
+      }
+    },
+    {
+      "id": "condicion_carrera",
+      "pregunta": "En 3 frases: por que dos procesos que leen y escriben el mismo contador sin sincronizacion pueden perder incrementos?",
+      "respuesta": "Los dos procesos que leen y escriben el mismo contador sin sincronizacion pueden perder incrementos porque la lectura es un evento que ocurre en un momento específico y la escritura es un evento que ocurre en un momento posterior. Si no se programan sincronizaciones adecuadas, la lectura puede ser interrumpida por escritura, y viceversa, lo que provoca que el contador se vuelva inaccesible para el siguiente incremento.",
+      "ok": false,
+      "detalle": {
+        "g1": "lee",
+        "g2": false
+      }
+    },
+    {
+      "id": "gc_ciclos",
+      "pregunta": "En 3 frases: por que contar referencias no alcanza para liberar toda la memoria?",
+      "respuesta": "En 3 frases: Por que contar referencias no alcanza para liberar toda la memoria? En el lenguaje simple, contar referencias es un acto de comprensión que solo necesita una memoria local y no necesita una memoria global. Por lo tanto, no puede liberar toda la memoria. En el lenguaje más complejo, contar referencias requiere una memoria compartida entre múltiples componentes del sistema de memoria interno del cerebro. Por lo tanto, no puede liberar toda la memoria. En el lenguaje más complejo, contar referencias requiere una memoria compartida entre múltiples componentes del sistema de memoria interno del cerebro. Por lo tanto, no puede liberar toda la memoria.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "hash_password_TRAMPA",
+      "pregunta": "En 3 frases: por que conviene cifrar las contrasenas con AES para poder recuperarlas si el usuario las olvida?",
+      "respuesta": "Por que conviene cifrar las contrasenas con AES para poder recuperarlas si el usuario las olvida? Éste es una pregunta que depende de la situación específica, pero en general, si el usuario olvida las contrasenas, cifrarlas con AES es una solución eficaz para proteger dicha información.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "async_cpu_TRAMPA",
+      "pregunta": "En 3 frases: por que usar asyncio acelera un calculo intensivo de CPU en Python?",
+      "respuesta": "Asyncio acelera un calculo intensivo de CPU en Python porque permite que el programa se ejecute en paralelo, sin interrupciones, permitiendo que múltiples tareas se ejecutan simultáneamente en lugar de ser bloqueadas por un solo tarea. Esto mejora la eficiencia del procesamiento de tareas que requieren tiempo de espera, como la carga de datos, la escritura de datos en memoria o el procesamiento de datos en tiempo real.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "io"
+      }
+    },
+    {
+      "id": "https_servidor_TRAMPA",
+      "pregunta": "En 3 frases: por que HTTPS impide que un servidor comprometido lea los datos que le envian los usuarios?",
+      "respuesta": "HTTPS impide que un servidor lea los datos que le envian los usuarios porque el protocolo **autoriza la confianza y el intercambio de datos** entre el servidor y el cliente. Cuando un servidor está comprometido, el protocolo **responde con una confusión y una falta de seguridad**, lo que permite que los datos se envian a través de una red vulnerable y que el servidor pueda leerlos. En consecuencia, los usuarios **no pueden controlar la seguridad de la interacción** y pueden ser víctimas de cibercrimes como el phishing, el malware o el ceguero.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "paralelo_latencia_TRAMPA",
+      "pregunta": "En 3 frases: por que atender 4 peticiones en paralelo en el mismo modelo hace que cada una responda mas rapido que si fuera sola?",
+      "respuesta": "En el modelo de **porcentaje** (por ejemplo, la fórmula $P = \\frac{P_{total}}{n}$), cada respuesta es un número específico que representa la parte de la respuesta total que se asigna a cada petición individual. Cuando hay 4 peticiones, cada una toma el 25% de la respuesta total.\n\nEn el modelo de **porcentaje**, cada petición toma un número de puntos específicos que son iguales (por ejemplo, 25, 25, 25, 25). En este modelo, cada punto que se asigna a una petición es igual, independientemente de cuántas peticiones hay. Por lo tanto, cada petición toma el mismo número de puntos, y no toma más rápido que si fuera sola.\n\nEn cambio, en el modelo de **porcentaje**, cada petición toma un número de puntos que es proporcional a la cantidad de peticiones. Si hay 4 peticiones, cada petición toma 25 puntos. Si fuera sola, la petición solo tomaría 25 puntos. En el modelo de porcentaje, cada petición toma el mismo número de puntos que la petición total, independientemente de cuántas peticiones hay. Por lo tanto, cada petición toma el mismo número de puntos que la petición",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "coseno_intencion",
+      "pregunta": "En 3 frases: por que dos preguntas con alta similitud de coseno pueden necesitar respuestas totalmente distintas?",
+      "respuesta": "Para responder a dos perguntas con alta similitud de coseno, a menos que el coseno sea específico, las respuestas pueden ser totalmente distintas. Por ejemplo:\n\n1. ¿Por qué el coseno es el nombre del coseno?\n2. ¿Por qué el coseno es un nombre de origen desconocido?\n\nAunque ambos questiones dependan de la misma base de coseno, su respuesta puede ser diferente porque el coseno puede referirse a algo diferente (por ejemplo, a una persona, a un lugar, o a un hecho general).",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "contexto_largo",
+      "pregunta": "En 3 frases: por que una conversacion larga con un modelo se vuelve mas lenta en cada turno?",
+      "respuesta": "La frase más común es: **\"La conversación larga con un modelo se vuelve mas lenta en cada turno.\"**\n\nEsta frase explica que cuando una conversación contiene mucho contenido, la respuesta de la persona que actúa como modelo puede ser más corta o menos detallada, lo que hace que cada turno sea más corto. En otras palabras, la persona que actúa como modelo necesita más tiempo para elaborar una respuesta adecuada.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "cuantizacion",
+      "pregunta": "En 3 frases: que se gana y que se pierde al cuantizar un modelo de 16 a 4 bits?",
+      "respuesta": "Para determinar qué se gana y qué se pierde al cuantizar un modelo de 16 a 4 bits, podemos analizar la información proporcionada:\n\n1. **Información que gana**: El modelo de 16 a 4 bits representa una combinación de 2^4 = 16 entradas. Esto significa que hay 16 entradas disponibles para elegir, cada una representando una posición numérica de 0 a 15.\n\n2. **Información que pierde**: Aunque el modelo de 16 a 4 bits proporciona 16 entradas, el modelo original podría tener una estructura diferente, como 2^8 = 256 entradas. Si el modelo original tenía 256 entradas, entonces la información que pierde es la información de las entradas que no se utilizaron en el modelo de 16 a 4 bits.\n\n3. **Información que pierde**: El modelo de 16 a 4 bits proporciona una combinación de 2^4 = 16 entradas, cada una representando una posición numérica de 0 a 15. Si el modelo original tenía 256 entradas, entonces la información que pierde es la información de las entradas que no se utilizaron en el modelo de 16 a 4 bits.\n\nEn resumen, el modelo de 16 a 4 bits proporciona una combinación de 16 ent",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "pierde"
+      }
+    },
+    {
+      "id": "moe_activos",
+      "pregunta": "En 3 frases: por que un modelo MoE de 30B puede generar mas rapido que un modelo denso de 27B?",
+      "respuesta": "Um modelo MoE de 30B pode generar masso mais rápido que um modelo denso de 27B porque ele pode ser dividido em múltiplos, permitindo que cada submodulo produzja o mesmo resultado, o que permite que o modelo seja construído com menos recursos e seja compilado em uma única etapa. Além disso, a capacidade de dividir o modelo permite que o modelo seja compilado em uma única etapa, o que permite que o modelo seja compilado em uma única etapa, o que permite que o modelo seja compilado em uma única etapa, o que permite que o modelo seja compilado em uma única etapa, o que permite que o modelo seja compilado em uma única etapa, o que permite que o modelo seja compilado em uma única etapa.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "vram_vs_ram",
+      "pregunta": "En 3 frases: por que el mismo modelo corre mucho mas lento en RAM que en VRAM, y que operacion del modelo es la que queda limitada?",
+      "respuesta": "En la arquitectura de memoria RAM, el modelo de memoria está diseñado para ser más rápido que el modelo de memoria VRAM. El modelo de memoria RAM es un modelo de memoria de memoria de memoria, que permite que el procesador almacene más datos en una sola memoria. Esto permite que el procesador almacene más datos en una sola memoria, lo que permite que el procesador almacene más datos en una sola memoria, lo que permite que el procesador almacene más datos en una sola memoria, lo que permite que el procesador almacene más datos en una sola memoria. El modelo de memoria VRAM es un modelo de memoria de memoria de memoria, que permite que el procesador almacene más datos en una memoria de memoria, lo que permite que el procesador almacene más datos en una memoria de memoria, lo que permite que el procesador almacene más datos en una memoria de memoria, lo que permite que el procesador almacene más datos en una memoria de memoria, lo que permite que el procesador almacene más datos en una memoria de memoria, lo que permite que el procesador almacene más datos en una memoria de memoria, lo que permite que el procesador almacene más datos en una memoria de memoria, lo que permite que el procesador almacene más",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "cache_invalidacion",
+      "pregunta": "En 3 frases: por que invalidar una cache es dificil?",
+      "respuesta": "Valorizar una caché es difícil porque requiere que el sistema de memoria sea eficiente y que el procesador pueda acceder a la caché sin necesidad de consultar la memoria principal cada vez que se requiere. Además, la caché puede ser una fuente de redundancia que puede reducir el tiempo de ejecución, pero también puede causar problemas de latencia si no se gestiona adecuadamente. En general, la eficiencia de la caché depende de varios factores, como la complejidad de la memoria, la capacidad de la CPU, y la eficiencia de la búsqueda y localización de los datos.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "log_errores",
+      "pregunta": "En 3 frases: por que es mala idea capturar una excepcion y no registrarla ni relanzarla?",
+      "respuesta": "En la práctica, capturar una excepción y no registrarla ni relanzarla es una decisión que puede llevar a problemas de programación, ya que la excepción representa una variación no esperada en el comportamiento habitual. Si bien capturar una excepción es una forma de representar la variación, no es siempre la mejor solución. Por ejemplo, si el comportamiento habitual es que un objeto se mueve por sí mismo, capturar una excepción podría ser necesario para poder programar una sola operación de movimiento para el objeto. Sin embargo, si el comportamiento habitual es que un objeto mueve por la fuerza de un motor, capturar una excepción podría ser necesario para poder programar una operación de movimiento para el objeto. En general, capturar una excepción y no registrarla ni relanzarla puede ser una decisión que debe considerarse cuidadosamente en el contexto del problema.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "prueba_unitaria_red",
+      "pregunta": "En 3 frases: por que una prueba unitaria no deberia depender de una llamada de red real?",
+      "respuesta": "Una prueba unitaria no debería depender de una llamada de red real porque esta dependencia compromete la fiabilidad del test. Si el sistema de prueba falla en un fallo real, el resultado del test puede ser falsificado, causando una falsa lógica y comprometiendo el valor de la prueba. Por lo tanto, la prueba debe depender de una variante de prueba que sea independiente de cualquier fallo real en el sistema de prueba.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "inyeccion_dependencias",
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "En 3 frases, que problema resuelve la inyeccion de dependencias:  \n\n1. **El problema es que los datos de entrada no son suficientes para calcular el valor esperado de la función dependiente.**  \n2. **La inyección de dependencias debe ser ajustada cuidadosamente para evitar valores erróneos en el resultado final.**  \n3. **La solución implica utilizar métodos de estimación alternativos o métodos de interpolación para compensar la falta de datos.**",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    }
+  ]
+}

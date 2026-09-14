@@ -1,0 +1,54 @@
+{
+  "etiqueta": "Ornith-frontera",
+  "repes": 2,
+  "filas": [
+    {
+      "chars": 44061,
+      "lineas": 2358,
+      "formato": 0,
+      "aplica": 0,
+      "pasa": 0,
+      "seg": 0.0,
+      "motivos": [
+        "HTTPError: HTTP Error 400: Bad Request",
+        "HTTPError: HTTP Error 400: Bad Request"
+      ]
+    },
+    {
+      "chars": 48009,
+      "lineas": 2568,
+      "formato": 0,
+      "aplica": 0,
+      "pasa": 0,
+      "seg": 0.0,
+      "motivos": [
+        "HTTPError: HTTP Error 400: Bad Request",
+        "HTTPError: HTTP Error 400: Bad Request"
+      ]
+    },
+    {
+      "chars": 52051,
+      "lineas": 2783,
+      "formato": 0,
+      "aplica": 0,
+      "pasa": 0,
+      "seg": 0.0,
+      "motivos": [
+        "HTTPError: HTTP Error 400: Bad Request",
+        "HTTPError: HTTP Error 400: Bad Request"
+      ]
+    },
+    {
+      "chars": 56093,
+      "lineas": 2998,
+      "formato": 0,
+      "aplica": 0,
+      "pasa": 0,
+      "seg": 0.0,
+      "motivos": [
+        "HTTPError: HTTP Error 400: Bad Request",
+        "HTTPError: HTTP Error 400: Bad Request"
+      ]
+    }
+  ]
+}

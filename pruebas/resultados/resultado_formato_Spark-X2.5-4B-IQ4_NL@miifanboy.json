@@ -1,0 +1,56 @@
+{
+  "etiqueta": "Spark-X2.5-4B-IQ4_NL@miifanboy",
+  "repes": 5,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 65,
+      "aplica": 65,
+      "pasa": 58,
+      "rompio": 2,
+      "chars": 172443,
+      "seg": 678.1887609958649,
+      "n": 65
+    },
+    "bloques": {
+      "formato": 65,
+      "aplica": 61,
+      "pasa": 47,
+      "rompio": 7,
+      "chars": 57337,
+      "seg": 226.49804639816284,
+      "n": 65
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: regresion: AssertionError",
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "multi_renombrar: no hizo el cambio"
+    ],
+    "bloques": [
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: SyntaxError: expected '('",
+      "multi_constante: regresion: NameError: name 'TOPE' is not defined",
+      "multi_campo: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: SyntaxError: expected '('",
+      "multi_constante: regresion: NameError: name 'TOPE' is not defined",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "validar_entrada: SEARCH no esta en m.py",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo",
+      "agregar_caso: no hizo el cambio",
+      "parametro_opcional: no hizo el cambio",
+      "extender_registro: SEARCH no esta en m.py",
+      "multi_constante: regresion: NameError: name 'TOPE' is not defined",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo"
+    ]
+  }
+}

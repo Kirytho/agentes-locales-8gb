@@ -1,0 +1,66 @@
+{
+  "etiqueta": "Spark-X2.5-4B-Q4_K_S@miifanboy",
+  "repes": 5,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 65,
+      "aplica": 65,
+      "pasa": 54,
+      "rompio": 4,
+      "chars": 171661,
+      "seg": 678.5092322826385,
+      "n": 65
+    },
+    "bloques": {
+      "formato": 59,
+      "aplica": 58,
+      "pasa": 41,
+      "rompio": 11,
+      "chars": 41166,
+      "seg": 157.11175918579102,
+      "n": 65
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: no hizo el cambio",
+      "filtrar_lista: no hizo el cambio",
+      "agregar_caso: regresion: AssertionError",
+      "parametro_opcional: no hizo el cambio",
+      "filtrar_lista: no hizo el cambio",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: AssertionError",
+      "filtrar_lista: regresion: AssertionError",
+      "filtrar_lista: no hizo el cambio",
+      "agregar_caso: regresion: AssertionError"
+    ],
+    "bloques": [
+      "agregar_caso: sin bloques parseables",
+      "arreglar_bug: sin bloques parseables",
+      "parametro_opcional: regresion: AssertionError",
+      "dos_lugares: regresion: AssertionError",
+      "multi_constante: regresion: AssertionError",
+      "multi_renombrar: regresion: AttributeError: module 'nucleo' has no attribute 'calc'",
+      "agregar_caso: sin bloques parseables",
+      "dos_lugares: no hizo el cambio",
+      "cambiar_orden: sin bloques parseables",
+      "multi_constante: regresion: AttributeError: module 'limites' has no attribute 'TOPE'",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: SyntaxError: expected '('",
+      "validar_entrada: no hizo el cambio",
+      "multi_constante: regresion: SyntaxError: expected '('",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "filtrar_lista: sin bloques parseables",
+      "multi_constante: regresion: SyntaxError: expected '('",
+      "multi_renombrar: regresion: AttributeError: module 'nucleo' has no attribute 'calc'",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: no hizo el cambio",
+      "filtrar_lista: sin bloques parseables",
+      "multi_constante: regresion: AttributeError: module 'limites' has no attribute 'TOPE'",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo"
+    ]
+  }
+}

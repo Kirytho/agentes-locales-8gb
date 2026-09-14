@@ -1,0 +1,12 @@
+{
+  "etiqueta": "vista-script",
+  "repeticiones": 3,
+  "aciertos": 12,
+  "total": 12,
+  "detalle": {
+    "cadena_enlazada": 3,
+    "dir_mas_profundo": 3,
+    "suma_con_dos_filtros": 3,
+    "archivo_con_mas_lineas": 3
+  }
+}

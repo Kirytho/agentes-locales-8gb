@@ -1,0 +1,12 @@
+{
+  "etiqueta": "K2-Horizon-7B-Q5_K_M",
+  "repeticiones": 1,
+  "aciertos": 3,
+  "total": 4,
+  "detalle": {
+    "cadena_enlazada": 0,
+    "dir_mas_profundo": 1,
+    "suma_con_dos_filtros": 1,
+    "archivo_con_mas_lineas": 1
+  }
+}

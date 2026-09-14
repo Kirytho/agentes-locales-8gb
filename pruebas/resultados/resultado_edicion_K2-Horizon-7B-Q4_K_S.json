@@ -1,0 +1,6 @@
+{
+  "etiqueta": "K2-Horizon-7B-Q4_K_S",
+  "aciertos": 11,
+  "total": 13,
+  "rompieron_regresion": 2
+}

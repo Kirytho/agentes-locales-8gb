@@ -1,0 +1,331 @@
+{
+  "n": 4,
+  "temp": 0.1,
+  "diversidad": "prompt",
+  "pass1": 20.75,
+  "passN": 52,
+  "total": 53,
+  "todos": 0,
+  "ninguno": 1,
+  "tokens": 117873,
+  "filas": [
+    {
+      "id": "fizzbuzz",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 13.52711534500122
+    },
+    {
+      "id": "duracion",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.01879358291626
+    },
+    {
+      "id": "palindromo",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 14.804852962493896
+    },
+    {
+      "id": "aplanar",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.020255327224731
+    },
+    {
+      "id": "busqueda",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.105904579162598
+    },
+    {
+      "id": "agrupar",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 14.980544567108154
+    },
+    {
+      "id": "contar_palabras",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.09579849243164
+    },
+    {
+      "id": "rotar",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.589944839477539
+    },
+    {
+      "id": "romano",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.538371324539185
+    },
+    {
+      "id": "desde_romano",
+      "pasan": 0,
+      "de": 4,
+      "segundos": 15.158582210540771
+    },
+    {
+      "id": "racha",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.26183795928955
+    },
+    {
+      "id": "camel",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 14.99485969543457
+    },
+    {
+      "id": "snake",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.119370460510254
+    },
+    {
+      "id": "primos",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.445354223251343
+    },
+    {
+      "id": "mcd",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.110353469848633
+    },
+    {
+      "id": "intervalos",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.797051668167114
+    },
+    {
+      "id": "anagrama",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.344810485839844
+    },
+    {
+      "id": "comprimir",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.546226501464844
+    },
+    {
+      "id": "parentesis",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.824852466583252
+    },
+    {
+      "id": "transpuesta",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.469853401184082
+    },
+    {
+      "id": "raiz_digital",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.312426805496216
+    },
+    {
+      "id": "sin_duplicados",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.24744439125061
+    },
+    {
+      "id": "n_mayor",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 14.870798349380493
+    },
+    {
+      "id": "bytes",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.462121725082397
+    },
+    {
+      "id": "lotes",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 14.948087930679321
+    },
+    {
+      "id": "transpuesta",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.557287693023682
+    },
+    {
+      "id": "intervalos",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.784724473953247
+    },
+    {
+      "id": "parentesis",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.708229780197144
+    },
+    {
+      "id": "mediana",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.393943786621094
+    },
+    {
+      "id": "top_frecuentes",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.222797632217407
+    },
+    {
+      "id": "trozos",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 14.928360939025879
+    },
+    {
+      "id": "dedup",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 14.954683065414429
+    },
+    {
+      "id": "binaria",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.231445789337158
+    },
+    {
+      "id": "anidar",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.357548475265503
+    },
+    {
+      "id": "rle",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.198366403579712
+    },
+    {
+      "id": "anagrama",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.014298677444458
+    },
+    {
+      "id": "movil",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.28480339050293
+    },
+    {
+      "id": "bytes_humano",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.413204193115234
+    },
+    {
+      "id": "query",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.394840955734253
+    },
+    {
+      "id": "islas",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.662002086639404
+    },
+    {
+      "id": "levenshtein",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.776615142822266
+    },
+    {
+      "id": "password",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.673288106918335
+    },
+    {
+      "id": "base_n",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.617976427078247
+    },
+    {
+      "id": "particion",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.179088115692139
+    },
+    {
+      "id": "interseccion",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.400198698043823
+    },
+    {
+      "id": "dias_entre",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.32602334022522
+    },
+    {
+      "id": "escapar_csv",
+      "pasan": 3,
+      "de": 4,
+      "segundos": 15.164884328842163
+    },
+    {
+      "id": "titulo",
+      "pasan": 2,
+      "de": 4,
+      "segundos": 15.6385018825531
+    },
+    {
+      "id": "aplanar_prof",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.468714237213135
+    },
+    {
+      "id": "romanos_suma",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 16.421948671340942
+    },
+    {
+      "id": "cola_prioridad",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.965645790100098
+    },
+    {
+      "id": "camino_dict",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.682257652282715
+    },
+    {
+      "id": "reintentos",
+      "pasan": 1,
+      "de": 4,
+      "segundos": 15.679901361465454
+    }
+  ]
+}

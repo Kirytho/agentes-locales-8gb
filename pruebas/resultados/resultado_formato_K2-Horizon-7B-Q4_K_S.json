@@ -1,0 +1,37 @@
+{
+  "etiqueta": "K2-Horizon-7B-Q4_K_S",
+  "repes": 3,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 39,
+      "aplica": 39,
+      "pasa": 37,
+      "rompio": 1,
+      "chars": 103414,
+      "seg": 841.2595074176788,
+      "n": 39
+    },
+    "bloques": {
+      "formato": 37,
+      "aplica": 36,
+      "pasa": 35,
+      "rompio": 1,
+      "chars": 15506,
+      "seg": 358.29644227027893,
+      "n": 39
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: no hizo el cambio",
+      "validar_entrada: regresion: SyntaxError: '[' was never closed"
+    ],
+    "bloques": [
+      "dos_lugares: sin bloques parseables",
+      "multi_constante: sin bloques parseables",
+      "dos_lugares: SEARCH no esta en m.py",
+      "multi_campo: regresion: AssertionError"
+    ]
+  }
+}

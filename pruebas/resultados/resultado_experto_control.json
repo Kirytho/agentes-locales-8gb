@@ -1,0 +1,178 @@
+{
+  "etiqueta": "control",
+  "codigo": {
+    "aciertos": 14,
+    "total": 25,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "ValueError: invalid literal for int() with base 10: '1h30'",
+        "codigo": "def parsear_duracion(s):\n    if not s:\n        return 0\n    partes = s.split()\n    minutos = 0\n    for parte in partes:\n        if parte.endswith('h'):\n            minutos += int(parte[:-1]) * 60\n        elif parte.endswith('m'):\n            minutos += int(parte[:-1])\n    return minutos"
+      },
+      {
+        "id": "palindromo",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_palindromo(s):\n    cleaned = ''.join(c.lower() for c in s if c.isalnum())\n    return cleaned == cleaned[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista):\n    result = []\n    for item in lista:\n        if isinstance(item, list):\n            result.extend(aplanar(item))\n        else:\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    izquierda = 0\n    derecha = len(lista) - 1\n    while izquierda <= derecha:\n        medio = (izquierda + derecha) // 2\n        if lista[medio] == x:\n            return medio\n        elif lista[medio] < x:\n            izquierda = medio + 1\n        else:\n            derecha = medio - 1\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": true,
+        "error": "",
+        "codigo": "def agrupar_por(items, clave):\n    agrupados = {}\n    for item in items:\n        valor = item[clave]\n        if valor not in agrupados:\n            agrupados[valor] = []\n        agrupados[valor].append(item)\n    return agrupados"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": true,
+        "error": "",
+        "codigo": "def contar_palabras(texto):\n    import re\n    palabras = re.findall(r'\\b\\w+\\b', texto.lower())\n    diccionario = {}\n    for palabra in palabras:\n        if palabra not in diccionario:\n            diccionario[palabra] = 0\n        diccionario[palabra] += 1\n    return diccionario"
+      },
+      {
+        "id": "rotar",
+        "ok": true,
+        "error": "",
+        "codigo": "def rotar(lista, n):\n    if not lista:\n        return []\n    n = n % len(lista)\n    if n < 0:\n        n += len(lista)\n    return lista[-n:] + lista[:-n]"
+      },
+      {
+        "id": "romano",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_romano(n):\n    if n < 1 or n > 3999:\n        raise ValueError(\"El número debe estar entre 1 y 3999\")\n    \n    numeros = [\n        (1000, \"M\"), (900, \"CM\"), (500, \"D\"), (400, \"CD\"),\n        (100, \"C\"), (90, \"XC\"), (50, \"L\"), (40, \"XL\"),\n        (10, \"X\"), (9, \"IX\"), (5, \"V\"), (4, \"IV\"), (1, \"I\")\n    ]\n    \n    resultado = []\n    for valor, simbolo in numeros:\n        while n >= valor:\n            resultado.append(simbolo)\n            n -= valor\n    \n    return \"\".join(reversed(resultado))"
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "NameError: name 'desde_romano' is not defined",
+        "codigo": "def from_romano(s):\n    roman_map = {\n        'I': 1, 'V': 5, 'X': 10,\n        'L': 50, 'C': 100,\n        'D': 500, 'M': 1000\n    }\n    result = 0\n    prev_val = 0\n    for char in reversed(s):\n        val = roman_map.get(char, 0)\n        if val < prev_val:\n            result -= val\n        else:\n            result += val\n        prev_val = val\n    return result"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    if not lista:\n        return None\n    \n    max_racha = 0\n    max_element = None\n    current_element = None\n    current_racha = 0\n    \n    for i in range(len(lista)):\n        if i == 0:\n            current_element = lista[i]\n            current_racha = 1\n        else:\n            if lista[i] == current_element:\n                current_racha += 1\n            else:\n                current_element = lista[i]\n                current_racha = 1\n        \n        if current_racha > max_racha:\n            max_racha = current_racha\n            max_element = current_element\n    \n    return (max_element, max_racha)"
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_camel(s):\n    words = s.split()\n    result = []\n    for word in words:\n        if word:\n            if len(word) == 1:\n                result.append(word.lower())\n            else:\n                result.append(word[0].lower() + word[1:].upper())\n    return ''.join(result)"
+      },
+      {
+        "id": "snake",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_snake(s):\n    if not s:\n        return \"\"\n    result = []\n    for char in s:\n        if char.isupper():\n            result.append(\"_\")\n        result.append(char.lower())\n    return \"\".join(result)"
+      },
+      {
+        "id": "primos",
+        "ok": true,
+        "error": "",
+        "codigo": "def primos(n):\n    if n < 2:\n        return []\n    is_prime = [True] * (n + 1)\n    is_prime[0] = is_prime[1] = False\n    for i in range(2, int(n**0.5) + 1):\n        if is_prime[i]:\n            for j in range(i*i, n + 1, i):\n                is_prime[j] = False\n    return [i for i in range(2, n + 1) if is_prime[i]]"
+      },
+      {
+        "id": "mcd",
+        "ok": true,
+        "error": "",
+        "codigo": "def mcd(a, b):\n    if a == 0:\n        return b\n    if b == 0:\n        return a\n    while b != 0:\n        a, b = b, a % b\n    return a"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "UnboundLocalError: cannot access local variable 'intervals' where it is not associated wit",
+        "codigo": "def fusionar(intervalos):\n    if not intervals:\n        return []\n    \n    # Ordenar los intervalos por inicio\n    intervals = sorted(intervals, key=lambda x: x[0])\n    \n    # Lista para almacenar los intervalos fusionados\n    result = []\n    \n    # Iterar sobre los intervalos ordenados\n    for i in range(len(intervals)):\n        if i == 0:\n            # Primer intervalo, añadirlo directamente\n            result.append(intervals[i])\n        else:\n            # Verificar si el intervalo actual toca el anterior\n            prev = result[-1]\n            curr = intervals[i]\n            \n            # Dos intervalos se tocan si el inicio del actual es igual o menor que el fin del anterior\n            if curr[0] <= prev[1]:\n                # Fusionar: actualizar el fin del intervalo anterior\n                prev[1] = max(prev[1], curr[1])\n                result[-1] = prev\n            else:\n                # Añadir el intervalo actual como nuevo\n                result.append(curr)\n    \n    return result"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a, b):\n    a = a.lower().replace(\" \", \"\")\n    b = b.lower().replace(\" \", \"\")\n    return sorted(a) == sorted(b)"
+      },
+      {
+        "id": "comprimir",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def comprimir(s):\n    if not s:\n        return s\n    \n    count = 1\n    compressed = []\n    for i in range(1, len(s)):\n        if s[i] == s[i-1]:\n            count += 1\n        else:\n            compressed.append(str(count))\n            count = 1\n    compressed.append(str(count))\n    \n    compressed_str = ''.join(compressed)\n    original_len = len(s)\n    compressed_len = len(compressed_str)\n    \n    if compressed_len < original_len:\n        return compressed_str\n    else:\n        return s"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def balanceado(texto):\n    if not texto:\n        return True\n    open_parens = []\n    open_closes = []\n    open_braces = []\n    open_brackets = []\n    open_parens.append('(')\n    open_closes.append(')')\n    open_braces.append('{')\n    open_brackets.append('[')\n    open_braces.append('}')\n    open_brackets.append(']')\n    for char in texto:\n        if char in open_parens:\n            open_parens.append(char)\n        elif char in open_closes:\n            open_closes.append(char)\n        elif char in open_braces:\n            open_braces.append(char)\n        elif char in open_brackets:\n            open_brackets.append(char)\n        else:\n            if not open_parens or open_parens[-1] != char:\n                return False\n            if not open_closes or open_closes[-1] != char:\n                return False\n            if not open_braces or open_braces[-1] != char:\n                return False\n            if not open_brackets or open_brackets[-1] != char:\n                return False\n            open_parens.pop()\n            open_closes.pop()\n            open_braces.pop()\n            open_brackets.pop()\n    return len(open_parens) == 0 and len(open_closes) == 0 and len(open_braces) == 0 and len(open_brackets) == 0"
+      },
+      {
+        "id": "transpuesta",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def transpuesta(m):\n    if not m:\n        return []\n    n = len(m)\n    m_transpuesta = [[0] * n for _ in range(len(m))]\n    for i in range(n):\n        for j in range(len(m)):\n            m_transpuesta[j][i] = m[i][j]\n    return m_transpuesta"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": true,
+        "error": "",
+        "codigo": "def suma_digitos(n):\n    while len(str(n)) > 1:\n        n = sum(int(digit) for digit in str(n))\n    return n\n\ndef raiz_digital(n):\n    return suma_digitos(n)\n\n# Ejemplo de uso: raiz_digital(9875)\n# print(raiz_digital(9875))"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": true,
+        "error": "",
+        "codigo": "def sin_duplicados(lista):\n    return list(dict.fromkeys(lista))"
+      },
+      {
+        "id": "n_mayor",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def n_esimo_mayor(lista, n):\n    if n <= 0:\n        return None\n    seen = set()\n    contador = 0\n    for num in lista:\n        if num not in seen:\n            seen.add(num)\n            contador += 1\n            if contador == n:\n                return num\n    return None"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def formatear_bytes(n):\n    if n == 0:\n        return '0 B'\n    \n    unidades = ['B', 'KB', 'MB', 'GB']\n    factor = 1024\n    \n    for i in range(4):\n        if n < factor:\n            return f'{n} {unidades[i]}'\n        n //= factor\n    return f'{n:.1f} {unidades[3]}'"
+      },
+      {
+        "id": "lotes",
+        "ok": true,
+        "error": "",
+        "codigo": "def en_lotes(lista, tamano):\n    if not lista:\n        return []\n    return [lista[i:i+tamano] for i in range(0, len(lista), tamano)]"
+      }
+    ]
+  },
+  "velocidad_media": 16.553332753337262,
+  "razonamiento": [
+    {
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "El índice actúa como una guía física en la base de datos que dirige el acceso de los datos, evitando que el sistema tenga que buscar en todas las líneas de memoria. Sin embargo, para escribir un dato nuevo, el sistema debe crear un nuevo índice en la memoria, un proceso que consume tiempo y recursos. Por lo tanto, la velocidad de lectura se beneficia de la eficiencia de este camino predefinido, mientras que la velocidad de escritura se ve ralentizada por la necesidad de construir ese camino nuevo."
+    },
+    {
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "Un monolito es la opción ideal cuando necesitas una solución rápida, barata y con una arquitectura simple que no requiera cambios frecuentes.\nPor el contrario, los microservicios son la mejor elección para aplicaciones complejas que requieren escalabilidad, alta disponibilidad y la capacidad de desarrollar equipos independientes.\nLa decisión final depende de si priorizas la velocidad de implementación inicial o la capacidad de crecimiento futuro y la resiliencia del sistema."
+    },
+    {
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "Python compila código a máquina nativo antes de ejecutarse porque permite a programadores escreverem código legível em Python sem precisar entender o ensamblador. Essa etapa de compilação é essencial para que o código possa rodar diretamente em qualquer sistema operacional, independentemente da arquitetura do computador. Além disso, a compilação otimiza o código para garantir melhor desempenho e eficiência no uso de recursos do sistema."
+    },
+    {
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "La inyección de dependencias resuelve el problema de la gestión de la vida útil de las clases, permitiendo que el framework controle cuándo crearlas, eliminarlas y reutilizarlas sin necesidad de que la aplicación las instancie manualmente.\n\nEsto elimina la necesidad de depender de objetos externos o de la memoria del sistema operativo, asegurando que las clases se creen en el momento preciso y se destruyan cuando no se necesitan.\n\nFinalmente, facilita el mantenimiento y la prueba del código, ya que permite inyectar objetos de prueba fácilmente para simular comportamientos específicos sin alterar la lógica de las clases base."
+    }
+  ]
+}

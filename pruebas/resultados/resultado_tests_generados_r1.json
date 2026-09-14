@@ -1,0 +1,1595 @@
+{
+  "tareas": 53,
+  "detalle": [
+    {
+      "id": "fizzbuzz",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert fizzbuzz(1) == ['1']\nassert fizzbuzz(2) == ['1', '2']\nassert fizzbuzz(3) == ['1', '2', 'Fizz']\nassert fizzbuzz(4) == ['1', '2', 'Fizz', '4']\nassert fizzbuzz(5) == ['1', '2', 'Fizz', '4', 'Buzz']\nassert fizzbuzz(6) == ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz']\nassert fizzbuzz(15) == ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz']\nassert fizzbuzz(0) == []",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def fizzbuzz(n):\n    \"\"\"\n    Devuelve una lista de strings del 1 al n, donde los múltiplos de 3 son 'Fizz', \n    los de 5 'Buzz' y los de ambos 'FizzBuzz'. El resto, el número como string.\n    \"\"\"\n    resultado = []\n    for i in range(1, n + 1):\n        s = str(i)\n        if i % 3 == 0 and i % 5 == 0:\n            resultado.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            resultado.append(\"Fizz\")\n        elif i % 5 == 0:\n            resultado.append(\"Buzz\")\n        else:\n            resultado.append(s)\n    return resultado",
+        "def fizzbuzz(n):\n    \"\"\"\n    Devuelve una lista de strings del 1 al n, donde los multiplos de 3 son 'Fizz', \n    los de 5 'Buzz' y los de ambos 'FizzBuzz'. El resto, el numero como string.\n\n    Args:\n        n (int): El límite superior (inclusivo). Debe ser un entero no negativo.\n\n    Returns:\n        list: Una lista de strings con los resultados de FizzBuzz.\n    \"\"\"\n    if not isinstance(n, int) or n < 0:\n        # Manejo de caso borde: entrada no válida\n        return []\n\n    resultado = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            resultado.append('FizzBuzz')\n        elif i % 3 == 0:\n            resultado.append('Fizz')\n        elif i % 5 == 0:\n            resultado.append('Buzz')\n        else:\n            resultado.append(str(i))\n    return resultado",
+        "def fizzbuzz(n):\n    \"\"\"\n    Devuelve una lista de strings del 1 al n, donde los multiplos de 3 son 'Fizz', \n    los de 5 'Buzz' y los de ambos 'FizzBuzz'. El resto, el numero como string.\n    \"\"\"\n    resultado = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            resultado.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            resultado.append(\"Fizz\")\n        elif i % 5 == 0:\n            resultado.append(\"Buzz\")\n        else:\n            resultado.append(str(i))\n    return resultado"
+      ],
+      "tok_tests": 183,
+      "seg_tests": 2.406700372695923
+    },
+    {
+      "id": "duracion",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert parsear_duracion('1h30m') == 90\nassert parsear_duracion('45m') == 45\nassert parsear_duracion('2h') == 120\nassert parsear_duracion('0h1m') == 1\nassert parsear_duracion('1h0m') == 60\nassert parsear_duracion('0m') == 0\nassert parsear_duracion('1h') == 60\nassert parsear_duracion('1m') == 1",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "import re\n\ndef parsear_duracion(s: str) -> int:\n    \"\"\"\n    Recibe un string como '1h30m', '45m' o '2h' y devuelve la cantidad total de MINUTOS como entero.\n    \"\"\"\n    total_minutos = 0\n    \n    # Expresión regular para encontrar patrones como \"Nh\" o \"Nm\"\n    # Donde N es un número y h o m es la unidad.\n    matches = re.findall(r'(\\d+)([hm])', s)\n    \n    for value_str, unit in matches:\n        try:\n            value = int(value_str)\n            if unit == 'h':\n                total_minutos += value * 60\n            elif unit == 'm':\n                total_minutos += value\n        except ValueError:\n            # Esto no debería ocurrir si la regex es correcta, pero es buena práctica\n            pass\n            \n    return total_minutos",
+        "import re\n\ndef parsear_duracion(s: str) -> int:\n    \"\"\"\n    Recibe un string de duración (ej. '1h30m', '45m', '2h') y devuelve \n    la cantidad total de minutos como entero.\n    \"\"\"\n    total_minutos = 0\n    \n    # Patrón para encontrar horas (número seguido de 'h')\n    horas_match = re.search(r'(\\d+)h', s)\n    if horas_match:\n        horas = int(horas_match.group(1))\n        total_minutos += horas * 60\n        \n    # Patrón para encontrar minutos (número seguido de 'm')\n    minutos_match = re.search(r'(\\d+)m', s)\n    if minutos_match:\n        minutos = int(minutos_match.group(1))\n        total_minutos += minutos\n        \n    return total_minutos",
+        "import re\n\ndef parsear_duracion(s: str) -> int:\n    \"\"\"\n    Recibe un string de duración (e.g., '1h30m', '45m', '2h') y devuelve la cantidad total de MINUTOS como entero.\n    \"\"\"\n    total_minutos = 0\n    \n    # Patrón para encontrar horas (dígitos seguidos de 'h') y minutos (dígitos seguidos de 'm')\n    # Capturamos la cantidad y la unidad\n    horas_match = re.search(r'(\\d+)h', s)\n    minutos_match = re.search(r'(\\d+)m', s)\n    \n    if horas_match:\n        horas = int(horas_match.group(1))\n        total_minutos += horas * 60\n    \n    if minutos_match:\n        minutos = int(minutos_match.group(1))\n        total_minutos += minutos\n        \n    return total_minutos\n\nif __name__ == '__main__':\n    # Pruebas\n    print(f\"'1h30m' -> {parsear_duracion('1h30m')}\") # Esperado: 90\n    print(f\"'45m' -> {parsear_duracion('45m')}\")     # Esperado: 45\n    print(f\"'2h' -> {parsear_duracion('2h')}\")       # Esperado: 120\n    print(f\"'0h0m' -> {parsear_duracion('0h0m')}\")   # Esperado: 0\n    print(f\"'' -> {parsear_duracion('')}\")           # Esperado: 0 (Caso borde: string vacío)\n    print(f\"'1h' -> {parsear_duracion('1h')}\")        # Esperado: 60\n    print(f\"'100m' -> {parsear_duracion('100m')}\")   # Esperado: 100\n    print(f\"'2h30m45s' -> {parsear_duracion('2h30m45s')}\") # Esperado: 150 (Ignora segundos, que no son manejados explícitamente)"
+      ],
+      "tok_tests": 131,
+      "seg_tests": 1.7180583477020264
+    },
+    {
+      "id": "palindromo",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert es_palindromo(\"radar\") == True\nassert es_palindromo(\"A man, a plan, a canal: Panama\") == True\nassert es_palindromo(\"racecar\") == True\nassert es_palindromo(\"hello\") == False\nassert es_palindromo(\"\") == True\nassert es_palindromo(\"a\") == True\nassert es_palindromo(\" \") == True\nassert es_palindromo(\"Madam\") == True\nassert es_palindromo(\"No lemon, no melon\") == True\nassert es_palindromo(\"abcde\") == False",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "import re\n\ndef es_palindromo(s: str) -> bool:\n    \"\"\"\n    Devuelve True si el string es palindromo, ignorando mayusculas, espacios y signos de puntuacion.\n    \"\"\"\n    # 1. Convertir a minúsculas\n    s_lower = s.lower()\n    \n    # 2. Eliminar caracteres no alfanuméricos (incluye espacios y puntuación)\n    # Usamos regex para mantener solo letras y números\n    s_filtrado = re.sub(r'[^a-z0-9]', '', s_lower)\n    \n    # 3. Comparar con su reverso\n    return s_filtrado == s_filtrado[::-1]",
+        "import re\n\ndef es_palindromo(s: str) -> bool:\n    \"\"\"\n    Devuelve True si el string es un palíndromo, ignorando mayúsculas, \n    espacios y signos de puntuación.\n    \"\"\"\n    # 1. Limpiar el string: convertir a minúsculas y eliminar caracteres no alfanuméricos\n    s_limpio = re.sub(r'[^a-zA-Z0-9]', '', s).lower()\n    \n    # 2. Comparar el string limpio con su reverso\n    return s_limpio == s_limpio[::-1]",
+        "import re\n\ndef es_palindromo(s: str) -> bool:\n    \"\"\"\n    Verifica si el string es un palíndromo, ignorando mayúsculas, espacios y signos de puntuación.\n    \"\"\"\n    # 1. Limpiar el string: convertir a minúsculas y eliminar caracteres no alfanuméricos\n    s_limpio = re.sub(r'[^a-z0-9]', '', s.lower())\n\n    # 2. Comparar el string limpio con su reverso\n    return s_limpio == s_limpio[::-1]"
+      ],
+      "tok_tests": 137,
+      "seg_tests": 1.7685058116912842
+    },
+    {
+      "id": "aplanar",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": true,
+      "n_asserts": 8,
+      "tests_gemma": "assert aplanar([1, 2, 3]) == [1, 2, 3]\nassert aplanar([1, [2, 3]]) == [1, 2, 3]\nassert aplanar([1, [2, [3, 4]], 5]) == [1, 2, 3, 4, 5]\nassert aplanar([[[1]], 2]) == [1, 2]\nassert aplanar([]) == []\nassert aplanar([[]]) == []\nassert aplanar([1, [], [2, []]]) == [1, 2]\nassert aplanar([[[[[1]]]]]]) == [1]",
+      "motivos": [
+        "SyntaxError: closing parenthesis ']' does not match opening parenthesis '('",
+        "SyntaxError: closing parenthesis ']' does not match opening parenthesis '('",
+        "SyntaxError: closing parenthesis ']' does not match opening parenthesis '('"
+      ],
+      "candidatas": [
+        "def aplanar(lista):\n    \"\"\"\n    Recibe una lista con sublistas anidadas a cualquier profundidad y \n    devuelve una lista plana con todos los elementos.\n    \"\"\"\n    lista_plana = []\n    for elemento in lista:\n        if isinstance(elemento, list):\n            lista_plana.extend(aplanar(elemento))\n        else:\n            lista_plana.append(elemento)\n    return lista_plana",
+        "def aplanar(lista):\n    \"\"\"\n    Recibe una lista con sublistas anidadas a cualquier profundidad \n    y devuelve una lista plana con todos los elementos.\n    \"\"\"\n    lista_plana = []\n    for elemento in lista:\n        if isinstance(elemento, list):\n            lista_plana.extend(aplanar(elemento))\n        else:\n            lista_plana.append(elemento)\n    return lista_plana",
+        "def aplanar(lista):\n    \"\"\"\n    Recibe una lista con sublistas anidadas a cualquier profundidad y devuelve una lista plana con todos los elementos.\n    \"\"\"\n    resultado = []\n    for elemento in lista:\n        if isinstance(elemento, list):\n            resultado.extend(aplanar(elemento))\n        else:\n            resultado.append(elemento)\n    return resultado"
+      ],
+      "tok_tests": 153,
+      "seg_tests": 1.8668196201324463
+    },
+    {
+      "id": "busqueda",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert buscar([2, 5, 8, 12, 16], 12) == 3\nassert buscar([2, 5, 8, 12, 16], 2) == 0\nassert buscar([2, 5, 8, 12, 16], 16) == 4\nassert buscar([2, 5, 8, 12, 16], 1) == -1\nassert buscar([2, 5, 8, 12, 16], 20) == -1\nassert buscar([], 5) == -1\nassert buscar([5], 5) == 0\nassert buscar([5], 1) == -1\nassert buscar([1], 1) == 0",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def buscar(lista, x):\n    \"\"\"\n    Realiza búsqueda binaria sobre una lista ordenada.\n\n    Args:\n        lista: Lista de elementos ordenados.\n        x: Elemento a buscar.\n\n    Returns:\n        El índice de x si se encuentra, o -1 si no está.\n    \"\"\"\n    low = 0\n    high = len(lista) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        mid_value = lista[mid]\n\n        if mid_value == x:\n            return mid\n        elif mid_value < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1",
+        "def buscar(lista, x):\n    \"\"\"\n    Realiza una búsqueda binaria sobre una lista ordenada y devuelve el índice de x, \n    o -1 si no está.\n    \"\"\"\n    izquierda = 0\n    derecha = len(lista) - 1\n\n    while izquierda <= derecha:\n        medio = (izquierda + derecha) // 2\n        \n        if lista[medio] == x:\n            return medio\n        elif lista[medio] < x:\n            izquierda = medio + 1\n        else:  # lista[medio] > x\n            derecha = medio - 1\n            \n    return -1",
+        "def buscar(lista, x):\n    \"\"\"\n    Realiza una búsqueda binaria sobre una lista ordenada y devuelve el índice de x, \n    o -1 si no está.\n    \"\"\"\n    bajo = 0\n    alto = len(lista) - 1\n\n    while bajo <= alto:\n        medio = (bajo + alto) // 2\n        valor_medio = lista[medio]\n\n        if valor_medio == x:\n            return medio\n        elif valor_medio < x:\n            # Descartar la mitad izquierda\n            bajo = medio + 1\n        else:\n            # Descartar la mitad derecha\n            alto = medio - 1\n\n    return -1"
+      ],
+      "tok_tests": 184,
+      "seg_tests": 2.3244035243988037
+    },
+    {
+      "id": "agrupar",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 6,
+      "tests_gemma": "assert agrupar_por([{'a': 1, 'b': 2}, {'a': 2, 'b': 1}], 'a') == {1: [{'a': 1, 'b': 2}], 2: [{'a': 2, 'b': 1}]}\nassert agrupar_por([{'a': 1}, {'a': 1}, {'a': 2}], 'a') == {1: [{'a': 1}, {'a': 1}], 2: [{'a': 2}]}\nassert agrupar_por([], 'a') == {}\nassert agrupar_por([{'a': 1}], 'a') == {1: [{'a': 1}]}\nassert agrupar_por([{'a': 'x', 'b': 1}, {'a': 'y', 'b': 2}], 'a') == {'x': [{'a': 'x', 'b': 1}], 'y': [{'a': 'y', 'b': 2}]}\nassert agrupar_por([{'a': 1}, {'a': 1}], 'b') == {}",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "from collections import defaultdict\nfrom typing import List, Dict, Any\n\ndef agrupar_por(items: List[Dict[str, Any]], clave: str) -> Dict[Any, List[Dict[str, Any]]]:\n    \"\"\"\n    Agrupa una lista de diccionarios por el valor de una clave específica.\n\n    Args:\n        items: Una lista de diccionarios.\n        clave: El nombre de la clave por la cual agrupar.\n\n    Returns:\n        Un diccionario donde las claves son los valores de la clave especificada\n        y los valores son listas de diccionarios que comparten ese valor.\n    \"\"\"\n    grupos: Dict[Any, List[Dict[str, Any]]] = defaultdict(list)\n\n    for item in items:\n        if clave in item:\n            valor_clave = item[clave]\n            grupos[valor_clave].append(item)\n        # Caso borde: si la clave no existe en un ítem, se omite ese ítem\n        # o se puede manejar explícitamente si se requiere un grupo especial para 'claves faltantes'.\n        # Siguiendo la interpretación más común, se omite si la clave no existe.\n\n    # Convertimos el defaultdict a dict para el retorno final\n    return dict(grupos)",
+        "from collections import defaultdict\n\ndef agrupar_por(items, clave):\n    \"\"\"\n    Agrupa una lista de diccionarios por el valor de una clave específica.\n\n    Args:\n        items (list): Una lista de diccionarios.\n        clave (str): El nombre de la clave por la cual agrupar.\n\n    Returns:\n        dict: Un diccionario donde las claves son los valores de 'clave' \n              y los valores son listas de los diccionarios que comparten ese valor.\n    \"\"\"\n    grupos = defaultdict(list)\n    \n    for item in items:\n        if clave in item:\n            valor_clave = item[clave]\n            grupos[valor_clave].append(item)\n        # Caso borde: si la clave no existe en un ítem, se omite o se puede\n        # manejar de otra manera (ej. agregándolo a un grupo 'N/A').\n        # Por defecto, en este caso, se omite.\n\n    # Convertimos defaultdict a dict estándar para la salida final\n    return dict(grupos)",
+        "from collections import defaultdict\n\ndef agrupar_por(items: list[dict], clave: str) -> dict[any, list[dict]]:\n    \"\"\"\n    Agrupa una lista de diccionarios por el valor de una clave específica.\n\n    Args:\n        items: Lista de diccionarios.\n        clave: Nombre de la clave por la cual agrupar.\n\n    Returns:\n        Un diccionario donde las claves son los valores de la 'clave'\n        y los valores son listas de los diccionarios que comparten ese valor.\n    \"\"\"\n    grupos = defaultdict(list)\n    for item in items:\n        if clave in item:\n            valor_clave = item[clave]\n            grupos[valor_clave].append(item)\n        # Manejo de borde: Si la clave no existe en un ítem,\n        # se podría optar por ignorarlo (como hace el código actual)\n        # o agruparlo bajo una clave especial, dependiendo del requisito.\n        # Aquí, simplemente se omite si la clave no existe.\n    return dict(grupos)"
+      ],
+      "tok_tests": 256,
+      "seg_tests": 3.2230265140533447
+    },
+    {
+      "id": "contar_palabras",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert contar_palabras(\"Hola mundo, mundo!\") == {'hola': 1, 'mundo': 2}\nassert contar_palabras(\"Un, dos, tres. Uno.\") == {'un': 1, 'dos': 1, 'tres': 1, 'uno': 1}\nassert contar_palabras(\"\") == {}\nassert contar_palabras(\"palabra\") == {'palabra': 1}\nassert contar_palabras(\"Palabra palabra\") == {'palabra': 2}\nassert contar_palabras(\"a b c a b\") == {'a': 2, 'b': 2, 'c': 1}\nassert contar_palabras(\"!@#$\") == {}\nassert contar_palabras(\"Test test. Test!\") == {'test': 3}\nassert contar_palabras(\"uno dos uno dos\") == {'uno': 2, 'dos': 2}",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "import re\nfrom collections import Counter\n\ndef contar_palabras(texto: str) -> dict:\n    \"\"\"\n    Cuenta la frecuencia de cada palabra en un texto, ignorando mayúsculas y signos de puntuación.\n\n    Args:\n        texto: La cadena de texto de entrada.\n\n    Returns:\n        Un diccionario donde las claves son las palabras y los valores son sus frecuencias.\n    \"\"\"\n    if not isinstance(texto, str):\n        raise TypeError(\"La entrada debe ser una cadena de texto.\")\n    \n    # Convertir a minúsculas\n    texto_minusculas = texto.lower()\n    \n    # Usar regex para encontrar todas las secuencias de letras (palabras)\n    # Esto elimina automáticamente la mayoría de los signos de puntuación\n    palabras = re.findall(r'\\b[a-z]+\\b', texto_minusculas)\n    \n    # Usar Counter para obtener el conteo de frecuencias\n    conteo = Counter(palabras)\n    \n    return dict(conteo)",
+        "import re\nfrom collections import Counter\n\ndef contar_palabras(texto: str) -> dict:\n    \"\"\"\n    Cuenta la frecuencia de cada palabra en un texto, ignorando mayúsculas y signos de puntuación.\n\n    Args:\n        texto: La cadena de texto a procesar.\n\n    Returns:\n        Un diccionario donde las claves son las palabras y los valores son sus frecuencias.\n    \"\"\"\n    if not isinstance(texto, str):\n        raise TypeError(\"La entrada debe ser una cadena de texto (str).\")\n\n    # 1. Convertir a minúsculas\n    texto_minusculas = texto.lower()\n\n    # 2. Eliminar signos de puntuación y dividir en palabras\n    # Usamos re.findall para encontrar secuencias de uno o más caracteres alfabéticos\n    palabras = re.findall(r'\\b[a-z]+\\b', texto_minusculas)\n\n    # 3. Contar las frecuencias\n    return dict(Counter(palabras))",
+        "import re\nfrom collections import Counter\n\ndef contar_palabras(texto: str) -> dict:\n    \"\"\"\n    Devuelve un diccionario con cuántas veces aparece cada palabra en el texto.\n    Ignora mayúsculas y signos de puntuación.\n\n    Args:\n        texto: La cadena de texto a analizar.\n\n    Returns:\n        Un diccionario donde las claves son las palabras y los valores son sus conteos.\n    \"\"\"\n    if not texto:\n        return {}\n\n    # 1. Convertir a minúsculas\n    texto_minusculas = texto.lower()\n\n    # 2. Eliminar signos de puntuación y dividir en palabras.\n    # Usamos re.findall('\\w+', ...) para encontrar secuencias de uno o más caracteres alfanuméricos.\n    palabras = re.findall(r'\\b\\w+\\b', texto_minusculas)\n\n    # 3. Contar las palabras usando Counter\n    conteo = Counter(palabras)\n\n    return dict(conteo)"
+      ],
+      "tok_tests": 206,
+      "seg_tests": 2.6527230739593506
+    },
+    {
+      "id": "rotar",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert rotar([], 5) == []\nassert rotar([1, 2, 3, 4], 1) == [4, 1, 2, 3]\nassert rotar([1, 2, 3, 4], 4) == [1, 2, 3, 4]\nassert rotar([1, 2, 3, 4], 5) == [4, 1, 2, 3]\nassert rotar([1, 2, 3, 4], 0) == [1, 2, 3, 4]\nassert rotar([1, 2, 3], -1) == [2, 3, 1]\nassert rotar([1, 2, 3], -3) == [1, 2, 3]\nassert rotar([1, 2], -5) == [2, 1]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def rotar(lista, n):\n    \"\"\"\n    Rota una lista n posiciones hacia la DERECHA y devuelve una lista nueva.\n\n    Si n es mayor que el largo, rota lo que corresponda.\n    Si n es negativo, rota hacia la izquierda.\n    Si la lista está vacía, devuelve lista vacía.\n    \"\"\"\n    if not lista:\n        return []\n\n    longitud = len(lista)\n    # Normalizamos n al rango [0, longitud - 1]\n    # Para rotar a la derecha por 'n', el índice de corte es longitud - (n % longitud)\n    # Si n es negativo (rotación izquierda), n % longitud dará un valor negativo o cero,\n    # y la operación de módulo en Python maneja esto correctamente para la rotación.\n    # Por ejemplo, para longitud 5 y n = -1 (izquierda 1), -1 % 5 = 4.\n    # Una rotación a la derecha de 4 es equivalente a una rotación a la izquierda de 1.\n    n_normalizado = n % longitud\n\n    # La rotación a la derecha por 'k' significa que los últimos 'k' elementos\n    # pasan al principio. El punto de corte es longitud - k.\n    k = n_normalizado\n    punto_corte = longitud - k\n\n    # Crear la nueva lista: [elementos desde punto_corte hasta el final] + [elementos desde el inicio hasta punto_corte]\n    nueva_lista = lista[punto_corte:] + lista[:punto_corte]\n    return nueva_lista",
+        "def rotar(lista, n):\n    if not lista:\n        return []\n    \n    longitud = len(lista)\n    # Normalizar n para que esté dentro del rango [0, longitud-1]\n    # El módulo (%) se encarga de que si n es mayor que la longitud, se rote lo necesario.\n    # Si n es negativo, Python's % maneja la rotación a la izquierda correctamente.\n    n_normalizado = n % longitud\n    \n    # Rotar a la derecha por n_normalizado posiciones\n    # Esto es equivalente a mover los últimos n_normalizado elementos al principio.\n    punto_corte = longitud - n_normalizado\n    \n    # Crear y devolver la nueva lista\n    nueva_lista = lista[punto_corte:] + lista[:punto_corte]\n    return nueva_lista",
+        "def rotar(lista, n):\n    if not lista:\n        return []\n\n    longitud = len(lista)\n    # Normalizar n para que esté en el rango [0, longitud - 1]\n    # n % longitud maneja n > longitud y n < 0\n    n_efectivo = n % longitud\n\n    # Rotar a la derecha significa mover los últimos n_efectivo elementos al principio\n    # Si n_efectivo es positivo, es una rotación a la derecha.\n    # slicing: lista[-n_efectivo:] toma los últimos n_efectivo elementos\n    # slicing: lista[:-n_efectivo] toma los primeros longitud - n_efectivo elementos\n    return lista[-n_efectivo:] + lista[:-n_efectivo]"
+      ],
+      "tok_tests": 215,
+      "seg_tests": 2.7560808658599854
+    },
+    {
+      "id": "romano",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert a_romano(1) == \"I\"\nassert a_romano(3) == \"III\"\nassert a_romano(4) == \"IV\"\nassert a_romano(9) == \"IX\"\nassert a_romano(10) == \"X\"\nassert a_romano(39) == \"XXXIX\"\nassert a_romano(40) == \"XL\"\nassert a_romano(58) == \"LVIII\"\nassert a_romano(99) == \"XCIX\"\nassert a_romano(3999) == \"MMMCMXCIX\"",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def a_romano(n):\n    if not isinstance(n, int) or not (1 <= n <= 3999):\n        raise ValueError(\"El número debe ser un entero entre 1 y 3999.\")\n\n    valores = [\n        (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'),\n        (90, 'XC'), (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'),\n        (5, 'V'), (4, 'IV'), (1, 'I')\n    ]\n\n    resultado = \"\"\n    for valor, simbolo in valores:\n        while n >= valor:\n            resultado += simbolo\n            n -= valor\n    return resultado",
+        "def a_romano(n):\n    \"\"\"\n    Convierte un entero entre 1 y 3999 a su representación en números romanos.\n    \"\"\"\n    if not isinstance(n, int) or n <= 0 or n >= 4000:\n        raise ValueError(\"El número debe ser un entero entre 1 y 3999.\")\n\n    valores = [\n        1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1\n    ]\n    símbolos = [\n        \"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"\n    ]\n\n    resultado = \"\"\n    for i in range(len(valores)):\n        while n >= valores[i]:\n            resultado += símbolos[i]\n            n -= valores[i]\n    return resultado",
+        "def a_romano(n):\n    \"\"\"\n    Convierte un entero entre 1 y 3999 a número romano.\n    \"\"\"\n    if not isinstance(n, int) or not (1 <= n <= 3999):\n        raise ValueError(\"El número debe ser un entero entre 1 y 3999.\")\n\n    m = [\n        (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),\n        (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),\n        (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')\n    ]\n\n    resultado = \"\"\n    for valor, simbolo in m:\n        while n >= valor:\n            resultado += simbolo\n            n -= valor\n    return resultado"
+      ],
+      "tok_tests": 151,
+      "seg_tests": 1.9907407760620117
+    },
+    {
+      "id": "desde_romano",
+      "verdad": [
+        true,
+        false,
+        false
+      ],
+      "dice": [
+        false,
+        false,
+        true
+      ],
+      "falsas": 1,
+      "escapes": 1,
+      "test_roto": false,
+      "n_asserts": 12,
+      "tests_gemma": "assert from_romano(\"I\") == 1\nassert from_romano(\"V\") == 5\nassert from_romano(\"X\") == 10\nassert from_romano(\"L\") == 50\nassert from_romano(\"C\") == 100\nassert from_romano(\"D\") == 500\nassert from_romano(\"M\") == 1000\nassert from_romano(\"III\") == 3\nassert from_romano(\"IV\") == 4\nassert from_romano(\"IX\") == 9\nassert from_romano(\"LVIII\") == 58\nassert from_romano(\"MCMXCIV\") == 1994",
+      "motivos": [
+        "NameError: name 'from_romano' is not defined",
+        "NameError: name 'from_romano' is not defined. Did you mean: 'from_roman'?",
+        ""
+      ],
+      "candidatas": [
+        "def desde_romano(s: str) -> int:\n    \"\"\"\n    Convierte un número romano (en mayúsculas) a su entero correspondiente.\n\n    Maneja la notación sustractiva (ej. IV=4, IX=9).\n\n    Args:\n        s: La cadena de texto con el número romano.\n\n    Returns:\n        El entero correspondiente.\n    \"\"\"\n    roman_map = {\n        'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000\n    }\n    \n    if not s:\n        return 0\n\n    total = 0\n    # Iteramos sobre la cadena de izquierda a derecha\n    for i in range(len(s)):\n        s_char = s[i].upper()\n        current_value = roman_map.get(s_char)\n        \n        # Si el carácter no es válido, asumimos que la entrada es incorrecta, \n        # pero para cumplir con el requerimiento de ser simple, devolvemos 0 o lanzamos error.\n        # Aquí asumimos que la entrada es válida para el caso de uso principal.\n        if current_value is None:\n            raise ValueError(f\"Carácter romano inválido encontrado: {s_char}\")\n\n        # Si hay un siguiente carácter y su valor es mayor que el actual, \n        # aplicamos la regla sustractiva (ej. en 'IV', cuando estamos en 'I', \n        # restamos 5 - 1 = 4).\n        if i + 1 < len(s):\n            next_char = s[i+1].upper()\n            next_value = roman_map.get(next_char)\n            \n            if next_value is not None and current_value < next_value:\n                total -= current_value\n                continue  # Saltar la suma normal y continuar con el siguiente\n        \n        # Si no es sustractivo o es el último carácter, sumamos\n        total += current_value\n        \n    return total",
+        "def from_roman(s: str) -> int:\n    \"\"\"\n    Convierte un número romano (en mayúsculas) a su valor entero correspondiente.\n    Maneja la notación sustractiva (IV=4, IX=9, XL=40, XC=90, CD=400, CM=900).\n    \"\"\"\n    roman_map = {\n        'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000\n    }\n    \n    total = 0\n    n = len(s)\n    \n    for i in range(n):\n        current_value = roman_map[s[i]]\n        \n        # Si hay un siguiente carácter y su valor es mayor que el actual, \n        # es una notación sustractiva (ej: IV, IX, etc.)\n        if i < n - 1 and roman_map[s[i+1]] > current_value:\n            total -= current_value\n        else:\n            total += current_value\n            \n    return total",
+        "def from_romano(s: str) -> int:\n    \"\"\"\n    Convierte un número romano (en mayúsculas) a su valor entero correspondiente.\n    Maneja la notación sustractiva (ej: IV = 4, IX = 9).\n    \"\"\"\n    roman_map = {\n        'I': 1,\n        'V': 5,\n        'X': 10,\n        'L': 50,\n        'C': 100,\n        'D': 500,\n        'M': 1000\n    }\n    \n    total = 0\n    n = len(s)\n    \n    for i in range(n):\n        current_value = roman_map[s[i]]\n        \n        # Si hay un siguiente carácter y el valor actual es menor que el siguiente, \n        # es una notación sustractiva (ej: IV, IX). Restamos.\n        if i < n - 1 and current_value < roman_map[s[i+1]]:\n            total -= current_value\n        else:\n            # De lo contrario, sumamos.\n            total += current_value\n            \n    return total"
+      ],
+      "tok_tests": 166,
+      "seg_tests": 2.133159875869751
+    },
+    {
+      "id": "racha",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert mayor_racha([], None)\nassert mayor_racha([1, 1, 2, 2, 2], (2, 1))\nassert mayor_racha([1, 1, 1, 1], (1, 4))\nassert mayor_racha([2, 2, 2, 1, 1, 1], (2, 3))\nassert mayor_racha([1, 2, 3, 4], (1, 1))\nassert mayor_racha([5], (5, 1))\nassert mayor_racha([1, 1, 2, 2], (1, 2)) # Empate, devuelve la primera\nassert mayor_racha([3, 3, 3, 3, 3, 3], (3, 6))",
+      "motivos": [
+        "TypeError: mayor_racha() takes 1 positional argument but 2 were given",
+        "TypeError: mayor_racha() takes 1 positional argument but 2 were given",
+        "TypeError: mayor_racha() takes 1 positional argument but 2 were given"
+      ],
+      "candidatas": [
+        "def mayor_racha(lista):\n    \"\"\"\n    Encuentra la racha más larga de elementos consecutivos iguales en una lista.\n\n    Args:\n        lista: La lista de elementos.\n\n    Returns:\n        Una tupla (elemento, longitud) de la racha más larga, o None si la lista está vacía.\n    \"\"\"\n    if not lista:\n        return None\n\n    max_racha = (lista[0], 0)\n    racha_actual = (lista[0], 1)\n\n    for i in range(1, len(lista)):\n        elemento_actual = lista[i]\n        elemento_anterior = lista[i-1]\n\n        if elemento_actual == elemento_anterior:\n            # Continuar la racha\n            nueva_longitud = racha_actual[1] + 1\n            racha_actual = (elemento_actual, nueva_longitud)\n        else:\n            # La racha se rompe, comparamos la racha terminada con la máxima\n            if racha_actual[1] > max_racha[1]:\n                max_racha = racha_actual\n            \n            # Reiniciar la racha con el elemento actual\n            racha_actual = (elemento_actual, 1)\n\n    # Comprobar la última racha después de salir del bucle\n    if racha_actual[1] > max_racha[1]:\n        return racha_actual\n    else:\n        # En caso de empate, devolvemos la primera (que ya está en max_racha si es mayor o igual)\n        # Pero si el último es igual al máximo, mantenemos el anterior (el que se devolvió primero)\n        return max_racha",
+        "def mayor_racha(lista):\n    if not lista:\n        return None\n\n    max_racha = (lista[0], 0)\n    actual_elemento = lista[0]\n    actual_longitud = 0\n\n    for elemento in lista:\n        if elemento == actual_elemento:\n            actual_longitud += 1\n        else:\n            # Comprobamos si la racha anterior es la más larga\n            if actual_longitud > max_racha[1]:\n                max_racha = (actual_elemento, actual_longitud)\n\n            # Reiniciamos para el nuevo elemento\n            actual_elemento = elemento\n            actual_longitud = 1\n\n    # Comprobar la última racha después del bucle\n    if actual_longitud > max_racha[1]:\n        max_racha = (actual_elemento, actual_longitud)\n\n    return max_racha",
+        "def mayor_racha(lista):\n    if not lista:\n        return None\n\n    max_racha = (-1, -1)  # (elemento, longitud)\n    racha_actual = (lista[0], 1)\n\n    for i in range(1, len(lista)):\n        elemento_actual = lista[i]\n        elemento_anterior = lista[i-1]\n\n        if elemento_actual == elemento_anterior:\n            # Extender la racha actual\n            longitud_actual = racha_actual[1] + 1\n            racha_actual = (racha_actual[0], longitud_actual)\n        else:\n            # La racha actual se rompió. Comparamos con la racha máxima encontrada hasta ahora.\n            if racha_actual[1] > max_racha[1]:\n                max_racha = racha_actual\n            \n            # Empezar una nueva racha\n            racha_actual = (elemento_actual, 1)\n\n    # Verificar la última racha después del bucle\n    if racha_actual[1] > max_racha[1]:\n        max_racha = racha_actual\n\n    # Si la lista tenía solo un elemento, max_racha podría seguir siendo (-1, -1)\n    # pero racha_actual ya contendría el resultado correcto.\n    # Si la lista no estaba vacía, max_racha debe tener al menos la longitud 1.\n    if max_racha[1] == -1:\n        return (lista[0], 1)\n        \n    return max_racha"
+      ],
+      "tok_tests": 195,
+      "seg_tests": 2.518836736679077
+    },
+    {
+      "id": "camel",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert a_camel(\"hola_mundo\") == \"holaMundo\"\nassert a_camel(\"un_otro_ejemplo\") == \"unOtroEjemplo\"\nassert a_camel(\"solo\") == \"solo\"\nassert a_camel(\"un_\") == \"un\"\nassert a_camel(\"_inicio\") == \"Inicio\"\nassert a_camel(\"\") == \"\"\nassert a_camel(\"a_b_c\") == \"aBC\"\nassert a_camel(\"solo_\") == \"solo\"\nassert a_camel(\"_\") == \"\"",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def a_camel(s: str) -> str:\n    \"\"\"\n    Convierte un texto en snake_case a camelCase.\n\n    Args:\n        s: La cadena de texto en snake_case.\n\n    Returns:\n        La cadena de texto en camelCase.\n    \"\"\"\n    if not s:\n        return \"\"\n\n    words = s.lower().split('_')\n\n    if not words:\n        return \"\"\n\n    # La primera palabra en minúsculas\n    result = words[0]\n\n    # Las siguientes palabras con la inicial en mayúsculas\n    for word in words[1:]:\n        if word:\n            result += word[0].upper() + word[1:].lower()\n        # Manejo de posibles múltiples underscores seguidos, aunque split('_') ya ayuda\n        # si el segmento es vacío, no añade nada.\n\n    return result",
+        "def a_camel(s: str) -> str:\n    \"\"\"\n    Convierte un texto en snake_case a camelCase.\n\n    Ejemplo: \"nombre_de_la_variable\" -> \"nombreDeLaVariable\"\n    \"\"\"\n    if not s:\n        return \"\"\n\n    words = s.lower().split('_')\n\n    if not words:\n        return \"\"\n\n    # La primera palabra en minúscula\n    camel_case_string = words[0]\n\n    # Las siguientes palabras con la inicial en mayúscula\n    for word in words[1:]:\n        if word:\n            camel_case_string += word[0].upper() + word[1:]\n        # Manejo de casos borde donde hay doble guion bajo consecutivo (\"__\")\n        # que resultaría en una cadena vacía en la lista 'words'.\n        # En este caso, simplemente continuamos sin agregar nada.\n\n    return camel_case_string",
+        "def a_camel(s: str) -> str:\n    \"\"\"\n    Convierte un texto en snake_case a camelCase.\n\n    Args:\n        s: El string en snake_case.\n\n    Returns:\n        El string convertido a camelCase.\n    \"\"\"\n    if not s:\n        return \"\"\n\n    words = s.split('_')\n    if not words:\n        return \"\"\n\n    # La primera palabra va en minúscula\n    camel_cased_words = [words[0].lower()]\n\n    # Las palabras subsiguientes empiezan con mayúscula\n    for word in words[1:]:\n        if word:\n            # Asegurarse de que no haya caracteres extraños si el input es mal formado,\n            # aunque asumiendo snake_case puro, solo necesitamos la capitalización.\n            camel_cased_words.append(word[0].upper() + word[1:].lower())\n        else:\n            # Manejar doble guion bajo (ej: \"a__b\") que resulta en una cadena vacía en split\n            pass\n\n    return \"\".join(camel_cased_words)"
+      ],
+      "tok_tests": 125,
+      "seg_tests": 1.6559007167816162
+    },
+    {
+      "id": "snake",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert a_snake(\"camelCase\") == \"camel_case\"\nassert a_snake(\"PascalCase\") == \"pascal_case\"\nassert a_snake(\"single\") == \"single\"\nassert a_snake(\"UpperCase\") == \"upper_case\"\nassert a_snake(\"a\") == \"a\"\nassert a_snake(\"ABC\") == \"a_b_c\"\nassert a_snake(\"HTTPRequest\") == \"http_request\"\nassert a_snake(\"\") == \"\"\nassert a_snake(\"MixedCase123\") == \"mixed_case123\"",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "import re\n\ndef a_snake(s: str) -> str:\n    \"\"\"\n    Convierte una cadena de camelCase o PascalCase a snake_case.\n\n    Args:\n        s: La cadena en camelCase o PascalCase.\n\n    Returns:\n        La cadena convertida a snake_case.\n    \"\"\"\n    if not s:\n        return \"\"\n\n    # Inserta un guion bajo antes de cada letra mayúscula que no sea la primera\n    # y que no sea el inicio de la cadena.\n    s_with_underscores = re.sub(r'(?<!^)(?=[A-Z])', '_', s)\n\n    # Convierte todo a minúsculas\n    return s_with_underscores.lower()",
+        "def a_snake(s: str) -> str:\n    \"\"\"\n    Convierte una cadena de camelCase o PascalCase a snake_case.\n    Todo en minúsculas y un guion bajo antes de cada mayúscula interna.\n    No debe empezar con guion bajo.\n    \"\"\"\n    if not s:\n        return \"\"\n\n    result = []\n    for i, char in enumerate(s):\n        if char.isupper():\n            # Si no es el primer carácter, añade un guion bajo antes de la letra mayúscula\n            if i > 0:\n                result.append('_')\n            result.append(char.lower())\n        else:\n            result.append(char)\n\n    return \"\".join(result)",
+        "def a_snake(s: str) -> str:\n    \"\"\"\n    Convierte una cadena de camelCase o PascalCase a snake_case.\n\n    Ejemplo:\n    'camelCase' -> 'camel_case'\n    'PascalCase' -> 'pascal_case'\n    'HTTPRequest' -> 'http_request'\n    \"\"\"\n    if not s:\n        return \"\"\n\n    result = []\n    for i, char in enumerate(s):\n        if char.isupper():\n            # Si es la primera letra, simplemente la ponemos en minúscula\n            if i == 0:\n                result.append(char.lower())\n            # Si no es la primera letra, añadimos un guion bajo antes de la letra en minúscula\n            else:\n                # Caso especial para secuencias de mayúsculas (e.g., HTTPRequest)\n                # Evitamos doble guion bajo o guion al inicio.\n                if not result or result[-1] == '_':\n                    result.append(char.lower())\n                else:\n                    # Si el carácter anterior era minúsculo, es un cambio de palabra claro\n                    result.append('_')\n                    result.append(char.lower())\n        else:\n            result.append(char)\n\n    return \"\".join(result)"
+      ],
+      "tok_tests": 133,
+      "seg_tests": 1.7342455387115479
+    },
+    {
+      "id": "primos",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert primos(1) == []\nassert primos(2) == [2]\nassert primos(3) == [2, 3]\nassert primos(10) == [2, 3, 5, 7]\nassert primos(20) == [2, 3, 5, 7, 11, 13, 17, 19]\nassert primos(0) == []\nassert primos(2) == [2]\nassert primos(4) == [2, 3]\nassert primos(1) == []\nassert primos(100) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def primos(n):\n    \"\"\"\n    Devuelve la lista ordenada de todos los números primos menores o iguales a n.\n\n    Args:\n        n (int): El límite superior para la búsqueda de primos.\n\n    Returns:\n        list: Una lista ordenada de números primos.\n    \"\"\"\n    if n < 2:\n        return []\n\n    # Implementación del cribado de Eratóstenes\n    es_primo = [True] * (n + 1)\n    es_primo[0] = False\n    es_primo[1] = False\n\n    p = 2\n    while (p * p <= n):\n        # Si es_primo[p] no ha sido cambiado, entonces es un número primo\n        if es_primo[p]:\n            # Marcar todos los múltiplos de p como no primos\n            for i in range(p * p, n + 1, p):\n                es_primo[i] = False\n        p += 1\n\n    # Extraer la lista de primos\n    lista_primos = [i for i, es_p in enumerate(es_primo) if es_p]\n    return lista_primos",
+        "def primos(n):\n    if n < 2:\n        return []\n\n    es_primo = [True] * (n + 1)\n    es_primo[0] = es_primo[1] = False\n\n    p = 2\n    while (p * p <= n):\n        if es_primo[p]:\n            for i in range(p * p, n + 1, p):\n                es_primo[i] = False\n        p += 1\n\n    lista_primos = []\n    for i in range(2, n + 1):\n        if es_primo[i]:\n            lista_primos.append(i)\n\n    return lista_primos",
+        "def primos(n):\n    if n < 2:\n        return []\n\n    def es_primo(num):\n        if num < 2:\n            return False\n        for i in range(2, int(num**0.5) + 1):\n            if num % i == 0:\n                return False\n        return True\n\n    lista_primos = []\n    for i in range(2, n + 1):\n        if es_primo(i):\n            lista_primos.append(i)\n\n    return lista_primos"
+      ],
+      "tok_tests": 236,
+      "seg_tests": 2.982106924057007
+    },
+    {
+      "id": "mcd",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert mcd(5, 10) == 5\nassert mcd(10, 5) == 5\nassert mcd(7, 3) == 1\nassert mcd(12, 18) == 6\nassert mcd(0, 5) == 5\nassert mcd(5, 0) == 5\nassert mcd(0, 0) == 0\nassert mcd(1, 1) == 1\nassert mcd(100, 100) == 100\nassert mcd(1, 0) == 1",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def mcd(a: int, b: int) -> int:\n    \"\"\"\n    Calcula el máximo común divisor (MCD) de dos enteros no negativos usando el algoritmo de Euclides.\n\n    :param a: Primer entero no negativo.\n    :param b: Segundo entero no negativo.\n    :return: El máximo común divisor de a y b.\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a",
+        "def mcd(a, b):\n    \"\"\"\n    Calcula el máximo común divisor (MCD) de dos enteros no negativos.\n    El MCD de un número con 0 es ese número.\n    \"\"\"\n    # Asegurar que los enteros son no negativos (aunque la lógica de euclidiana\n    # funciona con negativos, el enunciado pide enteros no negativos)\n    a = abs(a)\n    b = abs(b)\n\n    # Caso base: MCD(x, 0) = x\n    if a == 0:\n        return b\n    if b == 0:\n        return a\n\n    # Algoritmo de Euclides\n    while b:\n        a, b = b, a % b\n    return a",
+        "def mcd(a: int, b: int) -> int:\n    \"\"\"\n    Calcula el Máximo Común Divisor (MCD) de dos enteros no negativos.\n    El MCD de un número con 0 es ese número.\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a"
+      ],
+      "tok_tests": 145,
+      "seg_tests": 1.8905041217803955
+    },
+    {
+      "id": "intervalos",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert fusionar([(1, 3), (2, 6)]) == [(1, 6)]\nassert fusionar([(1, 2), (3, 4)]) == [(1, 2), (3, 4)]\nassert fusionar([(1, 4), (4, 5)]) == [(1, 5)]\nassert fusionar([(1, 10)]) == [(1, 10)]\nassert fusionar([]) == []\nassert fusionar([(5, 5)]) == [(5, 5)]\nassert fusionar([(1, 5), (0, 1)]) == [(0, 5)]\nassert fusionar([(10, 12), (1, 3), (2, 4)]) == [(1, 4), (10, 12)]\nassert fusionar([(1, 2), (3, 4), (5, 6)]) == [(1, 2), (3, 4), (5, 6)]\nassert fusionar([(0, 0)]) == [(0, 0)]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def fusionar(intervalos):\n    if not intervalos:\n        return []\n\n    # Ordenar los intervalos por su punto de inicio\n    intervalos_ordenados = sorted(intervalos, key=lambda x: x[0])\n\n    # Inicializar la lista de resultados con el primer intervalo\n    fusionados = [list(intervalos_ordenados[0])]\n\n    for i in range(1, len(intervalos_ordenados)):\n        intervalo_actual = intervalos_ordenados[i]\n        inicio_actual, fin_actual = intervalo_actual\n\n        # Tomar el último intervalo fusionado\n        ultimo_fusionado = fusionados[-1]\n        inicio_fusionado, fin_fusionado = ultimo_fusionado\n\n        # Comprobar si el intervalo actual se solapa o toca el último fusionado\n        # Se fusionan si el inicio del actual es menor o igual al fin del fusionado\n        # (Esto incluye el caso de que se toquen en un extremo: inicio_actual == fin_fusionado)\n        if inicio_actual <= fin_fusionado:\n            # Fusionar: actualizar el fin del último intervalo fusionado\n            nuevo_fin = max(fin_fusionado, fin_actual)\n            ultimo_fusionado[1] = nuevo_fin\n        else:\n            # No hay solapamiento, añadir el intervalo actual como nuevo\n            fusionados.append(list(intervalo_actual))\n\n    # Convertir las listas de vuelta a tuplas para el formato de salida\n    return [tuple(i) for i in fusionados]",
+        "def fusionar(intervalos):\n    if not intervalos:\n        return []\n\n    # Ordenar los intervalos por su punto de inicio\n    intervalos_ordenados = sorted(intervalos, key=lambda x: x[0])\n\n    # Inicializar la lista de resultados con el primer intervalo\n    intervalos_fusionados = [list(intervalos_ordenados[0])]\n\n    for i in range(1, len(intervalos_ordenados)):\n        inicio_actual, fin_actual = intervalos_ordenados[i]\n        # El último intervalo fusionado\n        ultimo_fusionado = intervalos_fusionados[-1]\n        ultimo_inicio, ultimo_fin = ultimo_fusionado[0], ultimo_fusionado[1]\n\n        # Condición de fusión: si el inicio del intervalo actual es menor o igual\n        # al final del último intervalo fusionado (tocan o se solapan)\n        if inicio_actual <= ultimo_fin:\n            # Fusionar: tomar el inicio más pequeño (que es el del último_fusionado)\n            # y el fin más grande\n            ultimo_fusionado[1] = max(ultimo_fin, fin_actual)\n        else:\n            # No se fusionan, añadir el intervalo actual como uno nuevo\n            intervalos_fusionados.append([inicio_actual, fin_actual])\n\n    # Devolver la lista de tuplas, como se solicitó en la entrada\n    return [tuple(intervalo) for intervalo in intervalos_fusionados]",
+        "def fusionar(intervalos):\n    \"\"\"\n    Fusiona una lista de intervalos (inicio, fin) que puede estar desordenada.\n\n    Args:\n        intervalos: Una lista de tuplas (inicio, fin).\n\n    Returns:\n        Una lista de tuplas (inicio, fin) con los intervalos fusionados y ordenados.\n    \"\"\"\n    if not intervalos:\n        return []\n\n    # 1. Ordenar los intervalos por su punto de inicio\n    intervalos_ordenados = sorted(intervalos, key=lambda x: x[0])\n\n    # 2. Inicializar la lista de resultados con el primer intervalo\n    intervalos_fusionados = [intervalos_ordenados[0]]\n\n    # 3. Iterar sobre el resto de los intervalos\n    for inicio, fin in intervalos_ordenados[1:]:\n        # Obtener el último intervalo fusionado\n        ultimo_inicio, ultimo_fin = intervalos_fusionados[-1]\n\n        # Caso de fusión: Si el nuevo intervalo comienza antes o en el mismo punto\n        # donde termina el intervalo fusionado actual, se fusionan.\n        # Nota: Si se tocan en el extremo (ej: (1, 2) y (2, 3)), se fusionan.\n        if inicio <= ultimo_fin:\n            # Actualizar el fin del último intervalo fusionado al máximo\n            nuevo_fin = max(ultimo_fin, fin)\n            intervalos_fusionados[-1] = (ultimo_inicio, nuevo_fin)\n        else:\n            # No se superponen ni tocan, añadirlo como un nuevo intervalo\n            intervalos_fusionados.append((inicio, fin))\n\n    return intervalos_fusionados"
+      ],
+      "tok_tests": 243,
+      "seg_tests": 3.0798826217651367
+    },
+    {
+      "id": "anagrama",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert es_anagrama(\"listen\", \"silent\") == True\nassert es_anagrama(\"Debit Card\", \"Bad Credit\") == True\nassert es_anagrama(\"hello\", \"world\") == False\nassert es_anagrama(\"a\", \"a\") == True\nassert es_anagrama(\"\", \"\") == True\nassert es_anagrama(\"abc\", \"\") == False\nassert es_anagrama(\" \", \" \") == True\nassert es_anagrama(\"Race\", \"Care\") == True\nassert es_anagrama(\"aabbc\", \"abc\") == False\nassert es_anagrama(\"programming\", \"grammar\") == False",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Devuelve True si los dos textos son anagramas, ignorando mayúsculas y espacios.\n\n    Args:\n        a: El primer texto.\n        b: El segundo texto.\n\n    Returns:\n        True si son anagramas, False en caso contrario.\n    \"\"\"\n    def normalizar(texto: str) -> str:\n        # Convertir a minúsculas y eliminar espacios\n        return \"\".join(char for char in texto.lower() if char.isalnum())\n\n    texto_a_normalizado = normalizar(a)\n    texto_b_normalizado = normalizar(b)\n\n    # Los textos son anagramas si tienen la misma cantidad de caracteres\n    # y la misma cuenta de cada carácter.\n    if len(texto_a_normalizado) != len(texto_b_normalizado):\n        return False\n\n    # Comparar las cuentas de caracteres (usando sorted() es la forma más simple)\n    return sorted(texto_a_normalizado) == sorted(texto_b_normalizado)",
+        "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Verifica si dos textos son anagramas, ignorando mayúsculas y espacios.\n\n    Args:\n        a: El primer texto.\n        b: El segundo texto.\n\n    Returns:\n        True si los textos son anagramas, False en caso contrario.\n    \"\"\"\n    def limpiar_y_ordenar(texto: str) -> list[str]:\n        # Convertir a minúsculas y filtrar espacios\n        texto_filtrado = \"\".join(char for char in texto.lower() if char.isalpha())\n        # Devolver la lista de caracteres ordenados\n        return sorted(list(texto_filtrado))\n\n    return limpiar_y_ordenar(a) == limpiar_y_ordenar(b)",
+        "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Devuelve True si los dos textos son anagramas, ignorando mayúsculas y espacios.\n    \"\"\"\n    def limpiar_texto(texto: str) -> str:\n        # Convertir a minúsculas y eliminar espacios\n        return \"\".join(c for c in texto.lower() if c.isalnum())\n\n    texto_a_limpio = limpiar_texto(a)\n    texto_b_limpio = limpiar_texto(b)\n\n    # Dos palabras son anagramas si tienen la misma cantidad de caracteres\n    # y la misma cantidad de cada carácter. Usamos sorted para verificar esto.\n    return sorted(texto_a_limpio) == sorted(texto_b_limpio)"
+      ],
+      "tok_tests": 140,
+      "seg_tests": 1.8376126289367676
+    },
+    {
+      "id": "comprimir",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert comprimir(\"a\") == \"a\"\nassert comprimir(\"aa\") == \"a2\"\nassert comprimir(\"aaa\") == \"a3\"\nassert comprimir(\"aabbcc\") == \"a2b2c2\"\nassert comprimir(\"abc\") == \"abc\"\nassert comprimir(\"aaaaa\") == \"a5\"\nassert comprimir(\"aabbc\") == \"a2b2c\"\nassert comprimir(\"abbbb\") == \"a1b4\" # Caso borde: si la compresión es igual o más larga, debe devolver original. 'a1b4' es más largo que 'abbbb' (5 vs 4)\nassert comprimir(\"ab\") == \"ab\"\nassert comprimir(\"\") == \"\"",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def comprimir(s: str) -> str:\n    if not s:\n        return \"\"\n\n    count = {}\n    for char in s:\n        count[char] = count.get(char, 0) + 1\n\n    compressed_parts = []\n    i = 0\n    while i < len(s):\n        char = s[i]\n        count_char = 0\n        j = i\n        while j < len(s) and s[j] == char:\n            count_char += 1\n            j += 1\n\n        compressed_parts.append(f\"{char}{count_char}\")\n        i = j\n\n    compressed_string = \"\".join(compressed_parts)\n\n    if len(compressed_string) < len(s):\n        return compressed_string\n    else:\n        return s",
+        "def comprimir(s: str) -> str:\n    if not s:\n        return s\n\n    compressed = []\n    count = 1\n    current_char = s[0]\n\n    for i in range(1, len(s)):\n        if s[i] == current_char:\n            count += 1\n        else:\n            compressed.append(f\"{current_char}{count}\")\n            current_char = s[i]\n            count = 1\n\n    # Agregar el último grupo\n    compressed.append(f\"{current_char}{count}\")\n\n    compressed_str = \"\".join(compressed)\n\n    # Comparar longitudes\n    if len(compressed_str) < len(s):\n        return compressed_str\n    else:\n        return s",
+        "def comprimir(s: str) -> str:\n    if not s:\n        return s\n\n    compressed = []\n    i = 0\n    while i < len(s):\n        char = s[i]\n        count = 1\n        j = i + 1\n        while j < len(s) and s[j] == char:\n            count += 1\n            j += 1\n\n        if count > 1:\n            compressed.append(char + str(count))\n        else:\n            compressed.append(char)\n\n        i = j\n\n    compressed_string = \"\".join(compressed)\n\n    if len(compressed_string) < len(s):\n        return compressed_string\n    else:\n        return s"
+      ],
+      "tok_tests": 168,
+      "seg_tests": 2.181121349334717
+    },
+    {
+      "id": "parentesis",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert balanceado(\"\") == True\nassert balanceado(\"()\") == True\nassert balanceado(\"(){}[]\") == True\nassert balanceado(\"([{}])\") == True\nassert balanceado(\"((()))\") == True\nassert balanceado(\"()[]{}\") == True\nassert balanceado(\"([)]\") == False\nassert balanceado(\"(((\") == False\nassert balanceado(\")))\") == False\nassert balanceado(\"{[}\") == False",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def balanceado(s: str) -> bool:\n    stack = []\n    mapping = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n\n    for char in s:\n        if char in \"([{\":\n            stack.append(char)\n        elif char in \")]}\":\n            if not stack:\n                return False\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False\n        # Ignorar otros caracteres\n        \n    return not stack",
+        "def balanceado(s: str) -> bool:\n    stack = []\n    mapping = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n\n    for char in s:\n        if char in \"([{\":\n            stack.append(char)\n        elif char in \")]}\":\n            if not stack:\n                return False\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False\n        # Ignorar otros caracteres\n\n    return not stack",
+        "def balanceado(s: str) -> bool:\n    stack = []\n    mapping = {\")\": \"(\", \"}\": \"{\", \"]\": \"[\"}\n\n    for char in s:\n        if char in \"([{\":\n            stack.append(char)\n        elif char in \")]}\":\n            if not stack:\n                return False\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False\n        # Ignorar otros caracteres\n\n    return not stack"
+      ],
+      "tok_tests": 99,
+      "seg_tests": 1.3349440097808838
+    },
+    {
+      "id": "transpuesta",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        false,
+        true
+      ],
+      "falsas": 1,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert transpuesta([[]]) == []\nassert transpuesta([]) == []\nassert transpuesta([[1]]) == [[1]]\nassert transpuesta([[1, 2], [3, 4]]) == [[1, 3], [2, 4]]\nassert transpuesta([[1, 2, 3]]) == [[1], [2], [3]]\nassert transpuesta([[1], [2], [3]]) == [[1, 2, 3]]\nassert transpuesta([[1, 2], [3, 4], [5, 6]]) == [[1, 3, 5], [2, 4, 6]]\nassert transpuesta([['a', 'b'], ['c', 'd']]) == [['a', 'c'], ['b', 'd']]",
+      "motivos": [
+        "",
+        "AssertionError",
+        ""
+      ],
+      "candidatas": [
+        "def transpuesta(m):\n    if not m:\n        return []\n    \n    num_filas = len(m)\n    num_columnas = len(m[0])\n    \n    # Inicializa la matriz transpuesta con dimensiones invertidas\n    m_transpuesta = [[0 for _ in range(num_filas)] for _ in range(num_columnas)]\n    \n    # Transpone la matriz\n    for i in range(num_filas):\n        for j in range(num_columnas):\n            m_transpuesta[j][i] = m[i][j]\n            \n    return m_transpuesta",
+        "def transpuesta(m):\n    \"\"\"\n    Calcula la transpuesta de una matriz dada como lista de listas.\n\n    Args:\n        m: La matriz como lista de listas.\n\n    Returns:\n        La matriz transpuesta como lista de listas, o una lista vacía si la entrada es vacía.\n    \"\"\"\n    if not m:\n        return []\n\n    # Determinar el número de filas (m) y columnas (n)\n    num_filas = len(m)\n    # Asumimos que todas las filas tienen la misma longitud, tomamos la longitud de la primera fila\n    if not m[0]:\n        # Manejar caso de matriz con filas vacías (ej: [[]])\n        return [[] for _ in range(len(m))] if num_filas > 0 else []\n        \n    num_columnas = len(m[0])\n\n    # Inicializar la matriz transpuesta. Tendrá num_columnas filas y num_filas columnas.\n    # Creamos una matriz de ceros o un placeholder para la estructura correcta.\n    matriz_transpuesta = [[0 for _ in range(num_filas)] for _ in range(num_columnas)]\n\n    # Rellenar la transpuesta: T[j][i] = M[i][j]\n    for i in range(num_filas):\n        for j in range(num_columnas):\n            matriz_transpuesta[j][i] = m[i][j]\n\n    return matriz_transpuesta",
+        "def transpuesta(m):\n    if not m:\n        return []\n    \n    # Obtener el número de filas (m) y el número de columnas (n)\n    num_filas = len(m)\n    # Asumimos que todas las filas tienen la misma longitud si m no es vacío\n    num_columnas = len(m[0])\n    \n    # Inicializar la matriz transpuesta: num_columnas filas y num_filas columnas\n    # Usamos una lista de listas para representar la matriz\n    matriz_transpuesta = [[0 for _ in range(num_filas)] for _ in range(num_columnas)]\n    \n    # Rellenar la transpuesta: T[j][i] = M[i][j]\n    for i in range(num_filas):\n        for j in range(num_columnas):\n            matriz_transpuesta[j][i] = m[i][j]\n            \n    return matriz_transpuesta"
+      ],
+      "tok_tests": 178,
+      "seg_tests": 2.2076566219329834
+    },
+    {
+      "id": "raiz_digital",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert raiz_digital(1) == 1\nassert raiz_digital(9) == 9\nassert raiz_digital(10) == 1\nassert raiz_digital(99) == 9\nassert raiz_digital(123) == 6\nassert raiz_digital(9875) == 2\nassert raiz_digital(0) == 0\nassert raiz_digital(1999) == 1\nassert raiz_digital(88888) == 4\nassert raiz_digital(1000000000) == 1",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def raiz_digital(n):\n    \"\"\"\n    Calcula la raíz digital de un número entero positivo.\n\n    Suma los dígitos de n y repite el proceso hasta obtener un solo dígito.\n    \"\"\"\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"La entrada debe ser un entero no negativo.\")\n\n    def suma_digitos(numero):\n        s = 0\n        for digito in str(numero):\n            s += int(digito)\n        return s\n\n    while n >= 10:\n        n = suma_digitos(n)\n    return n",
+        "def raiz_digital(n):\n    \"\"\"\n    Calcula la raíz digital de un número entero no negativo.\n\n    Suma los dígitos de n y repite el proceso hasta que el resultado sea un solo dígito.\n    \"\"\"\n    while n >= 10:\n        suma_digitos = 0\n        # Sumar los dígitos de n\n        while n > 0:\n            suma_digitos += n % 10\n            n //= 10\n        # Asignar la nueva suma a n para la siguiente iteración\n        n = suma_digitos\n    return n",
+        "def raiz_digital(n):\n    \"\"\"\n    Calcula la raíz digital de un número entero no negativo.\n\n    Suma los dígitos de n y repite el proceso hasta quedarse con un solo dígito.\n\n    Args:\n        n (int): El número entero de entrada.\n\n    Returns:\n        int: El resultado de la raíz digital.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"El número de entrada debe ser no negativo.\")\n    \n    # Caso borde: si n es 0, la raíz digital es 0\n    if n == 0:\n        return 0\n    \n    # Una forma muy eficiente de calcular la raíz digital es usando la propiedad:\n    # dr(n) = n % 9, si n % 9 != 0\n    # dr(n) = 9, si n % 9 == 0 y n != 0\n    return (n - 1) % 9 + 1\n\n# --- Implementación iterativa (siguiendo la descripción paso a paso) ---\n# def raiz_digital_iterativa(n):\n#     if n < 0:\n#         raise ValueError(\"El número de entrada debe ser no negativo.\")\n    \n#     while n >= 10:\n#         suma_digitos = 0\n#         # Sumar los dígitos del número actual\n#         temp_n = n\n#         while temp_n > 0:\n#             suma_digitos += temp_n % 10\n#             temp_n //= 10\n#         # Reemplazar el número por la suma de sus dígitos\n#         n = suma_digitos\n#     return n\n\n# # Prueba de ejemplo: 9875\n# print(raiz_digital(9875)) # Esperado: 2\n# print(raiz_digital(493193)) # Esperado: 2\n# print(raiz_digital(12345)) # Esperado: 6\n# print(raiz_digital(0)) # Esperado: 0\n# print(raiz_digital(9)) # Esperado: 9"
+      ],
+      "tok_tests": 138,
+      "seg_tests": 1.8417232036590576
+    },
+    {
+      "id": "sin_duplicados",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert len(sin_duplicados([1, 2, 3])) == 3\nassert sin_duplicados([1, 2, 3]) == [1, 2, 3]\nassert len(sin_duplicados([1, 1, 2, 2, 3])) == 3\nassert sin_duplicados([1, 1, 2, 2, 3]) == [1, 2, 3]\nassert sin_duplicados([]) == []\nassert sin_duplicados([1]) == [1]\nassert sin_duplicados([1, 2, 1, 3, 2]) == [1, 2, 3]\nassert sin_duplicados(['a', 'b', 'a', 'c']) == ['a', 'b', 'c']\nassert sin_duplicados([5, 5, 5, 5]) == [5]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def sin_duplicados(lista):\n    \"\"\"\n    Elimina elementos repetidos de una lista conservando el orden de su primera aparición.\n\n    Args:\n        lista (list): La lista de entrada que puede contener duplicados.\n\n    Returns:\n        list: Una nueva lista sin elementos duplicados, manteniendo el orden original.\n    \"\"\"\n    vistos = set()\n    resultado = []\n    for elemento in lista:\n        if elemento not in vistos:\n            vistos.add(elemento)\n            resultado.append(elemento)\n    return resultado",
+        "def sin_duplicados(lista):\n    \"\"\"\n    Elimina elementos repetidos de una lista conservando el orden de la primera aparición.\n\n    Args:\n        lista: La lista de entrada.\n\n    Returns:\n        Una nueva lista sin elementos duplicados, manteniendo el orden original.\n    \"\"\"\n    vistos = set()\n    resultado = []\n    for elemento in lista:\n        if elemento not in vistos:\n            resultado.append(elemento)\n            vistos.add(elemento)\n    return resultado",
+        "def sin_duplicados(lista):\n    \"\"\"\n    Elimina elementos repetidos de una lista conservando el orden de la primera aparición.\n\n    Args:\n        lista: La lista de entrada.\n\n    Returns:\n        Una nueva lista sin elementos duplicados, manteniendo el orden original.\n    \"\"\"\n    vistos = set()\n    resultado = []\n    for item in lista:\n        if item not in vistos:\n            resultado.append(item)\n            vistos.add(item)\n    return resultado"
+      ],
+      "tok_tests": 219,
+      "seg_tests": 2.7319324016571045
+    },
+    {
+      "id": "n_mayor",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert n_esimo_mayor([10, 20, 30, 20, 10], 1) == 30\nassert n_esimo_mayor([10, 20, 30, 20, 10], 3) == 10\nassert n_esimo_mayor([5, 5, 5, 5], 1) == 5\nassert n_esimo_mayor([1, 2, 3], 4) is None\nassert n_esimo_mayor([], 1) is None\nassert n_esimo_mayor([100], 1) == 100\nassert n_esimo_mayor([10, 5], 2) == 5\nassert n_esimo_mayor([10, 5], 3) is None",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def n_esimo_mayor(lista, n):\n    \"\"\"\n    Devuelve el n-esimo valor mas grande contando valores DISTINTOS.\n    Si no hay suficientes valores distintos devuelve None.\n    \"\"\"\n    if not lista or n <= 0:\n        return None\n\n    # Obtener solo los valores distintos\n    distintos = sorted(list(set(lista)), reverse=True)\n\n    # Verificar si hay suficientes valores distintos\n    if n > len(distintos):\n        return None\n    else:\n        # Devolver el n-esimo elemento (índice n-1)\n        return distintos[n - 1]",
+        "def n_esimo_mayor(lista, n):\n    \"\"\"\n    Devuelve el n-ésimo valor más grande de una lista, contando valores distintos.\n\n    Args:\n        lista: Una lista de números.\n        n: Un entero positivo que indica la posición (1 para el mayor, 2 para el segundo, etc.).\n\n    Returns:\n        El n-ésimo valor más grande distinto, o None si no hay suficientes valores distintos.\n    \"\"\"\n    if not isinstance(lista, list) or not isinstance(n, int) or n <= 0:\n        # Manejo de entradas inválidas\n        return None\n\n    # 1. Obtener los valores distintos\n    valores_distintos = sorted(list(set(lista)), reverse=True)\n\n    # 2. Verificar si hay suficientes elementos distintos\n    if len(valores_distintos) < n:\n        return None\n\n    # 3. Devolver el n-ésimo elemento (usando índice n-1)\n    return valores_distintos[n - 1]",
+        "def n_esimo_mayor(lista, n):\n    \"\"\"\n    Devuelve el n-ésimo valor más grande contando valores DISTINTOS.\n\n    Args:\n        lista (list): La lista de números.\n        n (int): La posición del valor a encontrar (1-based).\n\n    Returns:\n        int or None: El n-ésimo valor más grande distinto, o None si no hay suficientes.\n    \"\"\"\n    if not isinstance(n, int) or n <= 0:\n        return None\n\n    # Obtener valores distintos y convertirlos a una lista\n    distintos = sorted(list(set(lista)), reverse=True)\n\n    # Verificar si hay suficientes valores distintos\n    if n > len(distintos):\n        return None\n    else:\n        # Devolver el n-ésimo elemento (ajustando por el índice 0)\n        return distintos[n - 1]"
+      ],
+      "tok_tests": 191,
+      "seg_tests": 2.4749581813812256
+    },
+    {
+      "id": "bytes",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert formatear_bytes(0) == '0 B'\nassert formatear_bytes(1023) == '1023 B'\nassert formatear_bytes(1024) == '1.0 KB'\nassert formatear_bytes(1536) == '1.5 KB'\nassert formatear_bytes(2047) == '2.0 KB'\nassert formatear_bytes(1048576) == '1.0 MB'\nassert formatear_bytes(1048575) == '1023.9 KB'\nassert formatear_bytes(1073741823) == '1.0 GB'\nassert formatear_bytes(1) == '1 B'",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def formatear_bytes(n):\n    \"\"\"\n    Convierte una cantidad de bytes a texto legible usando base 1024.\n\n    :param n: Cantidad de bytes (entero o flotante).\n    :return: String con la cantidad formateada.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"La cantidad de bytes no puede ser negativa.\")\n\n    if n == 0:\n        return \"0 B\"\n\n    unidades = [\"B\", \"KB\", \"MB\", \"GB\"]\n    \n    # Convertir a flotante para manejar divisiones y el formato de un decimal\n    n_float = float(n)\n    \n    i = 0\n    while n_float >= 1024 and i < len(unidades) - 1:\n        n_float /= 1024.0\n        i += 1\n\n    unidad = unidades[i]\n    \n    if i == 0:\n        # Mostrar B sin decimales\n        return f\"{int(n)} {unidad}\"\n    else:\n        # Mostrar con un decimal para KB, MB, GB\n        return f\"{n_float:.1f} {unidad}\"\n\nif __name__ == '__main__':\n    # Pruebas de casos borde y ejemplos dados\n    print(f\"0 bytes: {formatear_bytes(0)}\")\n    print(f\"1023 bytes: {formatear_bytes(1023)}\")\n    print(f\"1024 bytes: {formatear_bytes(1024)}\")\n    print(f\"1536 bytes: {formatear_bytes(1536)}\")\n    print(f\"1024*1024 bytes (1 MB): {formatear_bytes(1024*1024)}\")\n    print(f\"1024*1024*1024 bytes (1 GB): {formatear_bytes(1024**3)}\")\n    print(f\"1572864 bytes (1.5 MB): {formatear_bytes(1572864)}\")\n    print(f\"100 bytes: {formatear_bytes(100)}\")",
+        "def formatear_bytes(n):\n    \"\"\"\n    Convierte una cantidad de bytes a texto legible usando base 1024.\n\n    Args:\n        n (int): La cantidad de bytes.\n\n    Returns:\n        str: La cantidad de bytes formateada.\n    \"\"\"\n    if n == 0:\n        return \"0 B\"\n\n    unidades = [\"B\", \"KB\", \"MB\", \"GB\"]\n    i = 0\n    valor = float(n)\n\n    while valor >= 1024 and i < len(unidades) - 1:\n        valor /= 1024.0\n        i += 1\n\n    unidad = unidades[i]\n\n    if i == 0:\n        return f\"{int(valor)} {unidad}\"  # Para B, siempre enteros\n    else:\n        # Para KB, MB, GB, mostrar con un decimal\n        return f\"{valor:.1f} {unidad}\"\n\nif __name__ == '__main__':\n    # Pruebas de casos borde y ejemplos\n    print(f\"0 bytes: {formatear_bytes(0)}\")\n    print(f\"1023 bytes: {formatear_bytes(1023)}\")\n    print(f\"1024 bytes: {formatear_bytes(1024)}\")\n    print(f\"1536 bytes: {formatear_bytes(1536)}\")\n    print(f\"1048576 bytes (1 MB): {formatear_bytes(1048576)}\")\n    print(f\"2097151 bytes (casi 2 MB): {formatear_bytes(2097151)}\")\n    print(f\"1073741824 bytes (1 GB): {formatear_bytes(1073741824)}\")\n    print(f\"Un valor grande: {formatear_bytes(2147483648)}\") # 2 GB\n    print(f\"Un valor pequeño: {formatear_bytes(500)}\")",
+        "def formatear_bytes(n):\n    \"\"\"\n    Convierte una cantidad de bytes a texto legible usando base 1024.\n\n    Args:\n        n (int): La cantidad de bytes.\n\n    Returns:\n        str: La representación legible de la cantidad de bytes.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"La cantidad de bytes no puede ser negativa\")\n    \n    if n == 0:\n        return \"0 B\"\n\n    unidades = [\"B\", \"KB\", \"MB\", \"GB\"]\n    \n    # El índice de la unidad se determina por el logaritmo base 1024\n    # floor(log2(n) / 10) o similar para base 1024\n    import math\n    \n    # Calcula el exponente: log2(n) / 10, o simplemente el número de veces que cabe 1024\n    i = int(math.floor(math.log(n, 1024)))\n    \n    # Asegura que el índice no exceda el tamaño de las unidades\n    i = min(i, len(unidades) - 1)\n    \n    # Calcula el valor en la unidad correspondiente\n    valor = n / (1024 ** i)\n    unidad = unidades[i]\n\n    if unidad == \"B\":\n        # Para Bytes, siempre sin decimales\n        return f\"{n} B\"\n    else:\n        # Para otras unidades, con un decimal\n        return f\"{valor:.1f} {unidad}\"\n\nif __name__ == '__main__':\n    # Pruebas de casos borde y ejemplos dados\n    print(f\"0 bytes: {formatear_bytes(0)}\")  # Esperado: 0 B\n    print(f\"1023 bytes: {formatear_bytes(1023)}\") # Esperado: 1023 B\n    print(f\"1024 bytes: {formatear_bytes(1024)}\") # Esperado: 1.0 KB\n    print(f\"1536 bytes: {formatear_bytes(1536)}\") # Esperado: 1.5 KB\n\n    # Pruebas adicionales\n    print(f\"1 byte: {formatear_bytes(1)}\") # Esperado: 1 B\n    print(f\"1024 * 1024 bytes: {formatear_bytes(1024*1024)}\") # Esperado: 1.0 MB\n    print(f\"1024 * 1024 * 1024 * 1024 bytes: {formatear_bytes(1024**4)}\") # Esperado: 1.0 GB\n    print(f\"Bytes grandes: {formatear_bytes(2500000000)}\") # Esperado: ~2.3 GB\n    print(f\"Valor intermedio: {formatear_bytes(1572864)}\") # 1.5 MB"
+      ],
+      "tok_tests": 182,
+      "seg_tests": 2.3202037811279297
+    },
+    {
+      "id": "lotes",
+      "verdad": [
+        true,
+        true,
+        false
+      ],
+      "dice": [
+        false,
+        false,
+        true
+      ],
+      "falsas": 2,
+      "escapes": 1,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert in_lotes([], 5) == []\nassert in_lotes([1, 2, 3], 2) == [[1, 2], [3]]\nassert in_lotes([1, 2, 3, 4], 2) == [[1, 2], [3, 4]]\nassert in_lotes([1], 1) == [[1]]\nassert in_lotes([1], 5) == [[1]]\nassert in_lotes([1, 2, 3, 4, 5], 3) == [[1, 2, 3], [4, 5]]\nassert in_lotes([1, 2, 3, 4, 5, 6], 3) == [[1, 2, 3], [4, 5, 6]]\nassert in_lotes([1, 2], 10) == [[1, 2]]",
+      "motivos": [
+        "NameError: name 'in_lotes' is not defined. Did you mean: 'en_lotes'?",
+        "NameError: name 'in_lotes' is not defined. Did you mean: 'en_lotes'?",
+        ""
+      ],
+      "candidatas": [
+        "def en_lotes(lista, tamano):\n    \"\"\"\n    Divide una lista en sublistas de un tamaño dado. El último lote puede ser más pequeño.\n\n    :param lista: La lista a dividir.\n    :param tamano: El tamaño deseado de cada lote.\n    :return: Una lista de sublistas.\n    \"\"\"\n    if not lista:\n        return []\n    if tamano <= 0:\n        raise ValueError(\"El tamaño del lote debe ser un entero positivo.\")\n\n    return [lista[i:i + tamano] for i in range(0, len(lista), tamano)]",
+        "def en_lotes(lista, tamano):\n    \"\"\"\n    Divide una lista en sublistas de un tamaño especificado. El último lote puede ser más pequeño.\n\n    Args:\n        lista (list): La lista a dividir.\n        tamano (int): El tamaño deseado de cada lote.\n\n    Returns:\n        list: Una lista de sublistas. Devuelve una lista vacía si la entrada es vacía.\n    \"\"\"\n    if not lista:\n        return []\n    if tamano <= 0:\n        raise ValueError(\"El tamaño del lote debe ser un entero positivo.\")\n\n    return [lista[i:i + tamano] for i in range(0, len(lista), tamano)]",
+        "def in_lotes(lista, tamano):\n    \"\"\"\n    Parte la lista en sublistas de un tamaño dado. El último lote puede ser más chico.\n\n    :param lista: La lista a dividir.\n    :param tamano: El tamaño deseado de cada lote.\n    :return: Una lista de sublistas.\n    \"\"\"\n    if not lista:\n        return []\n    if tamano <= 0:\n        raise ValueError(\"El tamaño del lote debe ser un entero positivo.\")\n\n    return [lista[i:i + tamano] for i in range(0, len(lista), tamano)]"
+      ],
+      "tok_tests": 220,
+      "seg_tests": 2.8338043689727783
+    },
+    {
+      "id": "transpuesta",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert transpuesta([[]]) == []\nassert transpuesta([]) == []\nassert transpuesta([[1]]) == [[1]]\nassert transpuesta([[1, 2], [3, 4]]) == [[1, 3], [2, 4]]\nassert transpuesta([[1, 2, 3]]) == [[1], [2], [3]]\nassert transpuesta([[1], [2], [3]]) == [[1, 2, 3]]\nassert transpuesta([[1, 2], [3, 4], [5, 6]]) == [[1, 3, 5], [2, 4, 6]]\nassert transpuesta([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) == [[1, 4, 7], [2, 5, 8], [3, 6, 9]]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def transpuesta(m):\n    if not m:\n        return []\n    \n    num_filas = len(m)\n    num_columnas = len(m[0])\n    \n    # Inicializa la matriz transpuesta con dimensiones invertidas (columnas x filas)\n    matriz_transpuesta = [[0] * num_filas for _ in range(num_columnas)]\n    \n    # Transpone la matriz: T[j][i] = M[i][j]\n    for i in range(num_filas):\n        for j in range(num_columnas):\n            matriz_transpuesta[j][i] = m[i][j]\n            \n    return matriz_transpuesta",
+        "def transpuesta(m):\n    \"\"\"\n    Recibe una matriz (lista de listas) y devuelve su transpuesta.\n\n    Args:\n        m: La matriz (lista de listas).\n\n    Returns:\n        La matriz transpuesta (lista de listas). Devuelve lista vacia si la matriz está vacia.\n    \"\"\"\n    if not m:\n        return []\n\n    # Determinar el número de filas (m) y columnas (n)\n    num_filas = len(m)\n    # Asumimos que la matriz es rectangular, tomamos la longitud de la primera fila\n    # Si la primera fila está vacía pero la matriz no, el comportamiento será correcto.\n    if not m[0]:\n        # Caso borde: Matriz de filas vacías, ej: [[]]\n        # Si todas las filas son vacías, la transpuesta será una matriz de 0xN\n        # Dependiendo de la definición, podríamos devolver [[], [], ...], pero\n        # la forma más simple y robusta es asumir que si la primera fila está vacía,\n        # y la matriz no es totalmente vacía, devolvemos una matriz con 0 columnas.\n        # Si m = [[]], num_filas = 1, num_cols = 0. La transpuesta debe ser 0x1.\n        num_cols = 0\n    else:\n        num_cols = len(m[0])\n\n    # Inicializar la matriz transpuesta con el tamaño invertido (num_cols x num_filas)\n    # Cada fila de la transpuesta tendrá 'num_filas' elementos.\n    matriz_transpuesta = [[0 for _ in range(num_filas)] for _ in range(num_cols)]\n\n    # Llenar la transpuesta: T[j][i] = M[i][j]\n    for i in range(num_filas):\n        for j in range(num_cols):\n            matriz_transpuesta[j][i] = m[i][j]\n\n    return matriz_transpuesta\n\n# Alternativa más concisa usando zip y * (que es la forma idiomática en Python)\ndef transpuesta_concisa(m):\n    \"\"\"\n    Recibe una matriz (lista de listas) y devuelve su transpuesta usando zip.\n    \"\"\"\n    if not m:\n        return []\n    # zip(*m) desestructura la lista de listas y agrupa los elementos por índice de columna.\n    # map(list, ...) convierte las tuplas devueltas por zip en listas.\n    return [list(row) for row in zip(*m)]\n\n# Elegimos la versión idiomática para la respuesta final, ya que es la más simple y correcta.\ntranspuesta = transpuesta_concisa",
+        "def transpuesta(m):\n    if not m:\n        return []\n    \n    num_filas = len(m)\n    num_columnas = len(m[0])\n    \n    # Crear la matriz transpuesta con dimensiones invertidas\n    matriz_transpuesta = [[0 for _ in range(num_filas)] for _ in range(num_columnas)]\n    \n    # Llenar la matriz transpuesta\n    for i in range(num_filas):\n        for j in range(num_columnas):\n            matriz_transpuesta[j][i] = m[i][j]\n            \n    return matriz_transpuesta"
+      ],
+      "tok_tests": 207,
+      "seg_tests": 2.6334002017974854
+    },
+    {
+      "id": "intervalos",
+      "verdad": [
+        true,
+        true,
+        false
+      ],
+      "dice": [
+        true,
+        true,
+        false
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert fusionar([(1, 2), (3, 4)]) == [(1, 2), (3, 4)]\nassert fusionar([(1, 4), (2, 3)]) == [(1, 4)]\nassert fusionar([(1, 2), (2, 3), (3, 4)]) == [(1, 4)]\nassert fusionar([(5, 6)]) == [(5, 6)]\nassert fusionar([]) == []\nassert fusionar([(1, 1)]) == [(1, 1)]\nassert fusionar([(1, 5), (6, 10)]) == [(1, 5), (6, 10)]\nassert fusionar([(1, 10), (2, 3), (4, 5)]) == [(1, 10)]\nassert fusionar([(1, 3), (3, 5), (5, 7)]) == [(1, 7)]\nassert fusionar([(10, 20), (1, 5)]) == [(1, 5), (10, 20)]",
+      "motivos": [
+        "",
+        "",
+        "TypeError: cannot unpack non-iterable int object"
+      ],
+      "candidatas": [
+        "def fusionar(intervalos):\n    if not intervalos:\n        return []\n\n    # Ordenar los intervalos por su punto de inicio\n    intervalos.sort(key=lambda x: x[0])\n\n    # Inicializar la lista de intervalos fusionados con el primer intervalo\n    fusionados = [list(intervalos[0])]\n\n    for i in range(1, len(intervalos)):\n        intervalo_actual = intervalos[i]\n        ultimo_fusionado = fusionados[-1]\n\n        inicio_actual, fin_actual = intervalo_actual\n        inicio_ultimo, fin_ultimo = ultimo_fusionado\n\n        # Verificar si el intervalo actual se solapa o toca el último fusionado\n        # Se solapan si el inicio actual es menor o igual al fin del último\n        if inicio_actual <= fin_ultimo:\n            # Fusionar: actualizar el fin del último intervalo fusionado\n            # Tomamos el máximo de los dos fines\n            ultimo_fusionado[1] = max(fin_ultimo, fin_actual)\n        else:\n            # No hay solapamiento, añadir el intervalo actual a la lista fusionada\n            fusionados.append(list(intervalo_actual))\n\n    # Convertir las listas internas de nuevo a tuplas antes de devolver\n    return [tuple(i) for i in fusionados]",
+        "def fusionar(intervalos):\n    \"\"\"\n    Fusiona una lista de intervalos (inicio, fin) que se superponen o tocan.\n\n    Args:\n        intervalos: Una lista de tuplas (inicio, fin).\n\n    Returns:\n        Una lista de tuplas (inicio, fin) representando los intervalos fusionados, ordenados por inicio.\n    \"\"\"\n    if not intervalos:\n        return []\n\n    # 1. Ordenar los intervalos por su punto de inicio\n    intervalos_ordenados = sorted(intervalos, key=lambda x: x[0])\n\n    # Inicializar la lista de resultados con el primer intervalo\n    intervalos_fusionados = [list(intervalos_ordenados[0])]\n\n    for i in range(1, len(intervalos_ordenados)):\n        actual_inicio, actual_fin = intervalos_ordenados[i]\n        \n        # Tomar el último intervalo fusionado para comparar\n        ultimo_fusionado = intervalos_fusionados[-1]\n        ultimo_inicio, ultimo_fin = ultimo_fusionado\n\n        # 2. Comprobar la condición de fusión:\n        # Si el inicio del intervalo actual es menor o igual al fin del último fusionado\n        # (esto cubre superposición y tocamiento: (1,3) y (3,5) -> 3 <= 3)\n        if actual_inicio <= ultimo_fin:\n            # Fusionar: actualizar el fin del último intervalo fusionado\n            # Tomamos el máximo entre el fin actual y el fin anterior\n            ultimo_fusionado[1] = max(ultimo_fin, actual_fin)\n        else:\n            # 3. No hay superposición ni contacto: añadir el intervalo actual como nuevo\n            intervalos_fusionados.append([actual_inicio, actual_fin])\n\n    # Convertir las listas internas de nuevo a tuplas antes de devolver\n    return [tuple(i) for i in intervalos_fusionados]",
+        "def fusionar(intervalos):\n    if not intervalos:\n        return []\n\n    # Ordenar los intervalos por su punto de inicio\n    intervalos.sort(key=lambda x: x[0])\n\n    # Inicializar la lista de resultados con el primer intervalo\n    fusionados = [list(intervalos[0])]\n    \n    for i in range(1, len(intervalos)):\n        actual_inicio, actual_fin = intervalos[i]\n        \n        # Obtener el último intervalo fusionado\n        ultimo_fusionado = fusionados[-1]\n        ultimo_inicio, ultimo_fin = ultimo_fusionado[0]\n        ultimo_fin_modificado = ultimo_fusionado[1]\n\n        # Si el intervalo actual se solapa o toca con el último intervalo fusionado\n        # (actual_inicio <= ultimo_fin_modificado)\n        if actual_inicio <= ultimo_fin_modificado:\n            # Fusionar: actualizar el fin del último intervalo fusionado\n            ultimo_fusionado[1] = max(ultimo_fin_modificado, actual_fin)\n        else:\n            # Si no se solapa, añadir el intervalo actual a la lista de fusionados\n            fusionados.append(list(intervalos[i]))\n\n    # Convertir la lista de listas a lista de tuplas para el retorno\n    return [tuple(i) for i in fusionados]"
+      ],
+      "tok_tests": 251,
+      "seg_tests": 3.19502592086792
+    },
+    {
+      "id": "parentesis",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert balanceado(\"(){}[]\") == True\nassert balanceado(\"([{}])\") == True\nassert balanceado(\"\") == True\nassert balanceado(\"abc\") == True\nassert balanceado(\"((()))\") == True\nassert balanceado(\"(()\") == False\nassert balanceado(\"())\") == False\nassert balanceado(\"([)]\") == False\nassert balanceado(\"{[()]}\") == True\nassert balanceado(\"}{\") == False",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def balanceado(s):\n    stack = []\n    mapping = {')': '(', ']': '[', '}': '{'}\n\n    for char in s:\n        if char in '([{':\n            stack.append(char)\n        elif char in ')]}':\n            if not stack:\n                return False\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False\n        # Ignora otros caracteres\n\n    return not stack",
+        "def balanceado(s: str) -> bool:\n    stack = []\n    mapping = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n\n    for char in s:\n        if char in \"([{\":\n            stack.append(char)\n        elif char in \")]}\":\n            if not stack:\n                return False\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False\n\n    return not stack",
+        "def balanceado(s: str) -> bool:\n    stack = []\n    mapping = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n    opening_brackets = set(\"([{\")\n\n    for char in s:\n        if char in opening_brackets:\n            stack.append(char)\n        elif char in mapping:\n            if not stack:\n                return False\n            top_element = stack.pop()\n            if mapping[char] != top_element:\n                return False\n        # Ignoramos otros caracteres\n\n    return not stack"
+      ],
+      "tok_tests": 99,
+      "seg_tests": 1.2876386642456055
+    },
+    {
+      "id": "mediana",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert mediana([]) is None\nassert mediana([1]) == 1\nassert mediana([5]) == 5\nassert mediana([1, 2]) == 1.5\nassert mediana([2, 1]) == 1.5\nassert mediana([1, 2, 3]) == 2\nassert mediana([1, 2, 3, 4]) == 2.5\nassert mediana([1, 1, 1]) == 1\nassert mediana([1, 5, 10]) == 5\nassert mediana([10, 5, 1]) == 5",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def mediana(nums):\n    \"\"\"\n    Devuelve la mediana de una lista de números.\n\n    Args:\n        nums: Una lista de números.\n\n    Returns:\n        La mediana de la lista, o None si la lista está vacía.\n    \"\"\"\n    if not nums:\n        return None\n\n    # Ordenar la lista\n    sorted_nums = sorted(nums)\n    n = len(sorted_nums)\n\n    if n % 2 == 1:\n        # Si la cantidad es impar, la mediana es el elemento central\n        # El índice central es n // 2\n        return sorted_nums[n // 2]\n    else:\n        # Si la cantidad es par, la mediana es el promedio de los dos elementos centrales\n        # Los índices centrales son n // 2 - 1 y n // 2\n        mid1_index = n // 2 - 1\n        mid2_index = n // 2\n        return (sorted_nums[mid1_index] + sorted_nums[mid2_index]) / 2.0",
+        "def mediana(nums):\n    if not nums:\n        return None\n\n    sorted_nums = sorted(nums)\n    n = len(sorted_nums)\n\n    if n % 2 == 1:\n        # Caso impar: el elemento central\n        return sorted_nums[n // 2]\n    else:\n        # Caso par: el promedio de los dos elementos centrales\n        mid1 = sorted_nums[n // 2 - 1]\n        mid2 = sorted_nums[n // 2]\n        return (mid1 + mid2) / 2.0",
+        "def mediana(nums):\n    \"\"\"\n    Devuelve la mediana de una lista de números.\n\n    Args:\n        nums: Una lista de números.\n\n    Returns:\n        La mediana de la lista, o None si la lista está vacía.\n    \"\"\"\n    if not nums:\n        return None\n\n    # Ordenar la lista\n    sorted_nums = sorted(nums)\n    n = len(sorted_nums)\n\n    # Caso impar: devuelve el elemento central\n    if n % 2 != 0:\n        # El índice del elemento central es n // 2\n        return sorted_nums[n // 2]\n    # Caso par: devuelve el promedio de los dos elementos centrales\n    else:\n        # Los índices de los dos elementos centrales son n // 2 - 1 y n // 2\n        mid1 = sorted_nums[n // 2 - 1]\n        mid2 = sorted_nums[n // 2]\n        return (mid1 + mid2) / 2.0"
+      ],
+      "tok_tests": 139,
+      "seg_tests": 1.8066446781158447
+    },
+    {
+      "id": "top_frecuentes",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert top_frecuentes(\"el perro corre el gato\", 1) == [('el', 2)]\nassert top_frecuentes(\"casa coche carro\", 3) == [('casa', 1), ('coche', 1), ('carro', 1)]\nassert top_frecuentes(\"a b a b c\", 2) == [('a', 2), ('b', 2)]\nassert top_frecuentes(\"hello world hello\", 1) == [('hello', 2)]\nassert top_frecuentes(\"test\", 5) == [('test', 1)]\nassert top_frecuentes(\"\", 2) == []\nassert top_frecuentes(\"a b c\", 0) == []\nassert top_frecuentes(\"apple Banana apple banana\", 2) == [('apple', 2), ('banana', 2)]\nassert top_frecuentes(\"zebra ant apple\", 3) == [('ant', 1), ('apple', 1), ('zebra', 1)]\nassert top_frecuentes(\"a b a b\", 4) == [('a', 2), ('b', 2)]",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "import re\nfrom collections import Counter\n\ndef top_frecuentes(texto: str, k: int) -> list[tuple[str, int]]:\n    \"\"\"\n    Devuelve las k palabras más frecuentes de un texto.\n\n    Las palabras se separan por espacios, se comparan en minúsculas.\n    Las palabras son filtradas para incluir solo secuencias alfabéticas.\n\n    :param texto: El texto de entrada como cadena.\n    :param k: El número de palabras más frecuentes a devolver.\n    :return: Una lista de tuplas (palabra, cantidad), ordenadas por cantidad descendente y,\n             a igual cantidad, alfabéticamente.\n    \"\"\"\n    # 1. Limpieza y tokenización: Extraer solo palabras (secuencias de letras)\n    # Usamos re.findall para encontrar todas las secuencias de caracteres alfabéticos\n    palabras = re.findall(r'[a-zA-Z]+', texto.lower())\n\n    if not palabras:\n        return []\n\n    # 2. Conteo de frecuencias\n    frecuencias = Counter(palabras)\n\n    # 3. Ordenamiento\n    # El criterio de ordenamiento es complejo:\n    # 1. Por cantidad (descendente: -count)\n    # 2. Por palabra (alfabéticamente, ascendente: word)\n    # La función de key recibe una tupla (palabra, cantidad)\n    # Queremos ordenar por: (-cantidad, palabra)\n    \n    # Creamos una lista de tuplas (palabra, cantidad) y la ordenamos\n    lista_ordenada = sorted(\n        frecuencias.items(),\n        key=lambda item: (-item[1], item[0])\n    )\n\n    # 4. Devolver los top k\n    return lista_ordenada[:k]\n\nif __name__ == '__main__':\n    # Caso de prueba 1: Normal\n    texto1 = \"El perro corre rápido y el gato salta, el perro es grande.\"\n    k1 = 3\n    print(f\"Prueba 1 (k={k1}): {top_frecuentes(texto1, k1)}\")\n    # Esperado: [('el', 3), ('perro', 2), ('gato', 1)] (o 'rápido' si se considera)\n    # Con la implementación actual (solo letras), 'rápido' se trata como 'rapido' si se limpia bien,\n    # pero re.findall(r'[a-zA-Z]+', ...) solo captura letras ASCII simples.\n    # 'el' (3), 'perro' (2), 'gato' (1), 'salta' (1), 'es' (1), 'grande' (1)\n    # Ordenado: (el, 3), (perro, 2), (es, 1), (gato, 1), (grande, 1), (salta, 1) -> por orden alfabético\n    # Si k=3: [('el', 3), ('perro', 2), ('es', 1)]\n\n    # Caso de prueba 2: Todas iguales\n    texto2 = \"a b c a b c\"\n    k2 = 3\n    print(f\"Prueba 2 (k={k2}): {top_frecuentes(texto2, k2)}\")\n    # Esperado: [('a', 2), ('b', 2), ('c', 2)] -> ordenado alfabéticamente\n    # Correcto: [('a', 2), ('b', 2), ('c', 2)]\n\n    # Caso de prueba 3: Caso borde - texto vacío\n    texto3 = \"\"\n    k3 = 5\n    print(f\"Prueba 3 (k={k3}): {top_frecuentes(texto3, k3)}\")\n    # Esperado: []\n\n    # Caso de prueba 4: Caso borde - solo signos de puntuación\n    texto4 = \"!@#$%^&*() 123\"\n    k4 = 5\n    print(f\"Prueba 4 (k={k4}): {top_frecuentes(texto4, k4)}\")\n    # Esperado: []\n\n    # Caso de prueba 5: k mayor que número de palabras únicas\n    texto5 = \"uno dos uno\"\n    k5 = 5\n    print(f\"Prueba 5 (k={k5}): {top_frecuentes(texto5, k5)}\")\n    # Esperado: [('uno', 2), ('dos', 1)]",
+        "from collections import Counter\n\ndef top_frecuentes(texto: str, k: int) -> list[tuple[str, int]]:\n    \"\"\"\n    Devuelve las k palabras más frecuentes en un texto.\n\n    Args:\n        texto: La cadena de texto a procesar.\n        k: El número de palabras más frecuentes a devolver.\n\n    Returns:\n        Una lista de tuplas (palabra, cantidad), ordenada por cantidad descendente\n        y, a igual cantidad, alfabéticamente.\n    \"\"\"\n    if not texto or k <= 0:\n        return []\n\n    # 1. Normalizar y tokenizar: Convertir a minúsculas y separar por espacios\n    palabras = texto.lower().split()\n\n    # 2. Contar frecuencias\n    frecuencias = Counter(palabras)\n\n    # 3. Convertir a lista de tuplas (palabra, cantidad)\n    lista_frecuencias = list(frecuencias.items())\n\n    # 4. Ordenar:\n    # El criterio de ordenamiento es:\n    # a) Cantidad descendente (-cantidad)\n    # b) Palabra alfabéticamente ascendente (palabra)\n    # Usamos una clave lambda para implementar este ordenamiento compuesto.\n    lista_ordenada = sorted(\n        lista_frecuencias,\n        key=lambda item: (-item[1], item[0])\n    )\n\n    # 5. Devolver las k primeras\n    return lista_ordenada[:k]",
+        "from collections import Counter\n\ndef top_frecuentes(texto: str, k: int) -> list[tuple[str, int]]:\n    \"\"\"\n    Devuelve las k palabras más frecuentes de un texto.\n\n    Args:\n        texto: La cadena de texto a procesar.\n        k: El número de palabras más frecuentes a devolver.\n\n    Returns:\n        Una lista de tuplas (palabra, cantidad), ordenadas por cantidad descendente \n        y, a igual cantidad, alfabéticamente.\n    \"\"\"\n    if not texto or k <= 0:\n        return []\n\n    # 1. Separar por espacios y convertir a minúsculas\n    palabras = texto.lower().split()\n\n    # 2. Contar la frecuencia de cada palabra\n    frecuencias = Counter(palabras)\n\n    # 3. Convertir a lista de tuplas (palabra, cantidad)\n    lista_frecuencias = list(frecuencias.items())\n\n    # 4. Ordenar:\n    #    - Primaria: Cantidad (descendente, por eso -x[1])\n    #    - Secundaria: Palabra (alfabéticamente, ascendente, por eso x[0])\n    #    Usamos una clave de ordenamiento que prioriza la cantidad negativa y luego la palabra.\n    lista_ordenada = sorted(\n        lista_frecuencias,\n        key=lambda x: (-x[1], x[0])\n    )\n\n    # 5. Devolver los top k\n    return lista_ordenada[:k]"
+      ],
+      "tok_tests": 277,
+      "seg_tests": 3.515589952468872
+    },
+    {
+      "id": "trozos",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert trozos([1, 2, 3, 4, 5, 6], 3) == ([1, 2, 3], [4, 5, 6])\nassert trozos([1, 2, 3, 4, 5], 2) == ([1, 2], [3, 4], [5])\nassert trozos([1, 2, 3], 5) == ([1, 2, 3])\nassert trozos([], 3) == []\nassert trozos([1, 2, 3], 1) == ([1], [2], [3])\nassert trozos([1, 2, 3], 0) == []\nassert trozos([1, 2, 3], -2) == []\nassert trozos([1], 1) == ([1],)\nassert trozos([1], 5) == ([1],)",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def trozos(lista, n):\n    if n <= 0:\n        return []\n\n    return [lista[i:i + n] for i in range(0, len(lista), n)]",
+        "def trozos(lista, n):\n    if n <= 0:\n        return []\n    \n    return [lista[i:i + n] for i in range(0, len(lista), n)]",
+        "def trozos(lista, n):\n    if n <= 0:\n        return []\n    return [lista[i:i + n] for i in range(0, len(lista), n)]"
+      ],
+      "tok_tests": 215,
+      "seg_tests": 2.7117011547088623
+    },
+    {
+      "id": "dedup",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert len(dedup([1, 2, 3])) == 3\nassert dedup([1, 2, 2, 3]) == [1, 2, 3]\nassert dedup([1, 1, 1]) == [1]\nassert dedup([]) == []\nassert dedup([1, 2, 3, 1, 2]) == [1, 2, 3]\nassert dedup(['a', 'b', 'a', 'c']) == ['a', 'b', 'c']\nassert dedup([5, 5, 5, 5]) == [5]\nassert dedup([1, 2, 3, 4]) == [1, 2, 3, 4]\nassert dedup([None, 1, None, 2]) == [None, 1, 2]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def dedup(lista):\n    \"\"\"\n    Elimina duplicados de una lista conservando el orden de la primera aparición.\n\n    Args:\n        lista: La lista de entrada.\n\n    Returns:\n        Una nueva lista sin elementos duplicados, manteniendo el orden original.\n    \"\"\"\n    vistos = set()\n    resultado = []\n    for elemento in lista:\n        if elemento not in vistos:\n            resultado.append(elemento)\n            vistos.add(elemento)\n    return resultado",
+        "def dedup(lista):\n    \"\"\"\n    Elimina duplicados de una lista conservando el orden de la primera aparición.\n\n    Args:\n        lista: La lista de entrada.\n\n    Returns:\n        Una nueva lista sin elementos duplicados, manteniendo el orden original.\n    \"\"\"\n    seen = set()\n    resultado = []\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            resultado.append(item)\n    return resultado",
+        "def dedup(lista):\n    \"\"\"\n    Elimina duplicados de una lista conservando el orden de la primera aparición.\n\n    Args:\n        lista (list): La lista de entrada que puede contener duplicados.\n\n    Returns:\n        list: Una nueva lista sin duplicados, manteniendo el orden original.\n    \"\"\"\n    vistos = set()\n    resultado = []\n    for item in lista:\n        if item not in vistos:\n            vistos.add(item)\n            resultado.append(item)\n    return resultado"
+      ],
+      "tok_tests": 202,
+      "seg_tests": 2.566951274871826
+    },
+    {
+      "id": "binaria",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert binaria([2, 5, 8, 12, 16], 12) == 3\nassert binaria([2, 5, 8, 12, 16], 2) == 0\nassert binaria([2, 5, 8, 12, 16], 16) == 4\nassert binaria([2, 5, 8, 12, 16], 1) == -1\nassert binaria([2, 5, 8, 12, 16], 20) == -1\nassert binaria([], 5) == -1\nassert binaria([5], 5) == 0\nassert binaria([5], 4) == -1\nassert binaria([5], 6) == -1",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def binaria(lista, x):\n    \"\"\"\n    Busca un elemento x en una lista ORDENADA usando búsqueda binaria.\n\n    Args:\n        lista (list): Una lista de elementos ordenados.\n        x: El elemento a buscar.\n\n    Returns:\n        int: El índice de x si se encuentra, o -1 si no se encuentra.\n    \"\"\"\n    izquierda = 0\n    derecha = len(lista) - 1\n\n    while izquierda <= derecha:\n        # Evitar desbordamientos de enteros (aunque en Python es menos crítico)\n        centro = izquierda + (derecha - izquierda) // 2\n        \n        valor_centro = lista[centro]\n\n        if valor_centro == x:\n            return centro  # Encontrado\n        elif valor_centro < x:\n            # El elemento está en la mitad derecha\n            izquierda = centro + 1\n        else:\n            # El elemento está en la mitad izquierda\n            derecha = centro - 1\n\n    return -1  # No encontrado",
+        "def binaria(lista, x):\n    \"\"\"\n    Busca x en una lista ORDENADA usando busqueda binaria y devuelve su indice, o -1 si no esta.\n    \"\"\"\n    low = 0\n    high = len(lista) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        \n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            low = mid + 1\n        else:  # lista[mid] > x\n            high = mid - 1\n            \n    return -1",
+        "def binaria(lista: list, x: int) -> int:\n    \"\"\"\n    Busca x en una lista ordenada usando búsqueda binaria y devuelve su índice, \n    o -1 si no está.\n    \"\"\"\n    izquierda = 0\n    derecha = len(lista) - 1\n\n    while izquierda <= derecha:\n        medio = (izquierda + derecha) // 2\n        \n        if lista[medio] == x:\n            return medio\n        elif lista[medio] < x:\n            izquierda = medio + 1\n        else:\n            derecha = medio - 1\n            \n    return -1"
+      ],
+      "tok_tests": 193,
+      "seg_tests": 2.408590078353882
+    },
+    {
+      "id": "anidar",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        true
+      ],
+      "falsas": 2,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert anidar({'a.b': 1}) == {'a': {'b': 1}}\nassert anidar({'x': 1}) == {'x': 1}\nassert anidar({}) == {}\nassert anidar({'a.b.c': 1}) == {'a': {'b': {'c': 1}}}\nassert anidar({'a.b': 1, 'a.c': 2}) == {'a': {'b': 1, 'c': 2}}\nassert anidar({'a': 1, 'b.c': 2}) == {'a': 1, 'b': {'c': 2}}\nassert anidar({'a.b': 1, 'a.b.c': 2}) == {'a': {'b': {'c': 2}}}\nassert anidar({'a.b': 1, 'c.d': 2}) == {'a': {'b': 1}, 'c': {'d': 2}}",
+      "motivos": [
+        "TypeError: 'int' object does not support item assignment",
+        "TypeError: 'int' object does not support item assignment",
+        ""
+      ],
+      "candidatas": [
+        "def anidar(plano):\n    \"\"\"\n    Convierte un diccionario de claves con puntos en un diccionario anidado.\n\n    Ejemplo: {'a.b': 1} -> {'a': {'b': 1}}\n    \"\"\"\n    resultado = {}\n    for clave_con_puntos, valor in plano.items():\n        partes = clave_con_puntos.split('.')\n        nivel_actual = resultado\n        for i, parte in enumerate(partes):\n            if i == len(partes) - 1:\n                # Última parte, asignamos el valor\n                nivel_actual[parte] = valor\n            else:\n                # Parte intermedia, aseguramos que sea un diccionario\n                if parte not in nivel_actual:\n                    nivel_actual[parte] = {}\n                # Avanzamos al siguiente nivel\n                nivel_actual = nivel_actual[parte]\n    return resultado",
+        "def anidar(plano):\n    \"\"\"\n    Convierte un diccionario donde las claves contienen puntos en un diccionario anidado.\n\n    Ejemplo: {'a.b': 1} -> {'a': {'b': 1}}\n    \"\"\"\n    resultado = {}\n    for clave_punto, valor in plano.items():\n        partes = clave_punto.split('.')\n        nivel_actual = resultado\n        for i, parte in enumerate(partes):\n            if i == len(partes) - 1:\n                # Es la última parte, asignamos el valor\n                nivel_actual[parte] = valor\n            else:\n                # Creamos o accedemos al diccionario para el siguiente nivel\n                if parte not in nivel_actual:\n                    nivel_actual[parte] = {}\n                # Avanzamos al siguiente nivel\n                nivel_actual = nivel_actual[parte]\n    return resultado",
+        "def anidar(plano: dict) -> dict:\n    \"\"\"\n    Convierte un diccionario de claves con puntos en un diccionario anidado.\n\n    Ejemplo: {'a.b': 1} -> {'a': {'b': 1}}\n    \"\"\"\n    resultado = {}\n    for clave, valor in plano.items():\n        partes = clave.split('.')\n        nivel = resultado\n        for i, parte in enumerate(partes):\n            if i == len(partes) - 1:\n                # Última parte, asigna el valor\n                nivel[parte] = valor\n            else:\n                # Parte intermedia, asegura que sea un diccionario y avanza\n                if parte not in nivel:\n                    nivel[parte] = {}\n                # Caso borde: si ya existe pero no es dict, sobrescribe (asumiendo que la estructura es válida)\n                elif not isinstance(nivel[parte], dict):\n                    nivel[parte] = {}\n                nivel = nivel[parte]\n    return resultado"
+      ],
+      "tok_tests": 222,
+      "seg_tests": 2.825425624847412
+    },
+    {
+      "id": "rle",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 8,
+      "tests_gemma": "assert comprimir(\"aaabb\") == \"a3b2\"\nassert comprimir(\"abc\") == \"a1b1c1\"\nassert comprimir(\"\") == \"\"\nassert comprimir(\"aaaaa\") == \"a5\"\nassert comprimir(\"a\") == \"a1\"\nassert comprimir(\"aabbcc\") == \"a2b2c2\"\nassert comprimir(\"abbba\") == \"a1b3a1\"\nassert comprimir(\"cccccccc\") == \"c8\"",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def comprimir(s: str) -> str:\n    if not s:\n        return \"\"\n\n    result = []\n    i = 0\n    n = len(s)\n\n    while i < n:\n        char = s[i]\n        count = 0\n        j = i\n        while j < n and s[j] == char:\n            count += 1\n            j += 1\n\n        result.append(f\"{char}{count}\")\n        i = j\n\n    return \"\".join(result)",
+        "def comprimir(s: str) -> str:\n    if not s:\n        return \"\"\n\n    result = []\n    i = 0\n    n = len(s)\n\n    while i < n:\n        char = s[i]\n        count = 1\n        j = i + 1\n        while j < n and s[j] == char:\n            count += 1\n            j += 1\n\n        result.append(char + str(count))\n        i = j\n\n    return \"\".join(result)",
+        "def comprimir(s: str) -> str:\n    if not s:\n        return \"\"\n\n    resultado = []\n    count = 1\n    n = len(s)\n\n    for i in range(1, n):\n        if s[i] == s[i-1]:\n            count += 1\n        else:\n            resultado.append(s[i-1])\n            resultado.append(str(count))\n            count = 1\n\n    # Agregar el último carácter y su conteo\n    resultado.append(s[n-1])\n    resultado.append(str(count))\n\n    return \"\".join(resultado)"
+      ],
+      "tok_tests": 115,
+      "seg_tests": 1.5384719371795654
+    },
+    {
+      "id": "anagrama",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert es_anagrama(\"listen\", \"silent\") == True\nassert es_anagrama(\"Debit Card\", \"Bad Credit\") == True\nassert es_anagrama(\"hello\", \"world\") == False\nassert es_anagrama(\"\", \"\") == True\nassert es_anagrama(\"a\", \"A\") == True\nassert es_anagrama(\"race\", \"caree\") == False\nassert es_anagrama(\"programming\", \"grammar\") == False\nassert es_anagrama(\"abc\", \"abcd\") == False\nassert es_anagrama(\" \", \" \") == True",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def es_anagrama(a, b):\n    \"\"\"\n    Verifica si dos strings son anagramas, ignorando mayúsculas y espacios.\n\n    Args:\n        a (str): El primer string.\n        b (str): El segundo string.\n\n    Returns:\n        bool: True si son anagramas, False en caso contrario.\n    \"\"\"\n    def limpiar_string(s):\n        # Convertir a minúsculas y eliminar espacios\n        return \"\".join(sorted(filter(str.isalnum, s.lower())))\n\n    str_a_limpio = limpiar_string(a)\n    str_b_limpio = limpiar_string(b)\n\n    return str_a_limpio == str_b_limpio",
+        "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Verifica si dos strings son anagramas, ignorando mayúsculas y espacios.\n\n    Args:\n        a: El primer string.\n        b: El segundo string.\n\n    Returns:\n        True si los strings son anagramas, False en caso contrario.\n    \"\"\"\n    def normalize_string(s: str) -> str:\n        # Convertir a minúsculas y eliminar espacios\n        return \"\".join(sorted(s.lower().replace(\" \", \"\")))\n\n    return normalize_string(a) == normalize_string(b)",
+        "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Devuelve True si los dos strings son anagramas, ignorando mayusculas y espacios.\n    \"\"\"\n    def normalizar(s: str) -> str:\n        # Convertir a minúsculas y eliminar espacios\n        return \"\".join(filter(str.isalnum, s.lower()))\n\n    s_a = normalizar(a)\n    s_b = normalizar(b)\n\n    # Dos strings son anagramas si tienen la misma longitud y el mismo conteo de caracteres\n    if len(s_a) != len(s_b):\n        return False\n\n    return sorted(s_a) == sorted(s_b)"
+      ],
+      "tok_tests": 128,
+      "seg_tests": 1.6625034809112549
+    },
+    {
+      "id": "movil",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert promedio_movil([1, 2, 3, 4, 5], 3) == [2.0, 3.0, 4.0]\nassert promedio_movil([10, 20, 30], 1) == [10.0, 20.0, 30.0]\nassert promedio_movil([1, 2], 3) == []\nassert promedio_movil([], 3) == []\nassert promedio_movil([5], 1) == [5.0]\nassert promedio_movil([5], 2) == []\nassert promedio_movil([1, 1, 1, 1], 4) == [1.0]\nassert promedio_movil([10, 0, 10], 2) == [5.0, 10.0]\nassert promedio_movil([100], 1) == [100.0]",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def promedio_movil(nums, ventana):\n    \"\"\"\n    Calcula la lista de promedios móviles de tamaño 'ventana' para la lista 'nums'.\n\n    Args:\n        nums (list): La lista de números de entrada.\n        ventana (int): El tamaño de la ventana para el promedio móvil.\n\n    Returns:\n        list: La lista de promedios móviles, o una lista vacía si len(nums) < ventana.\n    \"\"\"\n    if not nums or ventana <= 0 or len(nums) < ventana:\n        return []\n\n    promedios = []\n    # Iteramos desde el índice donde podemos formar la primera ventana completa\n    for i in range(len(nums) - ventana + 1):\n        # Tomamos la sublista de la ventana actual\n        ventana_actual = nums[i:i + ventana]\n        # Calculamos el promedio\n        promedio = sum(ventana_actual) / ventana\n        promedios.append(promedio)\n\n    return promedios",
+        "def promedio_movil(nums, ventana):\n    \"\"\"\n    Calcula la lista de promedios móviles de tamaño 'ventana' para la lista 'nums'.\n\n    Args:\n        nums (list): La lista de números de entrada.\n        ventana (int): El tamaño de la ventana para el promedio móvil.\n\n    Returns:\n        list: Una lista de los promedios móviles, o una lista vacía si len(nums) < ventana.\n    \"\"\"\n    if len(nums) < ventana:\n        return []\n\n    promedios = []\n    for i in range(len(nums) - ventana + 1):\n        sub_lista = nums[i:i + ventana]\n        promedio = sum(sub_lista) / ventana\n        promedios.append(promedio)\n\n    return promedios",
+        "def promedio_movil(nums, ventana):\n    \"\"\"\n    Calcula la lista de promedios móviles de un conjunto de números.\n\n    Args:\n        nums (list): La lista de números de entrada.\n        ventana (int): El tamaño de la ventana para el promedio móvil.\n\n    Returns:\n        list: La lista de promedios móviles, o una lista vacía si la longitud de nums es menor que ventana.\n    \"\"\"\n    if not nums or ventana <= 0 or len(nums) < ventana:\n        return []\n\n    promedios = []\n    for i in range(len(nums) - ventana + 1):\n        sub_lista = nums[i:i + ventana]\n        promedio = sum(sub_lista) / ventana\n        promedios.append(promedio)\n\n    return promedios"
+      ],
+      "tok_tests": 227,
+      "seg_tests": 2.8410544395446777
+    },
+    {
+      "id": "bytes_humano",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert formatear_bytes(0) == '0 B'\nassert formatear_bytes(1023) == '1023 B'\nassert formatear_bytes(1024) == '1.0 KB'\nassert formatear_bytes(1536) == '1.5 KB'\nassert formatear_bytes(2048) == '2.0 KB'\nassert formatear_bytes(1048576) == '1.0 MB'\nassert formatear_bytes(1024 * 1024 * 1.5) == '1.5 MB'\nassert formatear_bytes(1073741823) == '1.0 GB'\nassert formatear_bytes(1024 * 1024 * 1024 * 1.1) == '1.1 GB'\nassert formatear_bytes(1) == '1 B'",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "ValueError: El número de bytes debe ser un entero no negativo."
+      ],
+      "candidatas": [
+        "def formatear_bytes(n):\n    \"\"\"\n    Convierte un número de bytes a texto legible usando múltiplos de 1024.\n\n    Args:\n        n (int): El número de bytes.\n\n    Returns:\n        str: El número formateado en unidades legibles (B, KB, MB, GB).\n    \"\"\"\n    if n < 0:\n        return \"Error: Entrada negativa\"\n    if n == 0:\n        return \"0 B\"\n\n    unidades = ['B', 'KB', 'MB', 'GB']\n    i = 0\n    valor = float(n)\n\n    while valor >= 1024 and i < len(unidades) - 1:\n        valor /= 1024\n        i += 1\n\n    if i == 0:\n        return f\"{int(n)} {unidades[0]}\"\n    else:\n        # Formateo con un decimal, excepto para B (que ya está cubierto arriba)\n        return f\"{valor:.1f} {unidades[i]}\"",
+        "def formatear_bytes(n):\n    if n is None or n < 0:\n        return \"0 B\"\n\n    if n < 1024:\n        return f\"{int(n)} B\"\n\n    unidades = ['KB', 'MB', 'GB']\n    valor = float(n)\n    i = 0\n\n    while valor >= 1024 and i < len(unidades):\n        valor /= 1024\n        i += 1\n\n    if i == 0:\n        # Esto solo debería pasar si n < 1024, pero como ya se manejó arriba, es un fallback\n        return f\"{int(n)} B\"\n\n    # Para KB, MB, GB, mostramos con un decimal\n    return f\"{valor:.1f} {unidades[i-1]}\"",
+        "def formatear_bytes(n):\n    \"\"\"\n    Convierte un número de bytes a texto legible usando múltiplos de 1024.\n\n    Args:\n        n (int): El número de bytes.\n\n    Returns:\n        str: El valor formateado en unidades legibles (B, KB, MB, GB).\n    \"\"\"\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"El número de bytes debe ser un entero no negativo.\")\n\n    if n == 0:\n        return \"0 B\"\n\n    unidades = ['B', 'KB', 'MB', 'GB']\n    exponente = 0\n    valor = float(n)\n\n    while valor >= 1024 and exponente < len(unidades) - 1:\n        valor /= 1024.0\n        exponente += 1\n\n    unidad = unidades[exponente]\n\n    if unidad == 'B':\n        return f\"{int(n)} {unidad}\"\n    else:\n        return f\"{valor:.1f} {unidad}\""
+      ],
+      "tok_tests": 223,
+      "seg_tests": 2.878380537033081
+    },
+    {
+      "id": "query",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert parsear_query(\"a=1&b=2\") == {'a': '1', 'b': '2'}\nassert parsear_query(\"a=1\") == {'a': '1'}\nassert parsear_query(\"b=2&a=1\") == {'b': '2', 'a': '1'}\nassert parsear_query(\"\") == {}\nassert parsear_query(\"a=\") == {'a': ''}\nassert parsear_query(\"b=&a=1\") == {'b': '', 'a': '1'}\nassert parsear_query(\"c=\") == {'c': ''}\nassert parsear_query(\"a=1&\") == {'a': '1'}\nassert parsear_query(\"&b=2\") == {'b': '2'}\nassert parsear_query(\"a=1&b=&c=\") == {'a': '1', 'b': '', 'c': ''}",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def parsear_query(s: str) -> dict:\n    \"\"\"\n    Convierte un query string tipo 'a=1&b=2' en un dict {'a':'1','b':'2'}.\n    Una clave sin valor ('c=') queda con string vacio. String vacío devuelve dict vacío.\n    \"\"\"\n    if not s:\n        return {}\n\n    query_dict = {}\n    pairs = s.split('&')\n\n    for pair in pairs:\n        if not pair:\n            continue  # Manejar '&' al principio o al final, o '&' doble\n\n        if '=' in pair:\n            key, value = pair.split('=', 1)\n            query_dict[key] = value\n        else:\n            # Caso de clave sin valor, aunque el ejemplo sugiere 'c=' para valor vacío.\n            # Si no hay '=', asumimos que la clave es el valor (aunque esto no es estándar de query string)\n            # Basándonos en el requisito 'c=' -> {'c': ''}, si no hay '=' no debería ocurrir.\n            # Para robustez, si no hay '=', lo tratamos como clave con valor vacío si está presente.\n            # Sin embargo, si el input es 'key_only', la implementación más segura es ignorarlo\n            # o tratarlo como clave con valor nulo/vacío, pero nos ceñimos al formato 'key=value'.\n            pass\n\n    return query_dict",
+        "def parsear_query(s: str) -> dict:\n    \"\"\"\n    Convierte un query string tipo 'a=1&b=2' en un diccionario {'a':'1','b':'2'}.\n    Una clave sin valor ('c=') queda con string vacio. String vacio devuelve dict vacio.\n    \"\"\"\n    if not s:\n        return {}\n\n    result = {}\n    pairs = s.split('&')\n\n    for pair in pairs:\n        if '=' in pair:\n            key, value = pair.split('=', 1)\n            # Manejar el caso donde el valor es vacío (ej: 'c=')\n            result[key] = value if value is not None else \"\"\n        else:\n            # Si no hay '=', se considera un caso borde no especificado,\n            # pero asumiendo que el formato es siempre key=value o key=\n            # Si el par no tiene '=', lo ignoramos o lo tratamos como clave con valor vacío\n            # Siguiendo el patrón de las otras reglas, si es solo una clave sin '=', lo ignoramos\n            # ya que el requerimiento se centra en 'key=value' y 'key='\n            pass\n\n    return result",
+        "from urllib.parse import parse_qs\n\ndef parsear_query(s: str) -> dict:\n    \"\"\"\n    Convierte un query string tipo 'a=1&b=2' en un dict {'a':'1','b':'2'}.\n    Una clave sin valor ('c=') queda con string vacio. String vacio devuelve dict vacio.\n    \"\"\"\n    if not s:\n        return {}\n\n    result = {}\n    try:\n        pairs = s.split('&')\n        for pair in pairs:\n            if not pair:\n                continue\n            \n            if '=' in pair:\n                key, value = pair.split('=', 1)\n                result[key] = value\n            else:\n                # Caso borde: clave sin '=', se trata como clave con valor vacío si se interpreta como 'clave='\n                # Basado en el ejemplo 'c=' -> {'c':''}\n                # Si solo hay 'clave' sin '=', se asume que no es un par válido en este contexto\n                pass\n        return result\n    except Exception:\n        # Manejo general de errores inesperados en el parsing\n        return {}\n\nif __name__ == '__main__':\n    # Pruebas\n    print(f\"Test 'a=1&b=2': {parsear_query('a=1&b=2')}\")  # Esperado: {'a': '1', 'b': '2'}\n    print(f\"Test 'c=': {parsear_query('c=')}\")           # Esperado: {'c': ''}\n    print(f\"Test '': {parsear_query('')}\")               # Esperado: {}\n    print(f\"Test 'a=1&': {parsear_query('a=1&')}\")       # Esperado: {'a': '1'}\n    print(f\"Test '&b=2': {parsear_query('&b=2')}\")       # Esperado: {'b': '2'}\n    print(f\"Test 'a=1&b=': {parsear_query('a=1&b=')}\")   # Esperado: {'a': '1', 'b': ''}\n    print(f\"Test 'a': {parsear_query('a')}\")             # Esperado: {} (No tiene '=')\n    print(f\"Test 'a=1&b=2&c=': {parsear_query('a=1&b=2&c=')}\") # Esperado: {'a': '1', 'b': '2', 'c': ''}"
+      ],
+      "tok_tests": 210,
+      "seg_tests": 2.7208690643310547
+    },
+    {
+      "id": "islas",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert contar_islas([[1, 1], [1, 1]]) == 1\nassert contar_islas([[1, 0], [0, 1]]) == 2\nassert contar_islas([[0, 0], [0, 0]]) == 0\nassert contar_islas([[1]]) == 1\nassert contar_islas([[0]]) == 0\nassert contar_islas([[1, 0, 1]]) == 2\nassert contar_islas([[1, 1, 1]]) == 1\nassert contar_islas([[1, 0, 1], [0, 0, 0], [1, 0, 1]]) == 4\nassert contar_islas([[1, 1], [0, 1]]) == 1\nassert contar_islas([[1, 0], [1, 0]]) == 1",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def contar_islas(grid):\n    if not grid:\n        return 0\n\n    rows = len(grid)\n    cols = len(grid[0])\n    visited = [[False for _ in range(cols)] for _ in range(rows)]\n    island_count = 0\n\n    def dfs(r, c):\n        if r < 0 or r >= rows or c < 0 or c >= cols or visited[r][c] or grid[r][c] == 0:\n            return\n        visited[r][c] = True\n        dfs(r + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1 and not visited[r][c]:\n                island_count += 1\n                dfs(r, c)\n\n    return island_count",
+        "def contar_islas(grid):\n    if not grid or not grid[0]:\n        return 0\n\n    rows = len(grid)\n    cols = len(grid[0])\n    visited = [[False for _ in range(cols)] for _ in range(rows)]\n    island_count = 0\n\n    def dfs(r, c):\n        if r < 0 or r >= rows or c < 0 or c >= cols or visited[r][c] or grid[r][c] == 0:\n            return\n        \n        visited[r][c] = True\n        \n        # Vecinos: arriba, abajo, izquierda, derecha\n        dfs(r + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1 and not visited[r][c]:\n                island_count += 1\n                dfs(r, c)\n                \n    return island_count",
+        "def contar_islas(grid):\n    if not grid or not grid[0]:\n        return 0\n\n    rows = len(grid)\n    cols = len(grid[0])\n    visited = [[False for _ in range(cols)] for _ in range(rows)]\n    island_count = 0\n\n    def dfs(r, c):\n        if r < 0 or r >= rows or c < 0 or c >= cols or \\\n           visited[r][c] or grid[r][c] == 0:\n            return\n        \n        visited[r][c] = True\n        \n        # Mover arriba, abajo, izquierda, derecha\n        dfs(r + 1, c)\n        dfs(r - 1, c)\n        dfs(r, c + 1)\n        dfs(r, c - 1)\n\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1 and not visited[r][c]:\n                island_count += 1\n                dfs(r, c)\n                \n    return island_count"
+      ],
+      "tok_tests": 206,
+      "seg_tests": 2.593379259109497
+    },
+    {
+      "id": "levenshtein",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert distancia(\"kitten\", \"sitting\") == 3\nassert distancia(\"saturday\", \"sunday\") == 3\nassert distancia(\"abc\", \"abc\") == 0\nassert distancia(\"\", \"\") == 0\nassert distancia(\"a\", \"\") == 1\nassert distancia(\"\", \"b\") == 1\nassert distancia(\"test\", \"t\") == 3\nassert distancia(\"a\", \"b\") == 1\nassert distancia(\"longstring\", \"short\") == 8",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def distancia(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la distancia de edición de Levenshtein entre dos strings.\n\n    :param a: El primer string.\n    :param b: El segundo string.\n    :return: La distancia de Levenshtein.\n    \"\"\"\n    m = len(a)\n    n = len(b)\n\n    # Crea una matriz de costos (m+1) x (n+1)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n\n    # Inicializa la primera fila y la primera columna\n    # Costo de convertir una cadena vacía a una cadena de longitud i es i (i inserciones)\n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n\n    # Llena la matriz\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            # Costo de sustitución: 0 si son iguales, 1 si son diferentes\n            costo_sustitucion = 0 if a[i - 1] == b[j - 1] else 1\n\n            dp[i][j] = min(\n                dp[i - 1][j] + 1,        # Borrar de 'a'\n                dp[i][j - 1] + 1,        # Insertar en 'a' (o borrar de 'b')\n                dp[i - 1][j - 1] + costo_sustitucion  # Sustituir o coincidir\n            )\n\n    return dp[m][n]",
+        "def distancia(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la distancia de edición de Levenshtein entre dos strings.\n\n    La distancia de Levenshtein es el número mínimo de ediciones (inserciones, \n    eliminaciones o sustituciones) necesarias para cambiar una cadena en otra.\n\n    Args:\n        a: El primer string.\n        b: El segundo string.\n\n    Returns:\n        La distancia de Levenshtein entre a y b.\n    \"\"\"\n    len_a = len(a)\n    len_b = len(b)\n\n    # Crear una matriz de costos (dp)\n    # dp[i][j] contendrá la distancia entre la subcadena a[:i] y b[:j]\n    dp = [[0] * (len_b + 1) for _ in range(len_a + 1)]\n\n    # Inicialización: La distancia para convertir una cadena vacía en otra es su longitud\n    for i in range(len_a + 1):\n        dp[i][0] = i  # Costo de borrar i caracteres de 'a' para obtener cadena vacía\n    for j in range(len_b + 1):\n        dp[0][j] = j  # Costo de insertar j caracteres en cadena vacía para obtener 'b'\n\n    # Llenado de la matriz\n    for i in range(1, len_a + 1):\n        for j in range(1, len_b + 1):\n            # Costo de sustitución: 0 si los caracteres son iguales, 1 si son diferentes\n            costo_sustitucion = 0 if a[i - 1] == b[j - 1] else 1\n\n            # La distancia en dp[i][j] es el mínimo de:\n            # 1. Eliminación: dp[i-1][j] + 1 (Borrar a[i-1])\n            # 2. Inserción: dp[i][j-1] + 1 (Insertar b[j-1] en a)\n            # 3. Sustitución/Coincidencia: dp[i-1][j-1] + costo_sustitucion\n            dp[i][j] = min(\n                dp[i - 1][j] + 1,        # Eliminación\n                dp[i][j - 1] + 1,        # Inserción\n                dp[i - 1][j - 1] + costo_sustitucion  # Sustitución/Coincidencia\n            )\n\n    return dp[len_a][len_b]",
+        "def distancia(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la distancia de edición de Levenshtein entre dos strings.\n\n    Args:\n        a: El primer string.\n        b: El segundo string.\n\n    Returns:\n        La distancia de Levenshtein entre a y b.\n    \"\"\"\n    m = len(a)\n    n = len(b)\n\n    # Crear la matriz de costes (m+1) x (n+1)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n\n    # Inicializar la primera fila y la primera columna\n    # Costo de convertir una cadena vacía en una cadena de longitud i/j es i/j\n    for i in range(m + 1):\n        dp[i][0] = i  # Borrados\n    for j in range(n + 1):\n        dp[0][j] = j  # Inserciones\n\n    # Llenar la matriz\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            # Costo de sustitución (0 si son iguales, 1 si son diferentes)\n            cost = 0 if a[i - 1] == b[j - 1] else 1\n\n            dp[i][j] = min(\n                dp[i - 1][j] + 1,      # Borrar a[i-1]\n                dp[i][j - 1] + 1,      # Insertar b[j-1]\n                dp[i - 1][j - 1] + cost # Sustituir o coincidir\n            )\n\n    return dp[m][n]"
+      ],
+      "tok_tests": 107,
+      "seg_tests": 1.444390058517456
+    },
+    {
+      "id": "password",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert validar_password(\"Abc1!def\") == True  # Caso normal\nassert validar_password(\"abcdefgh\") == False  # Falta mayúscula, dígito y no alfanumérico\nassert validar_password(\"ABCDEFGHI\") == False  # Falta minúscula, dígito y no alfanumérico\nassert validar_password(\"abcdefgh\") == False  # Falta mayúscula, dígito y no alfanumérico\nassert validar_password(\"Abcdefg\") == False  # Menos de 8 caracteres\nassert validar_password(\"Abc1!defg\") == True  # Caso normal con longitud mínima\nassert validar_password(\"aBc1!\") == False  # Menos de 8 caracteres\nassert validar_password(\"Abc1!defg\") == True  # Caso normal\nassert validar_password(\"abcdefgh1\") == False  # Falta carácter no alfanumérico\nassert validar_password(\"Abcdefg!\") == False  # Falta dígito",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "import re\n\ndef validar_password(p: str) -> bool:\n    \"\"\"\n    Valida una contraseña según los siguientes criterios:\n    1. Al menos 8 caracteres.\n    2. Al menos una mayúscula.\n    3. Al menos una minúscula.\n    4. Al menos un dígito.\n    5. Al menos un carácter no alfanumérico.\n    \"\"\"\n    if not isinstance(p, str):\n        return False\n\n    # 1. Longitud\n    if len(p) < 8:\n        return False\n\n    # 2. Mayúscula\n    if not re.search(r'[A-Z]', p):\n        return False\n\n    # 3. Minúscula\n    if not re.search(r'[a-z]', p):\n        return False\n\n    # 4. Dígito\n    if not re.search(r'[0-9]', p):\n        return False\n\n    # 5. No alfanumérico\n    # Busca cualquier carácter que NO sea letra (a-z, A-Z) ni dígito (0-9)\n    if not re.search(r'[^a-zA-Z0-9]', p):\n        return False\n\n    return True",
+        "import re\n\ndef validar_password(p: str) -> bool:\n    \"\"\"\n    Valida una contraseña asegurando que cumpla con los siguientes criterios:\n    - Al menos 8 caracteres.\n    - Al menos una mayúscula.\n    - Al menos una minúscula.\n    - Al menos un dígito.\n    - Al menos un carácter que no sea alfanumérico.\n    \"\"\"\n    if not isinstance(p, str):\n        return False\n\n    # 1. Longitud mínima\n    if len(p) < 8:\n        return False\n\n    # 2. Al menos una mayúscula\n    if not re.search(r\"[A-Z]\", p):\n        return False\n\n    # 3. Al menos una minúscula\n    if not re.search(r\"[a-z]\", p):\n        return False\n\n    # 4. Al menos un dígito\n    if not re.search(r\"\\d\", p):\n        return False\n\n    # 5. Al menos un carácter no alfanumérico\n    # [^a-zA-Z0-9] busca cualquier cosa que NO sea letra ni dígito\n    if not re.search(r\"[^a-zA-Z0-9]\", p):\n        return False\n\n    return True",
+        "import re\n\ndef validar_password(p: str) -> bool:\n    \"\"\"\n    Valida una contraseña si cumple con los siguientes criterios:\n    1. Al menos 8 caracteres de longitud.\n    2. Contiene al menos una letra mayúscula.\n    3. Contiene al menos una letra minúscula.\n    4. Contiene al menos un dígito.\n    5. Contiene al menos un carácter que no sea alfanumérico.\n\n    Args:\n        p: La contraseña a validar.\n\n    Returns:\n        True si la contraseña cumple todos los criterios, False en caso contrario.\n    \"\"\"\n    if not isinstance(p, str):\n        return False\n\n    # 1. Longitud mínima de 8 caracteres\n    if len(p) < 8:\n        return False\n\n    # 2. Al menos una mayúscula\n    if not re.search(r\"[A-Z]\", p):\n        return False\n\n    # 3. Al menos una minúscula\n    if not re.search(r\"[a-z]\", p):\n        return False\n\n    # 4. Al menos un dígito\n    if not re.search(r\"\\d\", p):\n        return False\n\n    # 5. Al menos un carácter no alfanumérico (símbolo)\n    # Esto verifica cualquier cosa que no sea letra (a-z, A-Z) ni dígito (0-9)\n    if not re.search(r\"[^a-zA-Z0-9]\", p):\n        return False\n\n    return True"
+      ],
+      "tok_tests": 224,
+      "seg_tests": 2.805638074874878
+    },
+    {
+      "id": "base_n",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert a_base(0, 10) == '0'\nassert a_base(10, 10) == '10'\nassert a_base(255, 16) == 'ff'\nassert a_base(1, 2) == '1'\nassert a_base(0, 2) == '0'\nassert a_base(15, 16) == 'f'\nassert a_base(16, 16) == '10'\nassert a_base(256, 16) == '100'\nassert a_base(4095, 16) == 'fff'\nassert a_base(1, 2) == '1'",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def a_base(n, base):\n    \"\"\"\n    Convierte un entero no negativo n a string en la base dada (2 a 16).\n\n    Args:\n        n (int): El entero no negativo a convertir.\n        base (int): La base de conversión (entre 2 y 16).\n\n    Returns:\n        str: La representación de n en la base dada.\n    \n    Raises:\n        ValueError: Si n es negativo o base está fuera del rango [2, 16].\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"El entero debe ser no negativo.\")\n    if not (2 <= base <= 16):\n        raise ValueError(\"La base debe estar entre 2 y 16.\")\n\n    if n == 0:\n        return '0'\n\n    digits = \"0123456789abcdef\"\n    result = \"\"\n    \n    temp_n = n\n    while temp_n > 0:\n        remainder = temp_n % base\n        result = digits[remainder] + result\n        temp_n //= base\n        \n    return result",
+        "def a_base(n: int, base: int) -> str:\n    \"\"\"\n    Convierte un entero no negativo n a string en la base dada (2 a 16).\n\n    Args:\n        n: El entero no negativo a convertir.\n        base: La base de conversión (entre 2 y 16).\n\n    Returns:\n        La representación de n como string en la base dada.\n\n    Raises:\n        ValueError: Si la base no está en el rango [2, 16].\n    \"\"\"\n    if not (2 <= base <= 16):\n        raise ValueError(\"La base debe estar entre 2 y 16.\")\n    if n < 0:\n        raise ValueError(\"El entero debe ser no negativo.\")\n\n    if n == 0:\n        return '0'\n\n    # Caracteres utilizados para las bases hasta 16 (0-9 y a-f)\n    digits = \"0123456789abcdef\"\n\n    resultado = \"\"\n    temp_n = n\n\n    while temp_n > 0:\n        residuo = temp_n % base\n        caracter = digits[residuo]\n        resultado = caracter + resultado\n        temp_n //= base\n\n    return resultado",
+        "def a_base(n: int, base: int) -> str:\n    if n < 0:\n        raise ValueError(\"El número debe ser no negativo.\")\n    if not (2 <= base <= 16):\n        raise ValueError(\"La base debe estar entre 2 y 16.\")\n\n    if n == 0:\n        return '0'\n\n    caracteres = \"0123456789abcdef\"\n    resultado = \"\"\n\n    while n > 0:\n        resto = n % base\n        resultado = caracteres[resto] + resultado\n        n //= base\n\n    return resultado"
+      ],
+      "tok_tests": 176,
+      "seg_tests": 2.3008830547332764
+    },
+    {
+      "id": "particion",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert pares_primero([1, 2, 3, 4, 5]) == [2, 4, 1, 3, 5]\nassert pares_primero([2, 4, 6, 8]) == [2, 4, 6, 8]\nassert pares_primero([1, 3, 5, 7]) == [1, 3, 5, 7]\nassert pares_primero([]) == []\nassert pares_primero([1]) == [1]\nassert pares_primero([2]) == [2]\nassert pares_primero([1, 2]) == [2, 1]\nassert pares_primero([2, 1]) == [2, 1]\nassert pares_primero([4, 1, 2, 3]) == [4, 2, 1, 3]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def pares_primero(nums):\n    \"\"\"\n    Devuelve una lista con los números pares primero y los impares después,\n    conservando el orden relativo original dentro de cada grupo.\n\n    Args:\n        nums (list): Una lista de números enteros.\n\n    Returns:\n        list: Una nueva lista con los pares seguidos de los impares.\n    \"\"\"\n    pares = [num for num in nums if num % 2 == 0]\n    impares = [num for num in nums if num % 2 != 0]\n    return pares + impares",
+        "def pares_primero(nums):\n    pares = [n for n in nums if n % 2 == 0]\n    impares = [n for n in nums if n % 2 != 0]\n    return pares + impares",
+        "def pares_primero(nums):\n    \"\"\"\n    Devuelve una lista con los números pares primero y los impares después,\n    conservando el orden relativo original dentro de cada grupo.\n\n    Args:\n        nums (list): Una lista de números enteros.\n\n    Returns:\n        list: Una nueva lista con los pares seguidos por los impares.\n    \"\"\"\n    pares = [num for num in nums if num % 2 == 0]\n    impares = [num for num in nums if num % 2 != 0]\n    return pares + impares"
+      ],
+      "tok_tests": 208,
+      "seg_tests": 2.5849785804748535
+    },
+    {
+      "id": "interseccion",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 9,
+      "tests_gemma": "assert interseccion([1, 3, 5], [1, 2, 3]) == [1, 3]\nassert interseccion([1, 2, 3], [1, 2, 3]) == [1, 2, 3]\nassert interseccion([1, 2], [3, 4]) == []\nassert interseccion([], [1, 2]) == []\nassert interseccion([1, 2], []) == []\nassert interseccion([1], [1]) == [1]\nassert interseccion([1, 3, 5], [1, 3, 5, 5]) == [1, 3, 5]\nassert interseccion([1, 1, 2], [1, 2, 2]) == [1, 2]\nassert interseccion([1, 5, 10], [1, 5, 10]) == [1, 5, 10]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def interseccion(a: list[int], b: list[int]) -> list[int]:\n    \"\"\"\n    Calcula la intersección de dos listas ordenadas de enteros.\n\n    Args:\n        a: Primera lista ordenada de enteros.\n        b: Segunda lista ordenada de enteros.\n\n    Returns:\n        Lista ordenada de enteros presentes en ambas listas, sin repetidos.\n    \"\"\"\n    interseccion_resultado = []\n    i, j = 0, 0\n    n_a, n_b = len(a), len(b)\n\n    while i < n_a and j < n_b:\n        if a[i] < b[j]:\n            i += 1\n        elif a[i] > b[j]:\n            j += 1\n        else:\n            # Elemento encontrado en ambos. Añadir si no está ya en el resultado\n            # (Esto maneja duplicados en las entradas, aunque el problema pide sin repetidos en la salida)\n            if not interseccion_resultado or a[i] != interseccion_resultado[-1]:\n                interseccion_resultado.append(a[i])\n            i += 1\n            j += 1\n\n    return interseccion_resultado",
+        "def interseccion(a, b):\n    \"\"\"\n    Calcula la intersección de dos listas ordenadas de enteros.\n\n    Args:\n        a (list): Primera lista ordenada de enteros.\n        b (list): Segunda lista ordenada de enteros.\n\n    Returns:\n        list: Lista ordenada de enteros presentes en ambas, sin repetidos.\n    \"\"\"\n    interseccion_resultante = []\n    i = 0\n    j = 0\n    n_a = len(a)\n    n_b = len(b)\n\n    while i < n_a and j < n_b:\n        if a[i] == b[j]:\n            # Se encontró un elemento en la intersección\n            # Añadir solo si no es el último elemento añadido (para evitar duplicados)\n            if not interseccion_resultante or a[i] != interseccion_resultante[-1]:\n                interseccion_resultante.append(a[i])\n            i += 1\n            j += 1\n        elif a[i] < b[j]:\n            # El elemento en 'a' es menor, avanzamos en 'a'\n            i += 1\n        else:  # a[i] > b[j]\n            # El elemento en 'b' es menor, avanzamos en 'b'\n            j += 1\n\n    return interseccion_resultante",
+        "def interseccion(a, b):\n    \"\"\"\n    Calcula la intersección de dos listas ordenadas de enteros.\n\n    Args:\n        a (list): Primera lista ordenada de enteros.\n        b (list): Segunda lista ordenada de enteros.\n\n    Returns:\n        list: Lista ordenada de enteros presentes en ambas, sin repetidos.\n    \"\"\"\n    resultado = []\n    i = 0\n    j = 0\n\n    while i < len(a) and j < len(b):\n        if a[i] < b[j]:\n            i += 1\n        elif a[i] > b[j]:\n            j += 1\n        else:\n            # Elementos iguales, se añaden si no es un duplicado reciente\n            if not resultado or resultado[-1] != a[i]:\n                resultado.append(a[i])\n            i += 1\n            j += 1\n            \n    return resultado"
+      ],
+      "tok_tests": 223,
+      "seg_tests": 2.8631765842437744
+    },
+    {
+      "id": "dias_entre",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert dias_entre('2023-01-01', '2023-01-02') == 1\nassert dias_entre('2023-05-10', '2023-05-10') == 0\nassert dias_entre('2023-12-31', '2024-01-01') == 1\nassert dias_entre('2024-02-28', '2024-03-01') == 2\nassert dias_entre('2023-01-01', '1999-12-31') == -3652  # Asumiendo que la función maneja el orden y devuelve positivo, si el orden es fijo, este test podría cambiar. Si debe ser positivo, el orden de entrada debe ser consistente o la función debe asegurar el positivo.\nassert dias_entre('2023-01-01', '2023-01-01') == 0\nassert dias_entre('2023-01-01', '2025-01-01') == 731 # 2 años exactos (sin considerar bisiestos si el cálculo es simple, pero datetime lo hará)\nassert dias_entre('2024-02-29', '2024-03-01') == 1 # Caso bisiesto\nassert dias_entre('2023-10-27', '2023-10-27') == 0\nassert dias_entre('2023-01-01', '2023-01-01') == 0",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "from datetime import datetime\n\ndef dias_entre(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la cantidad de días entre dos fechas dadas en formato 'YYYY-MM-DD'.\n\n    Args:\n        a: La primera fecha en formato 'YYYY-MM-DD'.\n        b: La segunda fecha en formato 'YYYY-MM-DD'.\n\n    Returns:\n        La cantidad de días entre ambas fechas como entero positivo.\n    \"\"\"\n    try:\n        fecha_a = datetime.strptime(a, '%Y-%m-%d')\n        fecha_b = datetime.strptime(b, '%Y-%m-%d')\n    except ValueError:\n        raise ValueError(\"Ambas fechas deben estar en el formato 'YYYY-MM-DD'\")\n\n    # Calcular la diferencia\n    diferencia = abs(fecha_a - fecha_b)\n\n    # Devolver la diferencia en días como entero\n    return diferencia.days",
+        "from datetime import datetime\n\ndef dias_entre(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la cantidad de días entre dos fechas dadas en formato 'YYYY-MM-DD'.\n\n    Args:\n        a: La primera fecha como cadena ('YYYY-MM-DD').\n        b: La segunda fecha como cadena ('YYYY-MM-DD').\n\n    Returns:\n        La diferencia absoluta en días como entero positivo.\n    \"\"\"\n    try:\n        fecha_a = datetime.strptime(a, '%Y-%m-%d')\n        fecha_b = datetime.strptime(b, '%Y-%m-%d')\n    except ValueError:\n        raise ValueError(\"Ambas entradas deben estar en el formato 'YYYY-MM-DD'\")\n\n    # Calcula la diferencia de los objetos datetime\n    diferencia = abs((fecha_b - fecha_a).days)\n    \n    return diferencia",
+        "from datetime import datetime\n\ndef dias_entre(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la cantidad de días entre dos fechas en formato 'YYYY-MM-DD'.\n\n    Args:\n        a: La primera fecha en formato 'YYYY-MM-DD'.\n        b: La segunda fecha en formato 'YYYY-MM-DD'.\n\n    Returns:\n        La cantidad de días entre ambas fechas como entero positivo.\n    \"\"\"\n    try:\n        fecha_a = datetime.strptime(a, '%Y-%m-%d')\n        fecha_b = datetime.strptime(b, '%Y-%m-%d')\n    except ValueError:\n        raise ValueError(\"Formato de fecha incorrecto. Use 'YYYY-MM-DD'.\")\n\n    # Calcular la diferencia y obtener el número de días\n    diferencia = abs(fecha_a - fecha_b)\n    return diferencia.days"
+      ],
+      "tok_tests": 406,
+      "seg_tests": 5.079687833786011
+    },
+    {
+      "id": "escapar_csv",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert campo_csv(\"texto simple\") == \"texto simple\"\nassert campo_csv(\"texto con coma, dentro\") == '\"texto con coma, dentro\"'\nassert campo_csv(\"texto con \\\"comilla\\\"\") == '\"texto con \"\"comilla\"\"\"'\nassert campo_csv(\"texto con\\nsalto\") == '\"texto con\\nsalto\"'\nassert campo_csv(\"texto, con, comas\") == '\"texto, con, comas\"'\nassert campo_csv(\"texto con \\\"y\\\" comillas\") == '\"texto con \"\"y\"\" comillas\"'\nassert campo_csv(\"texto, con\\ncoma y salto\") == '\"texto, con\\ncoma y salto\"'\nassert campo_csv(\"texto, con\\\"coma y comillas\") == '\"texto, con\"\"coma y comillas\"\"'\nassert campo_csv(\"\") == \"\"\nassert campo_csv(\",\") == '\",\"'",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def campo_csv(s: str) -> str:\n    \"\"\"\n    Prepara un campo de string para CSV.\n\n    Si contiene coma, comilla doble o salto de línea, lo devuelve entre\n    comillas dobles y con las comillas internas duplicadas. Si no, lo devuelve tal cual.\n\n    :param s: El string a preparar.\n    :return: El string formateado para CSV.\n    \"\"\"\n    if ',' in s or '\"' in s or '\\n' in s:\n        # Escapar comillas dobles duplicándolas (\" -> \"\")\n        s_escaped = s.replace('\"', '\"\"')\n        # Envolver en comillas dobles\n        return f'\"{s_escaped}\"'\n    else:\n        return s",
+        "def campo_csv(s):\n    \"\"\"\n    Prepara un campo de cadena para CSV: si contiene coma, comilla doble o salto de línea, \n    lo devuelve entre comillas dobles y con las comillas internas duplicadas. Si no, \n    lo devuelve tal cual.\n    \"\"\"\n    if ',' in s or '\"' in s or '\\n' in s or '\\r' in s:\n        # Escapar comillas dobles duplicándolas\n        escaped_s = s.replace('\"', '\"\"')\n        # Devolver entre comillas dobles\n        return f'\"{escaped_s}\"'\n    else:\n        # Devolver tal cual si no contiene caracteres especiales\n        return s",
+        "def campo_csv(s):\n    \"\"\"\n    Prepara un campo para CSV: si contiene coma, comilla doble o salto de linea, \n    lo devuelve entre comillas dobles y con las comillas internas duplicadas. \n    Si no, lo devuelve tal cual.\n    \"\"\"\n    if isinstance(s, (int, float)):\n        s = str(s)\n\n    if ',' in s or '\"' in s or '\\n' in s or '\\t' in s:\n        # Reemplazar comillas internas por dos comillas (\" -> \"\")\n        s_escaped = s.replace('\"', '\"\"')\n        # Encerrar en comillas dobles\n        return f'\"{s_escaped}\"'\n    else:\n        return s"
+      ],
+      "tok_tests": 200,
+      "seg_tests": 2.545903205871582
+    },
+    {
+      "id": "titulo",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert titular(\"hola mundo\") == \"Hola Mundo\"\nassert titular(\"este es un ejemplo\") == \"Este Es Un Ejemplo\"\nassert titular(\"de la casa\") == \"De La Casa\"\nassert titular(\"del perro y la gata\") == \"Del Perro y La Gata\"\nassert titular(\"las flores y los árboles\") == \"Las Flores y Los Árboles\"\nassert titular(\"el sol y la luna\") == \"El Sol y La Luna\"\nassert titular(\"y esto es una prueba\") == \"Y Esto Es Una Prueba\"\nassert titular(\"solo\") == \"Solo\"\nassert titular(\"\") == \"\"\nassert titular(\"a\") == \"A\"",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def titular(s: str) -> str:\n    \"\"\"\n    Pone en mayúscula la primera letra de cada palabra, excepto 'de', 'del', 'la', 'las', 'el', 'los' e 'y'\n    cuando no son la primera palabra. Las demás letras quedan en minúscula.\n    \"\"\"\n    if not s:\n        return \"\"\n\n    palabras = s.lower().split()\n    resultado = []\n    articulos_a_ignorar = {'de', 'del', 'la', 'las', 'el', 'los', 'y'}\n\n    for i, palabra in enumerate(palabras):\n        # Si es la primera palabra, siempre se capitaliza\n        if i == 0:\n            capitalizada = palabra.capitalize()\n            resultado.append(capitalizada)\n            continue\n\n        # Si es una palabra subsiguiente, revisamos si debe ser ignorada\n        if palabra in articulos_a_ignorar:\n            # Mantener en minúscula si es un artículo/conjunción ignorada\n            resultado.append(palabra)\n        else:\n            # Capitalizar la primera letra de las demás palabras\n            resultado.append(palabra.capitalize())\n\n    return \" \".join(resultado)",
+        "def titular(s: str) -> str:\n    \"\"\"\n    Pone en mayúscula la primera letra de cada palabra, excepto 'de', 'del', 'la', 'las', 'el', 'los' e 'y'\n    cuando no son la primera palabra. Las demás letras quedan en minúscula.\n    \"\"\"\n    if not s:\n        return \"\"\n\n    palabras = s.lower().split()\n    resultado = []\n    preposiciones_a_ignorar = {'de', 'del', 'la', 'las', 'el', 'los', 'y'}\n\n    for i, palabra in enumerate(palabras):\n        # Si es la primera palabra, siempre se capitaliza la primera letra\n        if i == 0:\n            palabra_formateada = palabra.capitalize()\n        # Si es una palabra subsiguiente y pertenece a la lista de preposiciones\n        elif palabra in preposiciones_a_ignorar:\n            # Se mantiene en minúscula\n            palabra_formateada = palabra\n        # Para todas las demás palabras, se capitaliza la primera letra\n        else:\n            palabra_formateada = palabra.capitalize()\n\n        resultado.append(palabra_formateada)\n\n    return \" \".join(resultado)",
+        "def titular(s):\n    \"\"\"\n    Pone en mayúscula la primera letra de cada palabra, excepto 'de', 'del', 'la', 'las', 'el', 'los' e 'y'\n    cuando no son la primera palabra. Las demás letras quedan en minúscula.\n    \"\"\"\n    if not isinstance(s, str):\n        return \"\"\n    \n    palabras = s.lower().split()\n    resultado = []\n    \n    preposiciones_excepcion = {'de', 'del', 'la', 'las', 'el', 'los', 'y'}\n    \n    for i, palabra in enumerate(palabras):\n        if not palabra:\n            continue\n        \n        # Verificar si la palabra debe ser tratada como excepción (y no es la primera palabra)\n        es_excepcion = palabra in preposiciones_excepcion and i > 0\n        \n        if i == 0:\n            # Siempre capitalizar la primera palabra\n            palabra_capitalizada = palabra.capitalize()\n        elif es_excepcion:\n            # Mantener en minúsculas si es una excepción y no es la primera palabra\n            palabra_capitalizada = palabra\n        else:\n            # Capitalizar si no es una excepción (incluye el caso de la primera palabra si el chequeo anterior falla, pero aquí cubre el resto)\n            palabra_capitalizada = palabra.capitalize()\n            \n        resultado.append(palabra_capitalizada)\n        \n    return \" \".join(resultado)\n\n# Ejemplos de prueba\n# print(titular(\"el perro y la gata de los gatos\"))\n# print(titular(\"de la casa del amigo y la amiga\"))\n# print(titular(\"un solo ejemplo\"))\n# print(titular(\"\"))\n# print(titular(None))\n# print(titular(\"Mi Gran Ejemplo\"))"
+      ],
+      "tok_tests": 151,
+      "seg_tests": 1.9957692623138428
+    },
+    {
+      "id": "aplanar_prof",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert aplanar_hasta([1, [2, 3], 4], 0) == [1, [2, 3], 4]\nassert aplanar_hasta([1, [2, 3], 4], 1) == [1, 2, 3, 4]\nassert aplanar_hasta([1, [2, [3, 4]], 5], 1) == [1, 2, [3, 4], 5]\nassert aplanar_hasta([1, [2, [3, 4]], 5], 2) == [1, 2, 3, 4, 5]\nassert aplanar_hasta([1, [2, [3, [4]]]], 0) == [1, [2, [3, [4]]]]\nassert aplanar_hasta([1, [2, [3, [4]]]], 1) == [1, 2, [3, [4]]]\nassert aplanar_hasta([1, [2, [3, [4]]]], 2) == [1, 2, 3, [4]]\nassert aplanar_hasta([1, [2, [3, [4]]]], 3) == [1, 2, 3, 4]\nassert aplanar_hasta([], 1) == []\nassert aplanar_hasta([1, 2, 3], 0) == [1, 2, 3]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def aplanar_hasta(lista, profundidad):\n    \"\"\"\n    Aplanar una lista anidada solo hasta la profundidad indicada.\n\n    :param lista: La lista anidada a aplanar.\n    :param profundidad: La profundidad máxima a aplanar. 0 significa no aplanar.\n    :return: La lista aplanada hasta la profundidad especificada.\n    \"\"\"\n    if profundidad < 0:\n        raise ValueError(\"La profundidad no puede ser negativa.\")\n    if profundidad == 0:\n        return lista\n\n    def _aplanar_recursivo(arr, nivel):\n        resultado = []\n        for elemento in arr:\n            if isinstance(elemento, list) and nivel < profundidad:\n                resultado.extend(_aplanar_recursivo(elemento, nivel + 1))\n            else:\n                resultado.append(elemento)\n        return resultado\n\n    return _aplanar_recursivo(lista, 0)",
+        "def aplanar_hasta(lista, profundidad):\n    \"\"\"\n    Aplanar una lista anidada solo hasta la profundidad indicada.\n\n    Args:\n        lista: La lista anidada a aplanar.\n        profundidad: La profundidad máxima a aplanar. 0 significa no aplanar.\n\n    Returns:\n        Una nueva lista aplanada hasta la profundidad especificada.\n    \"\"\"\n    if profundidad < 0:\n        raise ValueError(\"La profundidad no puede ser negativa.\")\n\n    if profundidad == 0:\n        return lista[:]  # Devuelve una copia si la profundidad es 0\n\n    def _aplanar_recursivo(data, profundidad_actual):\n        resultado = []\n        for elemento in data:\n            if isinstance(elemento, list):\n                if profundidad_actual < profundidad:\n                    resultado.extend(_aplanar_recursivo(elemento, profundidad_actual + 1))\n                else:\n                    # Si ya alcanzamos la profundidad máxima, tratamos el elemento como un elemento simple\n                    resultado.append(elemento)\n            else:\n                resultado.append(elemento)\n        return resultado\n\n    return _aplanar_recursivo(lista, 0)",
+        "def aplanar_hasta(lista, profundidad):\n    \"\"\"\n    Aplasma una lista anidada solo hasta la profundidad indicada.\n\n    :param lista: La lista anidada a aplanar.\n    :param profundidad: El nivel de profundidad hasta el cual aplanar. 0 devuelve la lista igual.\n    :return: La lista aplanada parcialmente.\n    \"\"\"\n    if profundidad == 0:\n        return lista\n\n    def _aplanar_recursivo(lista_actual, profundidad_restante):\n        nueva_lista = []\n        for elemento in lista_actual:\n            if isinstance(elemento, list) and profundidad_restante > 0:\n                # Si es una lista y aún quedan niveles a aplanar, recursivamente aplanar\n                nueva_lista.extend(_aplanar_recursivo(elemento, profundidad_restante - 1))\n            else:\n                # Si no es lista o si la profundidad ya es 0, añadir el elemento tal cual\n                nueva_lista.append(elemento)\n        return nueva_lista\n\n    return _aplanar_recursivo(lista, profundidad)"
+      ],
+      "tok_tests": 333,
+      "seg_tests": 4.2359888553619385
+    },
+    {
+      "id": "romanos_suma",
+      "verdad": [
+        false,
+        false,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 1,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert sumar_romanos(\"I\", \"I\") == \"II\"\nassert sumar_romanos(\"V\", \"I\") == \"VI\"\nassert sumar_romanos(\"X\", \"V\") == \"XV\"\nassert sumar_romanos(\"MMMCMXCIX\", \"I\") == \"MMMCMXCII\"\nassert sumar_romanos(\"I\", \"MMMCMXCIX\") == \"MMMCMXCII\"\nassert sumar_romanos(\"III\", \"III\") == \"VI\"\nassert sumar_romanos(\"IX\", \"I\") == \"X\"\nassert sumar_romanos(\"MMMCMXCIX\", \"MMMCMXCIX\") == \"MMMMCMXCIII\" # Asumiendo que el resultado puede exceder 3999 si la suma lo requiere, aunque el input está limitado.\nassert sumar_romanos(\"IV\", \"IV\") == \"VIII\"\nassert sumar_romanos(\"MMMCMXCIX\", \"IV\") == \"MMMMCMXCIII\"",
+      "motivos": [
+        "ValueError: Error en la conversión o suma: El número debe estar entre 1 y 3999.",
+        "ValueError: La suma (0) excede el rango máximo de números romanos (3999).",
+        "ValueError: La suma (4000) excede el límite de 3999 para representación romana estándar."
+      ],
+      "candidatas": [
+        "def romanos_a_int(romano: str) -> int:\n    \"\"\"Convierte un número romano a entero.\"\"\"\n    valores = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    total = 0\n    i = 0\n    while i < len(romano):\n        siguiente = i + 1\n        valor_actual = valores[romano[i]]\n        \n        if siguiente < len(romano):\n            valor_siguiente = valores[romano[siguiente]]\n            if valor_actual < valor_siguiente:\n                total += valor_siguiente - valor_actual\n                i += 2\n                continue\n        \n        total += valor_actual\n        i += 1\n    return total\n\ndef int_a_romanos(n: int) -> str:\n    \"\"\"Convierte un entero a número romano.\"\"\"\n    if not (1 <= n <= 3999):\n        raise ValueError(\"El número debe estar entre 1 y 3999.\")\n        \n    mapa = {\n        1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C',\n        90: 'XC', 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'\n    }\n    \n    resultado = \"\"\n    for valor, simbolo in mapa.items():\n        while n >= valor:\n            resultado += simbolo\n            n -= valor\n    return resultado\n\ndef sumar_romanos(a: str, b: str) -> str:\n    \"\"\"\n    Suma dos números romanos (string) y devuelve el resultado en romano.\n    Asume que las entradas son válidas y representan números entre 1 y 3999.\n    \"\"\"\n    try:\n        num_a = romanos_a_int(a)\n        num_b = romanos_a_int(b)\n        \n        suma = num_a + num_b\n        \n        return int_a_romanos(suma)\n    except ValueError as e:\n        # Captura errores si las entradas no son válidas para el rango permitido\n        raise ValueError(f\"Error en la conversión o suma: {e}\")\n    except Exception as e:\n        # Captura cualquier otro error inesperado\n        raise RuntimeError(f\"Ocurrió un error inesperado: {e}\")\n\nif __name__ == '__main__':\n    # Casos de prueba\n    print(f\"III + IV = {sumar_romanos('III', 'IV')}\") # 3 + 4 = 7 (VII)\n    print(f\"MCMXCIX + I = {sumar_romanos('MCMXCIX', 'I')}\") # 1999 + 1 = 2000 (MM)\n    print(f\"IV + IX = {sumar_romanos('IV', 'IX')}\") # 4 + 9 = 13 (XIII)\n    print(f\"MMMCMXCIX + MMMCMXCIX = {sumar_romanos('MMMCMXCIX', 'MMMCMXCIX')}\") # 3999 + 3999 = 7998 (Debe fallar por límite, pero el código manejará el error de int_a_romanos)\n\n    # Prueba de límite superior (si la suma supera 3999)\n    try:\n        resultado_overflow = sumar_romanos('MMMCMXCIX', 'II')\n        print(f\"MMMCMXCIX + II = {resultado_overflow}\")\n    except ValueError as e:\n        print(f\"Prueba de overflow exitosa (Error esperado): {e}\")\n\n    # Prueba de casos borde (sumas pequeñas)\n    print(f\"I + I = {sumar_romanos('I', 'I')}\") # II\n    print(f\"MM + M = {sumar_romanos('MM', 'M')}\") # MMM",
+        "def romanos_a_integro(romano):\n    mapa = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    total = 0\n    for i in range(len(romano)):\n        simbolo = romano[i]\n        valor = mapa[simbolo]\n        if i > 0 and mapa[romano[i-1]] < valor:\n            total -= mapa[romano[i-1]]\n        else:\n            total += valor\n    return total\n\ndef inteiro_a_romanos(n):\n    if n <= 0 or n >= 4000:\n        raise ValueError(\"El número debe estar entre 1 y 3999\")\n\n    valores = [\n        1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1\n    ]\n    simbolos = [\n        \"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"\n    ]\n    \n    resultado = \"\"\n    for i in range(len(valores)):\n        while n >= valores[i]:\n            resultado += simbolos[i]\n            n -= valores[i]\n    return resultado\n\ndef sumar_romanos(a: str, b: str) -> str:\n    try:\n        num_a = romanos_a_integro(a)\n        num_b = romanos_a_integro(b)\n    except Exception as e:\n        # Manejo de errores si las entradas no son números romanos válidos\n        raise ValueError(f\"Entrada inválida: {e}\")\n\n    suma = num_a + num_b\n\n    try:\n        return inteiro_a_romanos(suma)\n    except ValueError as e:\n        # Esto debería ser raro si las entradas originales eran válidas y <= 3999\n        # pero lo capturamos por si la suma excede el rango.\n        raise ValueError(f\"La suma ({suma}) excede el rango máximo de números romanos (3999).\")\n\nif __name__ == '__main__':\n    # Pruebas básicas\n    print(f\"III + II = {sumar_romanos('III', 'II')}\")  # V\n    print(f\"M + C = {sumar_romanos('M', 'C')}\")    # MC\n    print(f\"IV + IX = {sumar_romanos('IV', 'IX')}\")  # XIII\n    print(f\"MMMCMXCIX + I = {sumar_romanos('MMMCMXCIX', 'I')}\") # MMMCMXC\n    print(f\"MMXXIV + XX = {sumar_romanos('MMXXIV', 'XX')}\") # MMXXXIV\n    \n    # Prueba de caso borde (suma que resulta en un número grande, aunque no se muestre completamente)\n    try:\n        print(f\"MMMCMXCIX + MMMCMXCIX = {sumar_romanos('MMMCMXCIX', 'MMMCMXCIX')}\")\n    except ValueError as e:\n        print(f\"Error esperado: {e}\") # Esto lanzará porque la suma es 7998\n\n    # Prueba de caso borde (entrada inválida)\n    try:\n        sumar_romanos('IIII', 'I')\n    except ValueError as e:\n        print(f\"Error de entrada: {e}\")",
+        "def romano_a_int(s: str) -> int:\n    \"\"\"Convierte un número romano a entero.\"\"\"\n    roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    result = 0\n    prev_value = 0\n    for char in s:\n        value = roman_map[char]\n        if value < prev_value:\n            result -= value\n        else:\n            result += value\n        prev_value = value\n    return result\n\ndef int_a_romano(num: int) -> str:\n    \"\"\"Convierte un entero a número romano.\"\"\"\n    if num <= 0 or num > 3999:\n        raise ValueError(\"El número debe estar entre 1 y 3999.\")\n\n    mapping = {\n        1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C',\n        90: 'XC', 50: 'L', 40: 'XL', 10: 'X', 9: 'IX',\n        5: 'V', 4: 'IV', 1: 'I'\n    }\n    \n    result = \"\"\n    sorted_keys = sorted(mapping.keys(), reverse=True)\n    \n    for value in sorted_keys:\n        while num >= value:\n            result += mapping[value]\n            num -= value\n            \n    return result\n\ndef sumar_romanos(a: str, b: str) -> str:\n    \"\"\"\n    Suma dos números romanos (string) y devuelve el resultado en romano.\n    \"\"\"\n    try:\n        num_a = romano_a_int(a)\n        num_b = romano_a_int(b)\n    except KeyError as e:\n        raise ValueError(f\"Entrada no válida: Carácter romano desconocido en la entrada.\")\n\n    suma_int = num_a + num_b\n    \n    try:\n        return int_a_romano(suma_int)\n    except ValueError as e:\n        # Esto capturará si la suma excede 3999\n        raise ValueError(f\"La suma ({suma_int}) excede el límite de 3999 para representación romana estándar.\")\n\nif __name__ == '__main__':\n    # Casos de prueba básicos\n    print(f\"III + II = {sumar_romanos('III', 'II')}\")  # V\n    print(f\"IX + V = {sumar_romanos('IX', 'V')}\")    # XIV\n    print(f\"M + C = {sumar_romanos('M', 'C')}\")      # MC\n    \n    # Caso de suma que requiere subtrayentes\n    print(f\"IV + IX = {sumar_romanos('IV', 'IX')}\")  # XIII\n    \n    # Caso límite (3999 + 1)\n    try:\n        print(f\"MMMCMXCIX + I = {sumar_romanos('MMMCMXCIX', 'I')}\")\n    except ValueError as e:\n        print(f\"Error esperado (suma > 3999): {e}\")\n        \n    # Caso borde: suma de dos números grandes\n    print(f\"M + MM = {sumar_romanos('M', 'MM')}\") # MMM\n    \n    # Casos borde de error (aunque la función interna maneja el rango 1-3999)\n    try:\n        sumar_romanos(\"MMMM\", \"I\") # IV no es un número romano válido en la conversión\n    except ValueError as e:\n        print(f\"Error de entrada (MMMM): {e}\")"
+      ],
+      "tok_tests": 226,
+      "seg_tests": 2.904421329498291
+    },
+    {
+      "id": "cola_prioridad",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        true,
+        true,
+        true
+      ],
+      "falsas": 0,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 7,
+      "tests_gemma": "assert atender([(2, \"B\"), (1, \"A\")]) == [\"A\", \"B\"]\nassert atender([(1, \"A\"), (1, \"B\")]) == [\"A\", \"B\"]\nassert atender([(2, \"B\"), (2, \"A\")]) == [\"B\", \"A\"]\nassert atender([(3, \"C\"), (1, \"A\"), (2, \"B\")]) == [\"A\", \"B\", \"C\"]\nassert atender([]) == []\nassert atender([(1, \"Solo\")]) == [\"Solo\"]\nassert atender([(3, \"Z\"), (3, \"Y\")]) == [\"Z\", \"Y\"]",
+      "motivos": [
+        "",
+        "",
+        ""
+      ],
+      "candidatas": [
+        "def atender(tareas):\n    \"\"\"\n    Recibe una lista de tuplas (prioridad, nombre) y devuelve los nombres\n    ordenados por prioridad ascendente (1 es lo más urgente).\n    A igual prioridad, se conserva el orden de llegada.\n\n    Args:\n        tareas: Una lista de tuplas donde cada tupla es (prioridad, nombre).\n\n    Returns:\n        Una lista de strings con los nombres ordenados.\n    \"\"\"\n    # Creamos una copia de la lista para no modificar la original\n    # El orden de llegada se mantiene implícitamente por el índice original.\n    # Para mantener el orden de llegada en caso de empate de prioridad,\n    # podemos usar el índice original como segundo criterio de desempate.\n    tareas_con_indice = [(prioridad, nombre, indice) for indice, (prioridad, nombre) in enumerate(tareas)]\n\n    # Ordenamos:\n    # 1. Por prioridad (ascendente: 1 es menor que 2)\n    # 2. Por índice original (ascendente: conserva el orden de llegada)\n    tareas_ordenadas = sorted(tareas_con_indice, key=lambda x: (x[0], x[2]))\n\n    # Extraemos solo los nombres de la lista ordenada\n    nombres_ordenados = [nombre for prioridad, nombre, indice in tareas_ordenadas]\n\n    return nombres_ordenados",
+        "def atender(tareas):\n    \"\"\"\n    Ordena tareas por prioridad ascendente (1 es la más urgente).\n    En caso de igual prioridad, se conserva el orden de llegada.\n\n    Args:\n        tareas: Una lista de tuplas (prioridad, nombre).\n\n    Returns:\n        Una lista de nombres ordenados por prioridad.\n    \"\"\"\n    # Usamos sorted() con una clave lambda que solo considera la prioridad.\n    # Python's sorted() es estable, lo que garantiza que si dos elementos tienen\n    # la misma clave (misma prioridad), su orden relativo original se mantiene\n    # (conservando el orden de llegada).\n    tareas_ordenadas = sorted(tareas, key=lambda item: item[0])\n\n    # Extraemos solo los nombres de las tuplas ordenadas\n    nombres_ordenados = [nombre for prioridad, nombre in tareas_ordenadas]\n\n    return nombres_ordenados",
+        "def atender(tareas):\n    \"\"\"\n    Ordena nombres de tareas por prioridad ascendente.\n    Para igual prioridad, se conserva el orden de llegada.\n\n    Args:\n        tareas: Una lista de tuplas (prioridad, nombre).\n\n    Returns:\n        Una lista de nombres ordenados.\n    \"\"\"\n    # Usamos el índice original para mantener el orden de llegada en caso de empate\n    # Creamos una lista de tuplas: (prioridad, índice_original, nombre)\n    tareas_con_indice = []\n    for i, (prioridad, nombre) in enumerate(tareas):\n        tareas_con_indice.append((prioridad, i, nombre))\n\n    # Ordenamos:\n    # 1. Por prioridad (ASCENDENTE, por eso es el primer elemento de la clave)\n    # 2. Por índice original (ASCENDENTE, para mantener el orden de llegada)\n    tareas_ordenadas = sorted(tareas_con_indice, key=lambda x: (x[0], x[1]))\n\n    # Devolvemos solo los nombres\n    nombres_ordenados = [tarea[2] for tarea in tareas_ordenadas]\n    return nombres_ordenados"
+      ],
+      "tok_tests": 149,
+      "seg_tests": 1.9958176612854004
+    },
+    {
+      "id": "camino_dict",
+      "verdad": [
+        true,
+        true,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 3,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 10,
+      "tests_gemma": "assert obtener({'a': {'b': 10}}, 'a.b') == 10\nassert obtener({'a': {'b': 10}}, 'a.c') == None\nassert obtener({'a': {'b': 10}}, 'x.y') == None\nassert obtener({}, 'a.b') == None\nassert obtener({'a': {}}, 'a.b') == None\nassert obtener({'a': {'b': {'c': 20}}}, 'a.b.c') == 20\nassert obtener({'a': {'b': {'c': 20}}}, 'a.b') == {'c': 20}\nassert obtener({'a': {'b': {'c': 20}}}, 'a.b.d') == None\nassert obtener({'a': {'b': 10}}, 'a') == 10\nassert obtener({'a': {'b': 10}}, '') == None",
+      "motivos": [
+        "AssertionError",
+        "AssertionError",
+        "AssertionError"
+      ],
+      "candidatas": [
+        "def obtener(d, camino, defecto=None):\n    \"\"\"\n    Busca en un dict anidado siguiendo un camino con puntos ('a.b.c') y devuelve el valor, \n    o el defecto si algun tramo no existe.\n\n    Args:\n        d (dict): El diccionario anidado a buscar.\n        camino (str): El camino a seguir, separado por puntos (ej: 'a.b.c').\n        defecto: El valor a devolver si la ruta no existe (por defecto es None).\n\n    Returns:\n        The value found at the specified path, or 'defecto'.\n    \"\"\"\n    if not isinstance(d, dict):\n        return defecto\n\n    keys = camino.split('.')\n    current = d\n\n    for key in keys:\n        if isinstance(current, dict) and key in current:\n            current = current[key]\n        else:\n            return defecto\n    \n    return current",
+        "def obtener(d, camino, defecto=None):\n    \"\"\"\n    Busca en un dict anidado siguiendo un camino con puntos ('a.b.c') \n    y devuelve el valor, o el defecto si algún tramo no existe.\n\n    Args:\n        d (dict): El diccionario anidado a buscar.\n        camino (str): La cadena que representa el camino (ej: 'a.b.c').\n        defecto: El valor a retornar si el camino no existe.\n\n    Returns:\n        The value found at the specified path, or the default value.\n    \"\"\"\n    if not isinstance(d, dict) or not isinstance(camino, str):\n        return defecto\n\n    partes = camino.split('.')\n    \n    try:\n        current = d\n        for parte in partes:\n            if isinstance(current, dict) and parte in current:\n                current = current[parte]\n            else:\n                return defecto\n        return current\n    except Exception:\n        # Captura cualquier otro error inesperado durante la navegación\n        return defecto\n\nif __name__ == '__main__':\n    datos = {\n        \"user\": {\n            \"profile\": {\n                \"name\": \"Alice\",\n                \"age\": 30\n            },\n            \"settings\": {\n                \"theme\": \"dark\"\n            }\n        },\n        \"status\": \"active\"\n    }\n\n    # Casos de prueba exitosos\n    print(f\"user.profile.name: {obtener(datos, 'user.profile.name', 'N/A')}\")\n    print(f\"user.settings.theme: {obtener(datos, 'user.settings.theme', 'N/A')}\")\n    print(f\"status: {obtener(datos, 'status', 'N/A')}\")\n    \n    # Caso de prueba de profundidad simple\n    print(f\"user: {obtener(datos, 'user', 'N/A')}\")\n\n    # Casos de prueba fallidos (claves inexistentes)\n    print(f\"user.address.city (no existe): {obtener(datos, 'user.address.city', 'NOT_FOUND')}\")\n    print(f\"user.profile.email (no existe): {obtener(datos, 'user.profile.email', 'NOT_FOUND')}\")\n    print(f\"nonexistent.path (totalmente no existe): {obtener(datos, 'nonexistent.path', 'NOT_FOUND')}\")\n\n    # Caso de prueba de borde: camino vacío\n    print(f\"Camino vacío: {obtener(datos, '', 'DEFAULT')}\") # Debería devolver el dict completo si no se maneja el caso borde del split, pero al procesar partes vacías, puede fallar o devolver el dict si el split es ['']\n\n    # Caso de prueba de borde: diccionario inválido como input principal\n    print(f\"Input no dict: {obtener([1, 2], 'user.name', 'BAD_INPUT')}\")\n    \n    # Caso de prueba de borde: camino no string\n    print(f\"Camino no string: {obtener(datos, 123, 'BAD_INPUT')}\")\n\n    # Caso de prueba de borde: valor intermedio no es un dict\n    datos_error = {\n        \"a\": 100\n    }\n    print(f\"Intermedio no dict (a.b): {obtener(datos_error, 'a.b', 'ERROR_TYPE')}\")",
+        "def obtener(d, camino, defecto=None):\n    \"\"\"\n    Busca en un dict anidado siguiendo un camino con puntos ('a.b.c') y devuelve el valor, \n    o el defecto si algún tramo no existe.\n    \"\"\"\n    try:\n        # Dividir el camino en claves\n        claves = camino.split('.')\n        \n        # Iterar sobre las claves, actualizando la referencia al diccionario actual\n        resultado = d\n        for clave in claves:\n            resultado = resultado[clave]\n        \n        return resultado\n    except (KeyError, TypeError):\n        # KeyError si una clave no existe en el diccionario\n        # TypeError si estamos intentando acceder a una clave en algo que no es un dict (ej: None)\n        return defecto\n\nif __name__ == '__main__':\n    datos = {\n        \"usuario\": {\n            \"perfil\": {\n                \"nombre\": \"Alice\",\n                \"edad\": 30\n            },\n            \"contacto\": {\n                \"email\": \"alice@example.com\"\n            }\n        },\n        \"config\": {\n            \"timeout\": 60\n        }\n    }\n\n    # Casos de éxito\n    print(f\"Nombre: {obtener(datos, 'usuario.perfil.nombre')}\")  # Salida: Alice\n    print(f\"Email: {obtener(datos, 'usuario.contacto.email')}\") # Salida: alice@example.com\n    print(f\"Timeout: {obtener(datos, 'config.timeout')}\")      # Salida: 60\n\n    # Caso de fallo: clave no existe\n    print(f\"Edad inexistente: {obtener(datos, 'usuario.perfil.altura', defecto='N/A')}\") # Salida: N/A\n\n    # Caso de fallo: camino incompleto\n    print(f\"Camino roto: {obtener(datos, 'usuario.direccion.calle', defecto='No encontrado')}\") # Salida: No encontrado\n\n    # Caso de fallo: dato intermedio no es un diccionario (maneja TypeError)\n    datos_malo = {\"a\": 1}\n    print(f\"Error de tipo: {obtener(datos_malo, 'a.b', defecto='Error')}\") # Salida: Error\n\n    # Caso de fallo: camino vacío (debería devolver el defecto si se interpreta como un camino inexistente en el contexto de la búsqueda)\n    # Si el camino es \"\", split('.') devuelve [''], lo cual fallará si el dict no tiene una clave ''\n    print(f\"Camino vacío: {obtener(datos, '', defecto='Vacío')}\") # Salida: Vacío\n\n    # Caso de éxito: camino de longitud 1\n    print(f\"Config general: {obtener(datos, 'config', defecto=None)}\") # Salida: {'timeout': 60}"
+      ],
+      "tok_tests": 210,
+      "seg_tests": 2.6703810691833496
+    },
+    {
+      "id": "reintentos",
+      "verdad": [
+        false,
+        false,
+        true
+      ],
+      "dice": [
+        false,
+        false,
+        false
+      ],
+      "falsas": 1,
+      "escapes": 0,
+      "test_roto": false,
+      "n_asserts": 3,
+      "tests_gemma": "# Caso normal: La función funciona en el primer intento\nassert con_reintentos(lambda: 1, 3) == 1\n\n# Caso normal: La función funciona en el último intento permitido\nassert con_reintentos(lambda: (_ for _ in ()).throw(ValueError(\"Error\")), 3) == 2 # Asumiendo que el lambda lanza en el 1 y 2, y funciona en el 3.\n# Nota: Para este assert, se asume que la implementación interna maneja el conteo de reintentos correctamente.\n\n# Caso borde: La función siempre falla y lanza una excepción\ntry:\n    con_reintentos(lambda: 1/0, 3)\nexcept ZeroDivisionError:\n    pass # Esperado que se lance la última excepción\n\n# Caso borde: Se pide un solo intento y falla\ntry:\n    con_reintentos(lambda: 1/0, 1)\nexcept ZeroDivisionError:\n    pass # Esperado que se lance la excepción inmediatamente\n\n# Caso borde: Se pide un solo intento y funciona\nassert con_reintentos(lambda: \"ok\", 1) == \"ok\"\n\n# Caso borde: La función falla en el primer intento, pero el número de reintentos es 1 (total 1 intento)\ntry:\n    con_reintentos(lambda: 1/0, 1)\nexcept ZeroDivisionError:\n    pass # Debe fallar si solo hay 1 intento y falla\n\n# Caso borde: La función falla en el primer intento, pero el número de reintentos es 2 (total 2 intentos)\n# Esto requiere que la función falle en el intento 1 y tenga éxito en el intento 2.\n# Dado que no podemos simular el éxito en el segundo intento sin modificar el lambda,\n# este assert verifica que el mecanismo de reintento se activa al menos una vez.\n# Se asume que si el lambda falla, el reintento se ejecuta.\ntry:\n    # Si el lambda siempre falla, debe lanzar la excepción después de 2 intentos.\n    con_reintentos(lambda: 1/0, 2)\nexcept ZeroDivisionError:\n    pass",
+      "motivos": [
+        "SyntaxError: no binding for nonlocal 'contador' found",
+        "SyntaxError: no binding for nonlocal 'llamadas' found",
+        "ValueError: Error"
+      ],
+      "candidatas": [
+        "import time\nfrom typing import Callable, TypeVar, Any\n\nT = TypeVar('T')\n\ndef con_reintentos(fn: Callable[[], T], veces: int) -> T:\n    \"\"\"\n    Ejecuta una función y, si lanza una excepción, la reintenta hasta 'veces' intentos en total.\n\n    Args:\n        fn: La función a ejecutar. Debe ser una función que no tome argumentos o\n            que tome argumentos que se pasarán si fuera necesario (aunque en esta\n            implementación asume que no toma argumentos o que solo se llama con ()).\n        veces: El número total de intentos a realizar (mínimo 1).\n\n    Returns:\n        El resultado de fn() si tiene éxito.\n\n    Raises:\n        La última excepción si todos los intentos fallan.\n\n    Raises:\n        ValueError: Si 'veces' es menor o igual a 0.\n    \"\"\"\n    if veces <= 0:\n        raise ValueError(\"El parámetro 'veces' debe ser un número entero positivo.\")\n\n    ultima_excepcion = None\n    for intento in range(1, veces + 1):\n        try:\n            return fn()\n        except Exception as e:\n            ultima_excepcion = e\n            print(f\"Intento {intento}/{veces} fallido. Reintentando...\")\n            # Opcional: Añadir un pequeño retraso entre reintentos\n            # time.sleep(1)\n\n    # Si el bucle termina sin retornar, significa que todos los intentos fallaron\n    raise ultima_excepcion\n\nif __name__ == '__main__':\n    # --- Caso de prueba 1: Éxito en el primer intento ---\n    def funcion_exitosa_inmediatamente():\n        print(\"Ejecutando función exitosa inmediatamente.\")\n        return \"Resultado exitoso inmediato\"\n\n    try:\n        resultado = con_reintentos(funcion_exitosa_inmediatamente, 3)\n        print(f\"Resultado final 1: {resultado}\")\n    except Exception as e:\n        print(f\"Error inesperado en el caso 1: {e}\")\n\n    print(\"-\" * 30)\n\n    # --- Caso de prueba 2: Éxito después de reintentos ---\n    contador = 0\n    def funcion_exitosa_despues_de_espera():\n        nonlocal contador\n        contador += 1\n        if contador < 3:\n            print(f\"Ejecutando función fallida (Intento {contador}).\")\n            raise IOError(\"Error simulado\")\n        print(f\"Ejecutando función exitosa (Intento {contador}).\")\n        return \"Resultado exitoso después de esperar\"\n\n    try:\n        # Se espera que funcione en el tercer intento\n        resultado = con_reintentos(funcion_exitosa_despues_de_espera, 5)\n        print(f\"Resultado final 2: {resultado}\")\n    except Exception as e:\n        print(f\"Error inesperado en el caso 2: {e}\")\n\n    print(\"-\" * 30)\n\n    # --- Caso de prueba 3: Todos los intentos fallan ---\n    def funcion_siempre_falla():\n        print(\"Ejecutando función que siempre falla.\")\n        raise RuntimeError(\"Fallo persistente\")\n\n    try:\n        print(\"Intentando forzar todos los fallos...\")\n        con_reintentos(funcion_siempre_falla, 3)\n    except RuntimeError as e:\n        print(f\"Caso 3 exitoso: Se lanzó la excepción esperada: {e}\")\n    except Exception as e:\n        print(f\"Caso 3 fallido: Se lanzó otra excepción: {e}\")\n\n    print(\"-\" * 30)\n\n    # --- Caso de prueba 4: Borde - Veces = 1 (Debe fallar inmediatamente si falla) ---\n    def funcion_falla_una_vez():\n        raise ValueError(\"Fallo en un solo intento\")\n\n    try:\n        print(\"Intentando con solo 1 intento...\")\n        con_reintentos(funcion_falla_una_vez, 1)\n    except ValueError as e:\n        print(f\"Caso 4 exitoso: Se lanzó la excepción esperada después de 1 intento: {e}\")\n\n    print(\"-\" * 30)\n\n    # --- Caso de prueba 5: Borde - Veces <= 0 (Debe lanzar ValueError) ---\n    try:\n        print(\"Intentando con 0 intentos...\")\n        con_reintentos(funcion_exitosa_inmediatamente, 0)\n    except ValueError as e:\n        print(f\"Caso 5 exitoso: Se lanzó la excepción de validación: {e}\")",
+        "import time\nfrom typing import Callable, Any\n\ndef con_reintentos(fn: Callable[[], Any], veces: int) -> Any:\n    \"\"\"\n    Ejecuta una función y la reintenta si lanza una excepción, hasta 'veces' intentos en total.\n\n    Args:\n        fn: La función a ejecutar. Debe ser una función que no tome argumentos o tomar argumentos\n            que no se están proporcionando (usando fn()).\n        veces: El número total de intentos (incluyendo el primer intento).\n\n    Returns:\n        El resultado de fn() si tiene éxito.\n\n    Raises:\n        La última excepción si todos los intentos fallan.\n    \"\"\"\n    for i in range(veces):\n        try:\n            # Intento actual\n            return fn()\n        except Exception as e:\n            # Si no es el último intento, esperamos un poco antes de reintentar\n            if i < veces - 1:\n                # Se podría añadir un backoff exponencial aquí, pero por simplicidad, usamos un retraso fijo.\n                time.sleep(0.1 * (i + 1))\n                continue  # Pasar al siguiente intento\n            else:\n                # Último intento fallido, lanzamos la excepción\n                raise e\n\nif __name__ == '__main__':\n    # --- Caso de prueba 1: Éxito en el primer intento ---\n    print(\"--- Prueba 1: Éxito inmediato ---\")\n    def funcion_exitosa():\n        print(\"Ejecutando función exitosa...\")\n        return \"Resultado OK\"\n\n    try:\n        resultado = con_reintentos(funcion_exitosa, 3)\n        print(f\"Resultado obtenido: {resultado}\")\n    except Exception as e:\n        print(f\"Error inesperado: {e}\")\n\n    print(\"\\n\" + \"=\"*30 + \"\\n\")\n\n    # --- Caso de prueba 2: Éxito después de varios reintentos ---\n    print(\"--- Prueba 2: Éxito después de reintentos ---\")\n    llamadas = 0\n    def funcion_que_falla_y_luego_exito():\n        nonlocal llamadas\n        llamadas += 1\n        print(f\"Ejecutando función (Intento #{llamadas})...\")\n        if llamadas <= 2:\n            raise ValueError(\"Fallo simulado\")\n        return \"Resultado OK después de reintentos\"\n\n    try:\n        # Queremos que funcione en el 3er intento\n        resultado = con_reintentos(funcion_que_falla_y_luego_exito, 4)\n        print(f\"Resultado obtenido: {resultado}\")\n    except Exception as e:\n        print(f\"Error inesperado: {e}\")\n\n    print(\"\\n\" + \"=\"*30 + \"\\n\")\n\n    # --- Caso de prueba 3: Todos los intentos fallan ---\n    print(\"--- Prueba 3: Todos los intentos fallan ---\")\n    def funcion_siempre_falla():\n        print(\"Ejecutando función que siempre falla...\")\n        raise RuntimeError(\"Fallo crítico\")\n\n    try:\n        # Solo 2 intentos permitidos\n        con_reintentos(funcion_siempre_falla, 2)\n    except RuntimeError as e:\n        print(f\"Capturado el fallo esperado después de {2} intentos: {e}\")\n    except Exception as e:\n        print(f\"Capturado un error diferente: {e}\")",
+        "import time\nimport functools\n\ndef con_reintentos(fn, veces):\n    \"\"\"\n    Ejecuta la función fn() y, si lanza una excepción, la reintenta hasta 'veces' intentos en total.\n    Si todos fallan, vuelve a lanzar la última excepción. Devuelve el resultado si alguno funciona.\n\n    Args:\n        fn (callable): La función a ejecutar.\n        veces (int): El número total de intentos (incluido el primero).\n\n    Returns:\n        El resultado de fn() si tiene éxito.\n\n    Raises:\n        La última excepción si todos los intentos fallan.\n    \"\"\"\n    for i in range(veces):\n        try:\n            return fn()\n        except Exception as e:\n            if i < veces - 1:\n                # Opcional: añadir un pequeño retraso entre reintentos\n                # time.sleep(0.1 * (i + 1))\n                continue\n            else:\n                # Último intento fallido, relanzar la excepción\n                raise e\n\nif __name__ == '__main__':\n    # --- Caso de éxito en el primer intento ---\n    def funcion_exitosa():\n        print(\"Ejecutando: Éxito inmediato\")\n        return \"Resultado exitoso\"\n\n    try:\n        resultado = con_reintentos(funcion_exitosa, 3)\n        print(f\"Resultado (Éxito inmediato): {resultado}\")\n    except Exception as e:\n        print(f\"Error inesperado en caso de éxito: {e}\")\n\n    print(\"-\" * 30)\n\n    # --- Caso de éxito en un intento intermedio ---\n    import random\n    contador_fallos = 0\n    def funcion_exitosa_despues_fallos():\n        global contador_fallos\n        contador_fallos += 1\n        print(f\"Ejecutando: Intento {contador_fallos}\")\n        if contador_fallos < 3:\n            raise ValueError(f\"Fallo simulado en el intento {contador_fallos}\")\n        return f\"Resultado después de {contador_fallos - 1} fallos\"\n\n    try:\n        resultado = con_reintentos(funcion_exitosa_despues_fallos, 5)\n        print(f\"Resultado (Éxito intermedio): {resultado}\")\n    except Exception as e:\n        print(f\"Error inesperado en caso intermedio: {e}\")\n\n    print(\"-\" * 30)\n\n    # --- Caso de fallo total ---\n    contador_fallos = 0\n    def funcion_siempre_falla():\n        global contador_fallos\n        contador_fallos += 1\n        print(f\"Ejecutando: Intento {contador_fallos} (Fallo esperado)\")\n        raise RuntimeError(\"Fallo permanente\")\n\n    try:\n        print(\"Intentando ejecución que siempre falla...\")\n        con_reintentos(funcion_siempre_falla, 3)\n    except RuntimeError as e:\n        print(f\"Capturado correctamente el fallo después de {contador_fallos} intentos: {e}\")\n    except Exception as e:\n        print(f\"Capturado un error distinto al esperado: {e}\")\n\n    print(\"-\" * 30)\n    \n    # --- Caso borde: 1 intento ---\n    def funcion_un_intento():\n        print(\"Ejecutando: Solo un intento\")\n        raise TypeError(\"Fallo en el único intento\")\n\n    try:\n        print(\"Intentando ejecución con solo 1 intento...\")\n        con_reintentos(funcion_un_intento, 1)\n    except TypeError as e:\n        print(f\"Capturado correctamente el fallo en 1 intento: {e}\")"
+      ],
+      "tok_tests": 488,
+      "seg_tests": 6.273151874542236
+    }
+  ]
+}

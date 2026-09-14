@@ -1,0 +1,135 @@
+{
+  "_meta": {
+    "proposito": "Taxonomia experimental de 10 expertos para evaluar si el enrutado escala.",
+    "regla": "Escrito DESPUES del banco de evaluacion, sin copiar frases de el: las keywords son vocabulario de dominio, no las frases de prueba.",
+    "weight_keywords": "Todos en 1.0 a proposito. Los pesos existen para corregir desbalance; arrancar parejo es la linea base honesta y deja que el experimento diga si hacen falta.",
+    "fecha": "2026-07-22"
+  },
+
+  "profiles": {
+    "code_write": {
+      "description": "Escribir codigo nuevo: implementar, crear, generar",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "implementa", "implementar", "crea", "crear", "escribi", "escribir",
+        "programa", "programar", "genera", "generar", "arma", "armar",
+        "agrega", "agregar", "hazme", "funcion", "clase", "metodo",
+        "endpoint", "script", "componente", "modulo", "worker", "middleware",
+        "formulario", "decorador", "interfaz", "libreria", "paquete"
+      ]
+    },
+
+    "code_fix": {
+      "description": "Depurar: errores, fallos, comportamiento inesperado",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "error", "falla", "fallo", "bug", "crashea", "crash", "rompe", "roto",
+        "no funciona", "no anda", "exception", "excepcion", "stacktrace",
+        "traceback", "typeerror", "nullpointer", "segfault", "memory leak",
+        "cuelga", "congela", "timeout", "no compila", "depura", "depurar",
+        "debug", "arregla", "arreglar", "corrige", "corregir", "tira",
+        "devuelve 500", "nunca termina", "vacia"
+      ]
+    },
+
+    "code_review": {
+      "description": "Revisar y mejorar codigo existente sin cambiar su funcion",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "revisa", "revisar", "refactor", "refactoriza", "refactorizar",
+        "simplifica", "simplificar", "duplicado", "duplicacion", "limpia",
+        "limpiar", "ordena", "ordenar", "mejora", "mejorar", "mejorarias",
+        "extrae", "extraer", "renombra", "renombrar", "responsabilidades",
+        "acoplamiento", "cohesion", "legible", "mantenible", "deuda tecnica",
+        "code smell", "anidado", "anidados", "muy larga", "quedo feo"
+      ]
+    },
+
+    "data_sql": {
+      "description": "Bases de datos: consultas, esquemas, migraciones, rendimiento",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "sql", "query", "consulta", "select", "insert", "update", "delete",
+        "join", "group by", "having", "where", "indice", "index", "tabla",
+        "esquema", "schema", "migracion", "base de datos", "postgres",
+        "mysql", "sqlite", "mongo", "upsert", "vista", "materializada",
+        "transaccion", "foreign key", "primary key", "normalizar", "filas",
+        "registros"
+      ]
+    },
+
+    "devops": {
+      "description": "Infraestructura, contenedores, despliegue y operacion",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "docker", "dockerfile", "contenedor", "container", "kubernetes",
+        "k8s", "manifiesto", "deploy", "desplegar", "despliegue", "pipeline",
+        "github actions", "jenkins", "terraform", "ansible", "nginx",
+        "proxy", "aws", "azure", "gcp", "cloud", "servidor", "produccion",
+        "staging", "build", "compose", "variables de entorno", "logs",
+        "monitoreo", "orquestacion"
+      ]
+    },
+
+    "reasoning": {
+      "description": "Decidir entre alternativas, evaluar riesgos y tradeoffs",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "conviene", "ventaja", "ventajas", "desventaja", "riesgo", "riesgos",
+        "compara", "comparar", "evalua", "evaluar", "analiza", "analizar",
+        "decide", "decidir", "decidime", "vale la pena", "tradeoff",
+        "alternativa", "opcion", "mejor", "peor", "frente a", "versus",
+        "opinas", "recomienda", "recomendar", "escala", "escalabilidad",
+        "arquitectura", "estrategia", "enfoque", "elegir"
+      ]
+    },
+
+    "explain": {
+      "description": "Ensenar un concepto: que es, como funciona, para que sirve",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "que es", "que significa", "como funciona", "para que sirve",
+        "explicame", "explica", "explicar", "concepto", "diferencia entre",
+        "diferencia hay", "en que consiste", "teoria", "fundamento",
+        "principio", "definicion", "ensename", "entender", "comprender",
+        "teorema", "funcionamiento"
+      ]
+    },
+
+    "writing": {
+      "description": "Redactar prosa: documentos, correos, traducciones",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "redacta", "redactar", "redaccion", "documenta", "documentar",
+        "documentacion", "readme", "correo", "email", "carta", "traduce",
+        "traducir", "traduccion", "articulo", "texto", "parrafo", "resumen",
+        "informe", "propuesta", "presentacion", "descripcion", "notas",
+        "formal", "profesional", "ortografia", "estilo", "documento"
+      ]
+    },
+
+    "math": {
+      "description": "Calculo numerico, estadistica y conversiones",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "calcula", "calcular", "cuanto es", "porcentaje", "por ciento",
+        "promedio", "media", "mediana", "moda", "desviacion", "varianza",
+        "probabilidad", "combinaciones", "permutaciones", "ecuacion",
+        "resolver", "resolveme", "despejar", "raiz", "potencia", "logaritmo",
+        "derivada", "integral", "interes", "compuesto", "convierte",
+        "convertir", "suma", "resta", "multiplica", "divide", "kilometros",
+        "millas"
+      ]
+    },
+
+    "quick": {
+      "description": "Trivial: saludos, confirmaciones, agradecimientos",
+      "weight_keywords": 1.0,
+      "keywords": [
+        "hola", "buenas", "buenos dias", "buenas tardes", "gracias", "dale",
+        "listo", "perfecto", "genial", "entendido", "correcto", "claro",
+        "bien", "saludos", "chau", "adios", "sale", "joya"
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "segundos": 40,
+  "max_tokens": 128,
+  "escenarios": [
+    {
+      "escenario": "codigo (GPU)",
+      "modelo": "principal",
+      "agentes": 4,
+      "rpm": 36.28112828889991,
+      "hechas": 26,
+      "segundos": 42.997560262680054,
+      "p50": 5.446964502334595,
+      "p95": 14.309704780578613,
+      "tok_s": 68.00385840816881,
+      "errores": 0
+    },
+    {
+      "escenario": "codigo (GPU)",
+      "modelo": "principal",
+      "agentes": 8,
+      "rpm": 67.14254628215093,
+      "hechas": 50,
+      "segundos": 44.681057929992676,
+      "p50": 5.642658710479736,
+      "p95": 14.052256345748901,
+      "tok_s": 82.56295107828493,
+      "errores": 0
+    },
+    {
+      "escenario": "codigo (GPU)",
+      "modelo": "principal",
+      "agentes": 9,
+      "rpm": 72.04911375588811,
+      "hechas": 54,
+      "segundos": 44.969324827194214,
+      "p50": 6.391143560409546,
+      "p95": 13.633081674575806,
+      "tok_s": 96.48799524283906,
+      "errores": 0
+    },
+    {
+      "escenario": "codigo (GPU)",
+      "modelo": "principal",
+      "agentes": 12,
+      "rpm": 85.14296668250851,
+      "hechas": 64,
+      "segundos": 45.10061311721802,
+      "p50": 6.671383857727051,
+      "p95": 14.831313133239746,
+      "tok_s": 72.01675931895511,
+      "errores": 0
+    },
+    {
+      "escenario": "razonamiento (RAM)",
+      "modelo": "qwen3",
+      "agentes": 4,
+      "rpm": 40.72094952537104,
+      "hechas": 28,
+      "segundos": 41.25640535354614,
+      "p50": 5.861804246902466,
+      "p95": 6.160797595977783,
+      "tok_s": 86.87135898745822,
+      "errores": 0
+    },
+    {
+      "escenario": "razonamiento (RAM)",
+      "modelo": "qwen3",
+      "agentes": 8,
+      "rpm": 49.158023538089296,
+      "hechas": 40,
+      "segundos": 48.822141885757446,
+      "p50": 9.74654245376587,
+      "p95": 10.13154673576355,
+      "tok_s": 104.8704502145905,
+      "errores": 0
+    },
+    {
+      "escenario": "razonamiento (RAM)",
+      "modelo": "qwen3",
+      "agentes": 9,
+      "rpm": 60.45704074321184,
+      "hechas": 45,
+      "segundos": 44.65981078147888,
+      "p50": 8.933094501495361,
+      "p95": 9.389124870300293,
+      "tok_s": 128.97502025218526,
+      "errores": 0
+    },
+    {
+      "escenario": "razonamiento (RAM)",
+      "modelo": "qwen3",
+      "agentes": 12,
+      "rpm": 63.78052681522395,
+      "hechas": 48,
+      "segundos": 45.15484809875488,
+      "p50": 11.054844856262207,
+      "p95": 12.30872106552124,
+      "tok_s": 136.06512387247776,
+      "errores": 0
+    },
+    {
+      "escenario": "mezcla por ruteo",
+      "modelo": "auto",
+      "agentes": 4,
+      "rpm": 40.053596690040315,
+      "hechas": 28,
+      "segundos": 41.943798780441284,
+      "p50": 5.947199106216431,
+      "p95": 6.329845666885376,
+      "tok_s": 85.44767293875267,
+      "errores": 0
+    },
+    {
+      "escenario": "mezcla por ruteo",
+      "modelo": "auto",
+      "agentes": 8,
+      "rpm": 48.72972740768527,
+      "hechas": 40,
+      "segundos": 49.25125026702881,
+      "p50": 9.760098218917847,
+      "p95": 10.234986305236816,
+      "tok_s": 103.9567518030619,
+      "errores": 0
+    },
+    {
+      "escenario": "mezcla por ruteo",
+      "modelo": "auto",
+      "agentes": 9,
+      "rpm": 59.191482814639684,
+      "hechas": 45,
+      "segundos": 45.614670753479004,
+      "p50": 9.101274728775024,
+      "p95": 9.639054298400879,
+      "tok_s": 126.275163337898,
+      "errores": 0
+    },
+    {
+      "escenario": "mezcla por ruteo",
+      "modelo": "auto",
+      "agentes": 12,
+      "rpm": 66.30446294646153,
+      "hechas": 49,
+      "segundos": 44.340906620025635,
+      "p50": 11.216829299926758,
+      "p95": 11.542706727981567,
+      "tok_s": 141.44952095245125,
+      "errores": 0
+    }
+  ]
+}

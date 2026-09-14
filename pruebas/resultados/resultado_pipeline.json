@@ -1,0 +1,257 @@
+{
+  "tareas": 12,
+  "detalle": [
+    {
+      "id": "fizzbuzz",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.64180850982666,
+        "tokens": 309,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 23.063798427581787,
+        "tokens": 1306,
+        "plan_tok": 533,
+        "plan_seg": 9.323128700256348,
+        "code_seg": 13.74066972732544,
+        "truncado": false
+      }
+    },
+    {
+      "id": "duracion",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.48740291595459,
+        "tokens": 373,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 26.21397852897644,
+        "tokens": 1486,
+        "plan_tok": 603,
+        "plan_seg": 10.455463647842407,
+        "code_seg": 15.758514881134033,
+        "truncado": false
+      }
+    },
+    {
+      "id": "palindromo",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.076134204864502,
+        "tokens": 346,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "SyntaxError: unterminated triple-quoted string literal (detected at line 126)",
+        "segundos": 48.281402349472046,
+        "tokens": 2744,
+        "plan_tok": 696,
+        "plan_seg": 12.077906370162964,
+        "code_seg": 36.20349597930908,
+        "truncado": true
+      }
+    },
+    {
+      "id": "aplanar",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 4.467806339263916,
+        "tokens": 250,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "AssertionError",
+        "segundos": 25.84114122390747,
+        "tokens": 1429,
+        "plan_tok": 636,
+        "plan_seg": 11.1268310546875,
+        "code_seg": 14.71431016921997,
+        "truncado": false
+      }
+    },
+    {
+      "id": "busqueda",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 6.366719722747803,
+        "tokens": 324,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": false,
+        "err": "AssertionError: Fallo: lista descendente",
+        "segundos": 45.53645443916321,
+        "tokens": 2285,
+        "plan_tok": 613,
+        "plan_seg": 12.066621541976929,
+        "code_seg": 33.46983289718628,
+        "truncado": false
+      }
+    },
+    {
+      "id": "agrupar",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 7.68202543258667,
+        "tokens": 386,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 55.27827525138855,
+        "tokens": 2765,
+        "plan_tok": 791,
+        "plan_seg": 15.425751686096191,
+        "code_seg": 39.85252356529236,
+        "truncado": false
+      }
+    },
+    {
+      "id": "contar_palabras",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 10.132356405258179,
+        "tokens": 505,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 33.36779308319092,
+        "tokens": 1613,
+        "plan_tok": 828,
+        "plan_seg": 16.9169979095459,
+        "code_seg": 16.45079517364502,
+        "truncado": false
+      }
+    },
+    {
+      "id": "rotar",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 9.52450680732727,
+        "tokens": 485,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 30.545416116714478,
+        "tokens": 1496,
+        "plan_tok": 641,
+        "plan_seg": 12.787687540054321,
+        "code_seg": 17.757728576660156,
+        "truncado": false
+      }
+    },
+    {
+      "id": "romano",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 13.762845754623413,
+        "tokens": 684,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 40.00884532928467,
+        "tokens": 1949,
+        "plan_tok": 870,
+        "plan_seg": 17.390199899673462,
+        "code_seg": 22.618645429611206,
+        "truncado": false
+      }
+    },
+    {
+      "id": "desde_romano",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 16.729747533798218,
+        "tokens": 828,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 46.719626903533936,
+        "tokens": 2294,
+        "plan_tok": 758,
+        "plan_seg": 15.310451745986938,
+        "code_seg": 31.409175157546997,
+        "truncado": false
+      }
+    },
+    {
+      "id": "racha",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 12.770180463790894,
+        "tokens": 637,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 25.375030040740967,
+        "tokens": 1319,
+        "plan_tok": 650,
+        "plan_seg": 12.259919166564941,
+        "code_seg": 13.115110874176025,
+        "truncado": false
+      }
+    },
+    {
+      "id": "camel",
+      "directo": {
+        "ok": true,
+        "err": "",
+        "segundos": 5.9026267528533936,
+        "tokens": 303,
+        "plan_tok": 0,
+        "truncado": false
+      },
+      "pipeline": {
+        "ok": true,
+        "err": "",
+        "segundos": 32.07910680770874,
+        "tokens": 1727,
+        "plan_tok": 699,
+        "plan_seg": 12.91128158569336,
+        "code_seg": 19.16782522201538,
+        "truncado": false
+      }
+    }
+  ]
+}

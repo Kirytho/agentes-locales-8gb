@@ -1,0 +1,52 @@
+{
+  "etiqueta": "Ornith-1.5-9B-MTP-IQ4_XS",
+  "repes": 5,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 65,
+      "aplica": 65,
+      "pasa": 63,
+      "rompio": 2,
+      "chars": 167730,
+      "seg": 1354.5395753383636,
+      "n": 65
+    },
+    "bloques": {
+      "formato": 50,
+      "aplica": 50,
+      "pasa": 46,
+      "rompio": 1,
+      "chars": 27746,
+      "seg": 502.2209372520447,
+      "n": 65
+    }
+  },
+  "motivos": {
+    "entero": [
+      "parametro_opcional: regresion: SyntaxError: invalid syntax",
+      "agregar_caso: regresion: SyntaxError: invalid syntax"
+    ],
+    "bloques": [
+      "agregar_caso: no hizo el cambio",
+      "parametro_opcional: sin bloques parseables",
+      "manejar_error: sin bloques parseables",
+      "filtrar_lista: sin bloques parseables",
+      "acumular_estado: sin bloques parseables",
+      "parametro_opcional: sin bloques parseables",
+      "manejar_error: sin bloques parseables",
+      "parametro_opcional: sin bloques parseables",
+      "filtrar_lista: sin bloques parseables",
+      "multi_campo: sin bloques parseables",
+      "agregar_caso: no hizo el cambio",
+      "arreglar_bug: sin bloques parseables",
+      "manejar_error: sin bloques parseables",
+      "acumular_estado: sin bloques parseables",
+      "agregar_caso: no hizo el cambio",
+      "manejar_error: sin bloques parseables",
+      "filtrar_lista: sin bloques parseables",
+      "multi_constante: regresion: NameError: name 'dentro_de_tope' is not defined",
+      "multi_campo: sin bloques parseables"
+    ]
+  }
+}

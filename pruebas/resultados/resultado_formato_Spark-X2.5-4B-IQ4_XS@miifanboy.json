@@ -1,0 +1,62 @@
+{
+  "etiqueta": "Spark-X2.5-4B-IQ4_XS@miifanboy",
+  "repes": 5,
+  "tareas": 13,
+  "acu": {
+    "entero": {
+      "formato": 65,
+      "aplica": 65,
+      "pasa": 57,
+      "rompio": 3,
+      "chars": 171738,
+      "seg": 664.4504501819611,
+      "n": 65
+    },
+    "bloques": {
+      "formato": 65,
+      "aplica": 57,
+      "pasa": 42,
+      "rompio": 11,
+      "chars": 49691,
+      "seg": 191.4241123199463,
+      "n": 65
+    }
+  },
+  "motivos": {
+    "entero": [
+      "agregar_caso: regresion: AssertionError",
+      "agregar_caso: no hizo el cambio",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "agregar_caso: no hizo el cambio",
+      "filtrar_lista: no hizo el cambio",
+      "validar_entrada: no hizo el cambio",
+      "agregar_caso: regresion: AssertionError",
+      "agregar_caso: no hizo el cambio"
+    ],
+    "bloques": [
+      "agregar_caso: regresion: AssertionError",
+      "parametro_opcional: SEARCH no esta en m.py",
+      "extender_registro: SEARCH no esta en m.py",
+      "multi_constante: regresion: NameError: name 'TOPE' is not defined",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo",
+      "agregar_caso: no hizo el cambio",
+      "parametro_opcional: SEARCH no esta en m.py",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "multi_constante: regresion: AttributeError: module 'limites' has no attribute 'TOPE'",
+      "agregar_caso: regresion: AssertionError",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "multi_constante: regresion: NameError: name 'TOPE' is not defined",
+      "multi_renombrar: SEARCH aparece 2 veces en m.py: ambiguo",
+      "agregar_caso: regresion: AssertionError",
+      "extender_registro: SEARCH no esta en m.py",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "validar_entrada: no hizo el cambio",
+      "multi_constante: SEARCH no esta en m.py",
+      "agregar_caso: regresion: AssertionError",
+      "dos_lugares: regresion: NameError: name 'SEPARADOR' is not defined",
+      "filtrar_lista: no hizo el cambio",
+      "validar_entrada: no hizo el cambio",
+      "multi_constante: SEARCH no esta en m.py"
+    ]
+  }
+}

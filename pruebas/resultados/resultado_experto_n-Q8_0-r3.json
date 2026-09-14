@@ -1,0 +1,584 @@
+{
+  "etiqueta": "n-Q8_0-r3",
+  "codigo": {
+    "aciertos": 29,
+    "total": 53,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n: int) -> list[str]:\n    \"\"\"\n    Devuelve una lista de strings del 1 al n, donde:\n    - Multiplos de 3 son 'Fizz'\n    - Multiplos de 5 son 'Buzz'\n    - Multiplos de 15 son 'FizzBuzz'\n    - Los demás son convertidos a string.\n    \"\"\"\n    result = []\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            result.append(\"FizzBuzz\")\n        elif i % 3 == 0:\n            result.append(\"Fizz\")\n        elif i % 5 == 0:\n            result.append(\"Buzz\")\n        else:\n            result.append(str(i))\n    return result"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "ValueError: invalid literal for int() with base 10: '1h30m'",
+        "codigo": "def parsear_duracion(s: str) -> int:\n    \"\"\"\n    Recibe un string como '1h30m', '45m' o '2h' y devuelve la cantidad total de MINUTOS como entero.\n    \n    Args:\n        s: String que representa una duración en formato HH:MM o MM.\n        \n    Returns:\n        El total de minutos como entero.\n    \"\"\"\n    if not s:\n        raise ValueError(\"El string no puede estar vacío.\")\n    \n    # Separar horas y minutos\n    if ':' in s:\n        horas, minutos = s.split(':')\n        total_minutos = int(horas) * 60 + int(minutos)\n    else:\n        minutos = int(s)\n        total_minutos = minutos\n    \n    return total_minutos"
+      },
+      {
+        "id": "palindromo",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_palindromo(s: str) -> bool:\n    \"\"\"\n    Verifica si una string es palíndromo, ignorando mayúsculas, espacios\n    y signos de puntuación.\n    \n    Args:\n        s: La string a verificar.\n        \n    Returns:\n        True si la string es palíndromo, False de lo contrario.\n    \"\"\"\n    # Convertir a minúsculas y eliminar espacios y signos de puntuación\n    cleaned = ''.join(ch.lower() for ch in s if ch.isalnum())\n    # Verificar si es palíndromo\n    return cleaned == cleaned[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista: list) -> list:\n    \"\"\"\n    Recibe una lista con sublistas anidadas a cualquier profundidad\n    y devuelve una lista plana con todos los elementos.\n    \n    Args:\n        lista: Lista con sublistas anidadas a cualquier profundidad.\n        \n    Returns:\n        Lista plana con todos los elementos.\n    \"\"\"\n    result = []\n    for item in lista:\n        if isinstance(item, list):\n            result.extend(aplanar(item))\n        else:\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    \"\"\"\n    Realiza una búsqueda binaria sobre una lista ordenada y devuelve\n    el índice de x, o -1 si no está presente.\n    \n    Args:\n        lista: Lista ordenada (ascendente).\n        x: Valor a buscar.\n    \n    Returns:\n        El índice de x si se encuentra, o -1 si no.\n    \"\"\"\n    low = 0\n    high = len(lista) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def agrupar_por(items, clave):\n    \"\"\"\n    Agrupa una lista de diccionarios por el valor de una clave específica.\n    \n    Args:\n        items: Lista de diccionarios.\n        clave: Clave a agrupar por.\n    \n    Returns:\n        Diccionario con los items agrupados por el valor de la clave.\n    \"\"\"\n    return {clave: [] for clave in items[0].keys()}"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": true,
+        "error": "",
+        "codigo": "def contar_palabras(texto: str) -> dict[str, int]:\n    \"\"\"\n    Cuenta cuántas veces aparece cada palabra en un texto.\n    Ignora mayúsculas y signos de puntuación.\n    \n    Args:\n        texto: La entrada de texto a analizar.\n        \n    Returns:\n        Un diccionario donde las claves son las palabras únicas\n        y los valores son las frecuencias.\n    \"\"\"\n    import re\n    import string\n\n    # Convertir a minúsculas y eliminar signos de puntuación\n    cleaned = re.sub(r'[^a-zA-Z\\s]', '', texto.lower())\n\n    # Contar frecuencias\n    counts = {}\n    for word in cleaned.split():\n        if word:\n            counts[word] = counts.get(word, 0) + 1\n\n    return counts"
+      },
+      {
+        "id": "rotar",
+        "ok": true,
+        "error": "",
+        "codigo": "def rotar(lista: list, n: int) -> list:\n    \"\"\"\n    Rota la lista n posiciones hacia la derecha.\n    Si n es mayor que el largo, rota lo que corresponda.\n    Si n es negativo, rota hacia la izquierda.\n    Lista vacía devuelve lista vacía.\n    \"\"\"\n    if not lista:\n        return []\n    \n    n = n % len(lista)\n    if n < 0:\n        n += len(lista)\n    \n    return lista[-n:] + lista[:-n]"
+      },
+      {
+        "id": "romano",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_romano(n: int) -> str:\n    \"\"\"\n    Convierte un entero entre 1 y 3999 a su representación en números romanos.\n    Utiliza la notación sustractiva (IV, IX, XL, XC, CM, CD, CM).\n    \n    Args:\n        n: Un entero entre 1 y 3999.\n        \n    Returns:\n        La representación en números romanos.\n    \"\"\"\n    if n < 1 or n > 3999:\n        raise ValueError(\"El número debe estar entre 1 y 3999.\")\n    \n    # Definición de los valores de los símbolos\n    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\n    simb = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"]\n    \n    # Construcción del resultado\n    resultado = []\n    for i in range(len(val)):\n        while n >= val[i]:\n            resultado.append(simb[i])\n            n -= val[i]\n    \n    return ''.join(resultado)\n\n\n# Ejemplo de uso (opcional):\n# print(a_romano(1))   # \"I\"\n# print(a_romano(4))   # \"IV\"\n# print(a_romano(9))   # \"IX\"\n# print(a_romano(40))  # \"XL\"\n# print(a_romano(900)) # \"CM\"\n# print(a_romano(3999)) # \"MMMCMXCIX\""
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "NameError: name 'desde_romano' is not defined",
+        "codigo": "def from_romano(s: str) -> int:\n    \"\"\"\n    Convierte una cadena de caracteres en notación romana a un entero.\n    Maneja la notación sustractiva (IV vale 4).\n    \n    Args:\n        s: String con números romanos.\n        \n    Returns:\n        El entero correspondiente.\n    \"\"\"\n    roman_map = {\n        'I': 1, 'V': 5, 'X': 10, 'L': 50,\n        'C': 100, 'D': 500, 'M': 1000\n    }\n    \n    result = 0\n    prev_value = 0\n    \n    for char in reversed(s):\n        value = roman_map.get(char, 0)\n        if value < prev_value:\n            result -= value\n        else:\n            result += value\n        prev_value = value\n    \n    return result"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    \"\"\"\n    Encuentra la racha más larga de elementos consecutivos iguales.\n    Devuelve la tupla (elemento, longitud). Si hay empate, devuelve la primera.\n    Si la lista está vacía, devuelve None.\n    \"\"\"\n    if not lista:\n        return None\n\n    max_racha = 1\n    max_element = lista[0]\n    current_racha = 1\n\n    for i in range(1, len(lista)):\n        if lista[i] == lista[i - 1]:\n            current_racha += 1\n        else:\n            if current_racha > max_racha:\n                max_racha = current_racha\n                max_element = lista[i - 1]\n            current_racha = 1\n\n    # Verificar la racha final\n    if current_racha > max_racha:\n        max_racha = current_racha\n        max_element = lista[-1]\n\n    return (max_element, max_racha)"
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_camel(s: str) -> str:\n    \"\"\"Convierte un texto en snake_case a camelCase.\n    \n    La primera palabra en minúscula y las siguientes con la inicial en mayúscula,\n    sin guiones bajos.\n    \n    Args:\n        s: La cadena de texto a convertir.\n        \n    Returns:\n        La cadena convertida en camelCase.\n    \"\"\"\n    if not s:\n        return s\n    \n    # Convertir todo a minúsculas\n    lower_s = s.lower()\n    \n    # Separar palabras por guiones bajos\n    words = lower_s.split('-')\n    \n    # Construir la cadena en camelCase\n    result = words[0]\n    for i in range(1, len(words)):\n        result += words[i].upper()\n    \n    return result"
+      },
+      {
+        "id": "snake",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_snake(s: str) -> str:\n    \"\"\"\n    Convierte una cadena de texto de camelCase o PascalCase a snake_case.\n    \n    Reglas:\n        - Todo en minusculas.\n        - Un guion bajo (_ ) antes de cada mayuscula interna.\n        - No debe empezar con guion bajo.\n    \n    Args:\n        s: Cadena de texto en camelCase o PascalCase.\n    \n    Returns:\n        Cadena de texto en snake_case.\n    \"\"\"\n    if not s:\n        return s\n    \n    result = []\n    prev_was_upper = False\n    \n    for char in s:\n        if char.isupper():\n            if prev_was_upper:\n                result.append('_')\n            result.append(char.lower())\n            prev_was_upper = False\n        else:\n            result.append(char)\n            prev_was_upper = char.isupper()\n    \n    result.append('')\n    return ''.join(result)"
+      },
+      {
+        "id": "primos",
+        "ok": true,
+        "error": "",
+        "codigo": "def primos(n: int) -> list[int]:\n    \"\"\"Devuelve la lista ordenada de todos los números primos menores o iguales a n.\"\"\"\n    if n < 2:\n        return []\n    return [i for i in range(2, n + 1) if all(i % j != 0 for j in range(2, int(i**0.5) + 1))]"
+      },
+      {
+        "id": "mcd",
+        "ok": true,
+        "error": "",
+        "codigo": "def mcd(a, b):\n    \"\"\"\n    Devuelve el máximo común divisor de dos enteros no negativos.\n    El mcd de un número con 0 es ese número.\n    \"\"\"\n    if b == 0:\n        return a\n    while b != 0:\n        a, b = b, a % b\n    return a"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "NameError: name 'intervals' is not defined. Did you mean: 'intervalos'?",
+        "codigo": "def fusionar(intervalos: list[tuple[int, int]]) -> list[tuple[int, int]]:\n    \"\"\"\n    Recibe una lista de tuplas (inicio, fin) posiblemente desordenada\n    y devuelve la lista de intervalos fusionados, ordenada por inicio.\n    \n    Dos intervalos se fusionan si se tocan en un extremo.\n    \n    Args:\n        intervals: Lista de tuplas (inicio, fin) posiblemente desordenada.\n        \n    Returns:\n        Lista de intervalos fusionados ordenados por inicio.\n    \"\"\"\n    if not intervals:\n        return []\n    \n    # Ordenar los intervalos por inicio\n    intervals.sort(key=lambda x: x[0])\n    \n    # Fusionar intervalos que se tocan en un extremo\n    result = [intervals[0]]\n    for i in range(1, len(intervals)):\n        if intervals[i][0] <= intervals[i - 1][1]:\n            # Se tocan en un extremo: fusionar\n            intervals[i - 1][1] = max(intervals[i - 1][1], intervals[i][1])\n            result.append(intervals[i - 1])\n        else:\n            result.append(intervals[i])\n    \n    return result"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Verifica si dos textos son anagramas, ignorando mayúsculas y espacios.\n    \n    Args:\n        a: Primer texto.\n        b: Segundo texto.\n    \n    Returns:\n        True si los dos textos son anagramas, False de lo contrario.\n    \"\"\"\n    # Normalizar: convertir a minúsculas y eliminar espacios\n    a_normalized = a.lower().replace(\" \", \"\")\n    b_normalized = b.lower().replace(\" \", \"\")\n    \n    # Contar frecuencias de cada carácter\n    from collections import Counter\n    count_a = Counter(a_normalized)\n    count_b = Counter(b_normalized)\n    \n    # Comparar conteos\n    return count_a == count_b"
+      },
+      {
+        "id": "comprimir",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def comprimir(s: str) -> str:\n    \"\"\"\n    Aplica codificación por repeticiones.\n    'aaabb' se convierte en 'a3b2'.\n    \n    Si la versión comprimida es más corta que la original,\n    devuelve la versión comprimida.\n    Si no es más corta, devuelve la original sin cambios.\n    \n    Args:\n        s: La cadena de texto a comprimir.\n        \n    Returns:\n        La cadena comprimida si es más corta que la original,\n        o la original si no lo es.\n    \"\"\"\n    if not s:\n        return s\n    \n    # Contar repeticiones de cada carácter\n    counts = {}\n    for char in s:\n        counts[char] = counts.get(char, 0) + 1\n    \n    # Construir la cadena comprimida\n    compressed = \"\"\n    for char, count in counts.items():\n        if count > 1:\n            compressed += char + str(count)\n    \n    # Verificar si es más corta\n    if len(compressed) < len(s):\n        return compressed\n    else:\n        return s"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def balanceado(s: str) -> bool:\n    \"\"\"\n    Verifica si los parentesis, corchetes y llaves del texto están correctamente\n    balanceados y anidados.\n\n    Args:\n        s: La cadena de texto a verificar.\n\n    Returns:\n        True si los paréntesis, corchetes y llaves están balanceados,\n        False en caso contrario.\n    \"\"\"\n    if not s:\n        return True\n\n    open_paren = 0\n    open_bracket = 0\n    open_brace = 0\n\n    for char in s:\n        if char == '(':\n            open_paren += 1\n        elif char == '[':\n            open_bracket += 1\n        elif char == '{':\n            open_brace += 1\n        elif char == ')':\n            if open_paren == 0:\n                return False\n            open_paren -= 1\n        elif char == ']':\n            if open_bracket == 0:\n                return False\n            open_bracket -= 1\n        elif char == '}':\n            if open_brace == 0:\n                return False\n            open_brace -= 1\n\n    return open_paren == 0 and open_bracket == 0 and open_brace == 0"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n    \"\"\"\n    Recibe una matriz como lista de listas y devuelve su transpuesta.\n    \n    Args:\n        m: Una matriz representada como lista de listas.\n        \n    Returns:\n        La matriz transpuesta.\n    \"\"\"\n    if not m:\n        return []\n    \n    # Obtener el número de columnas de la matriz original\n    num_columnas = len(m[0])\n    \n    # Construir la matriz transpuesta: filas de la transpuesta = columnas de la original\n    transpuesta = [[None] * len(m) for _ in range(num_columnas)]\n    \n    # Llenar la matriz transpuesta\n    for i in range(len(m)):\n        for j in range(len(m[0])):\n            transpuesta[j][i] = m[i][j]\n    \n    return transpuesta"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": false,
+        "error": "NameError: name 'raiz_digital' is not defined",
+        "codigo": "def suma_digitos(n: int) -> int:\n    \"\"\"Suma los dígitos de un número y repite el proceso hasta quedarse con un solo dígito.\"\"\"\n    while n >= 10:\n        n = sum(int(d) for d in str(n))\n    return n\n\n\n# Ejemplo:\nprint(suma_digitos(9875))  # 2"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": true,
+        "error": "",
+        "codigo": "def sin_duplicados(lista):\n    \"\"\"\n    Elimina los elementos repetidos de una lista,\n    conservando el orden de la primera aparición.\n    \n    Args:\n        lista: Una lista de elementos.\n        \n    Returns:\n        Una lista con elementos únicos en el mismo orden.\n    \"\"\"\n    seen = set()\n    result = []\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "n_mayor",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def n_esimo_mayor(lista: list, n: int) -> None:\n    \"\"\"\n    Devuelve el n-esimo valor más grande contando valores DISTINCTOS.\n    Si no hay suficientes valores distintos, devuelve None.\n    \n    Args:\n        lista: Lista de valores (puede contener duplicados).\n        n: Índice del valor más grande (0-based).\n    \n    Returns:\n        El n-esimo valor más grande distinto, o None si no existe.\n    \"\"\"\n    if n < 0:\n        return None\n    if n > len(set(lista)):\n        return None\n\n    # Ordenar los valores distintos de mayor a menor\n    sorted_unique = sorted(set(lista), reverse=True)\n    return sorted_unique[n]"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def formatear_bytes(n: int) -> str:\n    \"\"\"\n    Convierte una cantidad de bytes a texto legible usando base 1024\n    y las unidades B, KB, MB, GB.\n    \n    Los bytes se muestran sin decimales y las demas unidades con UN decimal.\n    \n    Args:\n        n: Cantidad de bytes a convertir.\n        \n    Returns:\n        String representando la cantidad en unidades de bytes.\n    \"\"\"\n    if n == 0:\n        return \"0 B\"\n    \n    unidades = [\"B\", \"KB\", \"MB\", \"GB\"]\n    \n    for i in range(4):\n        if n >= 1024 ** i:\n            valor = n / 1024 ** i\n            if i == 0:\n                return f\"{int(valor)} B\"\n            else:\n                return f\"{valor:.1f} {unidades[i]}\"\n    \n    return f\"{n} B\""
+      },
+      {
+        "id": "lotes",
+        "ok": true,
+        "error": "",
+        "codigo": "def en_lotes(lista, tamano):\n    \"\"\"Partir una lista en sublistas de un tamaño dado. El último lote puede ser más chico.\"\"\"\n    if not lista:\n        return []\n    \n    # Calcular cuántos lotes completos caben\n    num_lotes = len(lista) // tamano\n    \n    # Calcular cuántos elementos quedan para el último lote\n    resto = len(lista) % tamano\n    \n    # Construir las sublistas\n    sub_lotes = []\n    for i in range(num_lotes):\n        sub_lotes.append(lista[i * tamano:(i + 1) * tamano])\n    \n    # Añadir el último lote (si existe)\n    if resto > 0:\n        sub_lotes.append(lista[num_lotes * tamano:])\n    \n    return sub_lotes"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n    \"\"\"\n    Recibe una matriz (lista de listas) y devuelve su transpuesta.\n    Si la matriz está vacia, devuelve una lista vacia.\n    \n    Args:\n        m: Una matriz representada como una lista de listas.\n        \n    Returns:\n        La matriz transpuesta.\n    \"\"\"\n    if not m:\n        return []\n    \n    n = len(m)\n    m_transpuesta = [[0] * n for _ in range(len(m[0]))]\n    \n    for i in range(len(m)):\n        for j in range(len(m[0])):\n            m_transpuesta[j][i] = m[i][j]\n    \n    return m_transpuesta"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "NameError: name 'intervals' is not defined. Did you mean: 'intervalos'?",
+        "codigo": "def fusionar(intervalos: list[tuple[int, int]]) -> list[tuple[int, int]]:\n    \"\"\"\n    Fusionar una lista de intervalos (inicio, fin) ordenados por inicio.\n    Dos intervalos se fusionan si se tocan (inicio2 == fin1 + 1).\n    \n    Args:\n        intervals: Lista de tuplas (inicio, fin) ordenadas por inicio.\n        \n    Returns:\n        Lista de intervalos fusionados ordenados por inicio.\n    \"\"\"\n    if not intervals:\n        return []\n    \n    result = [intervals[0]]\n    \n    for inicio, fin in intervals[1:]:\n        if inicio == fin + 1:\n            result[-1] = (result[-1][0], fin)\n        else:\n            result.append((inicio, fin))\n    \n    return result"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def balanceado(s: str) -> bool:\n    \"\"\"\n    Verifica si los paréntesis, corchetes y llaves del string están bien balanceados y anidados.\n    Los demás caracteres se ignoran.\n    \n    Args:\n        s: La cadena de texto a verificar.\n        \n    Returns:\n        True si los paréntesis, corchetes y llaves están bien balanceados, False en caso contrario.\n    \"\"\"\n    open_paren = []\n    open_bracket = []\n    open_brace = []\n\n    for char in s:\n        if char == '(':\n            open_paren.append(char)\n        elif char == '[':\n            open_bracket.append(char)\n        elif char == '{':\n            open_brace.append(char)\n        elif char == ')':\n            if not open_paren:\n                return False\n            open_paren.pop()\n        elif char == ']':\n            if not open_bracket:\n                return False\n            open_bracket.pop()\n        elif char == '}':\n            if not open_brace:\n                return False\n            open_brace.pop()\n\n    return len(open_paren) == 0 and len(open_bracket) == 0 and len(open_brace) == 0"
+      },
+      {
+        "id": "mediana",
+        "ok": true,
+        "error": "",
+        "codigo": "def mediana(nums: list[int | float]) -> float | None:\n    \"\"\"\n    Devuelve la mediana de una lista de números.\n    \n    Si la lista tiene un número par de elementos, devuelve el promedio\n    de los dos elementos centrales. Si la lista está vacía, devuelve None.\n    \n    Args:\n        nums: Lista de números.\n        \n    Returns:\n        La mediana del conjunto de números, o None si la lista está vacía.\n    \"\"\"\n    if not nums:\n        return None\n    \n    nums_sorted = sorted(nums)\n    n = len(nums_sorted)\n    \n    if n % 2 == 0:\n        return (nums_sorted[n // 2 - 1] + nums_sorted[n // 2]) / 2.0\n    else:\n        return nums_sorted[n // 2]"
+      },
+      {
+        "id": "top_frecuentes",
+        "ok": true,
+        "error": "",
+        "codigo": "from collections import Counter\nfrom typing import List, Tuple\n\n\ndef top_frecuentes(texto: str, k: int) -> List[Tuple[str, int]]:\n    \"\"\"\n    Devuelve las k palabras más frecuentes de un texto, ordenadas\n    por cantidad descendente y, a igual cantidad, alfabéticamente.\n\n    Args:\n        texto: La entrada de texto a analizar.\n        k: El número de palabras más frecuentes a devolver.\n\n    Returns:\n        Una lista de tuplas (palabra, cantidad) ordenadas por frecuencia descendente.\n    \"\"\"\n    if not texto or not texto.strip():\n        return []\n\n    # Normalizar: convertir todo a minúsculas y eliminar espacios\n    words = [word.lower().strip() for word in texto.split()]\n\n    if not words:\n        return []\n\n    # Contar frecuencias\n    word_counts = Counter(words)\n\n    # Ordenar: primero por cantidad descendente, luego alfabéticamente\n    sorted_words = sorted(word_counts.items(), key=lambda x: (-x[1], x[0]))\n\n    # Devolver las k palabras más frecuentes\n    return sorted_words[:k]"
+      },
+      {
+        "id": "trozos",
+        "ok": false,
+        "error": "ValueError: n debe ser un número positivo",
+        "codigo": "def trozos(lista: list, n: int) -> list:\n    \"\"\"\n    Divide una lista en sublistas de tamaño n.\n    La última sublista puede ser de tamaño menor que n.\n    \n    Args:\n        lista: Lista de elementos a dividir.\n        n: Tamaño mínimo de cada sublista.\n        \n    Returns:\n        Una lista de sublistas.\n        \n    Raises:\n        ValueError: Si n es negativo.\n    \"\"\"\n    if n <= 0:\n        raise ValueError(\"n debe ser un número positivo\")\n    \n    return [lista[i:i + n] for i in range(0, len(lista), n)]"
+      },
+      {
+        "id": "dedup",
+        "ok": true,
+        "error": "",
+        "codigo": "def dedup(lista):\n    \"\"\"\n    Elimina duplicados de una lista, conservando el orden de la primera aparición.\n    \n    Args:\n        lista: Lista de elementos que puede contener duplicados.\n        \n    Returns:\n        Nueva lista con los elementos únicos, en el orden de su primera aparición.\n    \"\"\"\n    seen = set()\n    result = []\n    for item in lista:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "binaria",
+        "ok": true,
+        "error": "",
+        "codigo": "def binaria(lista, x):\n    \"\"\"\n    Busca un elemento en una lista ordenada usando busqueda binaria.\n    \n    Args:\n        lista: Lista ordenada (ascendente o descendente).\n        x: Elemento a buscar.\n        \n    Returns:\n        El índice del elemento si se encuentra, o -1 si no.\n    \"\"\"\n    low = 0\n    high = len(lista) - 1\n\n    while low <= high:\n        mid = (low + high) // 2\n\n        if lista[mid] == x:\n            return mid\n        elif lista[mid] < x:\n            low = mid + 1\n        else:\n            high = mid - 1\n\n    return -1"
+      },
+      {
+        "id": "anidar",
+        "ok": true,
+        "error": "",
+        "codigo": "def anidar(plano: dict) -> dict:\n    \"\"\"\n    Convierte un diccionario de claves con puntos en un diccionario anidado.\n    \n    Ejemplo: {'a.b': 1} -> {'a': {'b': 1}}\n    \n    Args:\n        plano: Diccionario con claves que pueden contener puntos ('.')\n    \n    Returns:\n        Diccionario anidado con las claves separadas por puntos\n    \"\"\"\n    result = {}\n    for key, value in plano.items():\n        if '.' in key:\n            parts = key.split('.')\n            current = result\n            for part in parts[:-1]:\n                if part not in current:\n                    current[part] = {}\n                current = current[part]\n            current[parts[-1]] = value\n        else:\n            result[key] = value\n    return result"
+      },
+      {
+        "id": "rle",
+        "ok": false,
+        "error": "NameError: name 'comprimir' is not defined",
+        "codigo": "def compress(s: str) -> str:\n    \"\"\"Aplica run-length encoding a una string.\n    \n    Caracteres que aparecen una sola vez se marcan con '1'.\n    Ejemplos: 'aaabb' -> 'a3b2', 'abc' -> 'a1b1c1', '' -> ''\n    \"\"\"\n    if not s:\n        return \"\"\n    \n    result = []\n    current_char = s[0]\n    count = 1\n    \n    for i in range(1, len(s)):\n        if s[i] == current_char:\n            count += 1\n        else:\n            result.append(current_char)\n            result.append(str(count))\n            current_char = s[i]\n            count = 1\n    \n    result.append(current_char)\n    result.append(str(count))\n    \n    return ''.join(result)"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a: str, b: str) -> bool:\n    \"\"\"\n    Verifica si dos strings son anagramas, ignorando mayúsculas y espacios.\n    \n    Args:\n        a: Primer string.\n        b: Segundo string.\n    \n    Returns:\n        True si los strings son anagramas, False de lo contrario.\n    \"\"\"\n    # Normalizar: convertir a minúsculas y eliminar espacios\n    a_normalized = a.lower().replace(\" \", \"\")\n    b_normalized = b.lower().replace(\" \", \"\")\n    \n    # Contar frecuencias de cada carácter\n    from collections import Counter\n    count_a = Counter(a_normalized)\n    count_b = Counter(b_normalized)\n    \n    # Comparar conteos\n    return count_a == count_b"
+      },
+      {
+        "id": "movil",
+        "ok": true,
+        "error": "",
+        "codigo": "def promedio_movil(nums, ventana):\n    \"\"\"\n    Calcula la lista de promedios moviles de tamaño 'ventana'.\n    \n    Args:\n        nums: Lista de números.\n        ventana: Tamaño de la ventana deslizante.\n        \n    Returns:\n        Lista de promedios moviles. Si la lista es más corta que la ventana,\n        devuelve una lista vacia.\n    \"\"\"\n    if len(nums) < ventana:\n        return []\n    \n    result = []\n    for i in range(len(nums) - ventana + 1):\n        window = nums[i:i + ventana]\n        result.append(sum(window) / ventana)\n    \n    return result"
+      },
+      {
+        "id": "bytes_humano",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def formatear_bytes(n: int) -> str:\n    \"\"\"Convierte un número de bytes a texto legible usando múltiplos de 1024.\n    \n    Ejemplo: 1536 -> '1.5 KB'\n    \n    Args:\n        n: Número de bytes a convertir.\n        \n    Returns:\n        String con el valor convertido a texto legible.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"El número de bytes debe ser no negativo.\")\n    \n    unidades = [\n        (\"B\", 1),\n        (\"KB\", 1024),\n        (\"MB\", 1024 ** 2),\n        (\"GB\", 1024 ** 3),\n        (\"TB\", 1024 ** 4),\n    ]\n    \n    for unidad, factor in unidades:\n        if n >= factor:\n            valor = n // factor\n            decimal = n % factor\n            if decimal == 0:\n                return f\"{valor} {unidad}\"\n            else:\n                return f\"{valor}.{decimal} {unidad}\"\n    \n    return f\"{n} B\""
+      },
+      {
+        "id": "query",
+        "ok": true,
+        "error": "",
+        "codigo": "def parsear_query(s: str) -> dict:\n    \"\"\"\n    Convierte un query string tipo 'a=1&b=2' en un dict {'a':'1','b':'2'}.\n    Una clave sin valor ('c=') queda con string vacio.\n    String vacio devuelve dict vacio.\n    \"\"\"\n    if not s:\n        return {}\n    result = {}\n    for part in s.split(\"&\"):\n        if \"=\" in part:\n            key, value = part.split(\"=\", 1)\n            result[key] = value\n    return result"
+      },
+      {
+        "id": "islas",
+        "ok": true,
+        "error": "",
+        "codigo": "def contar_islas(grid: list[list[int]]) -> int:\n    \"\"\"\n    Cuenta el número de grupos de 1 conectados en una matriz binaria.\n    \n    Dos celdas son conectadas si comparten un lado (arriba, abajo, izquierda, derecha).\n    \n    Args:\n        grid: Matriz de 0 y 1.\n        \n    Returns:\n        Número de grupos de 1 conectados.\n    \"\"\"\n    if not grid or not grid[0]:\n        return 0\n\n    rows = len(grid)\n    cols = len(grid[0])\n    visited = [[False] * cols for _ in range(rows)]\n\n    def dfs(r, c):\n        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n            nr, nc = r + dr, c + dc\n            if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1 and not visited[nr][nc]:\n                visited[nr][nc] = True\n                dfs(nr, nc)\n\n    count = 0\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1 and not visited[r][c]:\n                count += 1\n                dfs(r, c)\n    return count"
+      },
+      {
+        "id": "levenshtein",
+        "ok": false,
+        "error": "NameError: name 'distancia' is not defined",
+        "codigo": "def distancia_edicion(a: str, b: str) -> int:\n    \"\"\"\n    Calcula la distancia de Levenshtein entre dos strings.\n    \n    La distancia es el mínimo número de inserciones, borrados o sustituciones\n    necesarias para convertir una cadena en otra.\n    \n    Args:\n        a: La primera cadena.\n        b: La segunda cadena.\n    \n    Returns:\n        El número mínimo de operaciones de edición.\n    \"\"\"\n    m = len(a)\n    n = len(b)\n    \n    # Matriz de m x (n + 1)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    \n    # Base cases: insertar o borrar un carácter\n    for i in range(m + 1):\n        dp[i][0] = i\n    for j in range(n + 1):\n        dp[0][j] = j\n    \n    # Lógica de Levenshtein\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if a[i - 1] == b[j - 1]:\n                dp[i][j] = dp[i - 1][j - 1]\n            else:\n                dp[i][j] = 1 + min(\n                    dp[i - 1][j],    # inserción\n                    dp[i][j - 1],    # sustitución\n                    dp[i - 1][j - 1]  # borrado\n                )\n    \n    return dp[m][n]"
+      },
+      {
+        "id": "password",
+        "ok": true,
+        "error": "",
+        "codigo": "import string\n\ndef validar_password(p: str) -> bool:\n    \"\"\"\n    Verifica si una contraseña cumple con los siguientes requisitos:\n    - Al menos 8 caracteres\n    - Al menos una mayúscula\n    - Al menos una minúscula\n    - Al menos un dígito\n    - Al menos un carácter no alfanumérico (símbolo)\n    \n    Args:\n        p: La contraseña a validar.\n        \n    Returns:\n        True si la contraseña cumple todos los requisitos, False en caso contrario.\n    \"\"\"\n    if len(p) < 8:\n        return False\n    if not any(c.isupper() for c in p):\n        return False\n    if not any(c.islower() for c in p):\n        return False\n    if not any(c.isdigit() for c in p):\n        return False\n    if not any(not c.isalnum() for c in p):\n        return False\n    return True"
+      },
+      {
+        "id": "base_n",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_base(n: int, base: int) -> str:\n    \"\"\"\n    Convierte un entero no negativo a string en la base dada (2 a 16).\n    Usa digitos 0-9 y letras minusculas a-f.\n    El cero devuelve '0'.\n    \n    Args:\n        n: El entero no negativo a convertir.\n        base: La base para convertir (2 a 16).\n        \n    Returns:\n        La representación del número en la base dada.\n    \"\"\"\n    if n == 0:\n        return '0'\n    \n    digits = '0123456789abcdef'\n    \n    while n > 0:\n        remainder = n % base\n        n //= base\n        digits = digits[remainder] + digits\n    \n    return digits[::-1]"
+      },
+      {
+        "id": "particion",
+        "ok": true,
+        "error": "",
+        "codigo": "def pares_primero(nums):\n    pares = []\n    impares = []\n    for num in nums:\n        if num % 2 == 0:\n            pares.append(num)\n        else:\n            impares.append(num)\n    return pares + impares"
+      },
+      {
+        "id": "interseccion",
+        "ok": true,
+        "error": "",
+        "codigo": "def interseccion(a: list[int], b: list[int]) -> list[int]:\n    \"\"\"\n    Devuelve la lista ordenada de valores presentes en ambas listas,\n    sin repetidos.\n\n    Args:\n        a: Lista ordenada de enteros.\n        b: Lista ordenada de enteros.\n\n    Returns:\n        Lista ordenada de valores presentes en ambas listas, sin repetidos.\n    \"\"\"\n    return sorted(set(a) & set(b))"
+      },
+      {
+        "id": "dias_entre",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "from datetime import datetime\n\n\ndef dias_entre(a: str, b: str) -> int:\n    \"\"\"\n    Recibe dos fechas en formato 'YYYY-MM-DD' y devuelve la cantidad de días\n    entre ellas como entero positivo.\n\n    Args:\n        a: Fecha inicial en formato 'YYYY-MM-DD'.\n        b: Fecha final en formato 'YYYY-MM-DD'.\n\n    Returns:\n        El número de días entre las dos fechas (a >= b).\n    \"\"\"\n    fecha_a = datetime.strptime(a, \"%Y-%m-%d\")\n    fecha_b = datetime.strptime(b, \"%Y-%m-%d\")\n\n    if fecha_a < fecha_b:\n        fecha_a, fecha_b = fecha_b, fecha_a\n\n    return (fecha_b - fecha_a).days"
+      },
+      {
+        "id": "escapar_csv",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def campo_csv(s: str) -> str:\n    \"\"\"\n    Prepara un campo para CSV:\n    - Si contiene coma (,), comilla doble (\"), salto de línea (\\n),\n      lo devuelve entre comillas dobles y con las comillas internas duplicadas.\n    - Si no, lo devuelve tal cual.\n    \"\"\"\n    if s in ('\",\\n'):\n        return '\"' + s + '\"'\n    return s"
+      },
+      {
+        "id": "titulo",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def titular(s: str) -> str:\n    \"\"\"\n    Capitaliza la primera letra de cada palabra, excepto 'de', 'del', 'la', 'las', 'el', 'los' e 'y'\n    cuando no son la primera palabra.\n    \"\"\"\n    words = s.split()\n    result = []\n    for i, word in enumerate(words):\n        if i == 0:\n            result.append(word.capitalize())\n        else:\n            result.append(word[0].upper() + word[1:].lower())\n    return \" \".join(result)\n\n\n# Ejemplo de uso:\n# titular(\"Hola mundo\") -> \"Hola Mundo\"\n# titular(\"Hola mundo de la vida\") -> \"Hola Mundo De La Vida\"\n# titular(\"Hola mundo de la vida y amor\") -> \"Hola Mundo De La Vida Y Amor\""
+      },
+      {
+        "id": "aplanar_prof",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar_hasta(lista: list, profundidad: int) -> list:\n    \"\"\"\n    Aplanar una lista anidada hasta la profundidad indicada.\n    \n    Args:\n        lista: Lista que puede contener elementos de cualquier tipo.\n        profundidad: Nivel máximo de anidamiento a aplana.\n        \n    Returns:\n        Lista plana con todos los elementos desempaquetados.\n    \"\"\"\n    if profundidad <= 0:\n        return lista\n    if not isinstance(lista, list):\n        raise TypeError(\"La lista debe ser de tipo list\")\n    \n    result = []\n    for item in lista:\n        if isinstance(item, list):\n            result.extend(aplanar_hasta(item, profundidad - 1))\n        else:\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "romanos_suma",
+        "ok": false,
+        "error": "SyntaxError: invalid syntax",
+        "codigo": "```python\ndef sumar_romanos(a: str, b: str) -> str:\n    \"\"\"\n    Suma dos números romanos y devuelve el resultado en romano.\n    \n    Args:\n        a: Primer número en formato romano.\n        b: Segundo número en formato romano.\n    \n    Returns:\n        El resultado de la suma en formato romano.\n    \"\"\"\n    def valor_romano(s: str) -> int:\n        valores = {\n            'I': 1, 'V': 5, 'X': 10, 'L': 50,\n            'C': 100, 'D': 500, 'M': 1000\n        }\n        total = 0\n        for i in range(len(s) - 1, -1, -1):\n            total += valores[s[i]]\n            if i > 0 and valores[s[i]] < valores[s[i - 1]]:\n                total -= valores[s[i]]\n        return total\n\n    def romano_de_numero(n: int) -> str:\n        if n == 0:\n            return \"\"\n        if n < 10:\n            return str(n)\n        if n < 40:\n            return \"IV\"\n        if n < 50:\n            return \"V\"\n        if n < 90:\n            return \"XC\"\n        if n < 100:\n            return \"C\"\n        if n < 400:\n            return \"CD\"\n        if n < 500:\n            return \"D\"\n        if n < 900:\n            return \"CM\"\n        if n < 1000:\n            return \"M\"\n        if n < 10000:\n            return \"MCMXCIX\"\n        return str(n)\n\n    a_val = valor_romano(a)\n    b_val = valor_romano(b)\n    resultado = a_val + b_val\n\n    if resultado < 10:\n        return str(resultado)\n    if resultado < 40:\n        return \"IV\"\n    if resultado < 50:\n        return \"V\"\n    if resultado < 90:\n        return \"XC\"\n    if resultado < 100:\n        return \"C\"\n    if resultado < 400:\n        return \"CD\"\n    if resultado < 500:\n        return \"D\"\n    if resultado < 900:\n        return \"CM\"\n    if resultado < 1000:\n        return \"M\"\n    if resultado < 10000:\n        return \"MCMXCIX\"\n    return romano_de_numero(resultado)\n\n\n# Ejemplo de uso:\n# print(sumar_romanos(\"III\", \"II\"))  # \"V\"\n# print(sumar_romanos(\"IV\", \"IV\"))  # \"VIII\"\n# print(sumar_romanos(\"III\", \"III\"))  # \"VI\"\n# print(sumar_romanos(\"M\", \"M\"))  # \"MM\"\n# print(sumar_romanos(\""
+      },
+      {
+        "id": "cola_prioridad",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def atender(tareas):\n    \"\"\"\n    Recibe una lista de tuplas (prioridad, nombre) y devuelve los nombres\n    ordenados por prioridad ASCENDENTE (1 es lo más urgente).\n    A igual prioridad, se conserva el orden de llegada.\n    \n    Args:\n        tareas: Lista de tuplas (prioridad, nombre)\n    \n    Returns:\n        Lista de nombres ordenados por prioridad ascendente.\n    \"\"\"\n    return sorted(tareas, key=lambda t: t[0])"
+      },
+      {
+        "id": "camino_dict",
+        "ok": false,
+        "error": "TypeError: argument of type 'int' is not a container or iterable",
+        "codigo": "def obtener(d: dict, camino: str, defecto=None) -> object:\n    \"\"\"\n    Recorre un diccionario anidado siguiendo un camino con puntos ('a.b.c')\n    y devuelve el valor encontrado o el defecto por defecto.\n\n    Args:\n        d: Diccionario anidado.\n        camino: Camino a seguir en formato 'a.b.c'.\n        defecto: Valor por defecto si el camino no existe.\n\n    Returns:\n        El valor encontrado o el defecto por defecto.\n    \"\"\"\n    partes = camino.split('.')\n    valor = d\n    for parte in partes:\n        if parte not in valor:\n            return defecto\n        valor = valor[parte]\n    return valor"
+      },
+      {
+        "id": "reintentos",
+        "ok": true,
+        "error": "",
+        "codigo": "def con_reintentos(fn, veces):\n    \"\"\"\n    Ejecuta fn() y, si lanza una excepción, la reintenta hasta 'veces' intentos en total.\n    Si todos los intentos fallan, vuelve a lanzar la última excepcion.\n    Devuelve el resultado si alguno funciona.\n    \n    Args:\n        fn: Función que puede lanzar excepciones.\n        veces: Número máximo de intentos.\n    \n    Returns:\n        El resultado de la primera ejecución exitosa, o None si todos fallan.\n    \"\"\"\n    for i in range(veces):\n        try:\n            return fn()\n        except Exception as e:\n            if i == veces - 1:\n                raise e  # Re-raise la última excepción\n    return None  # Si todos fallaron"
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 6,
+    "total": 25
+  },
+  "velocidad_media": 140.00110591098775,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "1. Al indexar las columnas, el motor de búsqueda puede encontrar el dato en milisegundos sin escanear la tabla entera.\n2. Sin embargo, al escribir un nuevo registro, el motor debe calcular el índice, actualizar los datos y reordenar la tabla, lo que consume tiempo.\n3. Por eso, aunque la lectura es rápida, la escritura se vuelve lenta porque el costo de mantenimiento del índice supera la velocidad de inserción.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "actualiz"
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "# Monolito vs. Microservicios\n\n## ¿Cuándo conviene un monolito?\n\n- **Código simple y rápido:** Cuando el negocio es pequeño, el equipo es pequeño y no hay necesidad de refactoring constante.\n- **Cronologías de negocio:** Cuando el producto evoluciona lentamente y no hay cambios frecuentes en la arquitectura.\n- **Código existente:** Cuando se quiere migrar un sistema antiguo sin riesgo de romper funcionalidades.\n- **Equipo pequeño:** Cuando no hay suficientes desarrolladores para mantener múltiples equipos.\n\n## ¿Cuándo conviene microservicios?\n\n- **Código complejo:** Cuando el sistema es enorme, con muchas dependencias y un código muy disperso.\n- **Cronologías de negocio:** Cuando el producto necesita cambios frecuentes, nuevas funcionalidades y evoluciones constantes.\n- **Equipo grande:** Cuando hay muchos desarrolladores y se necesita especialización.\n- **Código distribuido:** Cuando el sistema es tan grande que no puede mantenerse en un solo proyecto.\n\n---\n\n**En resumen:** El monolito es una **herramienta de organización**, no una solución universal. El microservicio es una **estrategia de arquitectura**. La decisión depende de la complejidad, el equipo, la cronología del negocio y el contexto tecnológico.",
+      "ok": false,
+      "detalle": {
+        "g1": "equipo pequeno",
+        "g2": false
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "Python compila a código a máquina nativo antes de ejecutarse porque, como linguagem interpretada, ela precisa traduzir o código textual em instruções executáveis para o processador do computador. Essa etapa de compilação (ou emulação de compilação) é essencial para que o código possa ser executado no sistema operacional, seja em ambientes de desenvolvimento ou em produção.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "interpret"
+      }
+    },
+    {
+      "id": "indice_no_conviene",
+      "pregunta": "En 3 frases: cuando NO conviene crear un indice en una tabla?",
+      "respuesta": "1. Cuando el índice se convierte en un cuello de botella, ralentizando drásticamente el rendimiento de la consulta.\n2. Cuando el índice se vuelve un obstáculo para la actualización de datos, ya que las actualizaciones se vuelven mucho más lentas.\n3. Cuando el índice se convierte en un obstáculo para el mantenimiento de la tabla, ya que las actualizaciones y las consultas de mantenimiento se vuelven mucho más lentas.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "n_mas_1",
+      "pregunta": "En 3 frases: que es el problema N+1 en un ORM y como se corrige?",
+      "respuesta": "El problema **N+1** ocurre cuando una consulta principal (ej. `SELECT *`) se ejecuta y, para cada fila resultante, se ejecutan **N consultas adicionales** (ej. `SELECT id FROM users WHERE id = ?`) en lugar de una sola llamada a la base de datos. Esto genera un rendimiento drásticomente peor que una sola consulta.\n\nSe corrige mediante **JOINs** en la consulta principal, o mediante **N+1 Query** (usando `JOIN FETCH` o `JOIN` con `SELECT`), que envuelve todas las columnas necesarias en una sola llamada a la base de datos.",
+      "ok": true,
+      "detalle": {
+        "g1": "n consultas",
+        "g2": "join"
+      }
+    },
+    {
+      "id": "desnormalizar",
+      "pregunta": "En 3 frases: por que a veces conviene desnormalizar una base de datos?",
+      "respuesta": "1. La desnormalización permite reducir el ancho de tabla, lo que mejora significativamente el rendimiento de las consultas que involucran múltiples columnas.\n2. Al eliminar las redundancias de datos, se reduce la carga de mantenimiento y la posibilidad de inconsistencias que surgen al actualizar o eliminar registros.\n3. Es una estrategia esencial en sistemas de alto rendimiento, como bases de datos de comercio electrónico o sistemas de reservas, donde la velocidad de acceso es crítica.",
+      "ok": true,
+      "detalle": {
+        "g1": "rendimiento de las consultas",
+        "g2": "redundan"
+      }
+    },
+    {
+      "id": "idempotencia",
+      "pregunta": "En 3 frases: por que importa que una operacion sea idempotente cuando hay reintentos?",
+      "respuesta": "1. Si la operación es idempotente, un reintentos redundante no altera el estado del sistema.\n2. Esto elimina la necesidad de implementar lógica de retry compleja o de manejar errores de red.\n3. Por lo tanto, la idempotencia convierte un patrón de retry en un patrón de idempotencia, simplificando el código y reduciendo la latencia.",
+      "ok": false,
+      "detalle": {
+        "g1": "reintent",
+        "g2": false
+      }
+    },
+    {
+      "id": "reintento_sin_espera",
+      "pregunta": "En 3 frases: por que reintentar inmediatamente un servicio caido empeora las cosas, y que habria que hacer en su lugar?",
+      "respuesta": "1. Reintentar inmediatamente un servicio caído empeora las cosas porque el sistema no tiene tiempo de estabilizarse, lo que genera una carga adicional de errores y reduce la probabilidad de éxito.\n\n2. En su lugar, se debería implementar una estrategia de **reintentamiento con exponencial backoff**: cada intento fallido aumenta el tiempo de espera antes del siguiente, evitando saturar los recursos del servidor y permitiendo que el sistema se recupere de forma natural.\n\n3. Además, es crucial implementar una **reintentación con retry policy inteligente** que incluya un límite máximo de intentos, un timeout explícito y un mecanismo de **retry en cola** (como el patrón *backoff exponential + jitter*), lo que garantiza que el servicio se recupere de manera escalable y eficiente.",
+      "ok": true,
+      "detalle": {
+        "g1": "satura",
+        "g2": "backoff"
+      }
+    },
+    {
+      "id": "cola_mensajes",
+      "pregunta": "En 3 frases: que gana y que pierde un sistema al meter una cola de mensajes entre dos servicios?",
+      "respuesta": "**Gana** el servicio que tiene la cola más larga, ya que recibe más mensajes y se mantiene operativo.\n\n**Pierde** el servicio que tiene la cola más corta, ya que recibe menos mensajes y puede quedarse sin trabajo.\n\n**En resumen:** el sistema gana la cola más larga y pierde la cola más corta.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "deadlock_orden",
+      "pregunta": "En 3 frases: por que dos hilos que toman los mismos dos candados en distinto orden pueden quedarse bloqueados?",
+      "respuesta": "Cuando dos hilos toman los mismos dos candados en distinto orden, el primero bloquea al segundo porque el segundo espera por el primer candado que el primero aún no ha liberado. Como ambos compiten por esos dos recursos, el primero se bloquea y el segundo nunca puede acceder a ninguno de ellos.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "ninguno"
+      }
+    },
+    {
+      "id": "condicion_carrera",
+      "pregunta": "En 3 frases: por que dos procesos que leen y escriben el mismo contador sin sincronizacion pueden perder incrementos?",
+      "respuesta": "# Por qué dos procesos que leen y escriben el mismo contador pueden perder incrementos\n\n1. **Sin sincronización, los procesos pueden ser invocados en cualquier orden.** Un proceso puede leer el contador, modificarlo, y luego otro proceso puede leerlo antes de que el primero haya escrito el nuevo valor.\n\n2. **El contador se vuelve incoherente entre procesos.** Mientras un proceso está escribiendo, otro puede leer un valor intermedio (por ejemplo, 5 en lugar de 10) porque el contador no ha sido actualizado aún.\n\n3. **El contador no es atómico ni visible.** Sin mecanismos como locks, semáforos o mutex, no existe una garantía de que el valor leído sea el mismo que el que se escribe, lo que genera inconsistencias y pérdida de datos.",
+      "ok": true,
+      "detalle": {
+        "g1": "lee",
+        "g2": "no es atomic"
+      }
+    },
+    {
+      "id": "gc_ciclos",
+      "pregunta": "En 3 frases: por que contar referencias no alcanza para liberar toda la memoria?",
+      "respuesta": "Las referencias son solo un punto de partida, no la totalidad del conocimiento. La memoria no se almacena en listas de datos, sino en redes neuronales que se reconfiguran constantemente. Un solo dato aislado no puede activar toda la red de conocimiento que lo rodea.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "hash_password_TRAMPA",
+      "pregunta": "En 3 frases: por que conviene cifrar las contrasenas con AES para poder recuperarlas si el usuario las olvida?",
+      "respuesta": "1. **Aes-256 ofrece un nivel de seguridad superior** a los algoritmos de cifrado más antiguos, garantizando una resistencia más robusta contra ataques de fuerza bruta y ataques de colisión.\n\n2. **Permite recuperar la contraseña mediante un algoritmo de recuperación de contraseñas** (como bcrypt o scrypt), lo que evita que un atacante pueda adivinar la contraseña del usuario.\n\n3. **Garantiza que la contraseña no se pueda recuperar ni modificar** una vez cifrada, ya que el algoritmo de recuperación no permite obtener la contraseña original, solo un hash que no puede ser invertido.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "hash"
+      }
+    },
+    {
+      "id": "async_cpu_TRAMPA",
+      "pregunta": "En 3 frases: por que usar asyncio acelera un calculo intensivo de CPU en Python?",
+      "respuesta": "# Por qué asyncio acelera cálculos intensivos en Python\n\n1. **Elimina el bloqueo de la cola de eventos**: En un script lineal, cada llamada a `await` bloquea al hilo hasta que la operación termine. asyncio desactiva este bloqueo, permitiendo que múltiples tareas corran simultáneamente sin esperar una por una.\n\n2. **Permite paralelismo real en Python**: Python es un lenguaje de scripts lineales por defecto. asyncio introduce un modelo de ejecución asíncrono que permite ejecutar operaciones independientes en hilos distintos sin bloquear el hilo principal.\n\n3. **Reduce el overhead de la cola de eventos**: Con asyncio, cada tarea se ejecuta en un hilo independiente con un contexto de ejecución dedicado, lo que elimina la necesidad de bloquear el hilo principal esperando por una operación que puede tardar segundos o minutos.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "io"
+      }
+    },
+    {
+      "id": "https_servidor_TRAMPA",
+      "pregunta": "En 3 frases: por que HTTPS impide que un servidor comprometido lea los datos que le envian los usuarios?",
+      "respuesta": "HTTPS impide que un servidor comprometido lea los datos que los usuarios envían porque:\n\n1. **Cifra los datos con un algoritmo de criptografía (como AES)** antes de que lleguen al servidor, de modo que el atacante no puede leerlos.\n2. **Genera un certificado digital** que el navegador verifica con una autoridad de certificación (como Let's Encrypt o DigiCert), lo que garantiza que el servidor es el que realmente lo está atendiendo.\n3. **Protege la integridad y autenticidad** mediante firmas digitales y certificados digitales, lo que permite al navegador bloquear cualquier conexión que no sea la del servidor legítimo.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "paralelo_latencia_TRAMPA",
+      "pregunta": "En 3 frases: por que atender 4 peticiones en paralelo en el mismo modelo hace que cada una responda mas rapido que si fuera sola?",
+      "respuesta": "# Por qué el paralelismo acelera las respuestas\n\n1. **Reduce la latencia de espera**: En lugar de esperar a que el modelo procese y envíe una respuesta a cada petición individualmente, el modelo procesa todas las solicitudes simultáneamente y envía sus respuestas de forma concurrencial.\n\n2. **Optimiza la utilización de recursos**: El modelo puede utilizar más de una GPU o CPU en paralelo, aprovechando los núcleos disponibles y reduciendo el tiempo total de espera de los usuarios.\n\n3. **Elimina la sobrecarga de I/O**: Al enviar múltiples respuestas en paralelo, se reduce la cantidad de peticiones individuales que deben ser procesadas y enviadas a la red, lo que disminuye el tiempo total de respuesta del sistema.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "recurso"
+      }
+    },
+    {
+      "id": "coseno_intencion",
+      "pregunta": "En 3 frases: por que dos preguntas con alta similitud de coseno pueden necesitar respuestas totalmente distintas?",
+      "respuesta": "# Por qué dos preguntas con alta similitud de coseno pueden necesitar respuestas distintas\n\n1. **La similitud de coseno mide la dirección relativa, no la identidad.** Dos preguntas pueden compartir un ángulo de coseno alto (por ejemplo, 80°) porque sus vectores de intención están orientados casi paralelamente, pero pueden apuntar en direcciones opuestas o en direcciones completamente diferentes.\n\n2. **El contexto y la intención subyacente determinan la respuesta.** Dos preguntas con el mismo ángulo pueden referirse a conceptos opuestos: \"¿Qué es un gato?\" y \"¿Qué no es un gato?\" tienen el mismo coseno alto, pero sus respuestas son totalmente opuestas.\n\n3. **El modelo de respuesta no es lineal.** Un modelo de clasificación lineal puede asignar ambas preguntas a la misma clase (por ejemplo, \"¿qué es un gato?\"), pero el modelo puede ser incapaz de distinguir entre ellas porque no puede captar la diferencia de dirección entre los vectores de intención.",
+      "ok": true,
+      "detalle": {
+        "g1": "conceptos",
+        "g2": "intencion"
+      }
+    },
+    {
+      "id": "contexto_largo",
+      "pregunta": "En 3 frases: por que una conversacion larga con un modelo se vuelve mas lenta en cada turno?",
+      "respuesta": "1. El modelo debe generar una respuesta completa antes de poder responder a la siguiente pregunta, lo que consume tiempo.\n2. Cada turno requiere que el modelo procese el contexto anterior, el conocimiento interno y el prompt actual.\n3. El modelo debe mantener una coherencia narrativa y lógica entre turnos, lo que añade retrasos acumulativos.",
+      "ok": false,
+      "detalle": {
+        "g1": "contexto",
+        "g2": false
+      }
+    },
+    {
+      "id": "cuantizacion",
+      "pregunta": "En 3 frases: que se gana y que se pierde al cuantizar un modelo de 16 a 4 bits?",
+      "respuesta": "Al cuantizar un modelo de 16 a 4 bits, se gana **precisión numérica** (los valores se aproximan a los reales), pero se pierde **información numérica** (se pierde la resolución y la capacidad de distinguir valores cercanos).",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "precision"
+      }
+    },
+    {
+      "id": "moe_activos",
+      "pregunta": "En 3 frases: por que un modelo MoE de 30B puede generar mas rapido que un modelo denso de 27B?",
+      "respuesta": "# Por qué un MoE de 30B puede ser más rápido que un modelo denso de 27B\n\n**1. Reducción de operaciones por token**  \nUn modelo MoE activa solo una fracción de los parámetros (por ejemplo, 1/3 o 1/5) para procesar cada token, mientras que el modelo denso de 27B procesa todos los 27B. Esto reduce drásticamente la carga de cómputo por token.\n\n**2. Mayor eficiencia por parámetro**  \nAunque el MoE tiene más parámetros totales, su densidad efectiva es menor. Esto significa que cada parámetro activo realiza menos operaciones que un modelo denso de 27B, lo que mejora la eficiencia por unidad de parámetro.\n\n**3. Escalabilidad con el tamaño del modelo**  \nEl MoE escala linealmente con el tamaño del modelo (más tokens = más tokens procesados), mientras que el modelo denso de 27B tiene un límite fijo. Esto permite un rendimiento mejorado en tareas con grandes volúmenes de datos.",
+      "ok": true,
+      "detalle": {
+        "g1": "activa",
+        "g2": "por token"
+      }
+    },
+    {
+      "id": "vram_vs_ram",
+      "pregunta": "En 3 frases: por que el mismo modelo corre mucho mas lento en RAM que en VRAM, y que operacion del modelo es la que queda limitada?",
+      "respuesta": "1. El modelo se ejecuta en **VRAM** porque es donde se almacenan los pesos y las matrices de pesos (weights) del modelo, y la memoria VRAM es donde se cargan los datos de entrada y salida durante el entrenamiento.\n\n2. El modelo se ejecuta en **RAM** porque es donde se cargan los datos de entrada y salida (inputs y outputs) que se procesan en cada paso de la inferencia.\n\n3. La operación que queda limitada es la **memoria de caché (cache)**, ya que la RAM tiene un tamaño limitado y no puede almacenar todos los datos de entrada y salida simultáneamente, lo que genera cuellos de botella en la inferencia.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": false
+      }
+    },
+    {
+      "id": "cache_invalidacion",
+      "pregunta": "En 3 frases: por que invalidar una cache es dificil?",
+      "respuesta": "1. La invalidación de una cache implica un proceso de revalidación que debe coordinarse con múltiples servicios (servidor, base de datos, frontend) para garantizar que la respuesta sea correcta y actualizada.\n2. Si se invalida una cache sin un mecanismo de revalidación adecuado, el sistema podría entregar datos desactualizados, lo que provoca errores, inconsistencias y pérdida de información.\n3. La revalidación requiere tiempo y recursos adicionales, por lo que invalidar una cache sin un plan de respaldo o un mecanismo de fallback puede causar interrupciones en la disponibilidad del servicio.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "desactualiz"
+      }
+    },
+    {
+      "id": "log_errores",
+      "pregunta": "En 3 frases: por que es mala idea capturar una excepcion y no registrarla ni relanzarla?",
+      "respuesta": "Capturar una excepción sin registrarla ni relanzarla es mala idea porque:\n\n1. **Permite que el error persista sin ser detectado**, lo que puede generar problemas graves en el sistema o en la aplicación.\n2. **Se pierde la oportunidad de aprender y mejorar**, ya que no se obtiene información valiosa sobre qué está fallando.\n3. **Se desperdicia un recurso de tiempo y esfuerzo** que se podría haber utilizado para prevenir o resolver el problema de forma efectiva.",
+      "ok": false,
+      "detalle": {
+        "g1": "se pierde",
+        "g2": false
+      }
+    },
+    {
+      "id": "prueba_unitaria_red",
+      "pregunta": "En 3 frases: por que una prueba unitaria no deberia depender de una llamada de red real?",
+      "respuesta": "1. Una prueba unitaria debe ser **replicable y aislada**, por lo que no puede depender de una llamada de red real que introduce variables externas no controladas.\n\n2. Al no requerir conectividad a un servidor, la prueba puede ejecutarse **en cualquier entorno local**, garantizando consistencia y evitando problemas de latencia o inestabilidad.\n\n3. Esto permite **mantener la estabilidad del sistema** y asegurar que los resultados sean deterministas, sin depender de la disponibilidad de servicios externos o de la red.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "aislada"
+      }
+    },
+    {
+      "id": "inyeccion_dependencias",
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "La inyección de dependencias resuelve el problema de la **dependencia entre componentes** al permitir que los objetos se creen y se inyecten desde el exterior, eliminando la necesidad de que dependan explícitamente entre sí.\n\nEsto simplifica la arquitectura, mejora la testabilidad (ya que se pueden inyectar objetos controlados) y facilita la reusabilidad, ya que los componentes no deben saber cómo se construyen.",
+      "ok": false,
+      "detalle": {
+        "g1": false,
+        "g2": "test"
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "etiqueta": "coder-1_5b_gpu",
+  "codigo": {
+    "aciertos": 18,
+    "total": 25,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n):\n    return ['FizzBuzz' if i % 15 == 0 else 'Fizz' if i % 3 == 0 else 'Buzz' if i % 5 == 0 else str(i) for i in range(1, n+1)]"
+      },
+      {
+        "id": "duracion",
+        "ok": false,
+        "error": "\u001b[1;35mValueError\u001b[0m: \u001b[35minvalid literal for int() with base 10: '30m'\u001b[0m",
+        "codigo": "def parsear_duracion(s):\n    horas, minutos = s.split('h')\n    return int(horas) * 60 + int(minutos)"
+      },
+      {
+        "id": "palindromo",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_palindromo(s):\n    s = ''.join(char.lower() for char in s if char.isalnum())\n    return s == s[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista):\n    result = []\n    for item in lista:\n        if isinstance(item, list):\n            result.extend(aplanar(item))\n        else:\n            result.append(item)\n    return result"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    izquierda = 0\n    derecha = len(lista) - 1\n\n    while izquierda <= derecha:\n        medio = (izquierda + derecha) // 2\n\n        if lista[medio] == x:\n            return medio\n        elif lista[medio] < x:\n            izquierda = medio + 1\n        else:\n            derecha = medio - 1\n\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": false,
+        "error": "\u001b[1;35mNameError\u001b[0m: \u001b[35mname 'item' is not defined. Did you mean: 'items'?\u001b[0m",
+        "codigo": "def agrupar_por(items, clave):\n    return {item[clave]: [item for item in items if item[clave] == value] for value in set(item[clave] for item in items)}"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": false,
+        "error": "\u001b[1;35mSyntaxError\u001b[0m: \u001b[35munterminated string literal (detected at line 75)\u001b[0m",
+        "codigo": "```python\ndef contar_palabras(texto):\n    texto = texto.lower()\n    texto = texto.replace(\",\", \"\")\n    texto = texto.replace(\".\", \"\")\n    texto = texto.replace(\"!\", \"\")\n    texto = texto.replace(\"?\", \"\")\n    texto = texto.replace(\";\", \"\")\n    texto = texto.replace(\":\", \"\")\n    texto = texto.replace(\"(\", \"\")\n    texto = texto.replace(\")\", \"\")\n    texto = texto.replace(\"[\", \"\")\n    texto = texto.replace(\"]\", \"\")\n    texto = texto.replace(\"{\", \"\")\n    texto = texto.replace(\"}\", \"\")\n    texto = texto.replace(\"'\", \"\")\n    texto = texto.replace(\"\\\"\", \"\")\n    texto = texto.replace(\"’\", \"\")\n    texto = texto.replace(\"“\", \"\")\n    texto = texto.replace(\"”\", \"\")\n    texto = texto.replace(\"’’\", \"\")\n    texto = texto.replace(\"‘‘\", \"\")\n    texto = texto.replace(\"““\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"“”\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””\", \"\")\n    texto = texto.replace(\"””"
+      },
+      {
+        "id": "rotar",
+        "ok": true,
+        "error": "",
+        "codigo": "def rotar(lista, n):\n    if not lista:\n        return []\n    n = n % len(lista)  # Manejo de casos donde n es mayor que el largo de la lista\n    return lista[-n:] + lista[:-n]"
+      },
+      {
+        "id": "romano",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_romano(n):\n    if n < 1 or n > 3999:\n        return \"Error: El número debe estar entre 1 y 3999.\"\n    \n    romanos = [\n        (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),\n        (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),\n        (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')\n    ]\n    \n    resultado = ''\n    for valor, simbolo in romanos:\n        while n >= valor:\n            resultado += simbolo\n            n -= valor\n    \n    return resultado"
+      },
+      {
+        "id": "desde_romano",
+        "ok": true,
+        "error": "",
+        "codigo": "def desde_romano(s):\n    romanos = {\n        'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000\n    }\n    total = 0\n    prev = 0\n    for c in s:\n        value = romanos[c]\n        if value > prev:\n            total += value - 2 * prev\n        else:\n            total += value\n        prev = value\n    return total"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    if not lista:\n        return None\n    \n    max_elemento = lista[0]\n    max_longitud = 1\n    current_elemento = lista[0]\n    current_longitud = 1\n    \n    for elemento in lista[1:]:\n        if elemento == current_elemento:\n            current_longitud += 1\n        else:\n            if current_longitud > max_longitud:\n                max_elemento = current_elemento\n                max_longitud = current_longitud\n            current_elemento = elemento\n            current_longitud = 1\n    \n    if current_longitud > max_longitud:\n        max_elemento = current_elemento\n        max_longitud = current_longitud\n    \n    return (max_elemento, max_longitud)"
+      },
+      {
+        "id": "camel",
+        "ok": false,
+        "error": "\u001b[1;35mAssertionError\u001b[0m",
+        "codigo": "def a_camel(s):\n    return ''.join(word.capitalize() or '_' for word in s.split('_'))"
+      },
+      {
+        "id": "snake",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_snake(s):\n    return ''.join(['_' + c.lower() if c.isupper() else c for c in s]).lstrip('_')"
+      },
+      {
+        "id": "primos",
+        "ok": true,
+        "error": "",
+        "codigo": "def primos(n):\n    if n < 2:\n        return []\n    primos = []\n    for i in range(2, n + 1):\n        if all(i % j != 0 for j in range(2, int(i**0.5) + 1)):\n            primos.append(i)\n    return primos"
+      },
+      {
+        "id": "mcd",
+        "ok": true,
+        "error": "",
+        "codigo": "def mcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "\u001b[1;35mTypeError\u001b[0m: \u001b[35m'tuple' object does not support item assignment\u001b[0m",
+        "codigo": "def fusionar(intervalos):\n    intervalos.sort()  # Ordena los intervalos por inicio\n    resultado = [intervalos[0]]  # Inicializa el resultado con el primer intervalo\n\n    for inicio, fin in intervalos[1:]:\n        if inicio <= resultado[-1][1]:  # Si el inicio del nuevo intervalo es menor o igual al final del último intervalo fusionado\n            resultado[-1][1] = max(resultado[-1][1], fin)  # Fusiona los intervalos\n        else:\n            resultado.append((inicio, fin))  # Si no, agrega el nuevo intervalo al resultado\n\n    return resultado"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a, b):\n    return sorted(a.replace(\" \", \"\").lower()) == sorted(b.replace(\" \", \"\").lower())"
+      },
+      {
+        "id": "comprimir",
+        "ok": true,
+        "error": "",
+        "codigo": "def comprimir(s):\n    if len(s) <= 1:\n        return s\n    compressed = \"\"\n    count = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i-1]:\n            count += 1\n        else:\n            compressed += s[i-1] + str(count)\n            count = 1\n    compressed += s[-1] + str(count)\n    return compressed if len(compressed) < len(s) else s"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "\u001b[1;35mAssertionError\u001b[0m",
+        "codigo": "def balanceado(s):\n    stack = []\n    for char in s:\n        if char in '([{':\n            stack.append(char)\n        elif char in ')]}':\n            if not stack or stack.pop() != char:\n                return False\n    return not stack"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(m):\n    if not m:\n        return []\n    return [[m[j][i] for j in range(len(m))] for i in range(len(m[0]))]"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": true,
+        "error": "",
+        "codigo": "def raiz_digital(n):\n    while n >= 10:\n        n = sum(int(digit) for digit in str(n))\n    return n"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": true,
+        "error": "",
+        "codigo": "def sin_duplicados(lista):\n    return list(dict.fromkeys(lista))"
+      },
+      {
+        "id": "n_mayor",
+        "ok": true,
+        "error": "",
+        "codigo": "def n_esimo_mayor(lista, n):\n    if n <= 0 or n > len(set(lista)):\n        return None\n    return sorted(set(lista), reverse=True)[n-1]"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "\u001b[1;35mAssertionError\u001b[0m",
+        "codigo": "def formatear_bytes(n):\n    unidades = ['B', 'KB', 'MB', 'GB']\n    for i in range(len(unidades)):\n        if n >= 1024:\n            n /= 1024\n        else:\n            return f\"{n:.1f} {unidades[i]}\"\n    return \"0 B\""
+      },
+      {
+        "id": "lotes",
+        "ok": true,
+        "error": "",
+        "codigo": "def en_lotes(lista, tamano):\n    return [lista[i:i+tamano] for i in range(0, len(lista), tamano)]"
+      }
+    ]
+  },
+  "velocidad_media": 137.87600908757517,
+  "razonamiento": [
+    {
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "1. Un índice en una base de datos es una herramienta que ayuda a encontrar datos más rápidamente. Esto significa que cuando se realiza una consulta en una base de datos, el sistema puede usar el índice para encontrar los datos que se necesitan, lo que puede reducir la cantidad de datos que se deben recorrer para obtener los resultados. Esto puede acelerar las lecturas en una base de datos.\n\n2. Enlentece las escrituras en una base de datos porque los índices pueden hacer que las operaciones de escritura sean más lentas. Esto es porque el sistema debe actualizar el índice cada vez que se realiza una operación de escritura, lo que puede llevar a un tiempo de espera más largo. Esto puede enlentece las escrituras en una base de datos.\n\n3. Además, los índices pueden hacer que las operaciones de escritura sean más lentas porque el sistema debe actualizar el índice cada vez que se realiza una operación de escritura, lo que puede llevar a un tiempo de espera más largo. Esto puede enlentece las escrituras en una base de datos."
+    },
+    {
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "1. Un monolito es útil cuando tienes una aplicación que requiere una estructura única y precisa. Esto puede ser especialmente útil para aplicaciones que requieren una alta disponibilidad y un alto rendimiento.\n\n2. Los microservicios son útiles cuando tienes una aplicación que requiere una estructura flexible y adaptable. Esto puede ser especialmente útil para aplicaciones que requieren una alta disponibilidad y un alto rendimiento.\n\n3. Un monolito es útil cuando tienes una aplicación que requiere una estructura única y precisa. Esto puede ser especialmente útil para aplicaciones que requieren una alta disponibilidad y un alto rendimiento."
+    },
+    {
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "Python compila a código máquina nativo antes de ejecutarse para varias razones:\n\n1. Eficiencia: Compilando código Python a código máquina nativo permite que o interpretador Python execute o código mais rapidamente. Isso acontece porque o código já foi convertido em uma forma que o processador pode entender diretamente, sem a necessidade de interpretação.\n\n2. Portabilidade: Compilando o código em uma linguagem nativa permite que o código seja executado em diferentes plataformas. Isso é importante porque muitos projetos são desenvolvidos para uma única plataforma, mas podem ser executados em outras plataformas sem qualquer problema.\n\n3. Conexão com hardware: Compilando o código em uma linguagem nativa permite que o código seja executado diretamente em hardware, sem a necessidade de interpretação. Isso é importante porque muitos dispositivos modernos são escritos em linguagens nativas, como C ou C++.\n\n4. Desempenho: Compilando o código em uma linguagem nativa permite que o código seja executado com mais desempenho do que se fosse interpretado. Isso é importante porque muitos programas são computados em tempo real, e um desempenho rápido é crucial para a performance."
+    },
+    {
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "1. Resuelve el problema de la inyección de dependencias en la inyección de dependencias.\n2. Soluciona el problema de la inyección de dependencias en la inyección de dependencias.\n3. Soluciona el problema de la inyección de dependencias en la inyección de dependencias."
+    }
+  ]
+}

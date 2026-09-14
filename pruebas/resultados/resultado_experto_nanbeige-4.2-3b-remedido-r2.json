@@ -1,0 +1,206 @@
+{
+  "etiqueta": "nanbeige-4.2-3b-remedido-r2",
+  "codigo": {
+    "aciertos": 19,
+    "total": 25,
+    "detalle": [
+      {
+        "id": "fizzbuzz",
+        "ok": true,
+        "error": "",
+        "codigo": "def fizzbuzz(n):\n    resultado = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            resultado.append('FizzBuzz')\n        elif i % 3 == 0:\n            resultado.append('Fizz')\n        elif i % 5 == 0:\n            resultado.append('Buzz')\n        else:\n            resultado.append(str(i))\n    return resultado"
+      },
+      {
+        "id": "duracion",
+        "ok": true,
+        "error": "",
+        "codigo": "def parsear_duracion(s):\n    s = s.strip()\n    total_minutos = 0\n    \n    # Separar componentes: horas y minutos\n    if 'h' in s:\n        parts = s.split('h')\n        hours = int(parts[0].strip())\n        remainder = parts[1] if len(parts) > 1 else ''\n        total_minutos += hours * 60\n        \n        # Procesar minutos en el resto (ej: '30m', '0m')\n        if 'm' in remainder:\n            mins_part = remainder.split('m')\n            mins = int(mins_part[0].strip())\n            total_minutos += mins\n    \n    # Si no hay 'h', asumir que es solo minutos\n    if 'h' not in s:\n        if 'm' in s:\n            mins = int(s.split('m')[0].strip())\n            total_minutos = mins\n        else:\n            # Validear si es solo minutos sin 'h'\n            total_minutos = int(s)\n    \n    return total_minutos"
+      },
+      {
+        "id": "palindromo",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_palindromo(s):\n    s_limpia = ''.join(c for c in s if c.isalnum()).lower()\n    return s_limpia == s_limpia[::-1]"
+      },
+      {
+        "id": "aplanar",
+        "ok": true,
+        "error": "",
+        "codigo": "def aplanar(lista):\n    resultado = []\n    for elemento in lista:\n        if isinstance(elemento, list):\n            resultado.extend(aplanar(elemento))\n        else:\n            resultado.append(elemento)\n    return resultado"
+      },
+      {
+        "id": "busqueda",
+        "ok": true,
+        "error": "",
+        "codigo": "def buscar(lista, x):\n    l = 0\n    r = len(lista) - 1\n    while l <= r:\n        m = (l + r) // 2\n        if lista[m] == x:\n            return m\n        elif lista[m] < x:\n            l = m + 1\n        else:\n            r = m - 1\n    return -1"
+      },
+      {
+        "id": "agrupar",
+        "ok": true,
+        "error": "",
+        "codigo": "def agrupar_por(items, clave):\n    resultado = {}\n    for item in items:\n        valor = item[clave]\n        if valor not in resultado:\n            resultado[valor] = []\n        resultado[valor].append(item)\n    return resultado"
+      },
+      {
+        "id": "contar_palabras",
+        "ok": true,
+        "error": "",
+        "codigo": "import re\nfrom collections import Counter\n\ndef contar_palabras(texto):\n    # Normalizar texto: minúsculas y eliminar mayúsculas/puntuación\n    texto_normalizado = texto.lower()\n    # Eliminar signos de puntuación y caracteres no alfabéticos\n    texto_limpio = re.sub(r'[^a-z\\s]', ' ', texto_normalizado)\n    # Dividir en palabras y contar\n    palabras = texto_limpio.split()\n    return dict(Counter(palabras))"
+      },
+      {
+        "id": "rotar",
+        "ok": true,
+        "error": "",
+        "codigo": "def rotar(lista, n):\n    if not lista:\n        return []\n    n = n % len(lista)\n    return lista[-n:] + lista[:-n]"
+      },
+      {
+        "id": "romano",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def a_romano(n):\n    numeros_romanos = [\n        (1000, \"M\"), (900, \"CM\"), (500, \"D\"), (400, \"CD\"),\n        (100, \"C\"), (90, \"XC\"), (50, \"L\"), (40, \"XL\"),\n        (10, \"X\"), (9, \"IX\"), (5, \"V\"), (4, \"IV\"),\n        (1, \"I\")\n    ]\n    resultado = []\n    while n > 0:\n        for valor, simbolo in numeros_romanos:\n            if n >= valor:\n                resultado.append(simbolo)\n                n -= valor\n    return \"\".join(resultado)"
+      },
+      {
+        "id": "desde_romano",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def desde_romano(s):\n    numeros = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    resultado = 0\n    i = 0\n    while i < len(s):\n        valor = numeros[s[i]]\n        if i + 1 < len(s) and numeros[s[i + 1]] > valor:\n            valor = numeros[s[i + 1]] - numeros[s[i]]\n            i += 2\n        resultado += valor\n        i += 1\n    return resultado"
+      },
+      {
+        "id": "racha",
+        "ok": true,
+        "error": "",
+        "codigo": "def mayor_racha(lista):\n    if not lista:\n        return None\n    \n    max_elemento = None\n    max_longitud = -1\n    \n    i = 0\n    while i < len(lista):\n        elemento = lista[i]\n        j = i\n        while j < len(lista) and lista[j] == elemento:\n            j += 1\n        longitud = j - i\n        \n        if longitud > max_longitud:\n            max_elemento = elemento\n            max_longitud = longitud\n        i = j\n    \n    return (max_elemento, max_longitud)"
+      },
+      {
+        "id": "camel",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_camel(s):\n    words = s.split('_')\n    return ''.join(word[0].upper() + word[1:] if i > 0 else word for i, word in enumerate(words))"
+      },
+      {
+        "id": "snake",
+        "ok": true,
+        "error": "",
+        "codigo": "def a_snake(s):\n    result = []\n    for char in s:\n        if char.isupper():\n            if result and result[-1].islower():\n                result.append('_')\n            result.append(char.lower())\n        else:\n            result.append(char)\n    return ''.join(result)"
+      },
+      {
+        "id": "primos",
+        "ok": true,
+        "error": "",
+        "codigo": "def primos(n):\n    if n < 2:\n        return []\n    primos_list = []\n    for i in range(2, n + 1):\n        if all(i % j != 0 for j in range(2, int(i ** 0.5) + 1)):\n            primos_list.append(i)\n    return primos_list"
+      },
+      {
+        "id": "mcd",
+        "ok": true,
+        "error": "",
+        "codigo": "def mcd(a, b):\n    if a == 0:\n        return b\n    if b == 0:\n        return a\n    while b != 0:\n        a, b = b, a % b\n    return a"
+      },
+      {
+        "id": "intervalos",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def fusionar(intervalos):\n    if not intervalos:\n        return []\n    \n    # Ordenar por inicio; si no están ordenados, asegurarlo\n    intervalos = sorted(intervalos, key=lambda x: x[0])\n    \n    resultados = []\n    \n    for inicio, fin in intervalos:\n        if not resultados or inicio > resultados[-1][1]:\n            resultados.append([inicio, fin])\n        else:\n            # Fusionar con el último intervalo si tocan o superponen\n            resultados[-1][1] = max(resultados[-1][1], fin)\n    \n    return resultados"
+      },
+      {
+        "id": "anagrama",
+        "ok": true,
+        "error": "",
+        "codigo": "def es_anagrama(a, b):\n    def normalizar(texto):\n        return sorted(letra for letra in texto.lower() if letra.isalpha())\n    \n    return normalizar(a) == normalizar(b)"
+      },
+      {
+        "id": "comprimir",
+        "ok": true,
+        "error": "",
+        "codigo": "def comprimir(s):\n    if not s:\n        return s\n    \n    compresion = []\n    contador = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            contador += 1\n        else:\n            compresion.append(s[i - 1])\n            compresion.append(str(contador))\n            contador = 1\n    compresion.append(s[-1])\n    compresion.append(str(contador))\n    version_comprimida = ''.join(compresion)\n    \n    return version_comprimida if len(version_comprimida) < len(s) else s"
+      },
+      {
+        "id": "parentesis",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def balanceado(texto):\n    if not texto:\n        return True\n    \n    contador = 0\n    for char in texto:\n        if char in '()[]{}':\n            if char in '([{':\n                contador += 1\n            elif char in ')]}':\n                contador -= 1\n            if contador < 0:\n                return False\n    return contador == 0"
+      },
+      {
+        "id": "transpuesta",
+        "ok": true,
+        "error": "",
+        "codigo": "def transpuesta(matriz):\n    if not matriz:\n        return []\n    n = len(matriz)\n    resultados = []\n    for i in range(len(matriz[0])):\n        fila = []\n        for j in range(n):\n            if matriz[j] and matriz[j][i] is not None:\n                fila.append(matriz[j][i])\n            else:\n                fila.append(None)\n        resultados.append(fila)\n    return resultados"
+      },
+      {
+        "id": "raiz_digital",
+        "ok": true,
+        "error": "",
+        "codigo": "def raiz_digital(n):\n    while n >= 10:\n        suma = 0\n        while n > 0:\n            suma += n % 10\n            n //= 10\n        n = suma\n    return n"
+      },
+      {
+        "id": "sin_duplicados",
+        "ok": true,
+        "error": "",
+        "codigo": "def sin_duplicados(lista):\n    resultado = []\n    for elemento in lista:\n        if elemento not in resultado:\n            resultado.append(elemento)\n    return resultado"
+      },
+      {
+        "id": "n_mayor",
+        "ok": true,
+        "error": "",
+        "codigo": "def n_esimo_mayor(lista, n):\n    if n <= 0:\n        return None\n    distinct_values = sorted(set(lista), reverse=True)\n    if len(distinct_values) < n:\n        return None\n    return distinct_values[n - 1]"
+      },
+      {
+        "id": "bytes",
+        "ok": false,
+        "error": "AssertionError",
+        "codigo": "def formatear_bytes(n):\n    if n == 0:\n        return '0 B'\n    units = ['B', 'KB', 'MB', 'GB']\n    for i, unit in enumerate(units):\n        step = 1024 ** i\n        value = n / step\n        if value < 1024:\n            if value == int(value):\n                return f'{int(value)} {unit}'\n            else:\n                return f'{value:.1f} {unit}'\n    return f'{n} B'"
+      },
+      {
+        "id": "lotes",
+        "ok": false,
+        "error": "NameError: name 'en_lotes' is not defined. Did you mean: '_lotes'?",
+        "codigo": "def _lotes(lista, tamano):\n    if not lista:\n        return []\n    resultados = []\n    inicio = 0\n    while inicio < len(lista):\n        lote_tamano = tamano if inicio + tamano <= len(lista) else len(lista) - inicio\n        resultados.append(lista[inicio:inicio + lote_tamano])\n        inicio += tamano\n    return resultados"
+      }
+    ]
+  },
+  "razonamiento_puntaje": {
+    "aciertos": 4,
+    "total": 4
+  },
+  "velocidad_media": 60.59353404411261,
+  "razonamiento": [
+    {
+      "id": "indice_db",
+      "pregunta": "En 3 frases: por que un indice en una base de datos acelera las lecturas pero enlentece las escrituras?",
+      "respuesta": "Un índice en una base de datos acelera las lecturas porque permite al motor de la base de datos encontrar rápidamente los registros necesarios mediante una estructura de búsqueda eficiente (como hash o B-tree), evitando el escanear completo la tabla. Sin embargo, las escrituras (inserciones, actualizaciones o eliminaciones) se enlencen porque cada índice es un segundo conjunto de datos que debe actualizarse al modificar la base de datos, añadiendo costo computacional y tiempo de red. Este proceso de mantenimiento de los índices consume recursos adicionales que retrasan las operaciones de escritura.",
+      "ok": true,
+      "detalle": {
+        "g1": "b-tree",
+        "g2": "actualiz"
+      }
+    },
+    {
+      "id": "monolito_micro",
+      "pregunta": "En 3 frases: cuando conviene un monolito y cuando microservicios?",
+      "respuesta": "**Cuando conviene un monolito:**  \nEs adecuado para sistemas pequeños, monolíticos con funcionalidades limitadas, donde la simplicidad de desarrollo, despliegue y gestión sea prioritarios sobre escalabilidad granular. También es útil en entornos con recursos limitados o cuando la integración entre componentes sea sencilla.\n\n**Cuando conviene microservicios:**  \nSe recomienda cuando el sistema sea complejo, con múltiples funcionalidades independientes que requieren escalarabilidad, mantenibilidad, tecnologías diversas por servicio y alta disponibilidad. Además, favorece la agilidad en despliegues continuos y la resiliencia ante fallos individuales.\n\n⚠️ *Nota:* La elección depende de factores como tamaño del proyecto, conocimiento técnico, requisitos de escalabilidad, seguridad y mantenimiento a largo plazo. No existe una regla universal absoluta.",
+      "ok": true,
+      "detalle": {
+        "g1": "sencill",
+        "g2": "escalar"
+      }
+    },
+    {
+      "id": "python_nativo_TRAMPA",
+      "pregunta": "En 3 frases: por que Python compila a codigo maquina nativo antes de ejecutarse?",
+      "respuesta": "Python não compila código maquina nativo antes de ejecutarlo; en realidad, Python interpreta código mediante un intérpreto que, en muitos casos, genera código de máquina (como bytecode en `.pyc`) para mejorar la eficiencia de ejecución. Este bytecode representa un nível intermediário que permite una ejecución más rápida que la interpretación pura y evita repetir cálculos redundantes. Finalmente, Python combina interpretar este bytecode para ejecutar el programa, ofreciendo un equilibrio entre velocidad y simplicidad de código.\n\n**Nota crítica:** La premisa de la pregunta (\"por qué Python compila a código maquina nativo\") es técnicamente imprecisa. Python **no compila** al código maquina *nativo* como hacen lenguajes compilados (como C++). En su lugar, genera **bytecode** (un código de máquina *intermediario* específico de Python), que luego es interpretado o ejecutado por un motor Python. La respuesta anterior corrige este malentendido mientras responde a la esquema solicitado en 3 frases.\n\nSi precisas detalles adicionales sobre Python vs compiladores, avisalo. 😊",
+      "ok": true,
+      "detalle": {
+        "g1": "no compila",
+        "g2": "bytecode"
+      }
+    },
+    {
+      "id": "inyeccion_dependencias",
+      "pregunta": "En 3 frases: que problema resuelve la inyeccion de dependencias?",
+      "respuesta": "La inyección de dependencias resuelve el problema de que los componentes o objetos de un sistema necesitan inicializaciones o configuraciones específicas para funcionar correctamente, evitando estructuras acopladas o dependencias circulares. Además, permite al sistema recibir sus dependencias de manera explícita y flexible, facilitando la modularidad, la mantenibilidad y la escalabilidad del código. Finalmente, al eliminar la necesidad de definir dependencias internas en cada componente, reduce la complejidad operativa y mejora la claridad del diseño del software.\n\n**Resumen en 3 frases:**\n1. **Problema resuelto:** Evita acoplamiento y dependencias circulares al asignar dependencias de forma explícita.\n2. **Beneficio técnico:** Facilita modularidad, mantenibilidad y escalabilidad del código.\n3. **Resultado final:** Reduce complejidad operativa y mejora la claridad del diseño del software.",
+      "ok": true,
+      "detalle": {
+        "g1": "acopl",
+        "g2": "flexib"
+      }
+    }
+  ]
+}

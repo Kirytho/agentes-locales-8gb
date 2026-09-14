@@ -1,0 +1,149 @@
+{
+  "temp_gen": 0.6,
+  "mixtas": 14,
+  "aciertos": 7,
+  "azar": 0.42857142857142855,
+  "primera": 0.35714285714285715,
+  "detalle": [
+    {
+      "id": "aplanar",
+      "verdad": [
+        false,
+        true,
+        true
+      ],
+      "elegida": 1,
+      "acerto": true
+    },
+    {
+      "id": "snake",
+      "verdad": [
+        true,
+        false,
+        true
+      ],
+      "elegida": 0,
+      "acerto": true
+    },
+    {
+      "id": "primos",
+      "verdad": [
+        false,
+        false,
+        true
+      ],
+      "elegida": 0,
+      "acerto": false
+    },
+    {
+      "id": "anagrama",
+      "verdad": [
+        false,
+        false,
+        true
+      ],
+      "elegida": 2,
+      "acerto": true
+    },
+    {
+      "id": "transpuesta",
+      "verdad": [
+        false,
+        false,
+        true
+      ],
+      "elegida": 2,
+      "acerto": true
+    },
+    {
+      "id": "raiz_digital",
+      "verdad": [
+        true,
+        false,
+        true
+      ],
+      "elegida": 2,
+      "acerto": true
+    },
+    {
+      "id": "bytes",
+      "verdad": [
+        true,
+        false,
+        false
+      ],
+      "elegida": 2,
+      "acerto": false
+    },
+    {
+      "id": "mediana",
+      "verdad": [
+        true,
+        false,
+        false
+      ],
+      "elegida": 2,
+      "acerto": false
+    },
+    {
+      "id": "trozos",
+      "verdad": [
+        false,
+        false,
+        true
+      ],
+      "elegida": 1,
+      "acerto": false
+    },
+    {
+      "id": "dias_entre",
+      "verdad": [
+        false,
+        true,
+        false
+      ],
+      "elegida": 2,
+      "acerto": false
+    },
+    {
+      "id": "escapar_csv",
+      "verdad": [
+        true,
+        true,
+        false
+      ],
+      "elegida": 2,
+      "acerto": false
+    },
+    {
+      "id": "titulo",
+      "verdad": [
+        false,
+        false,
+        true
+      ],
+      "elegida": 2,
+      "acerto": true
+    },
+    {
+      "id": "cola_prioridad",
+      "verdad": [
+        false,
+        true,
+        false
+      ],
+      "elegida": 1,
+      "acerto": true
+    },
+    {
+      "id": "reintentos",
+      "verdad": [
+        false,
+        true,
+        false
+      ],
+      "elegida": 2,
+      "acerto": false
+    }
+  ]
+}
